@@ -8,9 +8,11 @@ Iskolar does not collect, store, transmit, or sell any personal data.
 
 When you click the toolbar icon, Iskolar reads the hostname of your current tab (via the `activeTab` permission) and compares it with a list of student offers. The comparison happens entirely on your device. The hostname and the pages you visit are never sent anywhere.
 
-**Offers list updates**
+**Offers list**
 
-To keep offers current, the extension downloads a public list of offers (`offers.json`) from this project's GitHub repository (https://github.com/miconvr/iskolar), at most once a day. This request contains no information about you or your browsing. As with any web request, GitHub, which hosts the file, can see your IP address. A copy of the list is saved in the extension's local storage on your device so it works offline, and a bundled copy is used if the download fails.
+The extension uses the bundled `offers.json` file. It does not make requests
+to update offers and does not send browsing data to the project. Offer updates
+are reviewed by the project owner and shipped in a new extension release.
 
 **What we do not do**
 

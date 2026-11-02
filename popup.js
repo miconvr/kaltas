@@ -187,6 +187,10 @@ async function init() {
     box.replaceChildren();
     const hits = host ? sites.filter((o) => matchesHost(o, host)) : [];
     if (hits.length) {
+      const heading = document.createElement("p");
+      heading.className = "match-label";
+      heading.textContent = hits.length === 1 ? "1 student perk found" : hits.length + " student perks found";
+      box.append(heading);
       hits.forEach((o) => box.append(makeCard(o)));
     } else if (host) {
       const p = document.createElement("p");

@@ -14,6 +14,10 @@ Iskolar is a Chrome extension (Manifest V3, plain JS) for Filipino students. Cli
 - `popup.html/css/js` - the UI and matching logic
 - `api/offer-assistant.js` - optional Vercel function for explaining a curated offer with Gemini. It is not required by the extension.
 
+The extension ships with a bundled offer list and uses only the `activeTab`
+permission. Updating offers requires reviewing `offers.json` and releasing a
+new extension version.
+
 ## Adding an offer
 ```json
 { "name": "…", "domains": ["example.com"], "category": "…", "perk": "…", "url": "https://…", "verified": "YYYY-MM" }
