@@ -30,8 +30,17 @@ and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 
 ## Screenshots
 
-Add current popup screenshots here before the Chrome Web Store submission.
-The best set will show a matched offer, a no-match result, and the browse list.
+The popup is designed to keep offer matching local, clear, and easy to scan.
+
+| Matched offer | No match |
+| --- | --- |
+| ![Matched offer](store-screenshots/01-matched-offer.jpg) | ![No match](store-screenshots/02-no-match.jpg) |
+
+| Browse student deals |
+| --- |
+| ![Browse student deals](store-screenshots/03-browse-deals.jpg) |
+
+These are also used as the Chrome Web Store listing screenshots.
 
 ## Install locally
 
@@ -89,6 +98,7 @@ does not download browsing data or a changing remote offer list.
 | `offers.json` | Curated student-offer source of truth |
 | `offers-loader.js` | Loads and validates the bundled offer list |
 | `scripts/validate-offers.js` | Validates offer shape and HTTPS URLs |
+| `store-screenshots/` | Product screenshots for the README and Chrome Web Store listing |
 | `api/offer-assistant.js` | Optional Vercel and Gemini companion endpoint |
 | `PRIVACY.md` | Extension privacy policy |
 
