@@ -24,7 +24,7 @@ function makeCard(offer) {
 
   const a = document.createElement("a");
   a.className = "btn";
-  a.href = offer.url;
+  a.href = safeUrl(offer.url);
   a.target = "_blank";
   a.rel = "noopener noreferrer";
   a.textContent = "View offer";
@@ -42,12 +42,12 @@ function renderList(offers, query = "") {
     .forEach((o) => {
       const li = document.createElement("li");
       const a = document.createElement("a");
-      a.href = o.url;
+      a.href = safeUrl(o.url);
       a.target = "_blank";
       a.rel = "noopener noreferrer";
       a.textContent = o.name + " ";
       const small = document.createElement("small");
-      small.textContent = "Â· " + o.category;
+      small.textContent = "Ã‚Â· " + o.category;
       a.append(small);
       li.append(a);
       ul.append(li);
@@ -94,3 +94,13 @@ async function init() {
 }
 
 init();
+
+// Only allow https links, so a bad remote entry can't open anything unsafe.
+function safeUrl(u) {
+  try {
+    const p = new URL(u);
+    return p.protocol === "https:" ? p.href : "#";
+  } catch {
+    return "#";
+  }
+}
