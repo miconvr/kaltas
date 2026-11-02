@@ -23,10 +23,22 @@
     "regions": ["global"],
     "category": "Entertainment",
     "perk": "Discounted Premium plan for verified students. Availability varies by country.",
-    "details": "The Philippines is a supported country. Verification goes through SheerID.",
+    "details": "The Philippines has a dedicated student plan page. Verification goes through SheerID.",
     "requirements": "Enrolled at an accredited higher-education institution",
-    "caveats": "Must re-verify every 12 months, up to four years. Prices change, so none are listed here.",
+    "caveats": "Must re-verify every 12 months, up to four years. Introductory promotions and prices change, so confirm the current offer before subscribing.",
     "url": "https://www.spotify.com/student/",
+    "verified": "2026-11"
+  },
+  {
+    "name": "Apple Music Student",
+    "domains": ["apple.com"],
+    "regions": ["PH"],
+    "category": "Entertainment",
+    "perk": "Student membership pricing for verified college and university students.",
+    "details": "Apple's Philippines page says students get the same features as individual members while paying the student rate. Student pricing can continue for up to four years while eligibility is maintained.",
+    "requirements": "Verified student at a college or university",
+    "caveats": "Student status must be verified. After the eligibility period, the membership continues at the individual price.",
+    "url": "https://www.apple.com/ph/apple-music/",
     "verified": "2026-11"
   },
   {
