@@ -1,0 +1,14 @@
+[
+  { "name": "GitHub Student Developer Pack", "domains": ["github.com"], "category": "Dev tools", "perk": "Free bundle of developer tools and services for verified students.", "url": "https://education.github.com/pack", "verified": "2026-11" },
+  { "name": "JetBrains Student License", "domains": ["jetbrains.com"], "category": "Dev tools", "perk": "Free educational licenses for JetBrains IDEs for students.", "url": "https://www.jetbrains.com/community/education/", "verified": "2026-11" },
+  { "name": "Notion for Education", "domains": ["notion.so", "notion.com"], "category": "Productivity", "perk": "Free upgraded plan for students and educators with a school email.", "url": "https://www.notion.com/product/notion-for-education", "verified": "2026-11" },
+  { "name": "Canva for Education", "domains": ["canva.com"], "category": "Design", "perk": "Free access to premium Canva features for eligible students and teachers.", "url": "https://www.canva.com/education/", "verified": "2026-11" },
+  { "name": "Figma Education", "domains": ["figma.com"], "category": "Design", "perk": "Free Education plan for verified students and educators.", "url": "https://www.figma.com/education/", "verified": "2026-11" },
+  { "name": "Microsoft 365 Education", "domains": ["microsoft.com", "office.com"], "category": "Productivity", "perk": "Word, Excel, PowerPoint and Teams for students through eligible schools.", "url": "https://www.microsoft.com/en-us/education/products/microsoft-365", "verified": "2026-11" },
+  { "name": "Adobe Creative Cloud for Students", "domains": ["adobe.com"], "category": "Design", "perk": "Discounted Creative Cloud plans for students.", "url": "https://www.adobe.com/creativecloud/buy/students.html", "verified": "2026-11" },
+  { "name": "Spotify Premium Student", "domains": ["spotify.com"], "category": "Entertainment", "perk": "Discounted Premium plan for verified students. Availability varies by country.", "url": "https://www.spotify.com/student/", "verified": "2026-11" },
+  { "name": "YouTube Premium Student", "domains": ["youtube.com"], "category": "Entertainment", "perk": "Discounted membership for verified students. Availability varies by country.", "url": "https://www.youtube.com/premium/student", "verified": "2026-11" },
+  { "name": "Apple Education Store", "domains": ["apple.com"], "category": "Hardware", "perk": "Education pricing on Mac and iPad for students.", "url": "https://www.apple.com/education/", "verified": "2026-11" },
+  { "name": "Amazon Prime Student", "domains": ["amazon.com"], "category": "Shopping", "perk": "Discounted Prime membership for students. Availability varies by country.", "url": "https://www.amazon.com/amazonprime?primeCampaignId=studentlanding", "verified": "2026-11" },
+  { "name": "Grammarly", "domains": ["grammarly.com"], "category": "Writing", "perk": "Check the site for current student or school-based pricing.", "url": "https://www.grammarly.com/", "verified": "2026-11" }
+]

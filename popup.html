@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Iskolar</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Iskolar</h1>
+    <p id="site" class="muted"></p>
+  </header>
+
+  <section id="matches" aria-live="polite"></section>
+
+  <details id="browse">
+    <summary>Browse all perks</summary>
+    <input id="search" type="search" placeholder="Search perks or category…" aria-label="Search perks">
+    <ul id="all"></ul>
+  </details>
+
+  <footer class="muted">Offers are matched on your device. Nothing is sent anywhere. Always confirm eligibility on the official page.</footer>
+  <script src="popup.js"></script>
+</body>
+</html>
