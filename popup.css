@@ -94,12 +94,16 @@ ul { list-style: none; margin: 0; padding: 0; max-height: 220px; overflow-y: aut
 li a { display: block; padding: 9px 3px; border-bottom: 1px solid var(--border); color: var(--fg); text-decoration: none; transition: color 140ms ease-out, padding-left 140ms ease-out; }
 li a:hover { padding-left: 7px; color: var(--accent-dark); }
 li small { color: var(--muted); }
-footer { margin-top: 16px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+footer { margin-top: 16px; color: var(--muted); font-size: 11px; line-height: 1.4; text-align: center; }
+.footer-divider { height: 1px; margin: 0 0 11px; background: var(--border); }
 footer p { margin: 0 0 7px; }
+.review-prompt { color: var(--fg); font-weight: 650; }
+.review-stars { color: var(--accent-dark); letter-spacing: 1px; }
 .footer-lock { color: var(--navy); font-weight: 750; }
 .footer-credit { margin-bottom: 8px; color: var(--muted); }
 .footer-heart { color: var(--accent-dark); font-size: 13px; }
 .footer-links { display: flex; flex-wrap: wrap; row-gap: 4px; }
+.footer-links { justify-content: center; }
 .footer-links a { padding: 0 9px; border-left: 1px solid var(--border); color: var(--navy); text-decoration: none; }
 .footer-links a:first-child { padding-left: 0; border-left: 0; }
 .footer-links a:hover { text-decoration: underline; text-underline-offset: 2px; }
