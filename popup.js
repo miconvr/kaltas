@@ -200,14 +200,9 @@ async function init() {
   label.append(select);
   $("site").after(label);
 
-  // Extra box for info-only entries (for example rail fares), shown under the matches.
-  const infoBox = document.createElement("div");
-  $("matches").after(infoBox);
-
   function render() {
     const visible = offers.filter((o) => inRegion(o, region));
     const sites = visible.filter((o) => !isInfo(o));
-    const infos = visible.filter(isInfo);
     $("browse").querySelector(".summary-count").textContent = sites.length + " available";
 
     const box = $("matches");
@@ -229,15 +224,6 @@ async function init() {
       p.replaceChildren(strong, message);
       box.append(p);
       $("browse").open = true;
-    }
-
-    infoBox.replaceChildren();
-    if (infos.length) {
-      const h = document.createElement("p");
-      h.className = "info-heading";
-      h.textContent = "Also worth knowing";
-      infoBox.append(h);
-      infos.forEach((o) => infoBox.append(makeCard(o)));
     }
 
     renderList(sites, query);

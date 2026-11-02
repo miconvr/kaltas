@@ -88,7 +88,6 @@ ul { list-style: none; margin: 0; padding: 0; max-height: 220px; overflow-y: aut
 li a { display: block; padding: 9px 3px; border-bottom: 1px solid var(--border); color: var(--fg); text-decoration: none; transition: color 140ms ease-out, padding-left 140ms ease-out; }
 li a:hover { padding-left: 7px; color: var(--accent-dark); }
 li small { color: var(--muted); }
-.info-heading { margin: 16px 0 7px; color: var(--accent-dark); font-size: 10px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
 footer { display: flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--muted); font-size: 11px; line-height: 1.4; }
 .footer-lock { flex: 0 0 auto; color: var(--navy); font-weight: 750; }
 .theme-toggle:hover { color: #f7fbff; }
