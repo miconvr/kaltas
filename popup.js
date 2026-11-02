@@ -47,7 +47,7 @@ function renderList(offers, query = "") {
       a.rel = "noopener noreferrer";
       a.textContent = o.name + " ";
       const small = document.createElement("small");
-      small.textContent = "· " + o.category;
+      small.textContent = "Â· " + o.category;
       a.append(small);
       li.append(a);
       ul.append(li);
@@ -68,7 +68,7 @@ async function getHost() {
 async function init() {
   let offers = [];
   try {
-    offers = await (await fetch("offers.json")).json();
+    offers = await loadOffers();
   } catch (e) {
     $("matches").textContent = "Couldn't load offers.";
     return;

@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "See what the website you are on offers students. Matches locally. No tracking, no data collected.",
   "permissions": ["activeTab"],
+  "host_permissions": ["https://raw.githubusercontent.com/miconvr/iskolar/*"],
   "action": {
     "default_popup": "popup.html",
     "default_title": "Iskolar",
