@@ -26,9 +26,9 @@ function saveRegion(region) {
 function getTheme() {
   try {
     const saved = localStorage.getItem("iskolar-theme");
-    if (saved === "light" || saved === "dark" || saved === "auto") return saved;
+    if (saved === "light" || saved === "dark") return saved;
   } catch {}
-  return "auto";
+  return "light";
 }
 
 function saveTheme(theme) {
@@ -38,10 +38,12 @@ function saveTheme(theme) {
 }
 
 function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme === "auto" ? "" : theme;
+  document.documentElement.dataset.theme = theme;
   const button = $("theme-toggle");
-  button.textContent = "Theme: " + theme[0].toUpperCase() + theme.slice(1);
-  button.setAttribute("aria-label", "Change appearance, currently " + theme);
+  const dark = theme === "dark";
+  button.setAttribute("aria-label", dark ? "Enable light mode" : "Enable dark mode");
+  button.setAttribute("aria-pressed", String(dark));
+  button.querySelector(".theme-label").textContent = dark ? "Light mode" : "Dark mode";
 }
 
 // Offers without a regions list show everywhere.
@@ -176,7 +178,7 @@ async function init() {
   }
 
   const host = await getHost();
-  $("site").textContent = host ? "On " + host : "Open a website to check it";
+  $("site").textContent = host ? "You're on " + host : "Open a website to check it";
 
   let region = getRegion();
   let query = "";
@@ -247,7 +249,7 @@ async function init() {
     render();
   });
   $("theme-toggle").addEventListener("click", () => {
-    theme = theme === "auto" ? "light" : theme === "light" ? "dark" : "auto";
+    theme = theme === "light" ? "dark" : "light";
     saveTheme(theme);
     applyTheme(theme);
   });
