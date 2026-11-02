@@ -34,6 +34,18 @@ function isInfo(offer) {
   return offer.type === "info";
 }
 
+function verificationLabel(offer) {
+  if (!/^\d{4}-\d{2}$/.test(offer.verified || "")) return "Needs review";
+  const [year, month] = offer.verified.split("-").map(Number);
+  const checked = new Date(year, month - 1, 1);
+  const ageMonths = (new Date().getFullYear() - checked.getFullYear()) * 12
+    + new Date().getMonth() - checked.getMonth();
+  return ageMonths > 12 ? "Review overdue" : "Checked " + checked.toLocaleDateString(undefined, {
+    month: "short",
+    year: "numeric",
+  });
+}
+
 function makeDetails(offer) {
   const rows = [
     ["Details", offer.details],
@@ -67,10 +79,14 @@ function makeCard(offer) {
   const h2 = document.createElement("h2");
   h2.textContent = offer.name;
 
+  const status = document.createElement("span");
+  status.className = offer.verified ? "verification" : "verification verification-warning";
+  status.textContent = verificationLabel(offer);
+
   const p = document.createElement("p");
   p.textContent = offer.perk;
 
-  card.append(tag, h2, p);
+  card.append(tag, h2, status, p);
 
   const more = makeDetails(offer);
   if (more) card.append(more);
@@ -84,6 +100,14 @@ function makeCard(offer) {
     a.textContent = "View offer";
     card.append(a);
   }
+
+  const report = document.createElement("a");
+  report.className = "report-link";
+  report.href = "https://github.com/miconvr/iskolar/issues/new";
+  report.target = "_blank";
+  report.rel = "noopener noreferrer";
+  report.textContent = "Report an outdated offer";
+  card.append(report);
   return card;
 }
 
@@ -136,7 +160,7 @@ async function init() {
 
   // Region picker, built here so popup.html doesn't need to change.
   const label = document.createElement("label");
-  label.className = "muted";
+  label.className = "region-picker";
   label.textContent = "Region: ";
   const select = document.createElement("select");
   [["PH", "Philippines"], ["other", "Other countries"]].forEach(([value, text]) => {
@@ -157,6 +181,7 @@ async function init() {
     const visible = offers.filter((o) => inRegion(o, region));
     const sites = visible.filter((o) => !isInfo(o));
     const infos = visible.filter(isInfo);
+    $("browse").querySelector(".summary-count").textContent = sites.length + " available";
 
     const box = $("matches");
     box.replaceChildren();
@@ -165,7 +190,7 @@ async function init() {
       hits.forEach((o) => box.append(makeCard(o)));
     } else if (host) {
       const p = document.createElement("p");
-      p.className = "muted";
+      p.className = "empty-state";
       p.textContent = "No student offer on file for this site yet.";
       box.append(p);
       $("browse").open = true;
@@ -174,7 +199,7 @@ async function init() {
     infoBox.replaceChildren();
     if (infos.length) {
       const h = document.createElement("p");
-      h.className = "muted";
+      h.className = "info-heading";
       h.textContent = "Also worth knowing";
       infoBox.append(h);
       infos.forEach((o) => infoBox.append(makeCard(o)));

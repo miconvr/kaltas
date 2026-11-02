@@ -1,6 +1,6 @@
 # Privacy Policy - Iskolar
 
-Last updated: November 2, 2026
+Last updated: November 3, 2026
 
 Iskolar does not collect, store, transmit, or sell any personal data.
 
@@ -17,6 +17,18 @@ To keep offers current, the extension downloads a public list of offers (`offers
 - No analytics, tracking, advertising, or accounts.
 - No collection of browsing history or the pages you visit.
 - No sharing or selling of data, because none is collected.
+
+**Reports and optional services**
+
+The "Report an outdated offer" link opens GitHub in a new tab. Any information
+you submit there is handled by GitHub, not Iskolar.
+
+The optional AI assistant is not part of the extension package and is disabled
+unless the project owner deploys the companion service. If enabled, it receives
+only the question and the selected offer's text so it can explain that offer.
+It does not receive the current hostname or browsing history. The companion
+service uses Google Gemini, which processes that request according to Google's
+terms and privacy policy.
 
 **Contact**
 

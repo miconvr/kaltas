@@ -7,19 +7,26 @@
 </head>
 <body>
   <header>
-    <h1>Iskolar</h1>
-    <p id="site" class="muted"></p>
+    <div class="brand-row">
+      <div class="brand-mark" aria-hidden="true">i</div>
+      <div>
+        <p class="eyebrow">Student savings guide</p>
+        <h1>Iskolar</h1>
+      </div>
+    </div>
+    <p id="site" class="site-line"></p>
   </header>
 
   <section id="matches" aria-live="polite"></section>
 
   <details id="browse">
-    <summary>Browse all perks</summary>
-    <input id="search" type="search" placeholder="Search perks or categoryâ€¦" aria-label="Search perks">
+    <summary><span>Browse all perks</span><span class="summary-count" aria-hidden="true"></span></summary>
+    <label class="search-label" for="search">Find a perk</label>
+    <input id="search" type="search" placeholder="Search by name or category" aria-label="Search perks">
     <ul id="all"></ul>
   </details>
 
-  <footer class="muted">Offers are matched on your device. Nothing is sent anywhere. Always confirm eligibility on the official page.</footer>
+  <footer><span class="footer-lock" aria-hidden="true">Local first</span> Offers are matched on your device. Confirm eligibility on the official page.</footer>
   <script src="offers-loader.js"></script><script src="popup.js"></script>
 </body>
 </html>
