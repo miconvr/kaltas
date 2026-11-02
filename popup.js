@@ -70,7 +70,7 @@ function makeDetails(offer) {
 
 function makeCard(offer) {
   const card = document.createElement("div");
-  card.className = "card";
+  card.className = isInfo(offer) ? "card info-card" : "card";
 
   const tag = document.createElement("span");
   tag.className = "tag";
@@ -101,13 +101,15 @@ function makeCard(offer) {
     card.append(a);
   }
 
-  const report = document.createElement("a");
-  report.className = "report-link";
-  report.href = "https://github.com/miconvr/iskolar/issues/new";
-  report.target = "_blank";
-  report.rel = "noopener noreferrer";
-  report.textContent = "Report an outdated offer";
-  card.append(report);
+  if (!isInfo(offer)) {
+    const report = document.createElement("a");
+    report.className = "report-link";
+    report.href = "https://github.com/miconvr/iskolar/issues/new";
+    report.target = "_blank";
+    report.rel = "noopener noreferrer";
+    report.textContent = "Report an outdated offer";
+    card.append(report);
+  }
   return card;
 }
 
