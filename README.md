@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="icons/logo.svg" alt="Iskolar logo" width="220" height="220">
+  <img src="icons/logo.png" alt="Iskolar logo" width="220" height="220">
   <h1>Iskolar</h1>
   <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
   <p>
@@ -11,8 +11,8 @@
 
 Iskolar is built for students in the Philippines first, with support for global
 offers. Click the extension icon on a website to see whether a student deal is
-known for that site. The project uses a clean vector logo for the popup and
-high-resolution PNG assets for Chrome's extension icon sizes.
+known for that site. The project uses the clean Iskolar PNG logo for the popup
+and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 
 > **Important:** Iskolar is a guide, not a guarantee. Offers can change, have
 > country restrictions, or require verification. Always confirm the current
@@ -80,7 +80,8 @@ does not download browsing data or a changing remote offer list.
 | File | Purpose |
 | --- | --- |
 | `manifest.json` | Manifest V3 metadata, icons, and `activeTab` permission |
-| `icons/logo.svg` | Scalable Iskolar logo used in the popup and README |
+| `icons/logo.png` | High-resolution Iskolar logo used in the popup and README |
+| `icons/logo.svg` | Scalable source artwork for future brand surfaces |
 | `icons/icon16.png`, `icons/icon48.png`, `icons/icon128.png` | Chrome extension icon assets |
 | `popup.html` | Popup shell |
 | `popup.css` | Popup layout, theme, and accessibility states |
