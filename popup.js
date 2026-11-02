@@ -23,6 +23,27 @@ function saveRegion(region) {
   } catch {}
 }
 
+function getTheme() {
+  try {
+    const saved = localStorage.getItem("iskolar-theme");
+    if (saved === "light" || saved === "dark" || saved === "auto") return saved;
+  } catch {}
+  return "auto";
+}
+
+function saveTheme(theme) {
+  try {
+    localStorage.setItem("iskolar-theme", theme);
+  } catch {}
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme === "auto" ? "" : theme;
+  const button = $("theme-toggle");
+  button.textContent = "Theme: " + theme[0].toUpperCase() + theme.slice(1);
+  button.setAttribute("aria-label", "Change appearance, currently " + theme);
+}
+
 // Offers without a regions list show everywhere.
 function inRegion(offer, region) {
   const r = offer.regions;
@@ -159,6 +180,8 @@ async function init() {
 
   let region = getRegion();
   let query = "";
+  let theme = getTheme();
+  applyTheme(theme);
 
   // Region picker, built here so popup.html doesn't need to change.
   const label = document.createElement("label");
@@ -222,6 +245,11 @@ async function init() {
     region = select.value;
     saveRegion(region);
     render();
+  });
+  $("theme-toggle").addEventListener("click", () => {
+    theme = theme === "auto" ? "light" : theme === "light" ? "dark" : "auto";
+    saveTheme(theme);
+    applyTheme(theme);
   });
   $("search").addEventListener("input", (e) => {
     query = e.target.value;
