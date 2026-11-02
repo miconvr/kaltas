@@ -63,10 +63,9 @@ Each entry is an object:
 | `details` | string | Fine print shown in the Details dropdown |
 | `requirements` | string | Shown as "Who qualifies" |
 | `caveats` | string | Shown as "Good to know" |
-| `verified` | boolean | `false` until someone opens the official page and confirms |
-| `lastChecked` | string | Date of the last manual check |
+| `verified` | string | Month last confirmed against an official page, like `"2026-11"`. Leave it out if not verified |
 
-The field names `details`, `requirements`, `caveats`, `type`, `regions` and `lastChecked` were chosen by the assistant, not inherited from the original file. If you rename them, update `popup.js` too.
+The field names `details`, `requirements`, `caveats`, `type` and `regions` were chosen by the assistant, not inherited from the original file. If you rename them, update `popup.js` too.
 
 ## popup.js behavior
 
@@ -89,8 +88,8 @@ The owner works in Windows PowerShell and pastes commands from chat. Past proble
 
 - Prefer official domains. News and aggregator articles are not enough to mark `verified: true`.
 - Keep perk text generic. Rotating promos, percentages and gift cards go stale.
-- Mark `verified: false` and add a caveat when a source is secondary.
-- Update `lastChecked` whenever an entry is re-checked.
+- Leave `verified` out and add a caveat when a source is secondary.
+- Set `verified` to the current month (for example `"2026-11"`) whenever an entry is re-checked against an official page.
 
 ## Current state and next steps
 
@@ -101,15 +100,15 @@ Done:
 To do, in order:
 1. Confirm `popup.js` is the new version: `Select-String -Path popup.js -Pattern "inRegion"`. Reload the extension at chrome://extensions, open spotify.com, and check the Details dropdown, the region picker and the browse list separator.
 2. Delete the two junk files if still present, then `git add -A`, commit and push.
-3. Add the two info-only entries to `offers.json` (the loader will not reject them):
-   - Rail student discount: `type: "info"`, `domains: []`, no `url`, `regions: ["PH"]`. Students get 50% off on LRT-1, LRT-2 and MRT-3 by showing ID at a station. Caveat: since March 23, 2026, reports say MRT-3 and LRT-2 give everyone 50% off with a blue Beep card "until further notice", so the student perk may add nothing on those lines. Sources so far are news coverage only, so `verified: false`.
+3. DONE: added the two info-only entries to `offers.json`. Details for reference:
+   - Rail student discount: `type: "info"`, `domains: []`, no `url`, `regions: ["PH"]`. Students get 50% off on LRT-1, LRT-2 and MRT-3 by showing ID at a station. Caveat: since March 23, 2026, reports say MRT-3 and LRT-2 give everyone 50% off with a blue Beep card "until further notice", so the student perk may add nothing on those lines. Sources so far are news coverage only, so it has no `verified` field.
    - Student Fare Discount Act (RA 11314): `type: "info"`, same shape.
-4. Verify the pending entries against official pages and flip `verified`:
+4. Verify the pending entries against official pages and set `verified`:
    - Apple Education Store PH: confirm the exact store URL (linking the homepage is the safe option for now).
    - Philippine Airlines student discount: details came from a secondary source. Confirm on philippineairlines.com.
    - Microsoft: no Philippines-specific page was found. Hold off until someone opens the PH Microsoft Store and confirms.
    - Spotify and YouTube Premium: currently `["PH", "global"]`. Drop `"global"` if they should only show in the Philippines.
-5. After each `offers.json` change, update `lastChecked`, push to `main`, and remember it takes up to 24 hours (plus one extra popup open) to reach users with a warm cache. To test sooner, run `localStorage.removeItem("iskolar.offers.v1")` in the popup's DevTools console.
+5. After each `offers.json` change, update `verified` where you re-checked, push to `main`, and remember it takes up to 24 hours (plus one extra popup open) to reach users with a warm cache. To test sooner, run `localStorage.removeItem("iskolar.offers.v1")` in the popup's DevTools console.
 
 ## Testing checklist before every push
 
