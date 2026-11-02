@@ -29,8 +29,10 @@ h1 { margin: 0; color: #f7fbff; font-size: 21px; letter-spacing: -.03em; line-he
 .region-picker select { appearance: none; border: 0; border-bottom: 1px solid #8eacd9; padding: 2px 18px 2px 0; background: transparent; color: #f7fbff; font: inherit; cursor: pointer; }
 .region-picker select:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .match-label { margin: 0 0 8px; color: var(--navy); font-size: 11px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
-.empty-state { margin: 0 0 14px; padding: 11px 13px; border: 1px solid var(--border); background: var(--surface); border-radius: 8px; color: var(--fg); }
-.empty-state p { margin: 0; }
+.match-label-found { color: var(--success); }
+.empty-state { display: block; margin: 0 0 14px; padding: 11px 13px; border: 1px solid var(--border); background: var(--surface); border-radius: 8px; color: var(--fg); }
+.empty-state strong { display: block; margin-bottom: 2px; color: var(--navy); font-size: 13px; }
+.empty-state span { color: var(--muted); font-size: 12px; }
 .card { position: relative; margin: 8px 0; padding: 13px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); }
 .card h2 { margin: 0 0 5px; font-size: 15px; letter-spacing: -.01em; line-height: 1.25; }
 .tag { display: inline-block; margin-bottom: 7px; padding: 3px 6px; border-radius: 4px; background: var(--accent-soft); color: var(--navy-dark); font-size: 10px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }

@@ -190,14 +190,18 @@ async function init() {
     const hits = host ? sites.filter((o) => matchesHost(o, host)) : [];
     if (hits.length) {
       const heading = document.createElement("p");
-      heading.className = "match-label";
+      heading.className = "match-label match-label-found";
       heading.textContent = hits.length === 1 ? "1 student perk found" : hits.length + " student perks found";
       box.append(heading);
       hits.forEach((o) => box.append(makeCard(o)));
     } else if (host) {
       const p = document.createElement("p");
       p.className = "empty-state";
-      p.textContent = "No student offer on file for this site yet.";
+      const strong = document.createElement("strong");
+      strong.textContent = "Nothing matched yet";
+      const message = document.createElement("span");
+      message.textContent = " Browse the list below to find another student perk.";
+      p.replaceChildren(strong, message);
       box.append(p);
       $("browse").open = true;
     }
