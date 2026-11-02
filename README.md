@@ -1,48 +1,181 @@
-# Iskolar
+<div align="center">
+  <img src="icons/icon128.png" alt="Iskolar logo" width="96" height="96">
+  <h1>Iskolar</h1>
+  <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
+  <p>
+    <a href="https://github.com/miconvr/iskolar">Source code</a> ·
+    <a href="https://github.com/miconvr/iskolar/issues">Report an offer problem</a> ·
+    <a href="PRIVACY.md">Privacy policy</a>
+  </p>
+</div>
 
-Iskolar is a Chrome extension (Manifest V3, plain JS) for Filipino students. Click the icon on any website to see what it offers students.
+Iskolar is built for students in the Philippines first, with support for global
+offers. Click the extension icon on a website to see whether a student deal is
+known for that site.
 
-## Load it locally
-1. Open `chrome://extensions`
-2. Turn on **Developer mode**
-3. Click **Load unpacked** and select this folder
-4. Pin the extension, visit e.g. github.com or canva.com, click the icon
+> **Important:** Iskolar is a guide, not a guarantee. Offers can change, have
+> country restrictions, or require verification. Always confirm the current
+> terms on the official offer page before purchasing.
 
-## Files
-- `manifest.json` - permissions (only `activeTab`) and popup
-- `offers.json` - the data. Add an entry to add a perk
-- `popup.html/css/js` - the UI and matching logic
-- `api/offer-assistant.js` - optional Vercel function for explaining a curated offer with Gemini. It is not required by the extension.
+## What it does
 
-The extension ships with a bundled offer list and uses only the `activeTab`
-permission. Updating offers requires reviewing `offers.json` and releasing a
-new extension version.
+- Matches the current website locally against a curated offer list
+- Shows eligibility requirements, details, caveats, and the last verification month
+- Supports Philippines and Other countries region filters
+- Includes an offline bundled offer list
+- Opens only HTTPS offer links
+- Lets users report an outdated offer through GitHub
+- Does not collect browsing history, page content, accounts, or analytics
 
-## Adding an offer
-```json
-{ "name": "…", "domains": ["example.com"], "category": "…", "perk": "…", "url": "https://…", "verified": "YYYY-MM" }
+## Screenshots
+
+Add current popup screenshots here before the Chrome Web Store submission.
+The best set will show a matched offer, a no-match result, and the browse list.
+
+## Install locally
+
+### Requirements
+
+- Google Chrome or another Chromium-based browser
+- Git
+
+### Setup
+
+```bash
+git clone https://github.com/miconvr/iskolar.git
+cd iskolar
 ```
-Always verify the perk on the official page before adding it.
+
+1. Open `chrome://extensions`.
+2. Enable **Developer mode**.
+3. Click **Load unpacked**.
+4. Select the cloned `iskolar` folder.
+5. Pin Iskolar and open it on a supported website.
+
+After changing source files, return to `chrome://extensions` and click
+**Reload** on Iskolar.
+
+## How it works
+
+```text
+Current tab hostname
+        |
+        v
+Local domain matching
+        |
+        v
+Bundled offers.json
+        |
+        v
+Student offer cards
+```
+
+The extension uses Manifest V3 and the `activeTab` permission. Offer matching
+and filtering happen in the popup. The extension ships with `offers.json` and
+does not download browsing data or a changing remote offer list.
+
+## Project files
+
+| File | Purpose |
+| --- | --- |
+| `manifest.json` | Manifest V3 metadata, icons, and `activeTab` permission |
+| `popup.html` | Popup shell |
+| `popup.css` | Popup layout, theme, and accessibility states |
+| `popup.js` | Host matching, region filtering, rendering, and safe links |
+| `offers.json` | Curated student-offer source of truth |
+| `offers-loader.js` | Loads and validates the bundled offer list |
+| `scripts/validate-offers.js` | Validates offer shape and HTTPS URLs |
+| `api/offer-assistant.js` | Optional Vercel and Gemini companion endpoint |
+| `PRIVACY.md` | Extension privacy policy |
+
+## Adding or updating an offer
+
+Only add an offer after checking an official source. Keep the text generic so
+rotating prices, promo codes, and temporary gifts do not become stale.
+
+```json
+{
+  "name": "Example Student Plan",
+  "domains": ["example.com"],
+  "regions": ["global"],
+  "category": "Productivity",
+  "perk": "Discounted plan for verified students.",
+  "url": "https://www.example.com/students",
+  "details": "Explain the official eligibility process.",
+  "requirements": "Describe who qualifies.",
+  "caveats": "Mention country, renewal, or verification limits.",
+  "verified": "YYYY-MM"
+}
+```
+
+For an information-only entry, use `"type": "info"`, an empty `domains` array,
+and omit `url`. Run the validator before opening a pull request:
+
+```bash
+node scripts/validate-offers.js
+```
+
+Every offer update must be reviewed before it is released. The bundled list is
+the release source of truth, so data changes require a new extension release.
 
 ## Optional AI assistant
 
-The extension must not contain an AI API key. The optional `api/offer-assistant.js`
-function keeps `GEMINI_API_KEY` on Vercel and accepts only a student question plus
-the selected offer's existing text. It cannot discover, verify, or publish offers.
+The extension does not contain an AI key and does not require the AI assistant.
+The optional [Vercel function](api/offer-assistant.js) can explain an existing
+curated offer using Google Gemini.
 
-Deploy the repository to Vercel, then configure:
+It is intentionally limited. It must not discover, verify, invent, or publish
+discounts. If deployed, it receives only the student's question and the
+selected offer text.
 
-- `GEMINI_API_KEY`: a server-side Gemini API key
-- `GEMINI_MODEL`: optional model name, default `gemini-2.0-flash`
+Configure these Vercel environment variables:
 
-The endpoint is `POST /api/offer-assistant`. It is intentionally not wired into
-the popup until a deployed URL, rate limit, and abuse policy are configured.
-Never commit the API key.
+```dotenv
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-2.0-flash
+```
 
-## Keeping offer data trustworthy
+Before connecting it to the extension, add rate limiting, usage limits, and a
+deployed endpoint URL. Never commit an API key.
 
-Automation can flag likely stale pages, but it should not automatically publish
-student discounts. A safe workflow is: scheduled source checks, a proposed
-change, an official-page review, then a pull request. Keep rotating prices and
-promos out of `perk` text, and update `verified` whenever an official page is
-re-checked.
+## Trust and review workflow
+
+Automation may flag broken URLs or pages that changed, but it should not
+automatically publish student discounts:
+
+```text
+Scheduled source check
+        -> proposed change or issue
+        -> official-page review
+        -> pull request
+        -> updated offers.json
+        -> extension release
+```
+
+If an offer looks outdated, use the report link in the popup or open an issue
+with the official source and the reason it needs review.
+
+## Privacy
+
+Iskolar compares the current tab hostname with local data after the user opens
+the popup. It does not collect browsing history, page content, accounts, or
+analytics. Read the full [privacy policy](PRIVACY.md).
+
+## Open source
+
+Iskolar is open source under the MIT License. Anyone can inspect the code,
+install it locally, fork it, or deploy the optional companion endpoint.
+Contributions are welcome, but offer data still needs an official source and
+human review before it is merged.
+
+## Development checks
+
+```bash
+node --check popup.js
+node --check offers-loader.js
+node scripts/validate-offers.js
+```
+
+## License
+
+The code is available under the [MIT License](LICENSE).
