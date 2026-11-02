@@ -95,12 +95,13 @@ li a { display: block; padding: 9px 3px; border-bottom: 1px solid var(--border);
 li a:hover { padding-left: 7px; color: var(--accent-dark); }
 li small { color: var(--muted); }
 footer { margin-top: 16px; color: var(--muted); font-size: 11px; line-height: 1.4; }
-footer p { margin: 0 0 5px; }
+footer p { margin: 0 0 7px; }
 .footer-lock { color: var(--navy); font-weight: 750; }
-.footer-credit { color: var(--muted); }
+.footer-credit { margin-bottom: 8px; color: var(--muted); }
 .footer-heart { color: var(--accent-dark); font-size: 13px; }
-.footer-links { display: flex; flex-wrap: wrap; gap: 8px; }
-.footer-links a { color: var(--navy); text-decoration: none; }
+.footer-links { display: flex; flex-wrap: wrap; row-gap: 4px; }
+.footer-links a { padding: 0 9px; border-left: 1px solid var(--border); color: var(--navy); text-decoration: none; }
+.footer-links a:first-child { padding-left: 0; border-left: 0; }
 .footer-links a:hover { text-decoration: underline; text-underline-offset: 2px; }
 .footer-links .support-link { color: var(--success); font-weight: 750; }
 .theme-toggle:hover { color: #f7fbff; }
