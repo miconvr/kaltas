@@ -233,9 +233,9 @@ async function init() {
       const p = document.createElement("p");
       p.className = "empty-state";
       const strong = document.createElement("strong");
-      strong.textContent = "Nothing matched yet";
+      strong.textContent = "No student deal on this site";
       const message = document.createElement("span");
-      message.textContent = " Browse the list below to find another student perk.";
+      message.textContent = " Try the list below, or search for a store.";
       p.replaceChildren(strong, message);
       box.append(p);
       if (!getBrowseClosed()) $("browse").open = true;
