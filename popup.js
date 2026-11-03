@@ -37,6 +37,20 @@ function saveTheme(theme) {
   } catch {}
 }
 
+function getBrowseClosed() {
+  try {
+    return localStorage.getItem("iskolar-browse-closed") === "1";
+  } catch {}
+  return false;
+}
+
+function saveBrowseClosed(closed) {
+  try {
+    if (closed) localStorage.setItem("iskolar-browse-closed", "1");
+    else localStorage.removeItem("iskolar-browse-closed");
+  } catch {}
+}
+
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   const button = $("theme-toggle");
@@ -197,6 +211,7 @@ async function init() {
     select.append(opt);
   });
   select.value = region;
+  label.dataset.region = region;
   label.append(select);
   $("site").after(label);
 
@@ -223,7 +238,7 @@ async function init() {
       message.textContent = " Browse the list below to find another student perk.";
       p.replaceChildren(strong, message);
       box.append(p);
-      $("browse").open = true;
+      if (!getBrowseClosed()) $("browse").open = true;
     }
 
     renderList(sites, query);
@@ -231,8 +246,12 @@ async function init() {
 
   select.addEventListener("change", () => {
     region = select.value;
+    label.dataset.region = region;
     saveRegion(region);
     render();
+  });
+  $("browse").querySelector("summary").addEventListener("click", function () {
+    saveBrowseClosed($("browse").open);
   });
   $("theme-toggle").addEventListener("click", () => {
     theme = theme === "light" ? "dark" : "light";
