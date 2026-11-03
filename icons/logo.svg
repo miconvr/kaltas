@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="5 -24 118 118" role="img" aria-label="Iskolar">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Iskolar">
   <title>Iskolar</title>
-  <g>
-    <!-- cap base -->
-    <path d="M34 36 V52 Q64 68 94 52 V36 L64 48 Z" fill="#B5532F"/>
-    <!-- mortarboard top -->
-    <path d="M64 6 L120 27 L64 48 L8 27 Z" fill="#D97757"/>
-    <!-- tassel -->
-    <path d="M112 30 V54" stroke="#B5532F" stroke-width="5" stroke-linecap="round" fill="none"/>
-    <circle cx="112" cy="58" r="6" fill="#B5532F"/>
-  </g>
+  <g transform="translate(0 1.5)">
+  <!-- cap base -->
+  <path d="M31.9 65.0 V89.0 Q64.0 113.0 96.1 89.0 V65.0 L64.0 83.0 Z" fill="#B5532F"/>
+  <!-- mortarboard top -->
+  <path d="M64.0 20.0 L124.0 51.5 L64.0 83.0 L4.0 51.5 Z" fill="#D97757"/>
+  <!-- tassel -->
+  <path d="M115.4 56.0 V92.0" stroke="#B5532F" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <circle cx="115.4" cy="98.0" r="7" fill="#B5532F"/>
+</g>
 </svg>
