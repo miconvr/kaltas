@@ -23,6 +23,9 @@ and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 - Matches the current website locally against a curated offer list
 - Shows eligibility requirements, details, caveats, and the last verification month
 - Supports Philippines and Other countries region filters
+- Opens in a dark theme by default, with a Light option in the settings panel
+- Includes a settings panel with a Dark/Light switch and a Hide footer option
+- Keeps the footer compact so offers stay front and center
 - Includes an offline bundled offer list
 - Opens only HTTPS offer links
 - Lets users report an outdated offer through GitHub
@@ -32,13 +35,9 @@ and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 
 The popup is designed to keep offer matching local, clear, and easy to scan.
 
-| Matched offer | No match |
+| Spot student perks as you browse | Browse every student deal |
 | --- | --- |
-| ![Matched offer](store-screenshots/01-matched-offer.jpg) | ![No match](store-screenshots/02-no-match.jpg) |
-
-| Browse student deals |
-| --- |
-| ![Browse student deals](store-screenshots/03-browse-deals.jpg) |
+| ![Matched offer](store-screenshots/01-matched-offer.png) | ![Browse student deals](store-screenshots/02-browse-deals.png) |
 
 These are also used as the Chrome Web Store listing screenshots.
 
@@ -93,8 +92,8 @@ does not download browsing data or a changing remote offer list.
 | `icons/logo.svg` | Scalable source artwork for future brand surfaces |
 | `icons/icon16.png`, `icons/icon48.png`, `icons/icon128.png` | Chrome extension icon assets |
 | `popup.html` | Popup shell |
-| `popup.css` | Popup layout, theme, and accessibility states |
-| `popup.js` | Host matching, region filtering, rendering, and safe links |
+| `popup.css` | Popup layout, dark and light themes, and accessibility states |
+| `popup.js` | Host matching, region filtering, settings, rendering, and safe links |
 | `offers.json` | Curated student-offer source of truth |
 | `offers-loader.js` | Loads and validates the bundled offer list |
 | `scripts/validate-offers.js` | Validates offer shape and HTTPS URLs |
@@ -173,7 +172,8 @@ with the official source and the reason it needs review.
 
 Iskolar compares the current tab hostname with local data after the user opens
 the popup. It does not collect browsing history, page content, accounts, or
-analytics. Read the full [privacy policy](PRIVACY.md).
+analytics. Your theme and footer choices stay on your device. Read the full
+[privacy policy](PRIVACY.md).
 
 ## Open source
 
