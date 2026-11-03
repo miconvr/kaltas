@@ -128,6 +128,17 @@
   { "name": "Amazon Prime Student", "domains": ["amazon.com"], "regions": ["global"], "category": "Shopping", "perk": "Discounted Prime membership for students. Availability varies by country.", "url": "https://www.amazon.com/amazonprime?primeCampaignId=studentlanding", "verified": "2026-11" },
   { "name": "Grammarly", "domains": ["grammarly.com"], "regions": ["global"], "category": "Writing", "perk": "Check the site for current student or school-based pricing.", "url": "https://www.grammarly.com/", "verified": "2026-11" },
   {
+    "name": "Google AI Plus for Students",
+    "domains": ["gemini.google.com", "one.google.com"],
+    "regions": ["PH"],
+    "category": "AI tools",
+    "perk": "Free year of Google AI Plus for eligible college and university students in the Philippines.",
+    "details": "Includes Gemini study tools such as Study Notebooks and Gemini Live, plus 400 GB of storage. Claim it through Google's student offer page or the Gemini app after verifying enrollment.",
+    "requirements": "Currently enrolled at an eligible Philippine college or university, verified through Google's student verification. Junior and senior high school students are not eligible.",
+    "caveats": "A payment method is required to activate it. Reports say no charge applies during the free year and you can cancel anytime. The offer must be claimed by December 31, 2026. Sources so far are news coverage, so confirm on Google's student offer page.",
+    "url": "https://one.google.com/ai-student"
+  },
+  {
     "name": "Philippine Airlines student discount",
     "domains": ["philippineairlines.com"],
     "regions": ["PH"],
