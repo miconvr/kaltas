@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="icons/logo.png" alt="Iskolar logo" width="220" height="220">
+  <img src="icons/logo.png" alt="Iskolar logo" width="120" height="120">
   <h1>Iskolar</h1>
   <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
   <p>
