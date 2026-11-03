@@ -93,7 +93,7 @@ function makeDetails(offer) {
 
   const box = document.createElement("details");
   const sum = document.createElement("summary");
-  sum.textContent = "Details";
+  sum.textContent = "Who qualifies & details";
   box.append(sum);
   rows.forEach(([label, text]) => {
     const p = document.createElement("p");
@@ -123,7 +123,15 @@ function makeCard(offer) {
   const p = document.createElement("p");
   p.textContent = offer.perk;
 
-  card.append(tag, h2, status, p);
+  const fig = isInfo(offer) ? null : (offer.perk || "").match(/(?:up to\s+)?\d{1,3}\s?%\s*off/i);
+  if (fig) {
+    const f = document.createElement("div");
+    f.className = "perk-figure";
+    f.textContent = fig[0].charAt(0).toUpperCase() + fig[0].slice(1);
+    card.append(tag, h2, f, status, p);
+  } else {
+    card.append(tag, h2, status, p);
+  }
 
   const more = makeDetails(offer);
   if (more) card.append(more);
