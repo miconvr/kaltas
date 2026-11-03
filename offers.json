@@ -94,10 +94,10 @@
     "domains": ["apple.com"],
     "regions": ["PH"],
     "category": "Entertainment",
-    "perk": "Student membership pricing for verified college and university students.",
-    "details": "Apple's Philippines page says students get the same features as individual members while paying the student rate. Student pricing can continue for up to four years while eligibility is maintained.",
-    "requirements": "Verified student at a college or university",
-    "caveats": "Student status must be verified. After the eligibility period, the membership continues at the individual price.",
+    "perk": "Education pricing on Mac, iPad and Apple Watch, plus AppleCare and Apple software and services, for eligible students and educators in the Philippines.",
+    "details": "Shop in the Apple Education Store (Philippines). Verify your status through UNiDAYS with your school email before checkout.",
+    "requirements": "Student currently attending or accepted into a Philippine higher education institution, or an educator or staff member. Parents buying for a college student also qualify.",
+    "caveats": "Not every product has education pricing. Purchases are limited per year (for example one desktop and two accessories). Philippines delivery only. Seasonal promos such as gift cards change often, so check the store for current terms.",
     "url": "https://www.apple.com/ph/apple-music/",
     "verified": "2026-11"
   },
@@ -167,11 +167,12 @@
     "domains": ["philippineairlines.com"],
     "regions": ["PH"],
     "category": "Travel",
-    "perk": "Student discount on domestic flights.",
-    "details": "Under the Student Fare Discount Act, the discount applies while the student is enrolled. If PAL has a CAB-approved promo fare, you can choose between the promo fare and the regular fare minus the discount. Third-party sources report 20% off base fares on domestic flights.",
-    "requirements": "Proof of enrollment, usually presented when buying the ticket",
-    "caveats": "Reportedly excludes some low fare classes, promo fares, international routes and postgraduate or short courses. Check PAL's student discount page for current rules.",
-    "url": "https://www.philippineairlines.com/en/before-you-fly/special-discounts/student"
+    "perk": "20% off the base fare on domestic Philippine Airlines flights for currently enrolled students.",
+    "details": "Applies to PR and 2P domestic flights, one-way and round trip. Show your school ID or a validated enrollment form when you buy the ticket over the counter or by telesales, and again at airport check-in.",
+    "requirements": "Resident Filipino citizen currently enrolled in elementary, secondary, technical-vocational or higher education. Postgraduate and short-term or seminar-type courses are not covered.",
+    "caveats": "Not valid on international or promotional fares, or on Economy Supersaver and Economy Saver base fares. Cannot be combined with another discount; you may choose a promo fare instead. Not bookable online: tickets are bought over the counter or by telesales.",
+    "url": "https://www.philippineairlines.com/en/before-you-fly/special-discounts/student",
+    "verified": "2026-11"
   },
   {
     "name": "PAL Global Student Plus",
