@@ -232,3 +232,9 @@ h1 { font: 700 21px/1.1 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetic
 .card h2 { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -.02em; }
 .info-card h2 { font-size: 15px; }
 .perk-figure { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif; font-weight: 700; letter-spacing: -.02em; }
+
+/* Found card matches empty state */
+:root { --title-font: var(--serif); --title-weight: 500; }
+#matches .card:not(.info-card), #matches .info-card { border: 0; background: var(--surface-2); border-radius: 14px; }
+#matches .card h2, #matches .empty-state strong, .perk-figure { font-family: var(--title-font); font-weight: var(--title-weight); letter-spacing: -.01em; }
+#matches .card details p { color: var(--muted); }
