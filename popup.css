@@ -301,3 +301,13 @@ a.btn:active { transform: scale(.98); }
 .settings-item .theme-label { font-size: 13px; }
 
 footer[hidden] { display: none !important; }
+
+/* Compact footer */
+footer { font-size: 10.5px; }
+.footer-credit { font-size: 11px; }
+.footer-heart { font-size: 11px; }
+.tip-btn { font-size: 11px; }
+.tip-btn::before { font-size: 11px; }
+.rate-stars .star, .star { font-size: 17px; }
+.footer-links a.gh-link { display: inline-flex; align-items: center; }
+.footer-links a.gh-link svg { display: block; }
