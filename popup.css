@@ -268,3 +268,12 @@ li a:hover { padding-left: 4px; }
   #matches .card, #matches .empty-state, .match-label { animation: none; }
   .card summary, .report-link, li a { transition: none; }
 }
+
+/* Serif reading text, sans UI */
+:root { --ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif; }
+#matches .card p { font-family: var(--serif); font-size: 14px; line-height: 1.55; color: var(--fg); }
+#matches .card details p { font-family: var(--serif); font-size: 13px; line-height: 1.5; }
+#matches .empty-state span { font-family: var(--serif); font-size: 13px; line-height: 1.5; }
+#matches .card .tag, #matches .card .verification, #matches .card summary, #matches .card .report-link { font-family: var(--ui-font); }
+#matches .card .verification { font-size: 11.5px; }
+#matches .card summary { font-size: 12.5px; }
