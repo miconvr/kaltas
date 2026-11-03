@@ -311,3 +311,8 @@ footer { font-size: 10.5px; }
 .rate-stars .star, .star { font-size: 17px; }
 .footer-links a.gh-link { display: inline-flex; align-items: center; }
 .footer-links a.gh-link svg { display: block; }
+
+/* Rate star icon */
+.footer-links a.rate-link { display: inline-flex; align-items: center; }
+.footer-links a.rate-link svg { display: block; }
+.footer-links a.rate-link:hover { color: var(--accent); text-decoration: none; }
