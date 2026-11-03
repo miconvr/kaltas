@@ -299,3 +299,5 @@ a.btn:active { transform: scale(.98); }
 .settings-item { width: 100%; justify-content: space-between; padding: 9px 0; color: var(--fg); font-size: 13px; }
 .settings-item + .settings-item { border-top: 1px solid var(--border); }
 .settings-item .theme-label { font-size: 13px; }
+
+footer[hidden] { display: none !important; }
