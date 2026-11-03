@@ -99,16 +99,12 @@ li small { color: var(--muted); }
 footer { margin-top: 16px; color: var(--muted); font-size: 11px; line-height: 1.4; text-align: center; }
 .footer-divider { height: 1px; margin: 0 0 11px; background: var(--border); }
 footer p { margin: 0 0 7px; }
-.review-prompt { color: var(--fg); font-weight: 600; }
-.review-stars { color: var(--accent); letter-spacing: 1px; }
-.footer-lock { color: var(--fg); font-weight: 600; }
 .footer-credit { margin-bottom: 8px; color: var(--muted); }
 .footer-heart { color: var(--accent); font-size: 13px; }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; row-gap: 4px; }
 .footer-links a { padding: 0 9px; border-left: 1px solid var(--border); color: var(--muted); text-decoration: none; }
 .footer-links a:first-child { padding-left: 0; border-left: 0; }
 .footer-links a:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 2px; }
-.footer-links .support-link { color: var(--chip-fg); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   a.btn, li a { transition: none; }
 }
@@ -116,8 +112,6 @@ footer p { margin: 0 0 7px; }
 .empty-state { position: relative; padding-left: 34px; }
 .empty-state::before { content: "!"; position: absolute; top: 50%; left: 14px; transform: translateY(-50%); color: var(--accent); font: 800 20px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 [data-theme="dark"] .empty-state::before { color: var(--accent); }
-.review-link { color: var(--fg); text-decoration: none; }
-.review-link:hover { color: var(--chip-fg); text-decoration: underline; text-underline-offset: 2px; }
 .summary-count { color: var(--chip-fg); font-size: 11px; font-weight: 600; }
 .summary-count::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--accent); vertical-align: 1px; }
 
@@ -132,7 +126,6 @@ footer p { margin: 0 0 7px; }
 .footer-credit { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
 .footer-credit a { text-decoration: none; }
 .footer-credit a:hover { text-decoration: underline; text-underline-offset: 2px; }
-.credit-support { color: var(--chip-fg); font-weight: 600; }
 .credit-author { color: var(--fg); font-weight: 600; }
 .footer-note { margin: 8px 0 0; }
 @media (prefers-reduced-motion: reduce) {
