@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Iskolar">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5 -24 118 118" role="img" aria-label="Iskolar">
   <title>Iskolar</title>
-  <g transform="translate(0 29)">
+  <g>
     <!-- cap base -->
     <path d="M34 36 V52 Q64 68 94 52 V36 L64 48 Z" fill="#B5532F"/>
     <!-- mortarboard top -->
