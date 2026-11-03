@@ -248,3 +248,23 @@ li a:hover { padding-left: 4px; }
 @media (prefers-reduced-motion: reduce) {
   .card { transition: none; }
 }
+
+/* Quiet motion */
+.card { transition: none; }
+.card:hover { transform: none; }
+#matches .card:not(.info-card):hover, #matches .info-card:hover { background: var(--surface-2); box-shadow: none; }
+
+#matches .card, #matches .empty-state, .match-label { animation: fade-in 160ms ease-out backwards; }
+#matches .card:nth-child(n) { animation-delay: 0ms; }
+
+a.btn:hover::after { transform: none; }
+.card summary, .report-link, li a { transition: color 140ms ease-out; }
+.card summary:hover { color: var(--fg); }
+.card summary:hover::after { color: var(--fg); }
+.report-link:hover { color: var(--fg); }
+li a:hover { padding-left: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  #matches .card, #matches .empty-state, .match-label { animation: none; }
+  .card summary, .report-link, li a { transition: none; }
+}
