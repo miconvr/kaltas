@@ -28,7 +28,7 @@ function getTheme() {
     const saved = localStorage.getItem("iskolar-theme");
     if (saved === "light" || saved === "dark") return saved;
   } catch {}
-  return "light";
+  return "dark";
 }
 
 function saveTheme(theme) {
