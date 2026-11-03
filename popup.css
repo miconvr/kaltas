@@ -202,3 +202,27 @@ header { display: flex; flex-wrap: wrap; align-items: center; column-gap: 10px; 
 .perk-figure { margin: 0 0 4px; color: var(--chip-fg); font: 500 22px/1.2 var(--serif); letter-spacing: -.01em; }
 
 .star { font-size: 20px; }
+
+/* Bold title and motion */
+.card h2 { font-weight: 700; font-size: 20px; letter-spacing: -.015em; }
+.info-card h2 { font-size: 16px; }
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+#matches .card, #matches .empty-state { animation: rise-in 260ms var(--ease-out) backwards; }
+#matches .card:nth-child(3) { animation-delay: 50ms; }
+#matches .card:nth-child(4) { animation-delay: 100ms; }
+#matches .card:nth-child(n+5) { animation-delay: 150ms; }
+.match-label { animation: fade-in 220ms ease-out backwards; }
+.card details[open] p { animation: fade-in 200ms ease-out backwards; }
+
+.card { transition: border-color 160ms ease-out, transform 160ms var(--ease-out); }
+.card:hover { transform: translateY(-1px); }
+.tip-btn:active, a.btn:active { transform: scale(.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  #matches .card, #matches .empty-state, .match-label, .card details[open] p { animation: none; }
+  .card { transition: none; }
+  .card:hover { transform: none; }
+}
