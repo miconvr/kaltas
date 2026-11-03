@@ -14,10 +14,14 @@
       <div>
         <h1>Iskolar</h1>
       </div>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Enable dark mode" aria-pressed="false">
+      <button id="settings-btn" class="settings-btn" type="button" aria-label="Settings" aria-expanded="false" aria-controls="settings-panel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+    </div>
+        <div id="settings-panel" class="settings-panel" hidden>
+      <button id="theme-toggle" class="theme-toggle settings-item" type="button" aria-label="Enable dark mode" aria-pressed="false">
         <span class="theme-label">Dark mode</span>
         <span class="theme-switch" aria-hidden="true"><span></span></span>
       </button>
+      <button id="footer-toggle" class="theme-toggle settings-item" type="button" aria-pressed="false"><span class="theme-label">Hide footer</span><span class="theme-switch" aria-hidden="true"><span></span></span></button>
     </div>
     <p id="site" class="site-line"></p>
   </header>

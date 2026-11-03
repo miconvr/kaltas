@@ -288,3 +288,14 @@ a.btn:active { transform: scale(.98); }
 #matches .card h2 { font-size: 20px; line-height: 1.2; }
 #matches .info-card h2 { font-size: 16px; }
 #matches .empty-state strong { font-size: 15px; }
+
+/* Settings panel */
+[data-theme="dark"] { --btn-bg: #c25a38; --btn-bg-hover: #d4694a; --btn-fg: #ffffff; }
+.settings-btn { display: grid; place-items: center; width: 30px; height: 30px; margin-left: auto; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--muted); cursor: pointer; transition: color 140ms ease-out, background-color 140ms ease-out; }
+.settings-btn:hover, .settings-btn[aria-expanded="true"] { background: var(--surface-2); color: var(--fg); }
+.settings-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.settings-panel { flex: 0 0 100%; margin: 10px 0 0; padding: 2px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.settings-panel[hidden] { display: none; }
+.settings-item { width: 100%; justify-content: space-between; padding: 9px 0; color: var(--fg); font-size: 13px; }
+.settings-item + .settings-item { border-top: 1px solid var(--border); }
+.settings-item .theme-label { font-size: 13px; }

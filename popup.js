@@ -51,6 +51,19 @@ function saveBrowseClosed(closed) {
   } catch {}
 }
 
+function getFooterHidden() {
+  try {
+    return localStorage.getItem("iskolar-footer-hidden") === "1";
+  } catch {}
+  return false;
+}
+
+function saveFooterHidden(hidden) {
+  try {
+    if (hidden) localStorage.setItem("iskolar-footer-hidden", "1");
+    else localStorage.removeItem("iskolar-footer-hidden");
+  } catch {}
+}
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   const button = $("theme-toggle");
@@ -261,7 +274,24 @@ async function init() {
   $("browse").querySelector("summary").addEventListener("click", function () {
     saveBrowseClosed($("browse").open);
   });
-  $("theme-toggle").addEventListener("click", () => {
+  const panel = $("settings-panel");
+  const gear = $("settings-btn");
+  const footerBtn = $("footer-toggle");
+  function applyFooter(hidden) {
+    document.querySelector("footer").hidden = hidden;
+    footerBtn.setAttribute("aria-pressed", String(hidden));
+  }
+  applyFooter(getFooterHidden());
+  gear.addEventListener("click", () => {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    gear.setAttribute("aria-expanded", String(open));
+  });
+  footerBtn.addEventListener("click", () => {
+    const hidden = footerBtn.getAttribute("aria-pressed") !== "true";
+    saveFooterHidden(hidden);
+    applyFooter(hidden);
+  });  $("theme-toggle").addEventListener("click", () => {
     theme = theme === "light" ? "dark" : "light";
     saveTheme(theme);
     applyTheme(theme);
