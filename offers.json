@@ -139,6 +139,30 @@
     "url": "https://one.google.com/ai-student"
   },
   {
+    "name": "Lenovo Education Store (PH)",
+    "domains": ["lenovo.com"],
+    "regions": ["PH"],
+    "category": "Laptops",
+    "perk": "Student and educator pricing plus a welcome discount in the Lenovo Education Store.",
+    "details": "Register for the Lenovo Education Store with your school email, verify through the link Lenovo sends, then shop while signed in. Education discounts are applied automatically.",
+    "requirements": "Student or educator with a school email address ending in edu.ph",
+    "caveats": "Welcome discount amounts and extra savings change often and can have minimum spend rules. The first purchase offer is not stackable with other promotions. Check the page for current terms.",
+    "url": "https://lenovo.com/ph/en/student",
+    "verified": "2026-11"
+  },
+  {
+    "name": "Samsung Education Store (PH)",
+    "domains": ["samsung.com"],
+    "regions": ["PH"],
+    "category": "Phones & tablets",
+    "perk": "Exclusive education offers on selected Samsung products for students.",
+    "details": "Log in or sign up with your Samsung account, enter your school email to validate access, and confirm it using the link Samsung emails you. Offers then show in the Samsung Education Store.",
+    "requirements": "Current or newly accepted student of an eligible school in the Philippines, with an email address ending in edu.ph",
+    "caveats": "Discounts are for the verified student only and cannot be transferred. Offers are on the online store, not in physical shops. Products and discounts vary.",
+    "url": "https://www.samsung.com/ph/offer/education-offers/",
+    "verified": "2026-11"
+  },
+  {
     "name": "Philippine Airlines student discount",
     "domains": ["philippineairlines.com"],
     "regions": ["PH"],
