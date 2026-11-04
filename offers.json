@@ -107,9 +107,9 @@
     "regions": ["global"],
     "category": "Entertainment",
     "perk": "Discounted membership for verified students. Availability varies by country.",
-    "details": "Student pricing has been extended to the Philippines.",
-    "requirements": "Verified student status",
-    "caveats": "Prices have changed before, so none are listed here.",
+    "details": "The Philippines is on YouTube's list of locations with student memberships. Verification goes through SheerID when you sign up.",
+    "requirements": "Enrolled at a higher education institution that SheerID supports",
+    "caveats": "Student pricing lasts up to 4 consecutive years and you must re-verify every year. Cancel any active paid YouTube membership before switching. Prices have changed before, so none are listed here.",
     "url": "https://www.youtube.com/premium/student",
     "verified": "2026-11"
   },
@@ -130,13 +130,14 @@
   {
     "name": "Google AI Plus for Students",
     "domains": ["gemini.google.com", "one.google.com"],
-    "regions": ["PH"],
+    "regions": ["global"],
     "category": "AI tools",
-    "perk": "Free year of Google AI Plus for eligible college and university students in the Philippines.",
-    "details": "Includes Gemini study tools such as Study Notebooks and Gemini Live, plus 400 GB of storage. Claim it through Google's student offer page or the Gemini app after verifying enrollment.",
-    "requirements": "Currently enrolled at an eligible Philippine college or university, verified through Google's student verification. Junior and senior high school students are not eligible.",
-    "caveats": "A payment method is required to activate it. Reports say no charge applies during the free year and you can cancel anytime. The offer must be claimed by December 31, 2026. Sources so far are news coverage, so confirm on Google's student offer page.",
-    "url": "https://one.google.com/ai-student"
+    "perk": "Free year of Google AI Plus for eligible college and university students.",
+    "details": "Includes 400 GB of storage and higher Gemini usage limits. Sign in with your personal Google account, open Google's student offer page, and verify your student status through SheerID.",
+    "requirements": "Enrolled at a higher education institution, 18 or older, using a personal Google account (school accounts and Family Link accounts do not qualify). Each student can redeem it once.",
+    "caveats": "Redeem by December 31, 2026. A payment method is required at sign-up, and after 12 months the plan switches to the regular paid price unless you cancel. Not available in every country, so check the offer page for yours.",
+    "url": "https://one.google.com/ai-student",
+    "verified": "2026-11"
   },
   {
     "name": "Lenovo Education Store (PH)",

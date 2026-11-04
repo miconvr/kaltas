@@ -102,9 +102,9 @@ The owner works in Windows PowerShell and pastes commands from chat. Past proble
 ## Current state and open items
 
 - Apple: `Apple Education Store (Philippines)` is `regions: ["PH"]` and links `https://www.apple.com/ph-edu/store`; the generic `Apple Education Store` is `regions: ["other"]`.
-- `Google AI Plus for Students` has no `verified`: Google's student page could not be fetched, so it still rests on news coverage. Confirm on https://one.google.com/ai-student, then add `verified`.
+- `Google AI Plus for Students` is `["global"]` and verified 2026-11 against Google's blog post and the Google One help page (the offer is not Philippines-only; it is unavailable in the US, Hong Kong, Macau and Tunisia, and Google's post also excludes Bolivia, Albania and Canada). Claim deadline is 2026-12-31: remove the entry after that date.
 - The two info entries (rail discount, RA 11314) are not shown anywhere in the popup. An "Also worth knowing" box was planned but never exists in `popup.js`. Either build it or delete the entries. They also have no `verified`: news coverage only.
-- Spotify and YouTube Premium stay `["global"]`: both offer student plans in many countries, with an availability note in their copy.
+- Spotify and YouTube Premium stay `["global"]`, checked against their official pages: Spotify's Philippines Premium page lists a Premium Student plan, and YouTube's help page lists the Philippines among student-membership locations.
 - The AI endpoint in `api/` is deployed separately and not wired into the popup.
 
 ## Testing checklist before every push
