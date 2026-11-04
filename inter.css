@@ -34,3 +34,16 @@
 
 /* search-gap-added */
 #search { margin-top: 12px; }
+
+/* details-anim-added: smooth open/close for all <details> */
+details { interpolate-size: allow-keywords; }
+details::details-content {
+  block-size: 0;
+  opacity: 0;
+  overflow: clip;
+  transition: block-size 200ms ease, opacity 200ms ease, content-visibility 200ms allow-discrete;
+}
+details[open]::details-content { block-size: auto; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  details::details-content { transition: none; }
+}
