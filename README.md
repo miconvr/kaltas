@@ -21,6 +21,7 @@ and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 ## What it does
 
 - Matches the current website locally against a curated offer list
+- Shows a green dot on the toolbar icon when the site you are on has a student offer
 - Shows eligibility requirements, details, caveats, and the last verification month
 - Supports Philippines and Other countries region filters
 - Opens in a dark theme by default, with a Light option in the settings panel
@@ -35,9 +36,13 @@ and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 
 The popup is designed to keep offer matching local, clear, and easy to scan.
 
-| Spot student perks as you browse | Browse every student deal |
+| Spot student perks as you browse | A green dot tells you there's a deal |
 | --- | --- |
-| ![Matched offer](store-screenshots/01-matched-offer.png) | ![Browse student deals](store-screenshots/02-browse-deals.png) |
+| ![Matched offer](store-assets/screenshots/01-spot-student-perks.png) | ![Green dot badge](store-assets/screenshots/02-green-dot-badge.png) |
+
+| Browse every student deal | Made for students in the Philippines |
+| --- | --- |
+| ![Browse student deals](store-assets/screenshots/03-browse-every-deal.png) | ![Philippines offers](store-assets/screenshots/04-made-for-the-philippines.png) |
 
 These are also used as the Chrome Web Store listing screenshots.
 
@@ -102,7 +107,8 @@ changing remote offer list.
 | `offers.json` | Curated student-offer source of truth |
 | `offers-loader.js` | Loads and validates the bundled offer list |
 | `scripts/validate-offers.js` | Validates offer shape and HTTPS URLs |
-| `store-screenshots/` | Product screenshots for the README and Chrome Web Store listing |
+| `store-assets/` | Chrome Web Store screenshots (1280x800) and promo tiles, also used in the README |
+| `store-screenshots/` | Older screenshots from before the toolbar badge, no longer used |
 | `api/offer-assistant.js` | Optional Vercel and Gemini companion endpoint |
 | `PRIVACY.md` | Extension privacy policy |
 
