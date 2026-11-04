@@ -5,4 +5,3 @@
 :root body, :root body * { font-family: "Inter", system-ui, "Segoe UI", sans-serif; }
 :root body { line-height: 1.5; letter-spacing: 0.012em; }
 :root body h1, :root body h2, :root body h3 { letter-spacing: 0; }
-:root body .region-picker { display: flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box; margin: 10px 0 0; }
