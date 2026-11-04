@@ -12,3 +12,10 @@
 :root body #browse[open] > summary::after { content: ""; margin-top: 3px; transform: rotate(-135deg); }
 :root body #browse > summary:hover::after { border-color: var(--fg); }
 @media (prefers-reduced-motion: reduce) { :root body #browse > summary::after { transition: none; } }
+:root body .footer-credit { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 2px 8px; margin: 14px 0 10px; font-size: 12px; line-height: 1.4; text-align: center; text-wrap: balance; color: var(--muted); }
+:root body .footer-credit .credit-sep { opacity: .6; }
+:root body .footer-credit .credit-author { font-weight: 600; }
+:root body .tip-link { color: var(--accent); font-weight: 500; text-decoration: none; }
+:root body .tip-link:hover { text-decoration: underline; text-underline-offset: 2px; }
+:root body .footer-links { margin-bottom: 4px; font-size: 12px; }
+:root body .footer-links a { font-size: 12px; }
