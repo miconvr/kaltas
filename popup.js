@@ -176,12 +176,19 @@ function makeCard(offer) {
   return card;
 }
 
+const CATEGORY_ORDER = ["Dev tools", "Cloud", "Design", "AI tools", "Productivity", "Writing", "Learning", "Laptops", "Phones & tablets", "Hardware", "Entertainment", "Shopping", "Transport", "Travel"];
+function categoryRank(category) {
+  const i = CATEGORY_ORDER.indexOf(category);
+  return i === -1 ? CATEGORY_ORDER.length : i;
+}
+
 function renderList(offers, query = "") {
   const ul = $("all");
   ul.replaceChildren();
   const q = query.trim().toLowerCase();
   offers
     .filter((o) => !q || ((o.name || "") + " " + (o.category || "") + " " + (o.perk || "")).toLowerCase().includes(q))
+    .sort((a, b) => categoryRank(a.category) - categoryRank(b.category))
     .forEach((o) => {
       const li = document.createElement("li");
       const small = document.createElement("small");
