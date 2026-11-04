@@ -107,4 +107,11 @@ details[open]::details-content { block-size: auto; opacity: 1; }
 :root body .settings-btn { margin-left: 0; }
 
 /* btn weight */
-:root body .card a.btn { font-weight: 650; }
+:root body .card a.btn { font-weight: 500; }
+
+/* btn size */
+:root body .card a.btn { font-size: 13px; font-weight: 500; }
+:root body .card .report-link { position: relative; top: 8px; }
+
+/* btn size 12 */
+:root body .card a.btn { font-size: 12px; font-weight: 500; letter-spacing: 0.01em; }
