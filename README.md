@@ -108,7 +108,6 @@ changing remote offer list.
 | `offers-loader.js` | Loads and validates the bundled offer list |
 | `scripts/validate-offers.js` | Validates offer shape and HTTPS URLs |
 | `store-assets/` | Chrome Web Store screenshots (1280x800) and promo tiles, also used in the README |
-| `store-screenshots/` | Older screenshots from before the toolbar badge, no longer used |
 | `api/offer-assistant.js` | Optional Vercel and Gemini companion endpoint |
 | `PRIVACY.md` | Extension privacy policy |
 
