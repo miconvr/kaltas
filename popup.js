@@ -179,8 +179,8 @@ function makeCard(offer) {
 function categoryIcon(category) {
   const SVG_NS = "http://www.w3.org/2000/svg";
   const ICONS = {
-    "Dev tools": ["M16 18l6-6-6-6", "M8 6l-6 6 6 6"],
-    "Cloud": ["M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"],
+    "Dev Tools": ["M16 18l6-6-6-6", "M8 6l-6 6 6 6"],
+    "Cloud": ["M6.5 19a4.5 4.5 0 0 1-.4-8.98 6 6 0 0 1 11.7.98A4 4 0 0 1 17.5 19Z"],
     "Design": ["M12 20h9", "M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"],
     "AI tools": ["M12 5l1.9 5.1L19 12l-5.1 1.9L12 19l-1.9-5.1L5 12l5.1-1.9Z"],
     "Productivity": ["M9 11l3 3L22 4", "M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"],
@@ -214,7 +214,7 @@ function categoryIcon(category) {
   });
   return svg;
 }
-const CATEGORY_ORDER = ["Dev tools", "Cloud", "Design", "AI tools", "Productivity", "Writing", "Learning", "Laptops", "Phones & tablets", "Hardware", "Entertainment", "Shopping", "Transport", "Travel"];
+const CATEGORY_ORDER = ["Dev Tools", "Cloud", "Design", "AI tools", "Productivity", "Writing", "Learning", "Laptops", "Phones & tablets", "Hardware", "Entertainment", "Shopping", "Transport", "Travel"];
 function categoryRank(category) {
   const i = CATEGORY_ORDER.indexOf(category);
   return i === -1 ? CATEGORY_ORDER.length : i;

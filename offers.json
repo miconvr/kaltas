@@ -1,6 +1,6 @@
 [
-  { "name": "GitHub Student Developer Pack", "domains": ["github.com"], "regions": ["global"], "category": "Dev tools", "perk": "Free bundle of developer tools and services for verified students.", "url": "https://education.github.com/pack", "verified": "2026-11" },
-  { "name": "JetBrains Student License", "domains": ["jetbrains.com"], "regions": ["global"], "category": "Dev tools", "perk": "Free educational licenses for JetBrains IDEs for students.", "url": "https://www.jetbrains.com/community/education/", "verified": "2026-11" },
+  { "name": "GitHub Student Developer Pack", "domains": ["github.com"], "regions": ["global"], "category": "Dev Tools", "perk": "Free bundle of developer tools and services for verified students.", "url": "https://education.github.com/pack", "verified": "2026-11" },
+  { "name": "JetBrains Student License", "domains": ["jetbrains.com"], "regions": ["global"], "category": "Dev Tools", "perk": "Free educational licenses for JetBrains IDEs for students.", "url": "https://www.jetbrains.com/community/education/", "verified": "2026-11" },
   {
     "name": "Microsoft Azure for Students",
     "domains": ["azure.microsoft.com"],
@@ -29,7 +29,7 @@
     "name": "Zed Student Plan",
     "domains": ["zed.dev"],
     "regions": ["global"],
-    "category": "Dev tools",
+    "category": "Dev Tools",
     "perk": "Free Zed Pro for one year for verified university students.",
     "details": "The student plan includes Zed Pro features, real-time collaboration, unlimited edit predictions, and monthly AI token credits.",
     "requirements": "At least 18 years old and currently enrolled at an accredited university",
@@ -41,7 +41,7 @@
     "name": "Replit Student Discount",
     "domains": ["replit.com"],
     "regions": ["global"],
-    "category": "Dev tools",
+    "category": "Dev Tools",
     "perk": "Discounted Replit Core for students with an eligible school email.",
     "details": "Replit's student page describes an education offer for students who verify with a school email address.",
     "requirements": "Student with an eligible .edu or school email address",
