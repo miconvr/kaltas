@@ -34,17 +34,11 @@ and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 
 ## Screenshots
 
-The popup is designed to keep offer matching local, clear, and easy to scan.
+![Spot student perks](store-assets/screenshots/01-spot-student-perks.png)
 
-| Matched offer | Browse student deals | Private by design |
-| --- | --- | --- |
-| ![Matched offer](store-assets/screenshots/01-spot-student-perks.png) | ![Browse student deals](store-assets/screenshots/02-browse-every-deal.png) | ![Private by design](store-assets/screenshots/03-private-by-design.png) |
+![Browse every deal](store-assets/screenshots/02-browse-every-deal.png)
 
-These are also used as the Chrome Web Store listing screenshots.
-
-## Install locally
-
-### Requirements
+![Private by design](store-assets/screenshots/03-private-by-design.png)
 
 - Google Chrome or another Chromium-based browser
 - Git
