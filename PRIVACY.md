@@ -1,12 +1,21 @@
 # Privacy Policy - Iskolar
 
-Last updated: November 3, 2026
+Last updated: November 4, 2026
 
 Iskolar does not collect, store, transmit, or sell any personal data.
 
 **What the extension does**
 
 When you click the toolbar icon, Iskolar reads the hostname of your current tab (via the `activeTab` permission) and compares it with a list of student offers. The comparison happens entirely on your device. The hostname and the pages you visit are never sent anywhere.
+
+**Toolbar badge**
+
+Iskolar shows a green dot on its toolbar icon when the site you are on has a
+student offer. This uses Chrome's `declarativeContent` feature: the extension
+gives Chrome a list of domains from the bundled offers file, and Chrome itself
+decides whether the current page matches and swaps the icon. Iskolar does not
+see the pages you visit, does not read your tabs or history, and does not store
+or send anything.
 
 **Offers list**
 

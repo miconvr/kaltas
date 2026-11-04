@@ -79,15 +79,20 @@ Bundled offers.json
 Student offer cards
 ```
 
-The extension uses Manifest V3 and the `activeTab` permission. Offer matching
-and filtering happen in the popup. The extension ships with `offers.json` and
-does not download browsing data or a changing remote offer list.
+The extension uses Manifest V3 and two permissions: `activeTab` for the popup
+and `declarativeContent` for the toolbar badge. Offer matching and filtering
+happen in the popup. A green dot appears on the toolbar icon when the current
+site has a student offer: Chrome itself matches the page URL against rules built
+from `offers.json`, so the extension never reads your tabs or history. The
+extension ships with `offers.json` and does not download browsing data or a
+changing remote offer list.
 
 ## Project files
 
 | File | Purpose |
 | --- | --- |
-| `manifest.json` | Manifest V3 metadata, icons, and `activeTab` permission |
+| `manifest.json` | Manifest V3 metadata, icons, and the `activeTab` and `declarativeContent` permissions |
+| `background.js` | Service worker that adds the green toolbar badge on sites with an offer |
 | `icons/logo.png` | High-resolution Iskolar logo used in the popup and README |
 | `icons/logo.svg` | Scalable source artwork for future brand surfaces |
 | `icons/icon16.png`, `icons/icon48.png`, `icons/icon128.png` | Chrome extension icon assets |

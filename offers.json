@@ -90,15 +90,15 @@
     "verified": "2026-11"
   },
   {
-    "name": "Apple Music Student",
+    "name": "Apple Education Store (Philippines)",
     "domains": ["apple.com"],
     "regions": ["PH"],
-    "category": "Entertainment",
+    "category": "Hardware",
     "perk": "Education pricing on Mac, iPad and Apple Watch, plus AppleCare and Apple software and services, for eligible students and educators in the Philippines.",
     "details": "Shop in the Apple Education Store (Philippines). Verify your status through UNiDAYS with your school email before checkout.",
     "requirements": "Student currently attending or accepted into a Philippine higher education institution, or an educator or staff member. Parents buying for a college student also qualify.",
     "caveats": "Not every product has education pricing. Purchases are limited per year (for example one desktop and two accessories). Philippines delivery only. Seasonal promos such as gift cards change often, so check the store for current terms.",
-    "url": "https://www.apple.com/ph/apple-music/",
+    "url": "https://www.apple.com/ph-edu/store",
     "verified": "2026-11"
   },
   {
@@ -116,10 +116,10 @@
   {
     "name": "Apple Education Store",
     "domains": ["apple.com"],
-    "regions": ["global"],
+    "regions": ["other"],
     "category": "Hardware",
     "perk": "Education pricing on Mac and iPad for students.",
-    "details": "In the Philippines, Apple sells through its Philippine Education Store and verifies eligibility through UNiDAYS before checkout.",
+    "details": "Apple runs a separate Education Store for each country. Open the Education page and choose your country's store before you buy.",
     "requirements": "Verified higher-education student, parent buying for a student, or educator",
     "caveats": "Apple limits how many discounted items you can buy per year. Promos such as gift-card offers are time-limited.",
     "url": "https://www.apple.com/education/",
@@ -173,17 +173,6 @@
     "caveats": "Not valid on international or promotional fares, or on Economy Supersaver and Economy Saver base fares. Cannot be combined with another discount; you may choose a promo fare instead. Not bookable online: tickets are bought over the counter or by telesales.",
     "url": "https://www.philippineairlines.com/en/before-you-fly/special-discounts/student",
     "verified": "2026-11"
-  },
-  {
-    "name": "PAL Global Student Plus",
-    "domains": ["philippineairlines.com"],
-    "regions": ["global"],
-    "category": "Travel",
-    "perk": "Discounted fares for international students aged 12 to 31.",
-    "details": "A PAL program for students travelling abroad to study. Reported at around 10%.",
-    "requirements": "Age 12 to 31, enrolled or accepted at an overseas school",
-    "caveats": "Terms may have changed since the 2023 announcement. Confirm on PAL's site.",
-    "url": "https://www.philippineairlines.com"
   },
   {
     "name": "Student rail discount (LRT-1, LRT-2, MRT-3)",

@@ -179,15 +179,21 @@ function renderList(offers, query = "") {
     .filter((o) => !q || ((o.name || "") + " " + (o.category || "") + " " + (o.perk || "")).toLowerCase().includes(q))
     .forEach((o) => {
       const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = safeUrl(o.url);
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.textContent = o.name + " ";
       const small = document.createElement("small");
       small.textContent = "\u00B7 " + (o.category || "");
-      a.append(small);
-      li.append(a);
+      const href = o.url ? safeUrl(o.url) : "#";
+      if (href === "#") {
+        // No usable https link: show the name as plain text instead of a dead link.
+        li.append(o.name + " ", small);
+      } else {
+        const a = document.createElement("a");
+        a.href = href;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = o.name + " ";
+        a.append(small);
+        li.append(a);
+      }
       ul.append(li);
     });
 }
@@ -291,7 +297,8 @@ async function init() {
     const hidden = footerBtn.getAttribute("aria-pressed") !== "true";
     saveFooterHidden(hidden);
     applyFooter(hidden);
-  });  $("theme-toggle").addEventListener("click", () => {
+  });
+  $("theme-toggle").addEventListener("click", () => {
     theme = theme === "light" ? "dark" : "light";
     saveTheme(theme);
     applyTheme(theme);

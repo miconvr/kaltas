@@ -1,9 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Iskolar",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "See what the website you are on offers students. Matches locally. No tracking, no data collected.",
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "declarativeContent"],
+  "background": { "service_worker": "background.js" },
   "action": {
     "default_popup": "popup.html",
     "default_title": "Iskolar",

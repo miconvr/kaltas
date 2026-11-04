@@ -2,12 +2,14 @@
 
 Iskolar is a Chrome extension (Manifest V3) that tells students whether the website they are on has a student discount, with a focus on the Philippines. Repo: `miconvr/iskolar`. Local folder: `$HOME\Downloads\iskolar` (Windows, PowerShell).
 
+The code on `main` is the source of truth. If this file and the code disagree, fix this file.
+
 ## Working style (read this first)
 
-- **Deliver everything as a copy-paste PowerShell block.** Whenever you create or change a file, give the owner one terminal block that writes it, not an attachment and not a "paste this into your editor" instruction.
+- **When you only have chat and no repo access, deliver everything as a copy-paste PowerShell block.** Whenever you create or change a file, give the owner one terminal block that writes it, not an attachment and not a "paste this into your editor" instruction. When you have the repo checked out with push access, edit the files directly instead.
 - Write files with `[System.IO.File]::WriteAllText("$PWD\<file>", $text, (New-Object System.Text.UTF8Encoding($false)))`, using a single-quoted here-string (`@'` ... `'@`) for the content. The closing `'@` must sit at the very start of a line.
 - Start every block with `cd $HOME\Downloads\iskolar`.
-- Keep pasted content ASCII-only where possible. For special characters in code, use escapes (for example `\u00B7` for the middle dot in JavaScript).
+- Keep pasted content ASCII-only where possible. For special characters in code, use escapes (for example `·` for the middle dot in JavaScript).
 - For small edits to an existing file, prefer a targeted `-replace` or a full rewrite. Never use `>` or `Out-File` for source files.
 - End each block with a one-line check command (for example `Select-String`) and say what output to expect.
 - Give one small, checkable step at a time. Then say how to test it (reload at chrome://extensions, which site to open, what should appear) and give the git commands.
@@ -16,36 +18,34 @@ Iskolar is a Chrome extension (Manifest V3) that tells students whether the webs
 ## Hard constraints (do not break)
 
 - Manifest V3, plain JavaScript, no build step, no npm, no frameworks.
-- Only the `activeTab` permission. Do not add `tabs`, `storage`, host permissions, or remote code.
+- Permissions are `activeTab` and `declarativeContent` only. Do not add `tabs`, `storage`, host permissions, or remote code. `declarativeContent` has no install warning and lets Chrome do the URL matching, so the extension never reads tabs or history.
 - Domain matching happens locally. The extension never sends the user's browsing data anywhere.
 - Only `https:` links may be opened (`safeUrl` in popup.js enforces this). Keep it.
-- Build DOM with `createElement` and `textContent`. Never use `innerHTML` with offer data, because offers.json is fetched remotely.
-- Keep `PRIVACY.md` accurate if any data handling changes.
+- Build DOM with `createElement` and `textContent`. Never use `innerHTML` with offer data.
+- Keep `PRIVACY.md` and the README accurate if any data handling or permission changes.
 
 ## File map
 
 | File | Purpose |
 |---|---|
 | `manifest.json` | MV3 manifest |
-| `popup.html` / `popup.css` | Popup shell and styling. The region picker and info box are built in JS, so the HTML rarely changes |
-| `popup.js` | Region logic, host matching, card rendering, browse list, search |
-| `offers-loader.js` | Loads offers: localStorage cache, refreshed from GitHub raw, bundled fallback |
+| `popup.html` / `popup.css` | Popup shell and styling. The region picker is built in JS, so the HTML rarely changes |
+| `popup.js` | Region logic, host matching, card rendering, browse list, search, settings |
+| `background.js` | Service worker. Builds the `declarativeContent` rules and the green-dot icon |
+| `offers-loader.js` | Loads the bundled `offers.json` |
 | `offers.json` | The data. Source of truth for all perks |
-| `icons/`, `scripts/`, `.github/` | Assets, helper scripts, CI |
+| `api/offer-assistant.js`, `vercel.json` | Optional Vercel + Gemini endpoint. Not called by the extension |
+| `icons/`, `scripts/`, `.github/` | Assets, validator script, CI |
 
 ## How offers load (offers-loader.js)
 
-1. `loadOffers()` reads the localStorage cache (`iskolar.offers.v1`).
-2. If the cache is missing or older than 24 hours, it triggers `refreshOffers()` in the background. This fetches `https://raw.githubusercontent.com/miconvr/iskolar/main/offers.json` with a 4 second timeout.
-3. It returns the cache if present. Otherwise it returns the bundled `offers.json` from the extension package.
+`loadOffers()` fetches the bundled `offers.json` from the extension package and returns it. There is no cache and no remote refresh.
 
 Consequences you must remember:
 
-- **Pushing to `main` is what ships data.** Users get new offers within about 24 hours, plus one extra popup open, because a stale cache is returned first while the refresh runs in the background.
-- **Bundled `offers.json` is only the first-run fallback.** Keep it in sync with `main`.
-- **Validation is shallow.** `isValidOffers` only checks that the list is a non-empty array. It does not check per-offer fields, so entries with empty `domains` or no `url` (the `type: "info"` entries) are not discarded by the loader.
-- **If the offers.json schema changes in a breaking way, bump `CACHE_KEY`** (for example to `iskolar.offers.v2`) so old cached data does not get fed to new code.
-- `loadOffers()` may return either a bare array or `{ offers: [...] }` (the validator accepts both), but `popup.js` calls `offers.filter(...)` directly. Keep offers.json a bare array, or normalize in `popup.js` before changing the format.
+- **Offers only reach users in a new extension release.** Pushing to `main` does not update installed copies. Bump `version` in `manifest.json` and publish to the Chrome Web Store.
+- `offers.json` may be a bare array or `{ offers: [...] }`; the loader normalizes it, and `popup.js` always receives an array.
+- `isValidOffers` only checks for a non-empty list. Per-offer rules live in `scripts/validate-offers.js` (run by CI on every push).
 
 ## offers.json schema
 
@@ -58,22 +58,30 @@ Each entry is an object:
 | `perk` | string | One generic line. No percentages or promo codes that rotate |
 | `url` | string | `https:` only. Omit for info-only entries |
 | `domains` | string[] | Hostnames without `www.`. Matches exact host or any subdomain. Empty for info entries |
-| `regions` | string[] | `["PH"]`, `["global"]`, or both. Missing or empty means show everywhere |
-| `type` | string | `"info"` means never matched to a site. Rendered in the "Also worth knowing" box with no link |
-| `details` | string | Fine print shown in the Details dropdown |
+| `regions` | string[] | `["PH"]`, `["other"]`, `["global"]`. Missing or empty means show everywhere. `"other"` means everyone outside the Philippines, which lets a PH entry and a non-PH entry share a domain without two cards |
+| `type` | string | `"info"` means never matched to a site and no link. `popup.js` currently filters these out and does not render them anywhere (see open items) |
+| `details` | string | Fine print shown in the details dropdown |
 | `requirements` | string | Shown as "Who qualifies" |
 | `caveats` | string | Shown as "Good to know" |
-| `verified` | string | Month last confirmed against an official page, like `"2026-11"`. Leave it out if not verified |
+| `verified` | string | Month last confirmed against an official page, like `"2026-11"`. Leave it out if not verified (the card shows "Needs review") |
 
-The field names `details`, `requirements`, `caveats`, `type` and `regions` were chosen by the assistant, not inherited from the original file. If you rename them, update `popup.js` too.
+If you rename these fields, update `popup.js` too.
 
 ## popup.js behavior
 
-- Region is `"PH"` or `"other"`. The default is guessed from `navigator.language` (`-PH` means PH), saved in localStorage as `iskolar-region`, and changeable via a picker that the script builds itself.
+- Region is `"PH"` or `"other"`. The default is guessed from `navigator.language` (`-PH` means PH), saved in localStorage as `iskolar-region`, and changeable via a picker the script builds itself.
 - `inRegion` hides offers whose `regions` has neither `global` nor the current region.
-- Matched cards show when the active tab's hostname matches an offer's `domains`. If none match, the browse list opens.
-- Info-only offers are never matched to a site. They always show (region permitting) under "Also worth knowing".
-- The browse list separator must be a real middle dot, written as `\u00B7` in the JS source. Past versions were corrupted into mojibake by bad encoding.
+- Matched cards show when the active tab's hostname matches an offer's `domains`. If none match, the browse list opens (unless the user closed it).
+- Browse list entries without a usable https `url` render as plain text, not dead links.
+- Other localStorage keys: `iskolar-theme`, `iskolar-browse-closed`, `iskolar-footer-hidden`.
+- The browse list separator must be a real middle dot, written as `·` in the JS source. Past versions were corrupted into mojibake by bad encoding.
+
+## Toolbar badge (background.js)
+
+- On install and update, the service worker reads `offers.json`, collects the domains of every non-info offer, and registers one `declarativeContent` rule. Chrome swaps in a generated icon with a green dot (top right) while the active tab's host equals a domain or ends with `.domain`.
+- The dot icon is drawn at runtime with `OffscreenCanvas` from `icons/icon128.png`; there is no separate asset.
+- The badge ignores the region picker, because the service worker cannot read the popup's localStorage and `storage` is not allowed. A PH-only offer can therefore light the dot for someone set to "other". The popup still filters by region.
+- Rules are only rebuilt on install or update, which matches how offers ship.
 
 ## Environment gotchas (this has bitten us)
 
@@ -82,39 +90,28 @@ The owner works in Windows PowerShell and pastes commands from chat. Past proble
 - A pasted line containing `>` was treated as redirection and created two junk files whose names start with "kolar" and "t_version". Check they are gone: `Get-ChildItem -Force -File | Where-Object { $_.Name -notmatch '^[A-Za-z0-9_.\-]+$' }`.
 - Terminal scrollback is not the file contents (see Working style).
 - Write files as UTF-8 **without BOM**. Avoid `Out-File` and `>` for source files.
-- Do **not** re-run any earlier `Copy-Item ... offers.backup.json` revert. The repo was restored to the merged 14-offer `offers.json` (commit `2edbbf4`).
 
 ## Verification policy
 
-- Prefer official domains. News and aggregator articles are not enough to mark `verified: true`.
+- Prefer official domains. News and aggregator articles are not enough to set `verified`.
 - Keep perk text generic. Rotating promos, percentages and gift cards go stale.
 - Leave `verified` out and add a caveat when a source is secondary.
 - Set `verified` to the current month (for example `"2026-11"`) whenever an entry is re-checked against an official page.
+- Remove offers the provider has ended (for example PAL Global Student Plus, whose sales period ended 2023-12-31).
 
-## Current state and next steps
+## Current state and open items
 
-Done:
-- Merged 14-offer `offers.json` is in the repo.
-- Region filter, Details dropdown and info box were written in `popup.js` (delivered as a PowerShell block). **Confirm the owner actually applied it and tested it.**
-
-To do, in order:
-1. Confirm `popup.js` is the new version: `Select-String -Path popup.js -Pattern "inRegion"`. Reload the extension at chrome://extensions, open spotify.com, and check the Details dropdown, the region picker and the browse list separator.
-2. Delete the two junk files if still present, then `git add -A`, commit and push.
-3. DONE: added the two info-only entries to `offers.json`. Details for reference:
-   - Rail student discount: `type: "info"`, `domains: []`, no `url`, `regions: ["PH"]`. Students get 50% off on LRT-1, LRT-2 and MRT-3 by showing ID at a station. Caveat: since March 23, 2026, reports say MRT-3 and LRT-2 give everyone 50% off with a blue Beep card "until further notice", so the student perk may add nothing on those lines. Sources so far are news coverage only, so it has no `verified` field.
-   - Student Fare Discount Act (RA 11314): `type: "info"`, same shape.
-4. Verify the pending entries against official pages and set `verified`:
-   - Apple Education Store PH: confirm the exact store URL (linking the homepage is the safe option for now).
-   - Philippine Airlines student discount: details came from a secondary source. Confirm on philippineairlines.com.
-   - Microsoft: no Philippines-specific page was found. Hold off until someone opens the PH Microsoft Store and confirms.
-   - Spotify and YouTube Premium: currently `["PH", "global"]`. Drop `"global"` if they should only show in the Philippines.
-5. After each `offers.json` change, update `verified` where you re-checked, push to `main`, and remember it takes up to 24 hours (plus one extra popup open) to reach users with a warm cache. To test sooner, run `localStorage.removeItem("iskolar.offers.v1")` in the popup's DevTools console.
+- Apple: `Apple Education Store (Philippines)` is `regions: ["PH"]` and links `https://www.apple.com/ph-edu/store`; the generic `Apple Education Store` is `regions: ["other"]`.
+- `Google AI Plus for Students` has no `verified`: Google's student page could not be fetched, so it still rests on news coverage. Confirm on https://one.google.com/ai-student, then add `verified`.
+- The two info entries (rail discount, RA 11314) are not shown anywhere in the popup. An "Also worth knowing" box was planned but never exists in `popup.js`. Either build it or delete the entries. They also have no `verified`: news coverage only.
+- Spotify and YouTube Premium stay `["global"]`: both offer student plans in many countries, with an availability note in their copy.
+- The AI endpoint in `api/` is deployed separately and not wired into the popup.
 
 ## Testing checklist before every push
 
-- Extension reloads with no errors on chrome://extensions.
-- Spotify: card shows with a Details dropdown.
-- A site with no offer: the message appears and the browse list opens.
+- Extension reloads with no errors on chrome://extensions (check the service worker's console too).
+- `node scripts/validate-offers.js` prints OK.
+- On spotify.com the toolbar icon shows a green dot and the card has a details dropdown. On a site with no offer the icon has no dot, the message appears, and the browse list opens.
 - The region picker switches PH and other correctly, and the choice persists.
-- Info entries show under "Also worth knowing" and have no link.
-- The browse list separator renders as a clean middle dot, not garbled text.
+- The browse list separator renders as a clean middle dot.
+- Before releasing, bump `version` in `manifest.json`.
