@@ -174,27 +174,5 @@
     "caveats": "Not valid on international or promotional fares, or on Economy Supersaver and Economy Saver base fares. Cannot be combined with another discount; you may choose a promo fare instead. Not bookable online: tickets are bought over the counter or by telesales.",
     "url": "https://www.philippineairlines.com/en/before-you-fly/special-discounts/student",
     "verified": "2026-11"
-  },
-  {
-    "name": "Student rail discount (LRT-1, LRT-2, MRT-3)",
-    "domains": [],
-    "regions": ["PH"],
-    "type": "info",
-    "category": "Transport",
-    "perk": "Students can get 50% off train fares on Metro Manila's LRT-1, LRT-2 and MRT-3.",
-    "details": "Show your school ID at any station and a student Beep card is issued on the spot, per DOTr. The program is reported to run until 2028.",
-    "requirements": "Valid student ID",
-    "caveats": "Since March 23, 2026, MRT-3 and LRT-2 reportedly give everyone 50% off with a blue Beep card until further notice, so the student perk may add nothing on those two lines for now. Based on news coverage, not the operators' sites. Confirm at a station."
-  },
-  {
-    "name": "Student Fare Discount Act (RA 11314)",
-    "domains": [],
-    "regions": ["PH"],
-    "type": "info",
-    "category": "Transport",
-    "perk": "By law, Filipino students get 20% off domestic fares on public transport.",
-    "details": "Covers jeepneys, buses, taxis, trains, domestic flights and ferries. It applies the whole time you are enrolled, including weekends and holidays. On flights it applies to the base fare only. If there is a promo fare, you choose either the promo or the regular fare minus the discount.",
-    "requirements": "Filipino citizen enrolled in elementary, secondary, technical-vocational or higher education. Show your school ID or validated enrollment form. Some operators also ask for a government ID.",
-    "caveats": "Does not cover school service, shuttle, tourist or chartered services. It cannot be combined with a bigger discount or other promos. If an operator refuses, you can complain to the regulator for that mode (the LTFRB for land transport)."
   }
 ]
