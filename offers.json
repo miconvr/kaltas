@@ -62,7 +62,7 @@
     "verified": "2026-11"
   },
   { "name": "Notion for Education", "domains": ["notion.so", "notion.com"], "regions": ["global"], "category": "Productivity", "perk": "Free upgraded plan for students and educators with a school email.", "url": "https://www.notion.com/product/notion-for-education", "verified": "2026-11" },
-  { "name": "Canva for Education", "domains": ["canva.com"], "regions": ["global"], "category": "Design", "perk": "Free access to premium Canva features for eligible students and teachers.", "url": "https://www.canva.com/education/", "verified": "2026-11" },
+  { "name": "Canva for Education", "domains": ["canva.com"], "regions": ["global"], "category": "Design", "perk": "Free for K-12 students and teachers. College students get Canva Free, with Pro only if their school offers Canva for Campus.", "url": "https://www.canva.com/education/", "verified": "2026-11" },
   { "name": "Figma Education", "domains": ["figma.com"], "regions": ["global"], "category": "Design", "perk": "Free Education plan for verified students and educators.", "url": "https://www.figma.com/education/", "verified": "2026-11" },
   {
     "name": "Microsoft 365 Education",
@@ -125,8 +125,8 @@
     "url": "https://www.apple.com/education/",
     "verified": "2026-11"
   },
-  { "name": "Amazon Prime Student", "domains": ["amazon.com"], "regions": ["global"], "category": "Shopping", "perk": "Discounted Prime membership for students. Availability varies by country.", "url": "https://www.amazon.com/amazonprime?primeCampaignId=studentlanding", "verified": "2026-11" },
-  { "name": "Grammarly", "domains": ["grammarly.com"], "regions": ["global"], "category": "Writing", "perk": "Check the site for current student or school-based pricing.", "url": "https://www.grammarly.com/", "verified": "2026-11" },
+  { "name": "Amazon Prime Student", "domains": ["amazon.com"], "regions": ["other"], "category": "Shopping", "perk": "Discounted Prime for students where Prime Student is offered (such as the US and UK). Not confirmed for the Philippines.", "url": "https://www.amazon.com/amazonprime?primeCampaignId=studentlanding", "verified": "2026-11" },
+  { "name": "Grammarly", "domains": ["grammarly.com"], "regions": ["global"], "category": "Writing", "perk": "Grammarly lists a limited-time 50% student discount on Pro, verified through SheerID. Check that it is still running.", "url": "https://support.grammarly.com/hc/en-us/articles/38895500890125-Does-Grammarly-offer-discounts-for-students", "verified": "2026-11" },
   {
     "name": "Google AI Plus for Students",
     "domains": ["gemini.google.com", "one.google.com"],
