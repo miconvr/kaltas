@@ -36,13 +36,9 @@ and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 
 The popup is designed to keep offer matching local, clear, and easy to scan.
 
-| Spot student perks as you browse | A green dot tells you there's a deal |
-| --- | --- |
-| ![Matched offer](store-assets/screenshots/01-spot-student-perks.png) | ![Green dot badge](store-assets/screenshots/02-green-dot-badge.png) |
-
-| Browse every student deal | Made for students in the Philippines |
-| --- | --- |
-| ![Browse student deals](store-assets/screenshots/03-browse-every-deal.png) | ![Philippines offers](store-assets/screenshots/04-made-for-the-philippines.png) |
+| Matched offer | Browse student deals | Private by design |
+| --- | --- | --- |
+| ![Matched offer](store-assets/screenshots/01-spot-student-perks.png) | ![Browse student deals](store-assets/screenshots/02-browse-every-deal.png) | ![Private by design](store-assets/screenshots/03-private-by-design.png) |
 
 These are also used as the Chrome Web Store listing screenshots.
 
