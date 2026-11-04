@@ -47,3 +47,4 @@ details[open]::details-content { block-size: auto; opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   details::details-content { transition: none; }
 }
+

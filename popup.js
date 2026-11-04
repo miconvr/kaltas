@@ -303,7 +303,7 @@ async function init() {
     if (hits.length) {
       const heading = document.createElement("p");
       heading.className = "match-label match-label-found";
-      heading.textContent = hits.length === 1 ? "1 student perk found" : hits.length + " student perks found";
+      heading.textContent = hits.length === 1 ? "1 student deal found" : hits.length + " student deals found";
       box.append(heading);
       hits.forEach((o) => box.append(makeCard(o)));
     } else if (host) {
