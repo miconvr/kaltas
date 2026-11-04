@@ -48,7 +48,7 @@ function conditionsFor(domain) {
 }
 
 async function registerRules() {
-  const offers = await loadOffers();
+  const offers = (await loadOffers()).filter((o) => !(typeof o.expires === "string" && new Date() > new Date(o.expires + "T23:59:59")));
   const domains = new Set();
   offers.forEach((o) => {
     if (o.type === "info") return;

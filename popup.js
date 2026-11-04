@@ -73,6 +73,11 @@ function applyTheme(theme) {
   button.querySelector(".theme-label").textContent = dark ? "Light mode" : "Dark mode";
 }
 
+// Offers past their optional "expires" date (YYYY-MM-DD) are hidden.
+function isExpired(offer) {
+  return typeof offer.expires === "string" && new Date() > new Date(offer.expires + "T23:59:59");
+}
+
 // Offers without a regions list show everywhere.
 function inRegion(offer, region) {
   const r = offer.regions;
@@ -243,7 +248,7 @@ async function init() {
   $("site").after(label);
 
   function render() {
-    const visible = offers.filter((o) => inRegion(o, region));
+    const visible = offers.filter((o) => inRegion(o, region) && !isExpired(o));
     const sites = visible.filter((o) => !isInfo(o));
     $("browse").querySelector(".summary-count").textContent = sites.length + " available";
 
