@@ -17,7 +17,7 @@ async function loadOffers() {
   return Array.isArray(data) ? data : data.offers || [];
 }
 
-// The normal icon with a green dot (white ring for contrast) in the top-right corner.
+// The normal icon with a plain green dot in the top-right corner.
 async function makeBadgedIcon() {
   const res = await fetch(chrome.runtime.getURL("icons/icon128.png"));
   const bitmap = await createImageBitmap(await res.blob());
@@ -26,14 +26,9 @@ async function makeBadgedIcon() {
     const canvas = new OffscreenCanvas(size, size);
     const ctx = canvas.getContext("2d");
     ctx.drawImage(bitmap, 0, 0, size, size);
-    const radius = size * 0.18;
-    const ring = Math.max(1, size * 0.05);
-    const cx = size - radius - ring * 0.5;
-    const cy = radius + ring * 0.5;
-    ctx.beginPath();
-    ctx.arc(cx, cy, radius + ring, 0, Math.PI * 2);
-    ctx.fillStyle = "#ffffff";
-    ctx.fill();
+    const radius = size * 0.2;
+    const cx = size - radius;
+    const cy = radius;
     ctx.beginPath();
     ctx.arc(cx, cy, radius, 0, Math.PI * 2);
     ctx.fillStyle = DOT_COLOR;
