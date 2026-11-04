@@ -279,7 +279,7 @@ async function init() {
   // Region picker, built here so popup.html doesn't need to change.
   const label = document.createElement("label");
   label.className = "region-picker";
-  label.textContent = "Region: ";
+  label.textContent = "Region";
   const select = document.createElement("select");
   [["PH", "Philippines"], ["other", "Other countries"]].forEach(([value, text]) => {
     const opt = document.createElement("option");

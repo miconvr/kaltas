@@ -55,7 +55,8 @@ h1 { margin: 0; color: var(--fg); font: 700 21px/1.1 -apple-system, BlinkMacSyst
 .theme-toggle[aria-pressed="true"] .theme-switch span { transform: translateX(12px); background: #1f1e1d; }
 .site-line { display: inline-block; max-width: 100%; margin: 12px 0 0; padding: 4px 11px; overflow: hidden; border-radius: 999px; background: var(--surface-2); color: var(--fg); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; vertical-align: top; }
 .region-picker { display: flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--muted); font-size: 12px; }
-.region-picker select { appearance: none; border: 0; padding: 0; background: transparent; color: var(--fg); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.region-picker select { appearance: none; border: 1px solid var(--border, rgba(128,128,128,.35)); border-radius: 7px; padding: 4px 24px 4px 10px; background: var(--surface) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' fill='none' stroke='%23a3a3aa' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 8px center / 10px; color: var(--fg); font: inherit; font-weight: 500; cursor: pointer; }
+.region-picker select:hover { border-color: var(--muted); }
 .region-picker select option { background: var(--surface); color: var(--fg); }
 .region-picker select:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .match-label { margin: 0 0 8px; color: var(--muted); font-size: 12px; font-weight: 600; }
