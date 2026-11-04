@@ -290,7 +290,7 @@ async function init() {
   select.value = region;
   label.dataset.region = region;
   label.append(select);
-  $("site").after(label);
+  $("settings-btn").before(label);
 
   function render() {
     const visible = offers.filter((o) => inRegion(o, region) && !isExpired(o));
