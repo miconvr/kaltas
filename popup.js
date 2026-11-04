@@ -292,15 +292,21 @@ async function init() {
   label.append(select);
   $("settings-btn").before(label);
 
+  let lastMatchesKey = "";
   function render() {
     const visible = offers.filter((o) => inRegion(o, region) && !isExpired(o));
     const sites = visible.filter((o) => !isInfo(o));
     $("browse").querySelector(".summary-count").textContent = sites.length + " available";
 
     const box = $("matches");
-    box.replaceChildren();
     const hits = host ? sites.filter((o) => matchesHost(o, host)) : [];
-    if (hits.length) {
+    const key = region + "|" + host + "|" + hits.map((o) => o.name).join(",");
+    const unchanged = key === lastMatchesKey;
+    lastMatchesKey = key;
+    if (!unchanged) box.replaceChildren();
+    if (unchanged) {
+      // matches box already correct, leave it alone
+    } else if (hits.length) {
       const heading = document.createElement("p");
       heading.className = "match-label match-label-found";
       heading.textContent = hits.length === 1 ? "1 student deal found" : hits.length + " student deals found";
