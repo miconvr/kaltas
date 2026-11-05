@@ -9,7 +9,7 @@
   </p>
 </div>
 
-Kaltas: Student Discounts (Kaltas for short, formerly Iskolar) is built for students in the Philippines first, with support for global
+Kaltas: Student Discounts (Kaltas for short) is built for students in the Philippines first, with support for global
 offers. Click the extension icon on a website to see whether a student deal is
 known for that site. The project uses the clean Kaltas PNG logo for the popup
 and README, with high-resolution PNG assets for Chrome's extension icon sizes.

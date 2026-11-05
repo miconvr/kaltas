@@ -1,4 +1,4 @@
-# Privacy Policy - Kaltas: Student Discounts (formerly Iskolar)
+# Privacy Policy - Kaltas: Student Discounts
 
 Last updated: November 5, 2026
 
