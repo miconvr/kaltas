@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="icons/logo.png" alt="Iskolar logo" width="120" height="120">
-  <h1>Iskolar: Student Discounts</h1>
+  <img src="icons/logo.png" alt="Kaltas logo" width="120" height="120">
+  <h1>Kaltas: Student Discounts</h1>
   <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
   <p>
     <a href="https://github.com/miconvr/iskolar">Source code</a> ·
@@ -9,12 +9,12 @@
   </p>
 </div>
 
-Iskolar: Student Discounts (Iskolar for short) is built for students in the Philippines first, with support for global
+Kaltas: Student Discounts (Kaltas for short, formerly Iskolar) is built for students in the Philippines first, with support for global
 offers. Click the extension icon on a website to see whether a student deal is
-known for that site. The project uses the clean Iskolar PNG logo for the popup
+known for that site. The project uses the clean Kaltas PNG logo for the popup
 and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 
-> **Important:** Iskolar is a guide, not a guarantee. Offers can change, have
+> **Important:** Kaltas is a guide, not a guarantee. Offers can change, have
 > country restrictions, or require verification. Always confirm the current
 > terms on the official offer page before purchasing.
 
@@ -58,10 +58,10 @@ cd iskolar
 2. Enable **Developer mode**.
 3. Click **Load unpacked**.
 4. Select the cloned `iskolar` folder.
-5. Pin Iskolar and open it on a supported website.
+5. Pin Kaltas and open it on a supported website.
 
 After changing source files, return to `chrome://extensions` and click
-**Reload** on Iskolar.
+**Reload** on Kaltas.
 
 ## How it works
 
@@ -92,7 +92,7 @@ changing remote offer list.
 | --- | --- |
 | `manifest.json` | Manifest V3 metadata, icons, and the `activeTab` and `declarativeContent` permissions |
 | `background.js` | Service worker that adds the green toolbar badge on sites with an offer |
-| `icons/logo.png` | High-resolution Iskolar logo used in the popup and README |
+| `icons/logo.png` | High-resolution Kaltas logo used in the popup and README |
 | `icons/logo.svg` | Scalable source artwork for future brand surfaces |
 | `icons/icon16.png`, `icons/icon48.png`, `icons/icon128.png` | Chrome extension icon assets |
 | `popup.html` | Popup shell |
@@ -174,14 +174,14 @@ with the official source and the reason it needs review.
 
 ## Privacy
 
-Iskolar compares the current tab hostname with local data after the user opens
+Kaltas compares the current tab hostname with local data after the user opens
 the popup. It does not collect browsing history, page content, accounts, or
 analytics. Your theme and footer choices stay on your device. Read the full
 [privacy policy](PRIVACY.md).
 
 ## Open source
 
-Iskolar is open source under the MIT License. Anyone can inspect the code,
+Kaltas is open source under the MIT License. Anyone can inspect the code,
 install it locally, fork it, or deploy the optional companion endpoint.
 Contributions are welcome, but offer data still needs an official source and
 human review before it is merged.
@@ -196,9 +196,9 @@ node scripts/validate-offers.js
 
 ## Disclaimer
 
-- **Independent project:** Iskolar: Student Discounts is an independent, open-source student project. It is not affiliated with, endorsed by, or connected to any other product, platform, or organization with a similar name, including scholarship platforms.
+- **Independent project:** Kaltas: Student Discounts is an independent, open-source student project. It is not affiliated with, endorsed by, or connected to any other product, platform, or organization with a similar name, including scholarship platforms.
 - **Brands:** Product names, logos, and trademarks mentioned in the offer list belong to their respective owners. Mentioning them does not imply endorsement or affiliation.
-- **Offers:** Iskolar is a guide, not a guarantee. Confirm current terms on the official provider page.
+- **Offers:** Kaltas is a guide, not a guarantee. Confirm current terms on the official provider page.
 
 ## License
 

@@ -44,7 +44,7 @@ module.exports = async function handler(req, res) {
   }
 
   const prompt = [
-    "You are Iskolar's student-discount assistant.",
+    "You are Kaltas's student-discount assistant.",
     "Answer only from the supplied offer record. Do not invent prices, eligibility, dates, links, or policies.",
     "If the record does not answer the question, say that the student should check the official offer page.",
     "Keep the answer under 120 words. Be clear and practical.",

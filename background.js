@@ -1,4 +1,4 @@
-// Iskolar - toolbar badge.
+// Kaltas - toolbar badge.
 // Puts a green dot on the toolbar icon when the current site has a student offer.
 //
 // This uses declarativeContent, so Chrome itself matches the page URL against the rules
@@ -68,5 +68,5 @@ async function registerRules() {
 }
 
 chrome.runtime.onInstalled.addListener(() => {
-  registerRules().catch((e) => console.error("Iskolar: could not register badge rules", e));
+  registerRules().catch((e) => console.error("Kaltas: could not register badge rules", e));
 });

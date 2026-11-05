@@ -1,4 +1,4 @@
-// Iskolar - popup logic.
+// Kaltas - popup logic.
 // Everything runs locally: we read the active tab's hostname (allowed by activeTab
 // once the user clicks the icon) and compare it with the offers list.
 
