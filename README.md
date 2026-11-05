@@ -3,8 +3,8 @@
   <h1>Kaltas: Student Discounts</h1>
   <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
   <p>
-    <a href="https://github.com/miconvr/iskolar">Source code</a> ·
-    <a href="https://github.com/miconvr/iskolar/issues">Report an offer problem</a> ·
+    <a href="https://github.com/miconvr/kaltas">Source code</a> ·
+    <a href="https://github.com/miconvr/kaltas/issues">Report an offer problem</a> ·
     <a href="PRIVACY.md">Privacy policy</a>
   </p>
 </div>
@@ -50,8 +50,8 @@ and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 ### Setup
 
 ```bash
-git clone https://github.com/miconvr/iskolar.git
-cd iskolar
+git clone https://github.com/miconvr/kaltas.git
+cd kaltas
 ```
 
 1. Open `chrome://extensions`.

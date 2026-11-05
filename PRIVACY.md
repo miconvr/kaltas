@@ -47,4 +47,4 @@ terms and privacy policy.
 
 **Contact**
 
-Questions or issues: https://github.com/miconvr/iskolar/issues
+Questions or issues: https://github.com/miconvr/kaltas/issues

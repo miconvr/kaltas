@@ -167,7 +167,7 @@ function makeCard(offer) {
   if (!isInfo(offer)) {
     const report = document.createElement("a");
     report.className = "report-link";
-    report.href = "https://github.com/miconvr/iskolar/issues/new";
+    report.href = "https://github.com/miconvr/kaltas/issues/new";
     report.target = "_blank";
     report.rel = "noopener noreferrer";
     report.textContent = "Report an outdated offer";
