@@ -1,6 +1,6 @@
 <div align="center">
   <img src="icons/logo.png" alt="Iskolar logo" width="120" height="120">
-  <h1>Iskolar</h1>
+  <h1>Iskolar: Student Discounts</h1>
   <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
   <p>
     <a href="https://github.com/miconvr/iskolar">Source code</a> ·
@@ -9,7 +9,7 @@
   </p>
 </div>
 
-Iskolar is built for students in the Philippines first, with support for global
+Iskolar: Student Discounts (Iskolar for short) is built for students in the Philippines first, with support for global
 offers. Click the extension icon on a website to see whether a student deal is
 known for that site. The project uses the clean Iskolar PNG logo for the popup
 and README, with high-resolution PNG assets for Chrome's extension icon sizes.
@@ -39,6 +39,10 @@ and README, with high-resolution PNG assets for Chrome's extension icon sizes.
 ![Browse every deal](store-assets/screenshots/02-browse-every-deal.png)
 
 ![Private by design](store-assets/screenshots/03-private-by-design.png)
+
+## Run it locally
+
+### Requirements
 
 - Google Chrome or another Chromium-based browser
 - Git
@@ -189,6 +193,12 @@ node --check popup.js
 node --check offers-loader.js
 node scripts/validate-offers.js
 ```
+
+## Disclaimer
+
+- **Independent project:** Iskolar: Student Discounts is an independent, open-source student project. It is not affiliated with, endorsed by, or connected to any other product, platform, or organization with a similar name, including scholarship platforms.
+- **Brands:** Product names, logos, and trademarks mentioned in the offer list belong to their respective owners. Mentioning them does not imply endorsement or affiliation.
+- **Offers:** Iskolar is a guide, not a guarantee. Confirm current terms on the official provider page.
 
 ## License
 
