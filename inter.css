@@ -130,3 +130,10 @@ details[open]::details-content { block-size: auto; opacity: 1; }
 
 /* badge legibility */
 :root body .summary-count { font-size: 12px !important; font-weight: 600 !important; letter-spacing: 0.2px; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }
+
+/* typography: one family everywhere, tuned for Inter */
+:root body h1,
+:root body #matches .card h2,
+:root body #matches .card .perk-figure,
+:root body #matches .empty-state strong { font-family: "Inter", system-ui, "Segoe UI", sans-serif; letter-spacing: -0.02em; }
+:root body .brand-sub { margin: 3px 0 0; color: var(--muted); font-size: 10.5px; font-weight: 600; line-height: 1.2; letter-spacing: 0.08em; text-transform: uppercase; max-width: 80px; }

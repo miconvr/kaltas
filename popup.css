@@ -317,3 +317,4 @@ footer { font-size: 10.5px; }
 .footer-links a.rate-link { display: inline-flex; align-items: center; }
 .footer-links a.rate-link svg { display: block; }
 .footer-links a.rate-link:hover { color: var(--accent); text-decoration: none; }
+.brand-sub { margin: 2px 0 0; color: var(--muted); font-size: 12px; font-weight: 500; line-height: 1.2; letter-spacing: 0; }
