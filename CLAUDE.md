@@ -1,6 +1,6 @@
 # Kaltas: agent handoff
 
-Kaltas is a Chrome extension (Manifest V3) that tells students whether the website they are on has a student discount, with a focus on the Philippines. Repo: `miconvr/iskolar`. Local folder: `$HOME\Downloads\iskolar` (Windows, PowerShell).
+Kaltas is a Chrome extension (Manifest V3) that tells students whether the website they are on has a student discount, with a focus on the Philippines. Repo: `miconvr/kaltas`. Local folder: `$HOME\Downloads\iskolar` (Windows, PowerShell).
 
 The code on `main` is the source of truth. If this file and the code disagree, fix this file.
 

@@ -57,7 +57,7 @@ cd kaltas
 1. Open `chrome://extensions`.
 2. Enable **Developer mode**.
 3. Click **Load unpacked**.
-4. Select the cloned `iskolar` folder.
+4. Select the cloned `kaltas` folder.
 5. Pin Kaltas and open it on a supported website.
 
 After changing source files, return to `chrome://extensions` and click
