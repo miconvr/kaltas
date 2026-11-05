@@ -1,6 +1,6 @@
 # Kaltas: agent handoff
 
-Kaltas is a Chrome extension (Manifest V3) that tells students whether the website they are on has a student discount, with a focus on the Philippines. Repo: `miconvr/kaltas`. Local folder: `$HOME\Downloads\iskolar` (Windows, PowerShell).
+Kaltas is a Chrome extension (Manifest V3) that tells students whether the website they are on has a student discount, with a focus on the Philippines. Repo: `miconvr/kaltas`. Local folder: `$HOME\Downloads\kaltas` (Windows, PowerShell).
 
 The code on `main` is the source of truth. If this file and the code disagree, fix this file.
 
@@ -8,7 +8,7 @@ The code on `main` is the source of truth. If this file and the code disagree, f
 
 - **When you only have chat and no repo access, deliver everything as a copy-paste PowerShell block.** Whenever you create or change a file, give the owner one terminal block that writes it, not an attachment and not a "paste this into your editor" instruction. When you have the repo checked out with push access, edit the files directly instead.
 - Write files with `[System.IO.File]::WriteAllText("$PWD\<file>", $text, (New-Object System.Text.UTF8Encoding($false)))`, using a single-quoted here-string (`@'` ... `'@`) for the content. The closing `'@` must sit at the very start of a line.
-- Start every block with `cd $HOME\Downloads\iskolar`.
+- Start every block with `cd $HOME\Downloads\kaltas`.
 - Keep pasted content ASCII-only where possible. For special characters in code, use escapes (for example `·` for the middle dot in JavaScript).
 - For small edits to an existing file, prefer a targeted `-replace` or a full rewrite. Never use `>` or `Out-File` for source files.
 - End each block with a one-line check command (for example `Select-String`) and say what output to expect.
