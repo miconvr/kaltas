@@ -141,6 +141,17 @@
     "verified": "2026-11"
   },
   {
+    "name": "Perplexity Education Pro",
+    "domains": ["perplexity.ai"],
+    "regions": ["global"],
+    "category": "AI tools",
+    "perk": "Discounted Perplexity Pro for verified students.",
+    "details": "Education Pro includes everything in Perplexity Pro. Verify as a student through SheerID from the upgrade menu in the app, and the education discount is applied automatically.",
+    "requirements": "A verified student. Verification runs through SheerID, and your school has to be in SheerID's list (you can ask SheerID to add a missing school).",
+    "caveats": "Perplexity does not publish which countries are supported, so make sure your school verifies before you pay. The discount is tied to the email you verified with and can't be transferred. Pricing can change.",
+    "url": "https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro"
+  },
+  {
     "name": "Lenovo Education Store (PH)",
     "domains": ["lenovo.com"],
     "regions": ["PH"],

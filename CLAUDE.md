@@ -105,6 +105,8 @@ The owner works in Windows PowerShell and pastes commands from chat. Past proble
 - Apple: `Apple Education Store (PH)` is `regions: ["PH"]` and links `https://www.apple.com/ph-edu/store`; the generic `Apple Education Store` is `regions: ["other"]`.
 - `Google AI Plus for Students` is `["global"]` and verified 2026-11 against Google's blog post and the Google One help page (the offer is not Philippines-only; it is unavailable in the US, Hong Kong, Macau and Tunisia, and Google's post also excludes Bolivia, Albania and Canada). Claim deadline is 2026-12-31: the entry has `"expires": "2026-12-31"`, so it hides itself after that date. Delete it in a later release.
 - Spotify and YouTube Premium stay `["global"]`, checked against their official pages: Spotify's Philippines Premium page lists a Premium Student plan, and YouTube's help page lists the Philippines among student-membership locations.
+- Perplexity Education Pro is `["global"]` with no `verified` date. Perplexity's help center confirms the discounted plan and SheerID verification but lists no supported countries, so Philippines availability is unconfirmed and the card shows "Needs review". Set `verified` once someone has verified with a Philippine school.
+- Proton's student discounts are deliberately not listed: Proton's own pages limit them to students in the US, UK, France and Germany (checked 2026-11). Revisit if the Philippines is added.
 - The AI endpoint in `api/` is deployed separately and not wired into the popup.
 
 ## Testing checklist before every push
