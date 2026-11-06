@@ -1,12 +1,21 @@
 # Privacy Policy - Kaltas: Student Discounts
 
-Last updated: November 5, 2026
+Last updated: November 6, 2026
 
-Kaltas: Student Discounts does not collect, store, transmit, or sell any personal data.
+Kaltas: Student Discounts does not collect, transmit, or sell any personal data.
 
 **What the extension does**
 
 When you click the toolbar icon, Kaltas: Student Discounts reads the hostname of your current tab (via the `activeTab` permission) and compares it with a list of student offers. The comparison happens entirely on your device. The hostname and the pages you visit are never sent anywhere.
+
+**Settings saved on your device**
+
+The popup remembers a few settings in your browser's local storage for this
+extension: your region (Philippines or Other countries), light or dark mode,
+whether the browse list or footer is hidden. The first time you open the popup,
+the region is set from your browser language and time zone, and you can change
+it any time. These settings stay on your device, are never sent anywhere, and are
+removed if you uninstall the extension.
 
 **Toolbar badge**
 

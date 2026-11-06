@@ -137,6 +137,7 @@
     "requirements": "Enrolled at a higher education institution, 18 or older, using a personal Google account (school accounts and Family Link accounts do not qualify). Each student can redeem it once.",
     "caveats": "Redeem by December 31, 2026. A payment method is required at sign-up, and after 12 months the plan switches to the regular paid price unless you cancel. Not available in every country, so check the offer page for yours.",
     "url": "https://one.google.com/ai-student",
+    "expires": "2026-12-31",
     "verified": "2026-11"
   },
   {

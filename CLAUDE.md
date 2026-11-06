@@ -45,7 +45,7 @@ Consequences you must remember:
 
 - **Offers only reach users in a new extension release.** Pushing to `main` does not update installed copies. Bump `version` in `manifest.json` and publish to the Chrome Web Store.
 - `offers.json` may be a bare array or `{ offers: [...] }`; the loader normalizes it, and `popup.js` always receives an array.
-- `isValidOffers` only checks for a non-empty list. Per-offer rules live in `scripts/validate-offers.js` (run by CI on every push).
+- `isValidOffers` only checks for a non-empty list. Per-offer rules live in `scripts/validate-offers.js` (run by CI on every push). It also rejects unknown `regions` values, bad `expires` dates, malformed domains, duplicate names, and a domain that would show two cards in the same region.
 
 ## offers.json schema
 
@@ -64,12 +64,13 @@ Each entry is an object:
 | `requirements` | string | Shown as "Who qualifies" |
 | `caveats` | string | Shown as "Good to know" |
 | `verified` | string | Month last confirmed against an official page, like `"2026-11"`. Leave it out if not verified (the card shows "Needs review") |
+| `expires` | string | Optional last day of the offer, `YYYY-MM-DD`. The popup hides the offer after it, and the toolbar dot drops it the next time rules are rebuilt (install, update or browser start) |
 
 If you rename these fields, update `popup.js` too.
 
 ## popup.js behavior
 
-- Region is `"PH"` or `"other"`. The default is guessed from `navigator.language` (`-PH` means PH), saved in localStorage as `iskolar-region`, and changeable via a picker the script builds itself.
+- Region is `"PH"` or `"other"`. The first-run default is guessed (`navigator.language` ending in `-PH`, or the `Asia/Manila` time zone, means PH, otherwise other) and saved right away in localStorage as `iskolar-region`, so it never changes unless the user changes it with the picker the script builds itself. localStorage survives closing Chrome and restarting the PC; it is lost only on uninstall, profile removal, or Incognito, and it does not sync between devices.
 - `inRegion` hides offers whose `regions` has neither `global` nor the current region.
 - Matched cards show when the active tab's hostname matches an offer's `domains`. If none match, the browse list opens (unless the user closed it).
 - Browse list entries without a usable https `url` render as plain text, not dead links.
@@ -81,7 +82,7 @@ If you rename these fields, update `popup.js` too.
 - On install and update, the service worker reads `offers.json`, collects the domains of every non-info offer, and registers one `declarativeContent` rule. Chrome swaps in a generated icon with a green dot (top right) while the active tab's host equals a domain or ends with `.domain`.
 - The dot icon is drawn at runtime with `OffscreenCanvas` from `icons/icon128.png`; there is no separate asset.
 - The badge ignores the region picker, because the service worker cannot read the popup's localStorage and `storage` is not allowed. A PH-only offer can therefore light the dot for someone set to "other". The popup still filters by region.
-- Rules are only rebuilt on install or update, which matches how offers ship.
+- Rules are rebuilt on install, update and browser start. Chrome keeps them between rebuilds. The startup rebuild is what drops offers past their `expires` date.
 
 ## Environment gotchas (this has bitten us)
 
@@ -102,7 +103,7 @@ The owner works in Windows PowerShell and pastes commands from chat. Past proble
 ## Current state and open items
 
 - Apple: `Apple Education Store (PH)` is `regions: ["PH"]` and links `https://www.apple.com/ph-edu/store`; the generic `Apple Education Store` is `regions: ["other"]`.
-- `Google AI Plus for Students` is `["global"]` and verified 2026-11 against Google's blog post and the Google One help page (the offer is not Philippines-only; it is unavailable in the US, Hong Kong, Macau and Tunisia, and Google's post also excludes Bolivia, Albania and Canada). Claim deadline is 2026-12-31: remove the entry after that date.
+- `Google AI Plus for Students` is `["global"]` and verified 2026-11 against Google's blog post and the Google One help page (the offer is not Philippines-only; it is unavailable in the US, Hong Kong, Macau and Tunisia, and Google's post also excludes Bolivia, Albania and Canada). Claim deadline is 2026-12-31: the entry has `"expires": "2026-12-31"`, so it hides itself after that date. Delete it in a later release.
 - Spotify and YouTube Premium stay `["global"]`, checked against their official pages: Spotify's Philippines Premium page lists a Premium Student plan, and YouTube's help page lists the Philippines among student-membership locations.
 - The AI endpoint in `api/` is deployed separately and not wired into the popup.
 
@@ -111,6 +112,6 @@ The owner works in Windows PowerShell and pastes commands from chat. Past proble
 - Extension reloads with no errors on chrome://extensions (check the service worker's console too).
 - `node scripts/validate-offers.js` prints OK.
 - On spotify.com the toolbar icon shows a green dot and the card has a details dropdown. On a site with no offer the icon has no dot, the message appears, and the browse list opens.
-- The region picker switches PH and other correctly, and the choice persists.
+- The region picker switches PH and other correctly, and the choice persists after closing and reopening Chrome. A fresh install with the Asia/Manila time zone starts on Philippines.
 - The browse list separator renders as a clean middle dot.
 - Before releasing, bump `version` in `manifest.json`.

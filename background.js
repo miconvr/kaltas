@@ -54,7 +54,10 @@ async function registerRules() {
     if (o.type === "info") return;
     (o.domains || []).forEach((d) => d && domains.add(d));
   });
-  if (!domains.size) return;
+  if (!domains.size) {
+    await chrome.declarativeContent.onPageChanged.removeRules();
+    return;
+  }
 
   const imageData = await makeBadgedIcon();
   const conditions = [...domains].flatMap(conditionsFor);
@@ -68,5 +71,11 @@ async function registerRules() {
 }
 
 chrome.runtime.onInstalled.addListener(() => {
+  registerRules().catch((e) => console.error("Kaltas: could not register badge rules", e));
+});
+
+// Rules survive restarts, but offers past their "expires" date are only dropped when the
+// rules are rebuilt. Rebuilding on browser start keeps the dot from lingering after expiry.
+chrome.runtime.onStartup.addListener(() => {
   registerRules().catch((e) => console.error("Kaltas: could not register badge rules", e));
 });

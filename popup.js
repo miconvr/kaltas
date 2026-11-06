@@ -14,7 +14,12 @@ function getRegion() {
     const saved = localStorage.getItem("iskolar-region");
     if (saved === "PH" || saved === "other") return saved;
   } catch {}
-  return /-PH$/i.test(navigator.language || "") ? "PH" : "other";
+  let guess = /-PH$/i.test(navigator.language || "") ? "PH" : "other";
+  try {
+    if (Intl.DateTimeFormat().resolvedOptions().timeZone === "Asia/Manila") guess = "PH";
+  } catch {}
+  saveRegion(guess);
+  return guess;
 }
 
 function saveRegion(region) {
