@@ -79,4 +79,4 @@ Kaltas is an independent, open-source student project. It is not affiliated with
 
 ## License
 
-[MIT License](LICENSE)
+Open source under the [MIT License](LICENSE). Contributions are welcome, but offer data still needs an official source and human review before it is merged.
