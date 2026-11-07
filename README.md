@@ -3,8 +3,8 @@
   <h1>Kaltas: Student Discounts</h1>
   <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
   <p>
-    <a href="https://ggl.link/kaltas">Chrome Web Store</a> ·
-    <a href="https://github.com/miconvr/kaltas/issues">Report an Offer Problem</a> ·
+    <a href="https://ggl.link/kaltas">Add to Chrome</a> ·
+    <a href="https://github.com/miconvr/kaltas/issues">Report Problem</a> ·
     <a href="PRIVACY.md">Privacy Policy</a>
   </p>
 </div>
