@@ -9,183 +9,55 @@
   </p>
 </div>
 
-Kaltas: Student Discounts (Kaltas for short) is built for students in the Philippines first, with support for global
-offers. Click the extension icon on a website to see whether a student deal is
-known for that site.
+> **Note:** Kaltas is a guide, not a guarantee. Offers can change, have country restrictions, or require verification. Confirm the current terms on the official offer page before purchasing.
 
-> **Important:** Kaltas is a guide, not a guarantee. Offers can change, have
-> country restrictions, or require verification. Always confirm the current
-> terms on the official offer page before purchasing.
+## Features
 
-## What it does
-
-- Matches the current website locally against a curated offer list
-- Shows a green dot on the toolbar icon when the site you are on has a student offer
-- Shows eligibility requirements, details, caveats, and the last verification month
-- Supports Philippines and Other countries region filters
-- Opens in a dark theme by default, with a Light option in the settings panel
-- Includes a settings panel with a Dark/Light switch and a Hide footer option
-- Keeps the footer compact so offers stay front and center
-- Includes an offline bundled offer list
-- Opens only HTTPS offer links
-- Lets users report an outdated offer through GitHub
-- Does not collect browsing history, page content, accounts, or analytics
+- Matches the current site locally against a curated offer list (Philippines first, global offers supported)
+- Green toolbar dot when the site has a student offer
+- Shows eligibility, requirements, caveats and the last verification month
+- Philippines and Other countries region filters
+- Dark theme by default, with a Light option and a Hide footer setting
+- Works offline with a bundled offer list
+- Opens HTTPS offer links only
+- Report an outdated offer through GitHub
+- No browsing history, page content, accounts or analytics collected
 
 ## Screenshots
 
-![Spot student perks](store-assets/screenshots/01-spot-student-perks.png)
+<p align="center">
+  <img src="store-assets/screenshots/01-spot-student-perks.png" alt="Spot student perks" width="640">
+</p>
+<p align="center">
+  <img src="store-assets/screenshots/02-browse-every-deal.png" alt="Browse every deal" width="640">
+</p>
+<p align="center">
+  <img src="store-assets/screenshots/03-private-by-design.png" alt="Private by design" width="640">
+</p>
 
-![Browse every deal](store-assets/screenshots/02-browse-every-deal.png)
+## Tech stack
 
-![Private by design](store-assets/screenshots/03-private-by-design.png)
+- **Extension:** Chrome Manifest V3, HTML, CSS and vanilla JavaScript
+- **Data:** bundled `offers.json` (no remote offer list)
+- **Permissions:** `activeTab` and `declarativeContent` only
+- **Optional:** Vercel function that explains an existing offer using Google Gemini (not required, no key in the extension)
 
-## Run it locally
+## Run locally
 
-### Requirements
-
-- Google Chrome or another Chromium-based browser
-- Git
-
-### Setup
+Requires Chrome (or another Chromium browser) and Git.
 
 ```bash
 git clone https://github.com/miconvr/kaltas.git
 cd kaltas
 ```
 
-1. Open `chrome://extensions`.
-2. Enable **Developer mode**.
-3. Click **Load unpacked**.
-4. Select the cloned `kaltas` folder.
-5. Pin Kaltas and open it on a supported website.
+1. Open `chrome://extensions` and enable **Developer mode**.
+2. Click **Load unpacked** and select the `kaltas` folder.
+3. Pin Kaltas and open it on a supported website.
 
-After changing source files, return to `chrome://extensions` and click
-**Reload** on Kaltas.
+After changing source files, click **Reload** on Kaltas in `chrome://extensions`.
 
-## How it works
-
-```text
-Current tab hostname
-        |
-        v
-Local domain matching
-        |
-        v
-Bundled offers.json
-        |
-        v
-Student offer cards
-```
-
-The extension uses Manifest V3 and two permissions: `activeTab` for the popup
-and `declarativeContent` for the toolbar badge. Offer matching and filtering
-happen in the popup. A green dot appears on the toolbar icon when the current
-site has a student offer: Chrome itself matches the page URL against rules built
-from `offers.json`, so the extension never reads your tabs or history. The
-extension ships with `offers.json` and does not download browsing data or a
-changing remote offer list.
-
-## Project files
-
-| File | Purpose |
-| --- | --- |
-| `manifest.json` | Manifest V3 metadata, icons, and the `activeTab` and `declarativeContent` permissions |
-| `background.js` | Service worker that adds the green toolbar badge on sites with an offer |
-| `icons/logo.png` | High-resolution Kaltas logo used in the popup and README |
-| `icons/logo.svg` | Scalable source artwork for future brand surfaces |
-| `icons/icon16.png`, `icons/icon48.png`, `icons/icon128.png` | Chrome extension icon assets |
-| `popup.html` | Popup shell |
-| `popup.css` | Popup layout, dark and light themes, and accessibility states |
-| `popup.js` | Host matching, region filtering, settings, rendering, and safe links |
-| `offers.json` | Curated student-offer source of truth |
-| `offers-loader.js` | Loads and validates the bundled offer list |
-| `scripts/validate-offers.js` | Validates offer shape and HTTPS URLs |
-| `store-assets/` | Chrome Web Store screenshots (1280x800) and promo tiles, also used in the README |
-| `api/offer-assistant.js` | Optional Vercel and Gemini companion endpoint |
-| `PRIVACY.md` | Extension privacy policy |
-
-## Adding or updating an offer
-
-Only add an offer after checking an official source. Keep the text generic so
-rotating prices, promo codes, and temporary gifts do not become stale.
-
-```json
-{
-  "name": "Example Student Plan",
-  "domains": ["example.com"],
-  "regions": ["global"],
-  "category": "Productivity",
-  "perk": "Discounted plan for verified students.",
-  "url": "https://www.example.com/students",
-  "details": "Explain the official eligibility process.",
-  "requirements": "Describe who qualifies.",
-  "caveats": "Mention country, renewal, or verification limits.",
-  "verified": "YYYY-MM"
-}
-```
-
-For an information-only entry, use `"type": "info"`, an empty `domains` array,
-and omit `url`. Run the validator before opening a pull request:
-
-```bash
-node scripts/validate-offers.js
-```
-
-Every offer update must be reviewed before it is released. The bundled list is
-the release source of truth, so data changes require a new extension release.
-
-## Optional AI assistant
-
-The extension does not contain an AI key and does not require the AI assistant.
-The optional [Vercel function](api/offer-assistant.js) can explain an existing
-curated offer using Google Gemini.
-
-It is intentionally limited. It must not discover, verify, invent, or publish
-discounts. If deployed, it receives only the student's question and the
-selected offer text.
-
-Configure these Vercel environment variables:
-
-```dotenv
-GEMINI_API_KEY=
-GEMINI_MODEL=gemini-2.0-flash
-```
-
-Before connecting it to the extension, add rate limiting, usage limits, and a
-deployed endpoint URL. Never commit an API key.
-
-## Trust and review workflow
-
-Automation may flag broken URLs or pages that changed, but it should not
-automatically publish student discounts:
-
-```text
-Scheduled source check
-        -> proposed change or issue
-        -> official-page review
-        -> pull request
-        -> updated offers.json
-        -> extension release
-```
-
-If an offer looks outdated, use the report link in the popup or open an issue
-with the official source and the reason it needs review.
-
-## Privacy
-
-Kaltas compares the current tab hostname with local data after the user opens
-the popup. It does not collect browsing history, page content, accounts, or
-analytics. Your theme and footer choices stay on your device. Read the full
-[privacy policy](PRIVACY.md).
-
-## Open source
-
-Kaltas is open source under the MIT License. Anyone can inspect the code,
-install it locally, fork it, or deploy the optional companion endpoint.
-Contributions are welcome, but offer data still needs an official source and
-human review before it is merged.
-
-## Development checks
+## Checks
 
 ```bash
 node --check popup.js
@@ -193,12 +65,18 @@ node --check offers-loader.js
 node scripts/validate-offers.js
 ```
 
+## Contributing
+
+Only add or update an offer after checking an official source, and keep the text generic so prices and promo codes don't go stale. Run `node scripts/validate-offers.js` before opening a pull request. Every offer change is reviewed before release.
+
+## Privacy
+
+Kaltas compares the current tab hostname with local data after you open the popup. Theme and footer choices stay on your device. Read the full [privacy policy](PRIVACY.md).
+
 ## Disclaimer
 
-- **Independent project:** Kaltas: Student Discounts is an independent, open-source student project. It is not affiliated with, endorsed by, or connected to any other product, platform, or organization with a similar name, including scholarship platforms.
-- **Brands:** Product names, logos, and trademarks mentioned in the offer list belong to their respective owners. Mentioning them does not imply endorsement or affiliation.
-- **Offers:** Kaltas is a guide, not a guarantee. Confirm current terms on the official provider page.
+Kaltas is an independent, open-source student project. It is not affiliated with, endorsed by, or connected to any other product, platform or organization with a similar name, including scholarship platforms. Product names, logos and trademarks in the offer list belong to their owners and do not imply endorsement.
 
 ## License
 
-The code is available under the [MIT License](LICENSE).
+[MIT License](LICENSE)
