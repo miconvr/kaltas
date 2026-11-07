@@ -4,7 +4,6 @@
   <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
   <p>
     <a href="https://ggl.link/kaltas">Chrome Web Store</a> ·
-    <a href="https://github.com/miconvr/kaltas">Source code</a> ·
     <a href="https://github.com/miconvr/kaltas/issues">Report an offer problem</a> ·
     <a href="PRIVACY.md">Privacy policy</a>
   </p>
