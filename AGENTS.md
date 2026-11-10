@@ -37,6 +37,8 @@ Run the extension locally: open `chrome://extensions`, enable Developer mode, cl
 | `offers-loader.js` | Loads offers: GitHub first, then the popup's saved copy, then the bundled `offers.json`. Shared by the popup and the service worker (`importScripts`) |
 | `offers.json` | The data. Source of truth for all perks |
 | `scripts/validate-offers.js` | Offer validator, run by `.github/workflows/validate.yml` (Node 20) |
+| `scripts/check-links.js`, `.github/workflows/link-check.yml` | Weekly link check of every offer URL. Opens or updates a `link-check` issue when links are broken or moved, and closes it when clean. Never edits `offers.json` |
+| `scripts/find-leads.js`, `scripts/discovery-sources.json`, `.github/workflows/find-leads.yml` | Weekly deal leads from public community lists. Opens a `deal-leads` issue. Leads are not verified offers. Never edits `offers.json` |
 | `api/offer-assistant.js`, `vercel.json` | Optional Vercel + Gemini endpoint. Deployed separately, not called by the extension |
 | `icons/`, `store-assets/` | Extension icons, logo, Chrome Web Store screenshots (1280x800) and promo tiles |
 | `PRIVACY.md`, `README.md`, `LICENSE` | Privacy policy, public docs, MIT license |
@@ -94,6 +96,13 @@ If you rename these fields, update `popup.js` too.
 - Set `verified` to the current month (for example `"2026-11"`) whenever an entry is re-checked against an official page.
 - Remove offers the provider has ended (for example PAL Global Student Plus, whose sales period ended 2023-12-31).
 - Automation may flag broken URLs or changed pages but must never publish a discount automatically. Flow: source check, proposed change, official-page review, pull request, merge to `main` (which publishes to users).
+
+## Weekly automation
+
+- Link check (`link-check.yml`, Mondays 02:17 UTC) runs `scripts/check-links.js`. It opens or updates one `link-check` issue when a link is broken, moved or redirects to a home page, and closes it when a later run is clean. Sites that block automated checks go in a "could not verify" list and never open an issue on their own.
+- Deal leads (`find-leads.yml`, Wednesdays 02:37 UTC) runs `scripts/find-leads.js` over the sources in `scripts/discovery-sources.json`. It opens a `deal-leads` issue with up to 10 sites that are not in `offers.json` and appear in at least `minSources` lists. It skips the week while a leads issue is still open, and sites from earlier issues are not repeated, so closing an issue marks its leads as seen.
+- Both jobs run with `contents: read` and `issues: write`. They never edit `offers.json`. A lead is not a verified offer: check the official page first (see the policy above), then add the entry and set `verified`.
+- Running either script locally writes `link-report.md` or `leads-issue.md`. Delete them before committing.
 
 ## Current state and open items
 
