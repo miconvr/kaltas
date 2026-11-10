@@ -1,0 +1,18 @@
+{
+  "minSources": 2,
+  "maxLeads": 10,
+  "sources": [
+    {
+      "name": "discount-for-student-dev",
+      "url": "https://raw.githubusercontent.com/AchoArnold/discount-for-student-dev/master/README.md"
+    },
+    {
+      "name": "Best-student-discount-services",
+      "url": "https://raw.githubusercontent.com/OpenGenus/Best-student-discount-services/master/README.md"
+    },
+    {
+      "name": "student-perks",
+      "url": "https://raw.githubusercontent.com/jhaxce/student-perks/main/README.md"
+    }
+  ]
+}
