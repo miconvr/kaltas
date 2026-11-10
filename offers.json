@@ -449,5 +449,118 @@
         "details": "Free student license for Bootstrap Studio, a desktop app for building responsive websites with the Bootstrap framework.",
         "requirements": "Current student. Apply on the official page with your student email and a website.",
         "caveats": "Valid for one year and renewable while you're still a student. Non-commercial use only, on a single computer, with one activation at a time."
+    },
+    {
+        "name": "GitKraken Student Pack",
+        "domains": [
+            "gitkraken.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "6 months of GitKraken Pro features free for students, then a discounted student rate.",
+        "url": "https://www.gitkraken.com/github-student-developer-pack",
+        "verified": "2026-11",
+        "details": "Pro features in GitKraken Desktop and GitLens, claimed through the GitHub Student Developer Pack.",
+        "requirements": "A verified GitHub Student Developer Pack. Create your GitKraken account with the GitHub sign-in option so the student license syncs.",
+        "caveats": "The free period is 6 months from your student account creation. After that you pay a discounted rate while you stay verified. Add a payment method if you want to keep access."
+    },
+    {
+        "name": "Tower Git Client for Students",
+        "domains": [
+            "git-tower.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free 12 months of Tower Pro for enrolled students.",
+        "url": "https://www.git-tower.com/students",
+        "verified": "2026-11",
+        "details": "Tower Pro, a Git client for Windows and Mac, free for students. No payment details needed.",
+        "requirements": "Enrolled student. Apply with your school email address.",
+        "caveats": "Valid for 12 months and can be extended if you reconfirm your student status. Bootcamp students should ask their instructor to apply through Tower for Education."
+    },
+    {
+        "name": "Tableau for Students",
+        "domains": [
+            "tableau.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free one-year Tableau Desktop and Tableau Prep license for students.",
+        "url": "https://www.tableau.com/academic/students",
+        "verified": "2026-11",
+        "details": "Full Tableau Desktop and Prep license for learning and data analysis, free for students at accredited schools.",
+        "requirements": "Currently enrolled at an accredited school. Fill in the form and upload proof of enrollment.",
+        "caveats": "One-year license, renewable while you are still a student. For learning use, not commercial work. Terms can change, so check the page."
+    },
+    {
+        "name": "Axure RP for Students",
+        "domains": [
+            "axure.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "Free Axure RP Team edition for students.",
+        "url": "https://www.axure.com/edu",
+        "verified": "2026-11",
+        "details": "Prototyping and documentation software, free for students and teachers at accredited schools.",
+        "requirements": "Student at an accredited high school, university or community college. Submit the education license request and wait for approval.",
+        "caveats": "One-year subscription, renewable each year you are enrolled. Not for commercial use. Approval is by Axure and can take time."
+    },
+    {
+        "name": "Codecov for Students",
+        "domains": [
+            "codecov.io"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free Codecov code coverage for students through the GitHub Student Developer Pack.",
+        "url": "https://about.codecov.io/for/education/",
+        "verified": "2026-11",
+        "details": "Code coverage reporting for your repositories, free for students and educators.",
+        "requirements": "A verified GitHub Student Developer Pack.",
+        "caveats": "An admin of your GitHub org has to approve Codecov before you can use it."
+    },
+    {
+        "name": "AlgoExpert Student Offer",
+        "domains": [
+            "algoexpert.io"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Learning",
+        "perk": "Student discount on AlgoExpert coding interview prep through the GitHub Student Developer Pack.",
+        "url": "https://www.algoexpert.io/github-students",
+        "verified": "2026-11",
+        "details": "AlgoExpert is part of the Pack's Career Readiness offers.",
+        "requirements": "A verified GitHub Student Developer Pack.",
+        "caveats": "Terms change often. Check your GitHub Education dashboard for the current offer before buying."
+    },
+    {
+        "name": "Namecheap Free .me Domain",
+        "domains": [
+            "namecheap.com",
+            "nc.me"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free .me domain for one year for students.",
+        "url": "https://nc.me",
+        "verified": "2026-11",
+        "details": "One .me domain free for a year, with an SSL certificate, claimed through the GitHub Student Developer Pack.",
+        "requirements": "A verified GitHub Student Developer Pack.",
+        "caveats": "Free for the first year only. It renews at the standard price afterwards."
     }
 ]
