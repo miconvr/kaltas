@@ -1,194 +1,453 @@
 [
-  { "name": "GitHub Student Developer Pack", "domains": ["github.com"], "regions": ["global"], "category": "Dev Tools", "perk": "Free bundle of developer tools and services for verified students.", "url": "https://education.github.com/pack", "verified": "2026-11", "details": "Free GitHub Pro for your personal account plus a bundle of partner tools and credits while you're a student.", "requirements": "Age 13 or older and enrolled in a degree- or diploma-granting program. Verify with a school email or proof of enrollment through GitHub Education.", "caveats": "Approval time varies. Partner offers can have their own limits. An academic email can only be used for one pack." },
-  { "name": "JetBrains Student License", "domains": ["jetbrains.com"], "regions": ["global"], "category": "Dev Tools", "perk": "Free educational licenses for JetBrains IDEs for students.", "url": "https://www.jetbrains.com/community/education/", "verified": "2026-11", "details": "Free personal license for JetBrains IDEs, for non-commercial learning.", "requirements": "Student at an accredited school, college or university in a program of a year or longer. Apply with a school email, an ISIC/ITIC card, or your GitHub Student Developer Pack.", "caveats": "Valid for one year, renewable while you're still studying. Non-commercial use only and can't be shared. Bootcamps and online courses don't qualify." },
-  {
-    "name": "Microsoft Azure for Students",
-    "domains": ["azure.microsoft.com"],
-    "regions": ["global"],
-    "category": "Cloud",
-    "perk": "Free Azure access with student credits and selected services.",
-    "details": "Azure for Students includes a credit for eligible new customers and access to selected free services. Microsoft says the subscription can be renewed annually while you remain a student.",
-    "requirements": "Full-time student at an accredited degree-granting institution, with academic verification",
-    "caveats": "Credits expire after the offer period and unused credits do not carry over. Usage beyond included amounts can require an upgrade, so review Azure spending controls.",
-    "url": "https://azure.microsoft.com/en-us/free/students",
-    "verified": "2026-11"
-  },
-  {
-    "name": "Autodesk Education",
-    "domains": ["autodesk.com"],
-    "regions": ["global"],
-    "category": "Design",
-    "perk": "Free one-year access to Autodesk software for eligible students.",
-    "details": "The Autodesk Education plan can include software such as AutoCAD, Maya, Revit, and Fusion. Access is renewable annually while eligibility continues.",
-    "requirements": "Student at a qualified educational institution and able to complete Autodesk's eligibility verification",
-    "caveats": "Education access is for learning and research only, not commercial or professional work. Software and eligibility rules can vary.",
-    "url": "https://www.autodesk.com/education/edu-software/overview",
-    "verified": "2026-11"
-  },
-  {
-    "name": "Zed Student Plan",
-    "domains": ["zed.dev"],
-    "regions": ["global"],
-    "category": "Dev Tools",
-    "perk": "Free Zed Pro for one year for verified university students.",
-    "details": "The student plan includes Zed Pro features, real-time collaboration, unlimited edit predictions, and monthly AI token credits.",
-    "requirements": "At least 18 years old and currently enrolled at an accredited university",
-    "caveats": "The student plan downgrades to the free plan after one year. AI model availability and included credits can change.",
-    "url": "https://zed.dev/education",
-    "verified": "2026-11"
-  },
-  {
-    "name": "Replit Student Discount",
-    "domains": ["replit.com"],
-    "regions": ["global"],
-    "category": "Dev Tools",
-    "perk": "Discounted Replit Core for students with an eligible school email.",
-    "details": "Replit's student page describes an education offer for students who verify with a school email address.",
-    "requirements": "Student with an eligible .edu or school email address",
-    "caveats": "The discount applies to a paid plan and the current price, billing terms, and verification rules can change. Replit also has a separate free Starter plan.",
-    "url": "https://replit.com/edu/students",
-    "verified": "2026-11"
-  },
-  {
-    "name": "Codecademy Pro Student",
-    "domains": ["codecademy.com"],
-    "regions": ["global"],
-    "category": "Learning",
-    "perk": "Reduced-price Codecademy Pro access for eligible students.",
-    "details": "Codecademy's Student Center says eligible students can access Pro features at more than 35% below the regular price.",
-    "requirements": "Student status verification through Codecademy's student offer",
-    "caveats": "The offer is for eligible students and the final price may vary by plan, country, taxes, and billing period.",
-    "url": "https://www.codecademy.com/student-center",
-    "verified": "2026-11"
-  },
-  { "name": "Notion for Education", "domains": ["notion.so", "notion.com"], "regions": ["global"], "category": "Productivity", "perk": "Free upgraded plan for students and educators with a school email.", "url": "https://www.notion.com/product/notion-for-education", "verified": "2026-11", "details": "Free Plus plan for a one-member workspace, with unlimited uploads and up to 100 guests.", "requirements": "Student or educator at an accredited college or university, signed in with your school email. Personal emails and student IDs are not accepted.", "caveats": "Not available to K-12. Upgrade on desktop or web, not mobile, from a Free-plan workspace with one member. If your school isn't recognized, Notion can add it if it's in the WHED." },
-  { "name": "Canva for Education", "domains": ["canva.com"], "regions": ["global"], "category": "Design", "perk": "Free for K-12 students and teachers. College students get Canva Free, with Pro only if their school offers Canva for Campus.", "url": "https://www.canva.com/education/", "verified": "2026-11", "details": "Canva Pro features are free through Canva for Education for K-12. College students use Canva Free.", "requirements": "K-12 student whose teacher or school is verified by Canva. Students cannot sign up on their own. College and university students are not eligible.", "caveats": "The teacher or school handles verification, and Canva re-checks eligibility every three years. Some colleges offer Canva for Campus, so ask your school." },
-  { "name": "Figma Education", "domains": ["figma.com"], "regions": ["global"], "category": "Design", "perk": "Free Education plan for verified students and educators.", "url": "https://www.figma.com/education/", "verified": "2026-11", "details": "Figma Education gives students the Professional plan for free, including Figma Design, FigJam, Slides and Dev Mode.", "requirements": "Current student or educator. Higher-ed students verify through SheerID. High school accounts need a school-provided email. Sign-ups with a company or professional email can be declined.", "caveats": "Figma AI features are not included. Figma cannot review documents itself, so verification problems go to SheerID." },
-  {
-    "name": "Microsoft 365 Education",
-    "domains": ["microsoft.com", "office.com"],
-    "regions": ["global"],
-    "category": "Productivity",
-    "perk": "Word, Excel, PowerPoint and Teams for students through eligible schools.",
-    "details": "Sign up with a school email address. Device discounts and Microsoft 365 Personal student pricing vary by country.",
-    "requirements": "A school email address from an eligible institution",
-    "caveats": "Philippines-specific terms were not confirmed. Availability depends on your school.",
-    "url": "https://www.microsoft.com/en-us/education/products/microsoft-365",
-    "verified": "2026-11"
-  },
-  { "name": "Adobe Creative Cloud for Students", "domains": ["adobe.com"], "regions": ["global"], "category": "Design", "perk": "Discounted Creative Cloud plans for students.", "url": "https://www.adobe.com/creativecloud/buy/students.html", "verified": "2026-11", "details": "Discounted Creative Cloud for students, with a first-year introductory rate (Adobe advertises about 71% off) and a 7-day trial.", "requirements": "Age 13 or older and enrolled in a school, college or university. Verified by school email or an uploaded enrollment document.", "caveats": "The price rises to the standard student rate after year one and Adobe may ask you to re-verify. Pricing and eligibility documents vary by country." },
-  {
-    "name": "Spotify Premium Student",
-    "domains": ["spotify.com"],
-    "regions": ["global"],
-    "category": "Entertainment",
-    "perk": "Discounted Premium plan for verified students. Availability varies by country.",
-    "details": "The Philippines has a dedicated student plan page. Verification goes through SheerID.",
-    "requirements": "Enrolled at an accredited higher-education institution",
-    "caveats": "Must re-verify every 12 months, up to four years. Introductory promotions and prices change, so confirm the current offer before subscribing.",
-    "url": "https://www.spotify.com/student/",
-    "verified": "2026-11"
-  },
-  {
-    "name": "Apple Education Store (PH)",
-    "domains": ["apple.com"],
-    "regions": ["PH"],
-    "category": "Hardware",
-    "perk": "Education pricing on Mac, iPad and Apple Watch, plus AppleCare and Apple software and services, for eligible students and educators in the Philippines.",
-    "details": "Shop in the Apple Education Store (Philippines). Verify your status through UNiDAYS with your school email before checkout.",
-    "requirements": "Student currently attending or accepted into a Philippine higher education institution, or an educator or staff member. Parents buying for a college student also qualify.",
-    "caveats": "Not every product has education pricing. Purchases are limited per year (for example one desktop and two accessories). Philippines delivery only. Seasonal promos such as gift cards change often, so check the store for current terms.",
-    "url": "https://www.apple.com/ph-edu/store",
-    "verified": "2026-11"
-  },
-  {
-    "name": "YouTube Premium Student",
-    "domains": ["youtube.com"],
-    "regions": ["global"],
-    "category": "Entertainment",
-    "perk": "Discounted membership for verified students. Availability varies by country.",
-    "details": "The Philippines is on YouTube's list of locations with student memberships. Verification goes through SheerID when you sign up.",
-    "requirements": "Enrolled at a higher education institution that SheerID supports",
-    "caveats": "Student pricing lasts up to 4 consecutive years and you must re-verify every year. Cancel any active paid YouTube membership before switching. Prices have changed before, so none are listed here.",
-    "url": "https://www.youtube.com/premium/student",
-    "verified": "2026-11"
-  },
-  {
-    "name": "Apple Education Store",
-    "domains": ["apple.com"],
-    "regions": ["other"],
-    "category": "Hardware",
-    "perk": "Education pricing on Mac and iPad for students.",
-    "details": "Apple runs a separate Education Store for each country. Open the Education page and choose your country's store before you buy.",
-    "requirements": "Verified higher-education student, parent buying for a student, or educator",
-    "caveats": "Apple limits how many discounted items you can buy per year. Promos such as gift-card offers are time-limited.",
-    "url": "https://www.apple.com/education/",
-    "verified": "2026-11"
-  },
-  { "name": "Amazon Prime Student", "domains": ["amazon.com"], "regions": ["other"], "category": "Shopping", "perk": "Discounted Prime for students where Prime Student is offered (such as the US and UK). Not confirmed for the Philippines.", "url": "https://www.amazon.com/amazonprime?primeCampaignId=studentlanding", "verified": "2026-11", "details": "Half-price Prime after a 6-month free trial. US sources list $7.49 per month or $69 per year.", "requirements": "College student, or age 18 to 24 with ID verification. The trial is for new members only.", "caveats": "Ends after 4 years, at age 25 or at graduation, then converts to regular Prime. Availability and pricing outside the US vary, so check it is offered in the Philippines." },
-  { "name": "Grammarly", "domains": ["grammarly.com"], "regions": ["global"], "category": "Writing", "perk": "Grammarly lists a limited-time 50% student discount on Pro, verified through SheerID. Check that it is still running.", "url": "https://support.grammarly.com/hc/en-us/articles/38895500890125-Does-Grammarly-offer-discounts-for-students", "verified": "2026-11", "details": "Free access if your school has a Grammarly for Education license. Some student discounts are also offered at checkout.", "requirements": "Current student. Free access depends on your school having a license, so ask your school or library.", "caveats": "Individual student discounts are not clearly advertised and sources disagree on them. Check Grammarly directly before buying." },
-  {
-    "name": "Google AI Plus for Students",
-    "domains": ["gemini.google.com", "one.google.com"],
-    "regions": ["global"],
-    "category": "AI tools",
-    "perk": "Free year of Google AI Plus for eligible college and university students.",
-    "details": "Includes 400 GB of storage and higher Gemini usage limits. Sign in with your personal Google account, open Google's student offer page, and verify your student status through SheerID.",
-    "requirements": "Enrolled at a higher education institution, 18 or older, using a personal Google account (school accounts and Family Link accounts do not qualify). Each student can redeem it once.",
-    "caveats": "Redeem by December 31, 2026. A payment method is required at sign-up, and after 12 months the plan switches to the regular paid price unless you cancel. Not available in every country, so check the offer page for yours.",
-    "url": "https://one.google.com/ai-student",
-    "expires": "2026-12-31",
-    "verified": "2026-11"
-  },
-  {
-    "name": "Perplexity Education Pro",
-    "domains": ["perplexity.ai"],
-    "regions": ["global"],
-    "category": "AI tools",
-    "perk": "Discounted Perplexity Pro for verified students.",
-    "details": "Education Pro includes everything in Perplexity Pro. Verify as a student through SheerID from the upgrade menu in the app, and the education discount is applied automatically.",
-    "requirements": "A verified student. Verification runs through SheerID, and your school has to be in SheerID's list (you can ask SheerID to add a missing school).",
-    "caveats": "Perplexity does not publish which countries are supported, so make sure your school verifies before you pay. The discount is tied to the email you verified with and can't be transferred. Pricing can change.",
-    "url": "https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro"
-  },
-  {
-    "name": "Lenovo Education Store (PH)",
-    "domains": ["lenovo.com"],
-    "regions": ["PH"],
-    "category": "Laptops",
-    "perk": "Student and educator pricing plus a welcome discount in the Lenovo Education Store.",
-    "details": "Register for the Lenovo Education Store with your school email, verify through the link Lenovo sends, then shop while signed in. Education discounts are applied automatically.",
-    "requirements": "Student or educator with a school email address ending in edu.ph",
-    "caveats": "Welcome discount amounts and extra savings change often and can have minimum spend rules. The first purchase offer is not stackable with other promotions. Check the page for current terms.",
-    "url": "https://lenovo.com/ph/en/student",
-    "verified": "2026-11"
-  },
-  {
-    "name": "Samsung Education Store (PH)",
-    "domains": ["samsung.com"],
-    "regions": ["PH"],
-    "category": "Phones & tablets",
-    "perk": "Exclusive education offers on selected Samsung products for students.",
-    "details": "Log in or sign up with your Samsung account, enter your school email to validate access, and confirm it using the link Samsung emails you. Offers then show in the Samsung Education Store.",
-    "requirements": "Current or newly accepted student of an eligible school in the Philippines, with an email address ending in edu.ph",
-    "caveats": "Discounts are for the verified student only and cannot be transferred. Offers are on the online store, not in physical shops. Products and discounts vary.",
-    "url": "https://www.samsung.com/ph/offer/education-offers/",
-    "verified": "2026-11"
-  },
-  {
-    "name": "Philippine Airlines Student Discount",
-    "domains": ["philippineairlines.com"],
-    "regions": ["PH"],
-    "category": "Travel",
-    "perk": "20% off the base fare on domestic Philippine Airlines flights for currently enrolled students.",
-    "details": "Applies to PR and 2P domestic flights, one-way and round trip. Show your school ID or a validated enrollment form when you buy the ticket over the counter or by telesales, and again at airport check-in.",
-    "requirements": "Resident Filipino citizen currently enrolled in elementary, secondary, technical-vocational or higher education. Postgraduate and short-term or seminar-type courses are not covered.",
-    "caveats": "Not valid on international or promotional fares, or on Economy Supersaver and Economy Saver base fares. Cannot be combined with another discount; you may choose a promo fare instead. Not bookable online: tickets are bought over the counter or by telesales.",
-    "url": "https://www.philippineairlines.com/en/before-you-fly/special-discounts/student",
-    "verified": "2026-11"
-  },
-  {"name": "Cathay Pacific Student Fare (PH)", "domains": ["cathaypacific.com"], "regions": ["PH"], "category": "Travel", "perk": "Up to 10% off Economy, Premium Economy and Business fares with code PHSTUDENT, plus extra baggage and a free flight change on selected fares.", "details": "Enter PHSTUDENT when searching flights on the Philippines site.", "requirements": "Valid proof of student status at airport check-in, such as an ISIC, student visa, student number or admission letter.", "caveats": "Selected fare classes only. Booking offer ends 1 Dec 2026, for travel 1 Apr 2026 to 31 Oct 2027. Without proof at check-in you must buy a new non-student ticket.", "url": "https://flights.cathaypacific.com/en_PH/offers/cathay-for-students.html", "verified": "2026-11", "expires": "2026-12-01"},
-  {"name": "Apple Music Student", "domains": ["music.apple.com"], "regions": ["PH"], "category": "Entertainment", "perk": "Discounted Apple Music plan for eligible students.", "details": "Choose the student plan in Apple Music or on Apple's Philippines Apple Music page and verify your student status when asked.", "requirements": "Currently enrolled at an eligible college or university.", "caveats": "College students only, with verification. Apple says the student offer is limited-time and may end at any time. The free first month is for new subscribers.", "url": "https://www.apple.com/ph/apple-music/", "verified": "2026-11"},
-  {"name": "Grab Student Discount (PH)", "domains": ["grab.com"], "regions": ["PH"], "category": "Transport", "perk": "20% off selected GrabCar rides for eligible students.", "details": "Apply for the student discount in the Grab app and wait for approval, then pick the discounted option when booking.", "requirements": "Valid school ID. The name on your Grab account must match your ID.", "caveats": "Based on news coverage, not the official Grab page. Covered services and terms may change. Confirm in the Grab app.", "url": "https://www.grab.com/ph/"},
-  {"name": "Angkas Student Discount", "domains": ["angkas.com"], "regions": ["PH"], "category": "Transport", "perk": "20% off Angkas rides for eligible students, by application.", "details": "Apply through the Angkas special discount form and upload the required documents.", "requirements": "Photo of your student ID and your school registration form.", "caveats": "Postgraduate, medicine and law students reportedly cannot avail. Based on news coverage, not the official Angkas page. Confirm with Angkas.", "url": "https://angkas.freshdesk.com/support/solutions/articles/72000640484-how-to-apply-for-a-student-discount", "verified": "2026-11"}
+    {
+        "name": "GitHub Student Developer Pack",
+        "domains": [
+            "github.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free bundle of developer tools and services for verified students.",
+        "url": "https://education.github.com/pack",
+        "verified": "2026-11",
+        "details": "Free GitHub Pro for your personal account plus a bundle of partner tools and credits while you're a student.",
+        "requirements": "Age 13 or older and enrolled in a degree- or diploma-granting program. Verify with a school email or proof of enrollment through GitHub Education.",
+        "caveats": "Approval time varies. Partner offers can have their own limits. An academic email can only be used for one pack."
+    },
+    {
+        "name": "JetBrains Student License",
+        "domains": [
+            "jetbrains.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free educational licenses for JetBrains IDEs for students.",
+        "url": "https://www.jetbrains.com/community/education/",
+        "verified": "2026-11",
+        "details": "Free personal license for JetBrains IDEs, for non-commercial learning.",
+        "requirements": "Student at an accredited school, college or university in a program of a year or longer. Apply with a school email, an ISIC/ITIC card, or your GitHub Student Developer Pack.",
+        "caveats": "Valid for one year, renewable while you're still studying. Non-commercial use only and can't be shared. Bootcamps and online courses don't qualify."
+    },
+    {
+        "name": "Microsoft Azure for Students",
+        "domains": [
+            "azure.microsoft.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Cloud",
+        "perk": "Free Azure access with student credits and selected services.",
+        "details": "Azure for Students includes a credit for eligible new customers and access to selected free services. Microsoft says the subscription can be renewed annually while you remain a student.",
+        "requirements": "Full-time student at an accredited degree-granting institution, with academic verification",
+        "caveats": "Credits expire after the offer period and unused credits do not carry over. Usage beyond included amounts can require an upgrade, so review Azure spending controls.",
+        "url": "https://azure.microsoft.com/en-us/free/students",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Autodesk Education",
+        "domains": [
+            "autodesk.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "Free one-year access to Autodesk software for eligible students.",
+        "details": "The Autodesk Education plan can include software such as AutoCAD, Maya, Revit, and Fusion. Access is renewable annually while eligibility continues.",
+        "requirements": "Student at a qualified educational institution and able to complete Autodesk's eligibility verification",
+        "caveats": "Education access is for learning and research only, not commercial or professional work. Software and eligibility rules can vary.",
+        "url": "https://www.autodesk.com/education/edu-software/overview",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Zed Student Plan",
+        "domains": [
+            "zed.dev"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free Zed Pro for one year for verified university students.",
+        "details": "The student plan includes Zed Pro features, real-time collaboration, unlimited edit predictions, and monthly AI token credits.",
+        "requirements": "At least 18 years old and currently enrolled at an accredited university",
+        "caveats": "The student plan downgrades to the free plan after one year. AI model availability and included credits can change.",
+        "url": "https://zed.dev/education",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Replit Student Discount",
+        "domains": [
+            "replit.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Discounted Replit Core for students with an eligible school email.",
+        "details": "Replit's student page describes an education offer for students who verify with a school email address.",
+        "requirements": "Student with an eligible .edu or school email address",
+        "caveats": "The discount applies to a paid plan and the current price, billing terms, and verification rules can change. Replit also has a separate free Starter plan.",
+        "url": "https://replit.com/edu/students",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Codecademy Pro Student",
+        "domains": [
+            "codecademy.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Learning",
+        "perk": "Reduced-price Codecademy Pro access for eligible students.",
+        "details": "Codecademy's Student Center says eligible students can access Pro features at more than 35% below the regular price.",
+        "requirements": "Student status verification through Codecademy's student offer",
+        "caveats": "The offer is for eligible students and the final price may vary by plan, country, taxes, and billing period.",
+        "url": "https://www.codecademy.com/student-center",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Notion for Education",
+        "domains": [
+            "notion.so",
+            "notion.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Productivity",
+        "perk": "Free upgraded plan for students and educators with a school email.",
+        "url": "https://www.notion.com/product/notion-for-education",
+        "verified": "2026-11",
+        "details": "Free Plus plan for a one-member workspace, with unlimited uploads and up to 100 guests.",
+        "requirements": "Student or educator at an accredited college or university, signed in with your school email. Personal emails and student IDs are not accepted.",
+        "caveats": "Not available to K-12. Upgrade on desktop or web, not mobile, from a Free-plan workspace with one member. If your school isn't recognized, Notion can add it if it's in the WHED."
+    },
+    {
+        "name": "Canva for Education",
+        "domains": [
+            "canva.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "Free for K-12 students and teachers. College students get Canva Free, with Pro only if their school offers Canva for Campus.",
+        "url": "https://www.canva.com/education/",
+        "verified": "2026-11",
+        "details": "Canva Pro features are free through Canva for Education for K-12. College students use Canva Free.",
+        "requirements": "K-12 student whose teacher or school is verified by Canva. Students cannot sign up on their own. College and university students are not eligible.",
+        "caveats": "The teacher or school handles verification, and Canva re-checks eligibility every three years. Some colleges offer Canva for Campus, so ask your school."
+    },
+    {
+        "name": "Figma Education",
+        "domains": [
+            "figma.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "Free Education plan for verified students and educators.",
+        "url": "https://www.figma.com/education/",
+        "verified": "2026-11",
+        "details": "Figma Education gives students the Professional plan for free, including Figma Design, FigJam, Slides and Dev Mode.",
+        "requirements": "Current student or educator. Higher-ed students verify through SheerID. High school accounts need a school-provided email. Sign-ups with a company or professional email can be declined.",
+        "caveats": "Figma AI features are not included. Figma cannot review documents itself, so verification problems go to SheerID."
+    },
+    {
+        "name": "Microsoft 365 Education",
+        "domains": [
+            "microsoft.com",
+            "office.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Productivity",
+        "perk": "Word, Excel, PowerPoint and Teams for students through eligible schools.",
+        "details": "Sign up with a school email address. Device discounts and Microsoft 365 Personal student pricing vary by country.",
+        "requirements": "A school email address from an eligible institution",
+        "caveats": "Philippines-specific terms were not confirmed. Availability depends on your school.",
+        "url": "https://www.microsoft.com/en-us/education/products/microsoft-365",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Adobe Creative Cloud for Students",
+        "domains": [
+            "adobe.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "Discounted Creative Cloud plans for students.",
+        "url": "https://www.adobe.com/creativecloud/buy/students.html",
+        "verified": "2026-11",
+        "details": "Discounted Creative Cloud for students, with a first-year introductory rate (Adobe advertises about 71% off) and a 7-day trial.",
+        "requirements": "Age 13 or older and enrolled in a school, college or university. Verified by school email or an uploaded enrollment document.",
+        "caveats": "The price rises to the standard student rate after year one and Adobe may ask you to re-verify. Pricing and eligibility documents vary by country."
+    },
+    {
+        "name": "Spotify Premium Student",
+        "domains": [
+            "spotify.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Entertainment",
+        "perk": "Discounted Premium plan for verified students. Availability varies by country.",
+        "details": "The Philippines has a dedicated student plan page. Verification goes through SheerID.",
+        "requirements": "Enrolled at an accredited higher-education institution",
+        "caveats": "Must re-verify every 12 months, up to four years. Introductory promotions and prices change, so confirm the current offer before subscribing.",
+        "url": "https://www.spotify.com/student/",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Apple Education Store (PH)",
+        "domains": [
+            "apple.com"
+        ],
+        "regions": [
+            "PH"
+        ],
+        "category": "Hardware",
+        "perk": "Education pricing on Mac, iPad and Apple Watch, plus AppleCare and Apple software and services, for eligible students and educators in the Philippines.",
+        "details": "Shop in the Apple Education Store (Philippines). Verify your status through UNiDAYS with your school email before checkout.",
+        "requirements": "Student currently attending or accepted into a Philippine higher education institution, or an educator or staff member. Parents buying for a college student also qualify.",
+        "caveats": "Not every product has education pricing. Purchases are limited per year (for example one desktop and two accessories). Philippines delivery only. Seasonal promos such as gift cards change often, so check the store for current terms.",
+        "url": "https://www.apple.com/ph-edu/store",
+        "verified": "2026-11"
+    },
+    {
+        "name": "YouTube Premium Student",
+        "domains": [
+            "youtube.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Entertainment",
+        "perk": "Discounted membership for verified students. Availability varies by country.",
+        "details": "The Philippines is on YouTube's list of locations with student memberships. Verification goes through SheerID when you sign up.",
+        "requirements": "Enrolled at a higher education institution that SheerID supports",
+        "caveats": "Student pricing lasts up to 4 consecutive years and you must re-verify every year. Cancel any active paid YouTube membership before switching. Prices have changed before, so none are listed here.",
+        "url": "https://www.youtube.com/premium/student",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Apple Education Store",
+        "domains": [
+            "apple.com"
+        ],
+        "regions": [
+            "other"
+        ],
+        "category": "Hardware",
+        "perk": "Education pricing on Mac and iPad for students.",
+        "details": "Apple runs a separate Education Store for each country. Open the Education page and choose your country's store before you buy.",
+        "requirements": "Verified higher-education student, parent buying for a student, or educator",
+        "caveats": "Apple limits how many discounted items you can buy per year. Promos such as gift-card offers are time-limited.",
+        "url": "https://www.apple.com/education/",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Amazon Prime Student",
+        "domains": [
+            "amazon.com"
+        ],
+        "regions": [
+            "other"
+        ],
+        "category": "Shopping",
+        "perk": "Discounted Prime for students where Prime Student is offered (such as the US and UK). Not confirmed for the Philippines.",
+        "url": "https://www.amazon.com/amazonprime?primeCampaignId=studentlanding",
+        "verified": "2026-11",
+        "details": "Half-price Prime after a 6-month free trial. US sources list $7.49 per month or $69 per year.",
+        "requirements": "College student, or age 18 to 24 with ID verification. The trial is for new members only.",
+        "caveats": "Ends after 4 years, at age 25 or at graduation, then converts to regular Prime. Availability and pricing outside the US vary, so check it is offered in the Philippines."
+    },
+    {
+        "name": "Grammarly",
+        "domains": [
+            "grammarly.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Writing",
+        "perk": "Grammarly lists a limited-time 50% student discount on Pro, verified through SheerID. Check that it is still running.",
+        "url": "https://support.grammarly.com/hc/en-us/articles/38895500890125-Does-Grammarly-offer-discounts-for-students",
+        "verified": "2026-11",
+        "details": "Free access if your school has a Grammarly for Education license. Some student discounts are also offered at checkout.",
+        "requirements": "Current student. Free access depends on your school having a license, so ask your school or library.",
+        "caveats": "Individual student discounts are not clearly advertised and sources disagree on them. Check Grammarly directly before buying."
+    },
+    {
+        "name": "Google AI Plus for Students",
+        "domains": [
+            "gemini.google.com",
+            "one.google.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "AI tools",
+        "perk": "Free year of Google AI Plus for eligible college and university students.",
+        "details": "Includes 400 GB of storage and higher Gemini usage limits. Sign in with your personal Google account, open Google's student offer page, and verify your student status through SheerID.",
+        "requirements": "Enrolled at a higher education institution, 18 or older, using a personal Google account (school accounts and Family Link accounts do not qualify). Each student can redeem it once.",
+        "caveats": "Redeem by December 31, 2026. A payment method is required at sign-up, and after 12 months the plan switches to the regular paid price unless you cancel. Not available in every country, so check the offer page for yours.",
+        "url": "https://one.google.com/ai-student",
+        "expires": "2026-12-31",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Perplexity Education Pro",
+        "domains": [
+            "perplexity.ai"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "AI tools",
+        "perk": "Discounted Perplexity Pro for verified students.",
+        "details": "Education Pro includes everything in Perplexity Pro. Verify as a student through SheerID from the upgrade menu in the app, and the education discount is applied automatically.",
+        "requirements": "A verified student. Verification runs through SheerID, and your school has to be in SheerID's list (you can ask SheerID to add a missing school).",
+        "caveats": "Perplexity does not publish which countries are supported, so make sure your school verifies before you pay. The discount is tied to the email you verified with and can't be transferred. Pricing can change.",
+        "url": "https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro"
+    },
+    {
+        "name": "Lenovo Education Store (PH)",
+        "domains": [
+            "lenovo.com"
+        ],
+        "regions": [
+            "PH"
+        ],
+        "category": "Laptops",
+        "perk": "Student and educator pricing plus a welcome discount in the Lenovo Education Store.",
+        "details": "Register for the Lenovo Education Store with your school email, verify through the link Lenovo sends, then shop while signed in. Education discounts are applied automatically.",
+        "requirements": "Student or educator with a school email address ending in edu.ph",
+        "caveats": "Welcome discount amounts and extra savings change often and can have minimum spend rules. The first purchase offer is not stackable with other promotions. Check the page for current terms.",
+        "url": "https://lenovo.com/ph/en/student",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Samsung Education Store (PH)",
+        "domains": [
+            "samsung.com"
+        ],
+        "regions": [
+            "PH"
+        ],
+        "category": "Phones & tablets",
+        "perk": "Exclusive education offers on selected Samsung products for students.",
+        "details": "Log in or sign up with your Samsung account, enter your school email to validate access, and confirm it using the link Samsung emails you. Offers then show in the Samsung Education Store.",
+        "requirements": "Current or newly accepted student of an eligible school in the Philippines, with an email address ending in edu.ph",
+        "caveats": "Discounts are for the verified student only and cannot be transferred. Offers are on the online store, not in physical shops. Products and discounts vary.",
+        "url": "https://www.samsung.com/ph/offer/education-offers/",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Philippine Airlines Student Discount",
+        "domains": [
+            "philippineairlines.com"
+        ],
+        "regions": [
+            "PH"
+        ],
+        "category": "Travel",
+        "perk": "20% off the base fare on domestic Philippine Airlines flights for currently enrolled students.",
+        "details": "Applies to PR and 2P domestic flights, one-way and round trip. Show your school ID or a validated enrollment form when you buy the ticket over the counter or by telesales, and again at airport check-in.",
+        "requirements": "Resident Filipino citizen currently enrolled in elementary, secondary, technical-vocational or higher education. Postgraduate and short-term or seminar-type courses are not covered.",
+        "caveats": "Not valid on international or promotional fares, or on Economy Supersaver and Economy Saver base fares. Cannot be combined with another discount; you may choose a promo fare instead. Not bookable online: tickets are bought over the counter or by telesales.",
+        "url": "https://www.philippineairlines.com/en/before-you-fly/special-discounts/student",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Cathay Pacific Student Fare (PH)",
+        "domains": [
+            "cathaypacific.com"
+        ],
+        "regions": [
+            "PH"
+        ],
+        "category": "Travel",
+        "perk": "Up to 10% off Economy, Premium Economy and Business fares with code PHSTUDENT, plus extra baggage and a free flight change on selected fares.",
+        "details": "Enter PHSTUDENT when searching flights on the Philippines site.",
+        "requirements": "Valid proof of student status at airport check-in, such as an ISIC, student visa, student number or admission letter.",
+        "caveats": "Selected fare classes only. Booking offer ends 1 Dec 2026, for travel 1 Apr 2026 to 31 Oct 2027. Without proof at check-in you must buy a new non-student ticket.",
+        "url": "https://flights.cathaypacific.com/en_PH/offers/cathay-for-students.html",
+        "verified": "2026-11",
+        "expires": "2026-12-01"
+    },
+    {
+        "name": "Apple Music Student",
+        "domains": [
+            "music.apple.com"
+        ],
+        "regions": [
+            "PH"
+        ],
+        "category": "Entertainment",
+        "perk": "Discounted Apple Music plan for eligible students.",
+        "details": "Choose the student plan in Apple Music or on Apple's Philippines Apple Music page and verify your student status when asked.",
+        "requirements": "Currently enrolled at an eligible college or university.",
+        "caveats": "College students only, with verification. Apple says the student offer is limited-time and may end at any time. The free first month is for new subscribers.",
+        "url": "https://www.apple.com/ph/apple-music/",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Grab Student Discount (PH)",
+        "domains": [
+            "grab.com"
+        ],
+        "regions": [
+            "PH"
+        ],
+        "category": "Transport",
+        "perk": "20% off selected GrabCar rides for eligible students.",
+        "details": "Apply for the student discount in the Grab app and wait for approval, then pick the discounted option when booking.",
+        "requirements": "Valid school ID. The name on your Grab account must match your ID.",
+        "caveats": "Based on news coverage, not the official Grab page. Covered services and terms may change. Confirm in the Grab app.",
+        "url": "https://www.grab.com/ph/"
+    },
+    {
+        "name": "Angkas Student Discount",
+        "domains": [
+            "angkas.com"
+        ],
+        "regions": [
+            "PH"
+        ],
+        "category": "Transport",
+        "perk": "20% off Angkas rides for eligible students, by application.",
+        "details": "Apply through the Angkas special discount form and upload the required documents.",
+        "requirements": "Photo of your student ID and your school registration form.",
+        "caveats": "Postgraduate, medicine and law students reportedly cannot avail. Based on news coverage, not the official Angkas page. Confirm with Angkas.",
+        "url": "https://angkas.freshdesk.com/support/solutions/articles/72000640484-how-to-apply-for-a-student-discount",
+        "verified": "2026-11"
+    },
+    {
+        "name": "Bootstrap Studio Student License",
+        "domains": [
+            "bootstrapstudio.io"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free one-year license for Bootstrap Studio for students.",
+        "url": "https://bootstrapstudio.io/pages/student-license",
+        "verified": "2026-11",
+        "details": "Free student license for Bootstrap Studio, a desktop app for building responsive websites with the Bootstrap framework.",
+        "requirements": "Current student. Apply on the official page with your student email and a website.",
+        "caveats": "Valid for one year and renewable while you're still a student. Non-commercial use only, on a single computer, with one activation at a time."
+    }
 ]
