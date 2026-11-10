@@ -18,7 +18,7 @@
 - Shows eligibility, requirements, caveats and the last verification month
 - Philippines and Other countries region filters
 - Dark theme by default, with a Light option and a Hide footer setting
-- Works offline with a bundled offer list
+- Offers refresh from GitHub when you open the popup, with a bundled list as the offline fallback
 - Opens HTTPS offer links only
 - Report an outdated offer through GitHub
 - No browsing history, page content, accounts or analytics collected
@@ -38,7 +38,7 @@
 ## Tech stack
 
 - **Extension:** Chrome Manifest V3, HTML, CSS and vanilla JavaScript
-- **Data:** bundled `offers.json` (no remote offer list)
+- **Data:** `offers.json` in this repository, fetched from GitHub with a bundled copy as the fallback
 - **Permissions:** `activeTab` and `declarativeContent` only
 - **Optional:** Vercel function that explains an existing offer using Google Gemini (not required, no key in the extension)
 
@@ -67,11 +67,11 @@ node scripts/validate-offers.js
 
 ## Contributing
 
-Only add or update an offer after checking an official source, and keep the text generic so prices and promo codes don't go stale. Run `node scripts/validate-offers.js` before opening a pull request. Every offer change is reviewed before release.
+Only add or update an offer after checking an official source, and keep the text generic so prices and promo codes don't go stale. Run `node scripts/validate-offers.js` before opening a pull request. Every offer change is reviewed before it is merged, and merging to `main` publishes it to users.
 
 ## Privacy
 
-Kaltas compares the current tab hostname with local data after you open the popup. Theme and footer choices stay on your device. Read the full [privacy policy](PRIVACY.md).
+Kaltas compares the current tab hostname with local data after you open the popup. Theme and footer choices stay on your device. To keep offers current, the popup and toolbar badge fetch the public offers file from GitHub, so GitHub can see your IP address like any website; no browsing data is sent. Read the full [privacy policy](PRIVACY.md).
 
 ## Disclaimer
 
