@@ -3,19 +3,16 @@
 //
 // This uses declarativeContent, so Chrome itself matches the page URL against the rules
 // below. The extension never reads your tabs or browsing history and needs no host
-// permissions. Rules are rebuilt from the bundled offers.json on install and update.
+// permissions. Rules are rebuilt on install, update and browser start from the offers list
+// (GitHub copy if reachable, otherwise the bundled offers.json), see offers-loader.js.
+// A new domain added on GitHub lights the dot after the next browser start or update.
 // The badge ignores the region picker (the popup's setting is not visible here), so it can
 // show on a site whose only offer is for another region. The popup still filters by region.
 
+importScripts("offers-loader.js");
+
 const DOT_COLOR = "#16a34a";
 const ICON_SIZES = [16, 32, 48];
-
-async function loadOffers() {
-  const res = await fetch(chrome.runtime.getURL("offers.json"));
-  if (!res.ok) throw new Error("Bundled offers could not be loaded");
-  const data = await res.json();
-  return Array.isArray(data) ? data : data.offers || [];
-}
 
 // The normal icon with a plain green dot in the top-right corner.
 async function makeBadgedIcon() {
