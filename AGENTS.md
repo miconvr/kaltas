@@ -9,7 +9,7 @@ The code on `main` is the source of truth. If this file and the code disagree, f
 ## Hard constraints (do not break)
 
 - Manifest V3, plain JavaScript, no build step, no npm, no frameworks.
-- Permissions are `activeTab` and `declarativeContent` only. Do not add `tabs`, `storage`, host permissions, or remote code. `declarativeContent` has no install warning and lets Chrome do the URL matching, so the extension never reads tabs or history.
+- Permissions are `activeTab` and `declarativeContent` only. Do not add `tabs`, `storage`, host permissions, or remote code. The offers file is fetched as plain data from GitHub raw, which allows cross-origin reads, so no host permission is needed. `declarativeContent` has no install warning and lets Chrome do the URL matching, so the extension never reads tabs or history.
 - Domain matching happens locally. The extension never sends the user's browsing data anywhere.
 - Only `https:` links may be opened (`safeUrl` in `popup.js` enforces this). Keep it.
 - Build DOM with `createElement` and `textContent`. Never use `innerHTML` with offer data.
@@ -30,11 +30,11 @@ Run the extension locally: open `chrome://extensions`, enable Developer mode, cl
 
 | File | Purpose |
 |---|---|
-| `manifest.json` | MV3 manifest (currently version 1.1.4) |
+| `manifest.json` | MV3 manifest (currently version 1.1.5) |
 | `popup.html` / `popup.css` | Popup shell and styling. The region picker is built in JS, so the HTML rarely changes |
 | `popup.js` | Region logic, host matching, card rendering, browse list, search, settings |
 | `background.js` | Service worker. Builds the `declarativeContent` rules and the green-dot icon |
-| `offers-loader.js` | Loads the bundled `offers.json` |
+| `offers-loader.js` | Loads offers: GitHub first, then the popup's saved copy, then the bundled `offers.json`. Shared by the popup and the service worker (`importScripts`) |
 | `offers.json` | The data. Source of truth for all perks |
 | `scripts/validate-offers.js` | Offer validator, run by `.github/workflows/validate.yml` (Node 20) |
 | `api/offer-assistant.js`, `vercel.json` | Optional Vercel + Gemini endpoint. Deployed separately, not called by the extension |
@@ -43,11 +43,11 @@ Run the extension locally: open `chrome://extensions`, enable Developer mode, cl
 
 ## How offers load (`offers-loader.js`)
 
-`loadOffers()` fetches the bundled `offers.json` from the extension package and returns it. There is no cache and no remote refresh.
+`loadOffers()` fetches `https://raw.githubusercontent.com/miconvr/kaltas/main/offers.json` (3-second timeout, `no-cache`, no credentials). On any failure it uses the popup's saved copy (`iskolar-offers-cache` in localStorage, ignored if saved by a different extension version), then the bundled `offers.json`. The service worker has no localStorage, so it goes straight from GitHub to bundled.
 
-- **Offers only reach users in a new extension release.** Pushing to `main` does not update installed copies. Bump `version` in `manifest.json` and publish to the Chrome Web Store.
+- **Merging to `main` publishes offers to users.** The popup reads the raw GitHub file each time it opens (GitHub's CDN caches it for about 5 minutes). Changes to code, the manifest or the bundled fallback still need a `version` bump and a Chrome Web Store release.
 - `offers.json` may be a bare array or `{ offers: [...] }`; the loader normalizes it, and `popup.js` always receives an array.
-- `isValidOffers` only checks for a non-empty list. Per-offer rules live in `scripts/validate-offers.js`. It also rejects unknown `regions` values, bad `expires` dates, malformed domains, duplicate names, and a domain that would show two cards in the same region.
+- `isValidOffers` (bundled file) only checks for a non-empty list. `isValidRemoteOffers` checks each offer's fields for the GitHub copy and rejects the whole file on any bad entry, falling back. The full rules live in `scripts/validate-offers.js`. It also rejects unknown `regions` values, bad `expires` dates, malformed domains, duplicate names, and a domain that would show two cards in the same region.
 
 ## `offers.json` schema
 
@@ -76,15 +76,15 @@ If you rename these fields, update `popup.js` too.
 - `inRegion` hides offers whose `regions` has neither `global` nor the current region.
 - Matched cards show when the active tab's hostname matches an offer's `domains`. If none match, the browse list opens (unless the user closed it).
 - Browse list entries without a usable https `url` render as plain text, not dead links.
-- Other localStorage keys: `iskolar-theme`, `iskolar-browse-closed`, `iskolar-footer-hidden`. The `iskolar-` prefix is historical; do not rename keys without a migration, or users lose their settings.
+- Other localStorage keys: `iskolar-theme`, `iskolar-browse-closed`, `iskolar-footer-hidden`, `iskolar-offers-cache` (last good remote offers, written by `offers-loader.js`). The `iskolar-` prefix is historical; do not rename keys without a migration, or users lose their settings.
 - Keep source files UTF-8 without BOM. Past versions had a browse-list separator character corrupted into mojibake by bad encoding; for non-ASCII characters in JS, prefer escapes (for example `\u00b7`) and check the rendering.
 
 ## Toolbar badge (`background.js`)
 
-- On install and update, the service worker reads `offers.json`, collects the domains of every non-info offer, and registers one `declarativeContent` rule. Chrome swaps in a generated icon with a green dot (top right) while the active tab's host equals a domain or ends with `.domain`.
+- On install and update, the service worker loads the offers (GitHub copy, else bundled), collects the domains of every non-info offer, and registers one `declarativeContent` rule. Chrome swaps in a generated icon with a green dot (top right) while the active tab's host equals a domain or ends with `.domain`.
 - The dot icon is drawn at runtime with `OffscreenCanvas` from `icons/icon128.png`; there is no separate asset.
 - The badge ignores the region picker, because the service worker cannot read the popup's localStorage and `storage` is not allowed. A PH-only offer can therefore light the dot for someone set to "other". The popup still filters by region.
-- Rules are rebuilt on install, update and browser start. Chrome keeps them between rebuilds. The startup rebuild is what drops offers past their `expires` date.
+- Rules are rebuilt on install, update and browser start. Chrome keeps them between rebuilds. The startup rebuild is what drops offers past their `expires` date. A domain added on GitHub lights the dot after the next browser start or update; if the network is down at that moment, the bundled list is used.
 
 ## Offer verification policy
 
@@ -93,7 +93,7 @@ If you rename these fields, update `popup.js` too.
 - Leave `verified` out and add a caveat when a source is secondary.
 - Set `verified` to the current month (for example `"2026-11"`) whenever an entry is re-checked against an official page.
 - Remove offers the provider has ended (for example PAL Global Student Plus, whose sales period ended 2023-12-31).
-- Automation may flag broken URLs or changed pages but must never publish a discount automatically. Flow: source check, proposed change, official-page review, pull request, updated `offers.json`, extension release.
+- Automation may flag broken URLs or changed pages but must never publish a discount automatically. Flow: source check, proposed change, official-page review, pull request, merge to `main` (which publishes to users).
 
 ## Current state and open items
 
@@ -108,6 +108,7 @@ If you rename these fields, update `popup.js` too.
 
 - Extension reloads with no errors on `chrome://extensions` (check the service worker's console too).
 - `node scripts/validate-offers.js` prints OK.
+- Popup DevTools, Network tab: `offers.json` loads from `raw.githubusercontent.com` (200 or 304). With throttling set to Offline the popup still lists offers. In the service worker console, `chrome.declarativeContent.onPageChanged.getRules(r => console.log(r[0].conditions.length))` prints a count.
 - On spotify.com the toolbar icon shows a green dot and the card has a details dropdown. On a site with no offer the icon has no dot, the message appears, and the browse list opens.
 - The region picker switches PH and other correctly, and the choice persists after closing and reopening Chrome. A fresh install with the Asia/Manila time zone starts on Philippines.
 - Any non-ASCII text in the popup renders cleanly (no mojibake).

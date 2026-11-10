@@ -1,8 +1,8 @@
 # Privacy Policy - Kaltas: Student Discounts
 
-Last updated: November 6, 2026
+Last updated: November 10, 2026
 
-Kaltas: Student Discounts does not collect, transmit, or sell any personal data.
+Kaltas: Student Discounts does not collect, store, or sell any personal data. To keep its offers list current, it requests one public file from GitHub, which means GitHub can see your IP address, as any website you visit can. See "Offers list" below.
 
 **What the extension does**
 
@@ -21,16 +21,14 @@ removed if you uninstall the extension.
 
 Kaltas: Student Discounts shows a green dot on its toolbar icon when the site you are on has a
 student offer. This uses Chrome's `declarativeContent` feature: the extension
-gives Chrome a list of domains from the bundled offers file, and Chrome itself
+gives Chrome a list of domains from the offers list (see "Offers list" below), and Chrome itself
 decides whether the current page matches and swaps the icon. Kaltas: Student Discounts does not
 see the pages you visit, does not read your tabs or history, and does not store
-or send anything.
+or send anything about them.
 
 **Offers list**
 
-The extension uses the bundled `offers.json` file. It does not make requests
-to update offers and does not send browsing data to the project. Offer updates
-are reviewed by the project owner and shipped in a new extension release.
+When you open the popup, and when Chrome starts or the extension updates, Kaltas requests one public file, `offers.json`, from GitHub (`raw.githubusercontent.com/miconvr/kaltas/main/offers.json`), so new and corrected offers reach you without waiting for a store update. This is an ordinary web request: GitHub, like any website, can see your IP address and the standard information a browser sends with any request. The request does not include the site you are on, your tabs, your history, or any account or identifier from the extension, and no cookies are sent. If GitHub cannot be reached or the file looks wrong, the extension uses a saved copy or the offers file bundled with the extension. The popup keeps a copy of the last good offers list in local storage on your device. Offer changes are reviewed and merged by the project owner before they appear in that file. The file contains offers only, never code.
 
 **What we do not do**
 
