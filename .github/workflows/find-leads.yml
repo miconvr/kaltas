@@ -1,0 +1,43 @@
+name: Deal leads
+on:
+  schedule:
+    - cron: "37 2 * * 3"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  leads:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check for an unfinished leads issue
+        id: open
+        run: |
+          n=$(gh issue list --label deal-leads --state open --json number --jq 'length')
+          echo "count=$n" >> "$GITHUB_OUTPUT"
+          if [ "$n" != "0" ]; then echo "An earlier leads issue is still open, skipping this week."; fi
+      - name: Collect sites already reported
+        if: steps.open.outputs.count == '0'
+        run: |
+          gh issue list --label deal-leads --state all --limit 300 --json body --jq '.[].body' \
+            | grep -o '<!-- leads: [^>]* -->' | sed 's/<!-- leads: //; s/ -->//' | tr ',' '\n' > seen.txt || true
+          touch seen.txt
+          echo "Already reported: $(grep -c . seen.txt || true) sites"
+      - name: Find leads
+        if: steps.open.outputs.count == '0'
+        id: find
+        env:
+          SEEN_FILE: seen.txt
+        run: node scripts/find-leads.js
+      - name: Open the issue
+        if: steps.open.outputs.count == '0' && steps.find.outputs.has_leads == 'true'
+        run: |
+          gh label create deal-leads --description "Weekly student-deal leads" --color 0e8a16 2>/dev/null || true
+          gh issue create --title "Student deal leads" --label deal-leads --body-file leads-issue.md
