@@ -103,6 +103,12 @@ async function loadBundledOffers() {
 }
 
 async function loadOffers() {
+  // Popup: show the saved copy instantly, refresh from GitHub in the background for next time.
+  const cached = readOffersCache();
+  if (cached) {
+    loadRemoteOffers().catch(() => {});
+    return cached;
+  }
   try {
     return await loadRemoteOffers();
   } catch (e) {
