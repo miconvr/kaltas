@@ -187,12 +187,12 @@ function categoryIcon(category) {
     "Dev Tools": ["M16 18l6-6-6-6", "M8 6l-6 6 6 6"],
     "Cloud": ["M6.5 19a4.5 4.5 0 0 1-.4-8.98 6 6 0 0 1 11.7.98A4 4 0 0 1 17.5 19Z"],
     "Design": ["M12 20h9", "M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"],
-    "AI tools": ["M12 5l1.9 5.1L19 12l-5.1 1.9L12 19l-1.9-5.1L5 12l5.1-1.9Z"],
+    "AI Tools": ["M12 5l1.9 5.1L19 12l-5.1 1.9L12 19l-1.9-5.1L5 12l5.1-1.9Z"],
     "Productivity": ["M9 11l3 3L22 4", "M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"],
     "Writing": ["M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z", "M14 2v6h6", "M16 13H8", "M16 17H8", "M10 9H8"],
     "Learning": ["M4 19.5A2.5 2.5 0 0 1 6.5 17H20", "M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"],
     "Laptops": ["M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"],
-    "Phones & tablets": ["M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z", "M12 18h.01"],
+    "Phones & Tablets": ["M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z", "M12 18h.01"],
     "Hardware": ["M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z", "M8 21h8", "M12 17v4"],
     "Entertainment": ["M9 18V5l12-2v13", "M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z", "M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"],
     "Shopping": ["M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z", "M3 6h18", "M16 10a4 4 0 0 1-8 0"],
@@ -212,16 +212,16 @@ function categoryIcon(category) {
   svg.setAttribute("aria-hidden", "true");
   svg.style.verticalAlign = "-2px";
   svg.style.marginRight = "2px";
-  (ICONS[category] || ICONS["Info"]).forEach((d) => {
+  (ICONS[Object.keys(ICONS).find((k) => k.toLowerCase() === String(category || "").toLowerCase())] || ICONS["Info"]).forEach((d) => {
     const path = document.createElementNS(SVG_NS, "path");
     path.setAttribute("d", d);
     svg.append(path);
   });
   return svg;
 }
-const CATEGORY_ORDER = ["Dev Tools", "Cloud", "Design", "AI tools", "Productivity", "Writing", "Learning", "Laptops", "Phones & tablets", "Hardware", "Entertainment", "Shopping", "Transport", "Travel"];
+const CATEGORY_ORDER = ["Dev Tools", "Cloud", "Design", "AI Tools", "Productivity", "Writing", "Learning", "Laptops", "Phones & Tablets", "Hardware", "Entertainment", "Shopping", "Transport", "Travel"];
 function categoryRank(category) {
-  const i = CATEGORY_ORDER.indexOf(category);
+  const i = CATEGORY_ORDER.findIndex((c) => c.toLowerCase() === String(category || "").toLowerCase());
   return i === -1 ? CATEGORY_ORDER.length : i;
 }
 
