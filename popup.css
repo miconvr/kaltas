@@ -346,3 +346,6 @@ html { width: 360px; overflow: hidden; }
 .label-icon { display: inline-flex; align-items: center; flex: none; }
 .label-icon svg { display: block; }
 
+
+/* Keep card width constant whether or not the outer scrollbar shows */
+:root body { scrollbar-gutter: stable; scrollbar-width: thin; }
