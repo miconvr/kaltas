@@ -99,8 +99,8 @@ If you rename these fields, update `popup.js` too.
 
 ## Weekly automation
 
-- Link check (`link-check.yml`, Mondays 02:17 UTC) runs `scripts/check-links.js`. It opens or updates one `link-check` issue when a link is broken, moved or redirects to a home page, and closes it when a later run is clean. Sites that block automated checks go in a "could not verify" list and never open an issue on their own.
-- Deal leads (`find-leads.yml`, Saturdays 02:37 UTC) runs `scripts/find-leads.js` over the sources in `scripts/discovery-sources.json`. It opens a `deal-leads` issue with up to 10 sites that are not in `offers.json` and appear in at least `minSources` lists. It skips the week while a leads issue is still open, and sites from earlier issues are not repeated, so closing an issue marks its leads as seen.
+- Link check (`link-check.yml`, Saturdays 01:30 UTC) runs `scripts/check-links.js`. It opens or updates one `link-check` issue when a link is broken, moved or redirects to a home page, and closes it when a later run is clean. Sites that block automated checks go in a "could not verify" list and never open an issue on their own.
+- Deal leads (`find-leads.yml`, Saturdays 02:30 UTC) runs `scripts/find-leads.js` over the sources in `scripts/discovery-sources.json`. It opens a `deal-leads` issue with up to 10 sites that are not in `offers.json` and appear in at least `minSources` lists. It skips the week while a leads issue is still open, and sites from earlier issues are not repeated, so closing an issue marks its leads as seen.
 - Both jobs run with `contents: read` and `issues: write`. They never edit `offers.json`. A lead is not a verified offer: check the official page first (see the policy above), then add the entry and set `verified`.
 - Running either script locally writes `link-report.md` or `leads-issue.md`. Delete them before committing.
 
