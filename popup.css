@@ -333,3 +333,10 @@ html { width: 360px; overflow: hidden; }
 
 /* Snap the offers list to exactly 5 rows (42px each) so no gap shows above the footer */
 :root body #all { max-height: 210px; }
+
+/* Restore scrolling when content is taller than 600px (deal found state) */
+:root body {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+}
