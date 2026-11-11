@@ -365,3 +365,11 @@ html { width: 360px; overflow: hidden; }
   box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .55);
 }
 :root body .settings-btn { position: relative; z-index: 60; }
+
+/* Settings overlay: clean floating card, no dimming */
+:root body #settings-panel {
+  top: 52px;
+  min-height: 0;
+  padding: 4px 16px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .45);
+}
