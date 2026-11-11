@@ -312,3 +312,18 @@ html { width: 360px; overflow: hidden; }
 :root body footer .footer-credit { display: flex; align-items: center; justify-content: center; gap: 5px; }
 :root body footer .footer-credit svg,
 :root body footer .footer-credit img { display: block; flex: none; margin: 0; vertical-align: middle; }
+
+/* Credit line: center star vertically with the text */
+:root body footer .footer-credit > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+:root body footer .footer-credit .credit-star {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  margin: 0;
+  transform: none;
+}
+:root body footer .footer-credit .credit-star svg { display: block; }
