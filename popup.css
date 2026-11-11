@@ -364,3 +364,11 @@ html { width: 360px; overflow: hidden; }
 :root body input[type=search], :root body input[type=search]:hover, :root body input[type=search]:focus, :root body input[type=search]:focus-visible { outline: none; box-shadow: none; border-color: var(--border); }
 
 :root body #search, :root body #search:hover, :root body #search:focus, :root body #search:focus-visible, :root body input[type=search]:focus, :root body input[type=search]:focus-visible { outline: none !important; box-shadow: none !important; border-color: var(--border) !important; }
+
+/* Settings panel: pops in over the logo/title row only */
+:root body .settings-panel[hidden] { display: none !important; }
+:root body .settings-panel:not([hidden]) { position: absolute; top: 16px; left: 26px; right: 64px; width: auto; height: 40px; margin: 0; padding: 0 10px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-evenly; gap: 8px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); box-shadow: 0 6px 18px rgba(0,0,0,.35); z-index: 20; transform-origin: top right; animation: settings-pop 160ms cubic-bezier(.2,.8,.2,1); }
+:root body .settings-panel:not([hidden]) .settings-item { padding: 0; border: 0; white-space: nowrap; }
+:root body .settings-panel:not([hidden]) .settings-item + .settings-item { border-top: 0; }
+@keyframes settings-pop { from { opacity: 0; transform: translateY(-6px) scale(.96); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { :root body .settings-panel:not([hidden]) { animation: none; } }
