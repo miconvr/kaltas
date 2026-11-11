@@ -343,6 +343,6 @@ html { width: 360px; overflow: hidden; }
 
 /* Icons in settings and footer links */
 .settings-item .theme-label { display: inline-flex; align-items: center; gap: 8px; }
-.label-icon, .link-icon { display: inline-flex; align-items: center; flex: none; }
-.label-icon svg, .link-icon svg { display: block; }
-.footer-links a.has-icon { display: inline-flex; align-items: center; gap: 5px; }
+.label-icon { display: inline-flex; align-items: center; flex: none; }
+.label-icon svg { display: block; }
+
