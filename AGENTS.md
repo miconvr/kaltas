@@ -2,7 +2,7 @@
 
 Guidance for any AI coding agent working in this repository (Codex, Copilot, Cursor, Gemini, and others). Human contributors can read it too.
 
-Kaltas: Student Discounts is a Chrome extension (Manifest V3) that tells students whether the website they are on has a student discount, with a focus on the Philippines. Repo: `miconvr/kaltas`.
+Kaltas is a Chrome extension (Manifest V3) that tells students whether the website they are on has a student discount, with a focus on the Philippines. Repo: `miconvr/kaltas`.
 
 The code on `main` is the source of truth. If this file and the code disagree, fix this file.
 
@@ -30,7 +30,7 @@ Run the extension locally: open `chrome://extensions`, enable Developer mode, cl
 
 | File | Purpose |
 |---|---|
-| `manifest.json` | MV3 manifest (currently version 1.1.5) |
+| `manifest.json` | MV3 manifest. Bump `version` on every release |
 | `popup.html` / `popup.css` | Popup shell and styling. The region picker is built in JS, so the HTML rarely changes |
 | `popup.js` | Region logic, host matching, card rendering, browse list, search, settings |
 | `background.js` | Service worker. Builds the `declarativeContent` rules and the green-dot icon |
