@@ -330,3 +330,6 @@ html { width: 360px; overflow: hidden; }
 
 /* Nudge credit star up to match the text's optical center */
 :root body footer .footer-credit .credit-star { transform: translateY(-1px); }
+
+/* Snap the offers list to exactly 5 rows (42px each) so no gap shows above the footer */
+:root body #all { max-height: 210px; }
