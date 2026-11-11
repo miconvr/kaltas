@@ -610,5 +610,69 @@
         "details": "Epic Games' education page for Unreal Engine, covering licensing for schools and learning resources for classrooms.",
         "requirements": "Check the official page for who qualifies. Access is arranged through an educational institution.",
         "caveats": "The offline installer request on this page is for school administrators, not students. Ask your school first, and confirm the current terms on the official page."
+    },
+    {
+        "name": "Unity Student Plan",
+        "domains": [
+            "unity.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free Unity Pro Editor and student perks for verified students.",
+        "url": "https://unity.com/products/unity-student",
+        "verified": "2026-11",
+        "details": "A free plan for students with the latest Unity Editor, Asset Store benefits, and access to Unity's cloud tools for learning and building games.",
+        "requirements": "Enrolled at an accredited educational institution. Verification is handled through SheerID.",
+        "caveats": "The plan lasts one year and can be renewed while you're still enrolled. It isn't available in some countries, so check the official page."
+    },
+    {
+        "name": "Miro Education Plan",
+        "domains": [
+            "miro.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Productivity",
+        "perk": "Free Miro Education plan for students and staff at educational institutions.",
+        "url": "https://help.miro.com/hc/articles/360017730473",
+        "verified": "2026-11",
+        "details": "The online whiteboard with unlimited boards and more team features than the free plan, for classes, projects, and study groups.",
+        "requirements": "A student or staff member of an educational institution. Apply with documentation that proves your status.",
+        "caveats": "Student teams are valid for a limited time and can reapply with updated proof. Teams with an existing paid plan may not qualify."
+    },
+    {
+        "name": "Linear Education Program",
+        "domains": [
+            "linear.app"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free paid-plan access for a year for full-time students.",
+        "url": "https://linear.app/docs/billing-and-plans",
+        "verified": "2026-11",
+        "details": "Linear's issue tracking and project management tool, free on a paid plan for full-time students through its Education Program.",
+        "requirements": "Full-time student at a qualifying academic institution. Check the official docs for how to apply.",
+        "caveats": "The discount lasts one year and approval is manual, so it can take time. Confirm current terms on the official page."
+    },
+    {
+        "name": "Linearity Education",
+        "domains": [
+            "linearity.io"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "Discounted yearly Pro plan for verified students.",
+        "url": "https://linearity.io/resources/education/",
+        "verified": "2026-11",
+        "details": "A student discount on Linearity's design tools, Curve and Move, on the yearly Pro plan.",
+        "requirements": "Verification as a student or educator through Linearity's education page.",
+        "caveats": "Pricing and availability by country can change. Confirm the current terms on the official page."
     }
 ]
