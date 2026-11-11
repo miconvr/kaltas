@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "api/offer-assistant.js": {
-      "maxDuration": 10
-    }
-  }
-}
