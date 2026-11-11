@@ -352,3 +352,13 @@ html { width: 360px; overflow: hidden; }
 
 /* Browse list: category label under the item name */
 :root body #all li small { display: block; float: none; margin: 2px 0 0; text-align: left; }
+
+/* Browse list: no divider lines between offers */
+
+
+:root body #all li a { border-bottom: 0; }
+:root body #all { max-height: 246px; }
+:root body .empty-state { padding-top: 10px; padding-bottom: 10px; margin-bottom: 10px; }
+:root body #all { max-height: 232px; }
+
+:root body input[type=search], :root body input[type=search]:hover, :root body input[type=search]:focus, :root body input[type=search]:focus-visible { outline: none; box-shadow: none; border-color: var(--border); }
