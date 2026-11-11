@@ -7,7 +7,6 @@ const OFFERS_REMOTE_URL = "https://raw.githubusercontent.com/miconvr/kaltas/main
 const OFFERS_REMOTE_TIMEOUT_MS = 3000;
 const OFFERS_REMOTE_MAX_CHARS = 500000;
 const OFFERS_CACHE_KEY = "iskolar-offers-cache";
-const OFFERS_REGIONS = ["PH", "other", "global"];
 const OFFERS_DOMAIN_RE = /^[a-z0-9]([a-z0-9.-]*[a-z0-9])?\.[a-z]{2,}$/;
 
 function offersList(data) {
@@ -34,13 +33,9 @@ function isValidOffer(o) {
   if (!domainsOk) return false;
   if (o.type === "info") {
     if (o.domains.length || o.url) return false;
-    if (!Array.isArray(o.regions) || !o.regions.length) return false;
   } else {
     if (!o.domains.length) return false;
     if (typeof o.url !== "string" || !o.url.startsWith("https://")) return false;
-  }
-  if (o.regions !== undefined) {
-    if (!Array.isArray(o.regions) || !o.regions.every((r) => OFFERS_REGIONS.includes(r))) return false;
   }
   if (o.verified !== undefined && !/^\d{4}-\d{2}$/.test(o.verified)) return false;
   if (o.expires !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(o.expires)) return false;

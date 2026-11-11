@@ -6,8 +6,6 @@
 // permissions. Rules are rebuilt on install, update and browser start from the offers list
 // (GitHub copy if reachable, otherwise the bundled offers.json), see offers-loader.js.
 // A new domain added on GitHub lights the dot after the next browser start or update.
-// The badge ignores the region picker (the popup's setting is not visible here), so it can
-// show on a site whose only offer is for another region. The popup still filters by region.
 
 importScripts("offers-loader.js");
 
