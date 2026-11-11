@@ -340,3 +340,7 @@ html { width: 360px; overflow: hidden; }
   scrollbar-width: thin;
   scrollbar-color: #555 transparent;
 }
+
+/* Tighten the gap above the footer and show the last row's separator */
+:root body #all { max-height: 212px; }
+:root body footer { margin-top: 8px; }
