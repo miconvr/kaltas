@@ -562,5 +562,101 @@
         "details": "One .me domain free for a year, with an SSL certificate, claimed through the GitHub Student Developer Pack.",
         "requirements": "A verified GitHub Student Developer Pack.",
         "caveats": "Free for the first year only. It renews at the standard price afterwards."
+    },
+    {
+        "name": "Frontend Masters Student Offer",
+        "domains": [
+            "frontendmasters.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Learning",
+        "perk": "Free access to Frontend Masters courses through the GitHub Student Developer Pack.",
+        "url": "https://frontendmasters.com/faq/students/",
+        "verified": "2026-11",
+        "details": "Frontend Masters partners with the GitHub Student Developer Pack to give students six months of free access to its platform.",
+        "requirements": "A verified GitHub Student Developer Pack.",
+        "caveats": "The free period is time-limited, so claim it when you are ready to use it."
+    },
+    {
+        "name": "Codedex Club Student Offer",
+        "domains": [
+            "codedex.io"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Learning",
+        "perk": "Free Codedex Club premium membership through the GitHub Student Developer Pack.",
+        "url": "https://www.codedex.io/",
+        "verified": "2026-11",
+        "details": "The GitHub Student Developer Pack lists six months of free Codedex Club for verified students.",
+        "requirements": "A verified GitHub Student Developer Pack.",
+        "caveats": "The free period is time-limited. Claim it from your GitHub Education pack page."
+    },
+    {
+        "name": "Educative Student Offer",
+        "domains": [
+            "educative.io"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Learning",
+        "perk": "Free Educative courses through the GitHub Student Developer Pack.",
+        "url": "https://www.educative.io/github-students",
+        "verified": "2026-11",
+        "details": "Verify your student status through GitHub on Educative's student page and the offer is applied to your account. No credit card is needed.",
+        "requirements": "A verified GitHub Student Developer Pack.",
+        "caveats": "Terms change often. Check the current offer on Educative's page before relying on it."
+    },
+    {
+        "name": "DataCamp Student Offer",
+        "domains": [
+            "datacamp.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Learning",
+        "perk": "Free months of DataCamp through the GitHub Student Developer Pack.",
+        "url": "https://www.datacamp.com/",
+        "verified": "2026-11",
+        "details": "DataCamp gives verified Pack members three months of free access to its data courses.",
+        "requirements": "A verified GitHub Student Developer Pack. For students who are not already DataCamp subscribers.",
+        "caveats": "The free period is time-limited. Claim it from your GitHub Education pack page."
+    },
+    {
+        "name": "Deepnote Education Plan",
+        "domains": [
+            "deepnote.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free Education plan for data science notebooks for students and educators.",
+        "url": "https://deepnote.com/education",
+        "verified": "2026-11",
+        "details": "The free Education plan gives access to Deepnote's collaborative notebooks and features, and is also part of the GitHub Student Developer Pack.",
+        "requirements": "A student or educator at an accredited school. Verify with a school email.",
+        "caveats": "You need to re-verify once a year. If your school email is not recognized automatically, Deepnote can verify you manually, which can take a few days."
+    },
+    {
+        "name": "Framer for Students",
+        "domains": [
+            "framer.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "Free Framer access for student portfolios and class projects.",
+        "url": "https://www.framer.com/students",
+        "verified": "2026-11",
+        "details": "Framer's student program covers hosting a portfolio or personal site and full access to the design canvas and CMS.",
+        "requirements": "Enrolled in a certified in-person or online program, such as a high school, college or university. Apply on Framer's student page.",
+        "caveats": "For personal sites, portfolios and class projects only. Commercial projects need a paid plan."
     }
 ]
