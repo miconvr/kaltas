@@ -8,25 +8,6 @@ function matchesHost(offer, host) {
   return (offer.domains || []).some((d) => host === d || host.endsWith("." + d));
 }
 
-// Region is "PH" or "other". We guess from the browser language and let the user change it.
-function getRegion() {
-  try {
-    const saved = localStorage.getItem("iskolar-region");
-    if (saved === "PH" || saved === "other") return saved;
-  } catch {}
-  let guess = /-PH$/i.test(navigator.language || "") ? "PH" : "other";
-  try {
-    if (Intl.DateTimeFormat().resolvedOptions().timeZone === "Asia/Manila") guess = "PH";
-  } catch {}
-  return guess;
-}
-
-function saveRegion(region) {
-  try {
-    localStorage.setItem("iskolar-region", region);
-  } catch {}
-}
-
 function getTheme() {
   try {
     const saved = localStorage.getItem("iskolar-theme");
@@ -80,13 +61,6 @@ function applyTheme(theme) {
 // Offers past their optional "expires" date (YYYY-MM-DD) are hidden.
 function isExpired(offer) {
   return typeof offer.expires === "string" && new Date() > new Date(offer.expires + "T23:59:59");
-}
-
-// Offers without a regions list show everywhere.
-function inRegion(offer, region) {
-  const r = offer.regions;
-  if (!Array.isArray(r) || r.length === 0) return true;
-  return r.includes("global") || r.includes(region);
 }
 
 function isInfo(offer) {
@@ -275,36 +249,19 @@ async function init() {
   const host = await getHost();
   $("site").textContent = host ? "You're on " + host : "Open a website to check it";
 
-  let region = getRegion();
   let query = "";
   let theme = getTheme();
   applyTheme(theme);
 
-  // Region picker, built here so popup.html doesn't need to change.
-  const label = document.createElement("label");
-  label.className = "region-picker";
-  label.textContent = "Region";
-  const select = document.createElement("select");
-  [["PH", "Philippines"], ["other", "Other countries"]].forEach(([value, text]) => {
-    const opt = document.createElement("option");
-    opt.value = value;
-    opt.textContent = text;
-    select.append(opt);
-  });
-  select.value = region;
-  label.dataset.region = region;
-  label.append(select);
-  
-
   let lastMatchesKey = "";
   function render() {
-    const visible = offers.filter((o) => inRegion(o, region) && !isExpired(o));
+    const visible = offers.filter((o) => !isExpired(o));
     const sites = visible.filter((o) => !isInfo(o));
     $("browse").querySelector(".summary-count").textContent = sites.length + " available";
 
     const box = $("matches");
     const hits = host ? sites.filter((o) => matchesHost(o, host)) : [];
-    const key = region + "|" + host + "|" + hits.map((o) => o.name).join(",");
+    const key = host + "|" + hits.map((o) => o.name).join(",");
     const unchanged = key === lastMatchesKey;
     lastMatchesKey = key;
     if (!unchanged) box.replaceChildren();
@@ -331,12 +288,6 @@ async function init() {
     renderList(sites, query);
   }
 
-  select.addEventListener("change", () => {
-    region = select.value;
-    label.dataset.region = region;
-    saveRegion(region);
-    render();
-  });
   $("browse").querySelector("summary").addEventListener("click", function () {
     saveBrowseClosed($("browse").open);
   });
