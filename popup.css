@@ -346,6 +346,3 @@ html { width: 360px; overflow: hidden; }
 .label-icon { display: inline-flex; align-items: center; flex: none; }
 .label-icon svg { display: block; }
 
-
-/* Keep every offers row one line so heights stay equal */
-:root body #all li a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
