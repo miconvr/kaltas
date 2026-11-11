@@ -18,7 +18,6 @@ function getRegion() {
   try {
     if (Intl.DateTimeFormat().resolvedOptions().timeZone === "Asia/Manila") guess = "PH";
   } catch {}
-  saveRegion(guess);
   return guess;
 }
 
