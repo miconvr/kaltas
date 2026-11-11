@@ -1,4 +1,4 @@
-name: Validate offers
+name: Validate Offers
 on: [push, pull_request]
 jobs:
   validate:
