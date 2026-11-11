@@ -63,10 +63,6 @@ input:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid
 .card { position: relative; margin: 10px 0; padding: 16px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); }
 .card h2 { margin: 0 0 8px; font: 500 18px/1.25 var(--serif); letter-spacing: -.01em; }
 .tag { display: inline-block; margin-bottom: 6px; padding: 2px 9px; border-radius: 999px; background: var(--chip-bg); color: var(--chip-fg); font-size: 11px; font-weight: 500; letter-spacing: .01em; }
-.verification { display: inline-flex; align-items: center; gap: 5px; margin: 0 0 10px 0; padding: 2px 9px; border-radius: 999px; background: var(--success-soft); color: var(--success); font-size: 11px; font-weight: 600; }
-.verification::before { content: "\2713"; font-size: 10px; }
-.verification-warning { background: var(--warn-soft); color: var(--warn); }
-.verification-warning::before { content: "!"; }
 .card p { margin: 0 0 14px; color: var(--fg); }
 .card details { margin: 0 0 12px; padding-top: 10px; border-top: 1px solid var(--border); }
 .card details p { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
@@ -149,10 +145,6 @@ h1 { font: 600 22px/1.1 var(--serif); letter-spacing: -.01em; }
 #matches .card:not(.info-card) { border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); }
 .tag { margin-bottom: 4px; padding: 0; background: transparent; color: var(--chip-fg); font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .card h2 { margin: 2px 0 6px; font-size: 19px; }
-.verification { margin: 0 0 10px; padding: 0; background: transparent; color: var(--muted); font-size: 11.5px; font-weight: 500; }
-.verification::before { color: var(--success); }
-.verification-warning { background: transparent; color: var(--warn); }
-.verification-warning::before { color: var(--warn); }
 .card p { margin: 0 0 12px; line-height: 1.55; }
 .card summary { font-weight: 500; }
 a.btn { padding: 8px 18px; border-radius: 999px; }

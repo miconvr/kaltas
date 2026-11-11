@@ -18,7 +18,7 @@
 
 - Matches the current site locally against a curated offer list
 - Green toolbar dot when the site has a student offer
-- Shows eligibility, requirements, caveats and the last verification month
+- Shows eligibility, requirements, and caveats
 - Dark theme by default, with a Light option and a Hide footer setting
 - Offers refresh from GitHub when you open the popup, with a bundled list as the offline fallback
 - Opens HTTPS offer links only
