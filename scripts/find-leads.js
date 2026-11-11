@@ -122,7 +122,7 @@ async function main() {
   if (!picked.length) return;
 
   let md = "Weekly student-deal leads, " + new Date().toISOString().slice(0, 10) + ".\n\n";
-  md += "These links come from public community lists. They are **leads, not verified offers**. For each one, open the official page, check that it applies in the Philippines, and only then add it to `offers.json` (set `verified` to the current month). Check each address before signing in anywhere.\n\n";
+  md += "These links come from public community lists. They are **leads, not verified offers**. For each one, open the official page, check that it is a real student offer, and only then add it to `offers.json` (set `verified` to the current month). Check each address before signing in anywhere.\n\n";
   picked.forEach((v, i) => {
     md += (i + 1) + ". **" + (v.name || v.site) + "** - " + v.url + " - in " + v.sources.size + " of " + okCount + " lists\n";
     if (v.line) md += "   > " + v.line + "\n";

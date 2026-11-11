@@ -1,7 +1,7 @@
 <div align="center">
   <img src="icons/logo.png" alt="Kaltas logo" width="120" height="120">
   <h1>Kaltas</h1>
-  <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
+  <p>A privacy-first Chrome extension that helps students find student deals, free plans and education perks on the website they are visiting.</p>
   <p>
     <a href="https://ggl.link/kaltas">Add to Chrome</a> ·
     <a href="https://github.com/miconvr/kaltas/issues">Report Problem</a> ·
@@ -16,7 +16,7 @@
 
 ## Features
 
-- Matches the current site locally against a curated offer list (global student offers)
+- Matches the current site locally against a curated offer list
 - Green toolbar dot when the site has a student offer
 - Shows eligibility, requirements, caveats and the last verification month
 - Dark theme by default, with a Light option and a Hide footer setting
