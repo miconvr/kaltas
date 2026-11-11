@@ -340,19 +340,3 @@ html { width: 360px; overflow: hidden; }
   scrollbar-width: thin;
   scrollbar-color: #555 transparent;
 }
-
-/* Tighten the gap above the footer and show the last row's separator */
-:root body #all { max-height: 212px; }
-:root body footer { margin-top: 8px; }
-
-/* Tighten vertical gaps */
-:root body { padding-bottom: 8px; }
-:root body .site-line { margin-top: 8px; }
-:root body .empty-state { margin-bottom: 8px; }
-
-/* Remove bottom space under the footer links */
-:root body { padding-bottom: 4px; }
-
-/* Close the gap between the offers list and the footer divider */
-:root body footer { margin-top: 0; }
-:root body footer .footer-divider { margin-top: 0; }
