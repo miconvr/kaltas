@@ -1,6 +1,6 @@
 # Privacy Policy - Kaltas
 
-Last updated: November 10, 2026
+Last updated: November 12, 2026
 
 Kaltas does not collect, store, or sell any personal data. To keep its offers list current, it requests one public file from GitHub, which means GitHub can see your IP address, as any website you visit can. See "Offers list" below.
 
@@ -34,14 +34,10 @@ When you open the popup, and when Chrome starts or the extension updates, Kaltas
 - No collection of browsing history or the pages you visit.
 - No sharing or selling of data, because none is collected.
 
-**Reports and optional services**
+**Reports**
 
 The "Report an outdated offer" link opens GitHub in a new tab. Any information
 you submit there is handled by GitHub, not Kaltas.
-
-The footer includes an optional tip link that opens PayPal in a new tab. Any
-payment or information you provide there is handled by PayPal, not Kaltas.
-The extension itself does not process payments.
 
 **Contact**
 
