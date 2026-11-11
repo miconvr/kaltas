@@ -530,5 +530,53 @@
         "details": "Framer's student program covers hosting a portfolio or personal site and full access to the design canvas and CMS.",
         "requirements": "Enrolled in a certified in-person or online program, such as a high school, college or university. Apply on Framer's student page.",
         "caveats": "For personal sites, portfolios and class projects only. Commercial projects need a paid plan."
+    },
+    {
+        "name": "DigitalOcean Student Credit",
+        "domains": [
+            "digitalocean.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Cloud",
+        "perk": "Free hosting credit for verified students through the GitHub Student Developer Pack.",
+        "url": "https://education.github.com/pack",
+        "verified": "2026-11",
+        "details": "Cloud hosting credit that you claim through your GitHub Student Developer Pack, usable on DigitalOcean servers and services.",
+        "requirements": "An approved GitHub Student Developer Pack, and a DigitalOcean account that meets the offer's terms.",
+        "caveats": "Credit amount and how long it lasts are set by DigitalOcean and can change. Confirm the current terms in the GitHub Pack offers list."
+    },
+    {
+        "name": ".tech Student Domain",
+        "domains": [
+            "get.tech"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Heavily discounted .tech domain registration for verified students.",
+        "url": "https://get.tech/github-student-developer-pack",
+        "verified": "2026-11",
+        "details": "A discounted first-year registration of a .tech domain for your projects and portfolio, claimed through the GitHub Student Developer Pack.",
+        "requirements": "An approved GitHub Student Developer Pack.",
+        "caveats": "Renewal pricing and referral terms are set by .tech. Check the current terms before you register."
+    },
+    {
+        "name": "Dashlane Premium for Students",
+        "domains": [
+            "dashlane.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Productivity",
+        "perk": "One free year of Dashlane Premium for students.",
+        "url": "https://www.dashlane.com/students",
+        "verified": "2026-11",
+        "details": "A free year of the Dashlane password manager's Premium plan, with a student email address.",
+        "requirements": "A valid student or university email address.",
+        "caveats": "Availability and eligibility can depend on your country or school. The student trial does not include the VPN, and it ends one year after you sign up."
     }
 ]
