@@ -222,6 +222,33 @@ async function getHost() {
 }
 
 async function init() {
+  let theme = getTheme();
+  applyTheme(theme);
+
+  const panel = $("settings-panel");
+  const gear = $("settings-btn");
+  const footerBtn = $("footer-toggle");
+  function applyFooter(hidden) {
+    document.querySelector("footer").hidden = hidden;
+    footerBtn.setAttribute("aria-pressed", String(hidden));
+  }
+  applyFooter(getFooterHidden());
+  gear.addEventListener("click", () => {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    gear.setAttribute("aria-expanded", String(open));
+  });
+  footerBtn.addEventListener("click", () => {
+    const hidden = footerBtn.getAttribute("aria-pressed") !== "true";
+    saveFooterHidden(hidden);
+    applyFooter(hidden);
+  });
+  $("theme-toggle").addEventListener("click", () => {
+    theme = theme === "light" ? "dark" : "light";
+    saveTheme(theme);
+    applyTheme(theme);
+  });
+
   let offers = [];
   try {
     offers = await loadOffers();
@@ -234,9 +261,6 @@ async function init() {
   $("site").textContent = host ? "You're on " + host : "Open a website to check it";
 
   let query = "";
-  let theme = getTheme();
-  applyTheme(theme);
-
   let lastMatchesKey = "";
   function render() {
     const visible = offers.filter((o) => !isExpired(o));
@@ -274,29 +298,6 @@ async function init() {
 
   $("browse").querySelector("summary").addEventListener("click", function () {
     saveBrowseClosed($("browse").open);
-  });
-  const panel = $("settings-panel");
-  const gear = $("settings-btn");
-  const footerBtn = $("footer-toggle");
-  function applyFooter(hidden) {
-    document.querySelector("footer").hidden = hidden;
-    footerBtn.setAttribute("aria-pressed", String(hidden));
-  }
-  applyFooter(getFooterHidden());
-  gear.addEventListener("click", () => {
-    const open = panel.hidden;
-    panel.hidden = !open;
-    gear.setAttribute("aria-expanded", String(open));
-  });
-  footerBtn.addEventListener("click", () => {
-    const hidden = footerBtn.getAttribute("aria-pressed") !== "true";
-    saveFooterHidden(hidden);
-    applyFooter(hidden);
-  });
-  $("theme-toggle").addEventListener("click", () => {
-    theme = theme === "light" ? "dark" : "light";
-    saveTheme(theme);
-    applyTheme(theme);
   });
   $("search").addEventListener("input", (e) => {
     query = e.target.value;

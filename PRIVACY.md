@@ -43,13 +43,6 @@ The footer includes an optional tip link that opens PayPal in a new tab. Any
 payment or information you provide there is handled by PayPal, not Kaltas.
 The extension itself does not process payments.
 
-The optional AI assistant is not part of the extension package and is disabled
-unless the project owner deploys the companion service. If enabled, it receives
-only the question and the selected offer's text so it can explain that offer.
-It does not receive the current hostname or browsing history. The companion
-service uses Google Gemini, which processes that request according to Google's
-terms and privacy policy.
-
 **Contact**
 
 Questions or issues: https://github.com/miconvr/kaltas/issues

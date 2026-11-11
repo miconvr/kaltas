@@ -11,9 +11,6 @@
   --btn-bg-hover: #9a4527;
   --btn-fg: #ffffff;
   --success: #2f6b49;
-  --success-soft: #e2efe6;
-  --warn: #8a5a12;
-  --warn-soft: #f6ebd3;
   --border: #e6e3d8;
   --focus: #b5532f;
   --shadow: 0 1px 2px rgba(20, 20, 19, .05);
@@ -33,9 +30,6 @@
   --btn-bg-hover: #e58c6f;
   --btn-fg: #1f1e1d;
   --success: #8fcfa6;
-  --success-soft: #2b4034;
-  --warn: #e6c27a;
-  --warn-soft: #453a22;
   --border: #44433e;
   --focus: #d97757;
   --shadow: none;
@@ -93,7 +87,6 @@ footer { margin-top: 16px; color: var(--muted); font-size: 11px; line-height: 1.
 .footer-divider { height: 1px; margin: 0 0 11px; background: var(--border); }
 footer p { margin: 0 0 7px; }
 .footer-credit { margin-bottom: 8px; color: var(--muted); }
-.footer-heart { color: var(--accent); font-size: 13px; }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; row-gap: 4px; }
 .footer-links a { padding: 0 9px; border-left: 1px solid var(--border); color: var(--muted); text-decoration: none; }
 .footer-links a:first-child { padding-left: 0; border-left: 0; }
@@ -109,32 +102,11 @@ footer p { margin: 0 0 7px; }
 .summary-count::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--accent); vertical-align: 1px; }
 
 /* Footer: interactive star rating and credit line */
-.rate-stars { display: flex; flex-direction: row-reverse; justify-content: center; gap: 6px; margin: 0 0 10px; }
-.star { color: var(--accent); font-size: 28px; line-height: 1; text-decoration: none; transition: transform 140ms var(--ease-out), opacity 140ms ease-out; }
-.rate-stars:hover .star { opacity: .3; }
-.rate-stars .star:hover, .rate-stars .star:hover ~ .star { opacity: 1; }
-.star:hover { transform: scale(1.18); }
-.rate-stars:has(.star:focus-visible) .star { opacity: .3; }
-.rate-stars .star:focus-visible, .rate-stars .star:focus-visible ~ .star { opacity: 1; }
 .footer-credit { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
 .footer-credit a { text-decoration: none; }
 .footer-credit a:hover { text-decoration: underline; text-underline-offset: 2px; }
 .credit-author { color: var(--fg); font-weight: 600; }
-.footer-note { margin: 8px 0 0; }
-@media (prefers-reduced-motion: reduce) {
-  .star { transition: none; }
-  .star:hover { transform: none; }
-}
 /* Footer: tip button */
-.tip-row { margin: 0 0 10px; }
-.tip-btn { display: inline-flex; align-items: center; padding: 6px 14px; border: 1px solid var(--accent); border-radius: 999px; color: var(--chip-fg); font-size: 12px; font-weight: 600; text-decoration: none; transition: background-color 160ms ease-out, transform 160ms ease-out; }
-.tip-btn::before { content: "\2665"; margin-right: 7px; color: var(--accent); font-size: 12px; }
-.tip-btn:hover { background: var(--chip-bg); }
-.tip-btn:active { transform: scale(.97); }
-.tip-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) {
-  .tip-btn { transition: none; }
-}
 /* Claude polish */
 body { line-height: 1.55; -webkit-font-smoothing: antialiased; }
 header { padding-top: 18px; }
@@ -164,7 +136,6 @@ li small { font-size: 12px; }
 ul { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
 
 footer { font-size: 11.5px; }
-.footer-note { font-size: 11px; }
 @media (prefers-reduced-motion: reduce) {
   a.btn::after { transition: none; }
   a.btn:hover::after { transform: none; }
@@ -189,7 +160,6 @@ header { display: flex; flex-wrap: wrap; align-items: center; column-gap: 10px; 
 
 .perk-figure { margin: 0 0 4px; color: var(--chip-fg); font: 500 22px/1.2 var(--serif); letter-spacing: -.01em; }
 
-.star { font-size: 20px; }
 
 /* Bold title and motion */
 .card h2 { font-weight: 700; font-size: 20px; letter-spacing: -.015em; }
@@ -207,7 +177,6 @@ header { display: flex; flex-wrap: wrap; align-items: center; column-gap: 10px; 
 
 .card { transition: border-color 160ms ease-out, transform 160ms var(--ease-out); }
 .card:hover { transform: translateY(-1px); }
-.tip-btn:active, a.btn:active { transform: scale(.97); }
 
 @media (prefers-reduced-motion: reduce) {
   #matches .card, #matches .empty-state, .match-label, .card details[open] p { animation: none; }
@@ -293,10 +262,6 @@ footer[hidden] { display: none !important; }
 /* Compact footer */
 footer { font-size: 10.5px; }
 .footer-credit { font-size: 11px; }
-.footer-heart { font-size: 11px; }
-.tip-btn { font-size: 11px; }
-.tip-btn::before { font-size: 11px; }
-.rate-stars .star, .star { font-size: 17px; }
 .footer-links a.gh-link { display: inline-flex; align-items: center; }
 .footer-links a.gh-link svg { display: block; }
 
@@ -304,7 +269,6 @@ footer { font-size: 10.5px; }
 .footer-links a.rate-link { display: inline-flex; align-items: center; }
 .footer-links a.rate-link svg { display: block; }
 .footer-links a.rate-link:hover { color: var(--accent); text-decoration: none; }
-.brand-sub { margin: 2px 0 0; color: var(--muted); font-size: 12px; font-weight: 500; line-height: 1.2; letter-spacing: 0; }
 
 .paypal-icon { display: inline-flex; vertical-align: middle; margin-left: 2px; }
 
@@ -314,3 +278,6 @@ footer { font-size: 10.5px; }
 .brand-row { justify-content: space-between; }
 .brand-row > div:not(.brand-mark) { flex: 1 1 auto; }
 .brand-row .settings-btn { margin-left: auto; flex: 0 0 auto; }
+
+/* Gear on the right (beats the margin reset in fonts/inter.css) */
+:root body .brand-row .settings-btn { margin-left: auto; }

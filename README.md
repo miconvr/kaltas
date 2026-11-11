@@ -42,7 +42,6 @@
 - **Extension:** Chrome Manifest V3, HTML, CSS and vanilla JavaScript
 - **Data:** `offers.json` in this repository, fetched from GitHub with a bundled copy as the fallback
 - **Permissions:** `activeTab` and `declarativeContent` only
-- **Optional:** Vercel function that explains an existing offer using Google Gemini (not required, no key in the extension)
 
 ## Run locally
 
