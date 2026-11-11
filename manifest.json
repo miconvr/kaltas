@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Kaltas: Student Discounts",
-  "version": "1.1.6",
-  "description": "See what the website you are on offers students. Matches locally. No tracking, no data collected.",
+  "name": "Kaltas",
+  "version": "1.1.7",
+  "description": "Instantly see if the site you're on has a student discount or free plan. Made for PH students. Private, no tracking.",
   "permissions": ["activeTab", "declarativeContent"],
   "background": { "service_worker": "background.js" },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Kaltas: Student Discounts",
+    "default_title": "Kaltas",
     "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
   },
   "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }

@@ -1,6 +1,6 @@
 <div align="center">
   <img src="icons/logo.png" alt="Kaltas logo" width="120" height="120">
-  <h1>Kaltas: Student Discounts</h1>
+  <h1>Kaltas</h1>
   <p>A privacy-first Chrome extension that helps students find discounts and education perks on the website they are visiting.</p>
   <p>
     <a href="https://ggl.link/kaltas">Add to Chrome</a> ·
