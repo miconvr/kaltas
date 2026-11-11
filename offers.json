@@ -210,22 +210,6 @@
         "verified": "2026-11"
     },
     {
-        "name": "Apple Education Store (PH)",
-        "domains": [
-            "apple.com"
-        ],
-        "regions": [
-            "PH"
-        ],
-        "category": "Hardware",
-        "perk": "Education pricing on Mac, iPad and Apple Watch, plus AppleCare and Apple software and services, for eligible students and educators in the Philippines.",
-        "details": "Shop in the Apple Education Store (Philippines). Verify your status through UNiDAYS with your school email before checkout.",
-        "requirements": "Student currently attending or accepted into a Philippine higher education institution, or an educator or staff member. Parents buying for a college student also qualify.",
-        "caveats": "Not every product has education pricing. Purchases are limited per year (for example one desktop and two accessories). Philippines delivery only. Seasonal promos such as gift cards change often, so check the store for current terms.",
-        "url": "https://www.apple.com/ph-edu/store",
-        "verified": "2026-11"
-    },
-    {
         "name": "YouTube Premium Student",
         "domains": [
             "youtube.com"
@@ -247,7 +231,7 @@
             "apple.com"
         ],
         "regions": [
-            "other"
+            "global"
         ],
         "category": "Hardware",
         "perk": "Education pricing on Mac and iPad for students.",
@@ -321,118 +305,6 @@
         "requirements": "A verified student. Verification runs through SheerID, and your school has to be in SheerID's list (you can ask SheerID to add a missing school).",
         "caveats": "Perplexity does not publish which countries are supported, so make sure your school verifies before you pay. The discount is tied to the email you verified with and can't be transferred. Pricing can change.",
         "url": "https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro"
-    },
-    {
-        "name": "Lenovo Education Store (PH)",
-        "domains": [
-            "lenovo.com"
-        ],
-        "regions": [
-            "PH"
-        ],
-        "category": "Laptops",
-        "perk": "Student and educator pricing plus a welcome discount in the Lenovo Education Store.",
-        "details": "Register for the Lenovo Education Store with your school email, verify through the link Lenovo sends, then shop while signed in. Education discounts are applied automatically.",
-        "requirements": "Student or educator with a school email address ending in edu.ph",
-        "caveats": "Welcome discount amounts and extra savings change often and can have minimum spend rules. The first purchase offer is not stackable with other promotions. Check the page for current terms.",
-        "url": "https://lenovo.com/ph/en/student",
-        "verified": "2026-11"
-    },
-    {
-        "name": "Samsung Education Store (PH)",
-        "domains": [
-            "samsung.com"
-        ],
-        "regions": [
-            "PH"
-        ],
-        "category": "Phones & Tablets",
-        "perk": "Exclusive education offers on selected Samsung products for students.",
-        "details": "Log in or sign up with your Samsung account, enter your school email to validate access, and confirm it using the link Samsung emails you. Offers then show in the Samsung Education Store.",
-        "requirements": "Current or newly accepted student of an eligible school in the Philippines, with an email address ending in edu.ph",
-        "caveats": "Discounts are for the verified student only and cannot be transferred. Offers are on the online store, not in physical shops. Products and discounts vary.",
-        "url": "https://www.samsung.com/ph/offer/education-offers/",
-        "verified": "2026-11"
-    },
-    {
-        "name": "Philippine Airlines Student Discount",
-        "domains": [
-            "philippineairlines.com"
-        ],
-        "regions": [
-            "PH"
-        ],
-        "category": "Travel",
-        "perk": "20% off the base fare on domestic Philippine Airlines flights for currently enrolled students.",
-        "details": "Applies to PR and 2P domestic flights, one-way and round trip. Show your school ID or a validated enrollment form when you buy the ticket over the counter or by telesales, and again at airport check-in.",
-        "requirements": "Resident Filipino citizen currently enrolled in elementary, secondary, technical-vocational or higher education. Postgraduate and short-term or seminar-type courses are not covered.",
-        "caveats": "Not valid on international or promotional fares, or on Economy Supersaver and Economy Saver base fares. Cannot be combined with another discount; you may choose a promo fare instead. Not bookable online: tickets are bought over the counter or by telesales.",
-        "url": "https://www.philippineairlines.com/en/before-you-fly/special-discounts/student",
-        "verified": "2026-11"
-    },
-    {
-        "name": "Cathay Pacific Student Fare (PH)",
-        "domains": [
-            "cathaypacific.com"
-        ],
-        "regions": [
-            "PH"
-        ],
-        "category": "Travel",
-        "perk": "Up to 10% off Economy, Premium Economy and Business fares with code PHSTUDENT, plus extra baggage and a free flight change on selected fares.",
-        "details": "Enter PHSTUDENT when searching flights on the Philippines site.",
-        "requirements": "Valid proof of student status at airport check-in, such as an ISIC, student visa, student number or admission letter.",
-        "caveats": "Selected fare classes only. Booking offer ends 1 Dec 2026, for travel 1 Apr 2026 to 31 Oct 2027. Without proof at check-in you must buy a new non-student ticket.",
-        "url": "https://flights.cathaypacific.com/en_PH/offers/cathay-for-students.html",
-        "verified": "2026-11",
-        "expires": "2026-12-01"
-    },
-    {
-        "name": "Apple Music Student",
-        "domains": [
-            "music.apple.com"
-        ],
-        "regions": [
-            "PH"
-        ],
-        "category": "Entertainment",
-        "perk": "Discounted Apple Music plan for eligible students.",
-        "details": "Choose the student plan in Apple Music or on Apple's Philippines Apple Music page and verify your student status when asked.",
-        "requirements": "Currently enrolled at an eligible college or university.",
-        "caveats": "College students only, with verification. Apple says the student offer is limited-time and may end at any time. The free first month is for new subscribers.",
-        "url": "https://www.apple.com/ph/apple-music/",
-        "verified": "2026-11"
-    },
-    {
-        "name": "Grab Student Discount (PH)",
-        "domains": [
-            "grab.com"
-        ],
-        "regions": [
-            "PH"
-        ],
-        "category": "Transport",
-        "perk": "20% off selected GrabCar rides for eligible students.",
-        "details": "Apply for the student discount in the Grab app and wait for approval, then pick the discounted option when booking.",
-        "requirements": "Valid school ID. The name on your Grab account must match your ID.",
-        "caveats": "Based on news coverage, not the official Grab page. Covered services and terms may change. Confirm in the Grab app.",
-        "url": "https://www.grab.com/ph/"
-    },
-    {
-        "name": "Angkas Student Discount",
-        "domains": [
-            "angkas.com"
-        ],
-        "regions": [
-            "PH"
-        ],
-        "category": "Transport",
-        "perk": "20% off Angkas rides for eligible students, by application.",
-        "details": "Apply through the Angkas special discount form and upload the required documents.",
-        "requirements": "Photo of your student ID and your school registration form.",
-        "caveats": "Postgraduate, medicine and law students reportedly cannot avail. Based on news coverage, not the official Angkas page. Confirm with Angkas.",
-        "url": "https://angkas.freshdesk.com/support/solutions/articles/72000640484-how-to-apply-for-a-student-discount",
-        "verified": "2026-11"
     },
     {
         "name": "Bootstrap Studio Student License",
