@@ -7,6 +7,9 @@
     <a href="https://github.com/miconvr/kaltas/issues">Report Problem</a> ·
     <a href="PRIVACY.md">Privacy Policy</a>
   </p>
+  <p>
+    <a href="https://github.com/miconvr/kaltas/actions/workflows/validate.yml"><img src="https://github.com/miconvr/kaltas/actions/workflows/validate.yml/badge.svg?branch=main" alt="Validate Offers status"></a>
+  </p>
 </div>
 
 > **Note:** Kaltas is a guide, not a guarantee. Offers can change, have country restrictions, or require verification. Confirm the current terms on the official offer page before purchasing.
