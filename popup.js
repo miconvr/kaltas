@@ -53,9 +53,9 @@ function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   const button = $("theme-toggle");
   const dark = theme === "dark";
-  button.setAttribute("aria-label", dark ? "Enable light mode" : "Enable dark mode");
+  button.setAttribute("aria-label", dark ? "Disable dark mode" : "Enable dark mode");
   button.setAttribute("aria-pressed", String(dark));
-  button.querySelector(".theme-label").textContent = dark ? "Light mode" : "Dark mode";
+  button.querySelector(".theme-label").textContent = "Dark mode";
 }
 
 // Offers past their optional "expires" date (YYYY-MM-DD) are hidden.
