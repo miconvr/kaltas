@@ -578,5 +578,21 @@
         "details": "A free year of the Dashlane password manager's Premium plan, with a student email address.",
         "requirements": "A valid student or university email address.",
         "caveats": "Availability and eligibility can depend on your country or school. The student trial does not include the VPN, and it ends one year after you sign up."
+    },
+    {
+        "name": "Evernote Student Discount",
+        "domains": [
+            "evernote.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Productivity",
+        "perk": "Discount on a paid Evernote plan for verified students.",
+        "url": "https://evernote.com/students",
+        "verified": "2026-11",
+        "details": "A student discount on an annual paid Evernote plan for taking and organizing notes across your devices.",
+        "requirements": "Verified student status. The offer is for students who don't currently have a paid Evernote subscription.",
+        "caveats": "Discount amount and eligible plans can change. Some schools' email domains may not qualify, so confirm on the official page before you pay."
     }
 ]
