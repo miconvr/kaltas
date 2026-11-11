@@ -2,7 +2,7 @@
 
 Guidance for any AI coding agent working in this repository (Codex, Copilot, Cursor, Gemini, and others). Human contributors can read it too.
 
-Kaltas is a Chrome extension (Manifest V3) that tells students whether the website they are on has a student discount, with a focus on the Philippines. Repo: `miconvr/kaltas`.
+Kaltas is a Chrome extension (Manifest V3) that tells students whether the website they are on has a student discount. Repo: `miconvr/kaltas`.
 
 The code on `main` is the source of truth. If this file and the code disagree, fix this file.
 
@@ -32,7 +32,7 @@ Run the extension locally: open `chrome://extensions`, enable Developer mode, cl
 |---|---|
 | `manifest.json` | MV3 manifest. Bump `version` on every release |
 | `popup.html` / `popup.css` | Popup shell and styling. The region picker is built in JS, so the HTML rarely changes |
-| `popup.js` | Region logic, host matching, card rendering, browse list, search, settings |
+| `popup.js` | Host matching, card rendering, browse list, search, settings |
 | `background.js` | Service worker. Builds the `declarativeContent` rules and the green-dot icon |
 | `offers-loader.js` | Loads offers: GitHub first, then the popup's saved copy, then the bundled `offers.json`. Shared by the popup and the service worker (`importScripts`) |
 | `offers.json` | The data. Source of truth for all perks |
@@ -74,8 +74,7 @@ If you rename these fields, update `popup.js` too.
 
 ## `popup.js` behavior
 
-- Region is `"PH"` or `"other"`. The first-run default is guessed (`navigator.language` ending in `-PH`, or the `Asia/Manila` time zone, means PH, otherwise other) and saved right away in localStorage as `iskolar-region`, so it never changes unless the user changes it with the picker the script builds itself. localStorage survives closing Chrome and restarting the PC; it is lost only on uninstall, profile removal, or Incognito, and it does not sync between devices.
-- `inRegion` hides offers whose `regions` has neither `global` nor the current region.
+- There is no region picker. Every offer shows for everyone, so keep `regions` as `["global"]` on all entries (the loader and validator still require a region tag). Put country availability in `requirements` and `details`.
 - Matched cards show when the active tab's hostname matches an offer's `domains`. If none match, the browse list opens (unless the user closed it).
 - Browse list entries without a usable https `url` render as plain text, not dead links.
 - Other localStorage keys: `iskolar-theme`, `iskolar-browse-closed`, `iskolar-footer-hidden`, `iskolar-offers-cache` (last good remote offers, written by `offers-loader.js`). The `iskolar-` prefix is historical; do not rename keys without a migration, or users lose their settings.
@@ -85,7 +84,6 @@ If you rename these fields, update `popup.js` too.
 
 - On install and update, the service worker loads the offers (GitHub copy, else bundled), collects the domains of every non-info offer, and registers one `declarativeContent` rule. Chrome swaps in a generated icon with a green dot (top right) while the active tab's host equals a domain or ends with `.domain`.
 - The dot icon is drawn at runtime with `OffscreenCanvas` from `icons/icon128.png`; there is no separate asset.
-- The badge ignores the region picker, because the service worker cannot read the popup's localStorage and `storage` is not allowed. A PH-only offer can therefore light the dot for someone set to "other". The popup still filters by region.
 - Rules are rebuilt on install, update and browser start. Chrome keeps them between rebuilds. The startup rebuild is what drops offers past their `expires` date. A domain added on GitHub lights the dot after the next browser start or update; if the network is down at that moment, the bundled list is used.
 
 ## Offer verification policy
@@ -106,7 +104,6 @@ If you rename these fields, update `popup.js` too.
 
 ## Current state and open items
 
-- Apple: `Apple Education Store (PH)` is `regions: ["PH"]` and links `https://www.apple.com/ph-edu/store`; the generic `Apple Education Store` is `regions: ["other"]`.
 - `Google AI Plus for Students` is `["global"]`, verified 2026-11 against Google's blog post and the Google One help page. It is unavailable in the US, Hong Kong, Macau and Tunisia, and Google's post also excludes Bolivia, Albania and Canada. Claim deadline is 2026-12-31, so the entry has `"expires": "2026-12-31"` and hides itself after that date. Delete it in a later release.
 - Spotify and YouTube Premium stay `["global"]`, checked against their official pages.
 - Perplexity Education Pro is `["global"]` with no `verified` date. Philippines availability is unconfirmed, so the card shows "Needs review". Set `verified` once someone has verified with a Philippine school.
@@ -119,7 +116,6 @@ If you rename these fields, update `popup.js` too.
 - `node scripts/validate-offers.js` prints OK.
 - Popup DevTools, Network tab: `offers.json` loads from `raw.githubusercontent.com` (200 or 304). With throttling set to Offline the popup still lists offers. In the service worker console, `chrome.declarativeContent.onPageChanged.getRules(r => console.log(r[0].conditions.length))` prints a count.
 - On spotify.com the toolbar icon shows a green dot and the card has a details dropdown. On a site with no offer the icon has no dot, the message appears, and the browse list opens.
-- The region picker switches PH and other correctly, and the choice persists after closing and reopening Chrome. A fresh install with the Asia/Manila time zone starts on Philippines.
 - Any non-ASCII text in the popup renders cleanly (no mojibake).
 - Before releasing, bump `version` in `manifest.json`.
 

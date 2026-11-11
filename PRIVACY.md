@@ -11,10 +11,8 @@ When you click the toolbar icon, Kaltas reads the hostname of your current tab (
 **Settings saved on your device**
 
 The popup remembers a few settings in your browser's local storage for this
-extension: your region (Philippines or Other countries), light or dark mode,
-whether the browse list or footer is hidden. The first time you open the popup,
-the region is set from your browser language and time zone, and you can change
-it any time. These settings stay on your device, are never sent anywhere, and are
+extension: light or dark mode and whether the browse list or footer is hidden.
+These settings stay on your device, are never sent anywhere, and are
 removed if you uninstall the extension.
 
 **Toolbar badge**
