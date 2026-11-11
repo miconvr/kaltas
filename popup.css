@@ -290,3 +290,17 @@ footer { font-size: 10.5px; }
 :root body footer .footer-links { justify-content: center; }
 :root body footer .footer-links a:last-child { padding-right: 0; }
 :root body footer .footer-credit { justify-content: center; text-align: center; width: 100%; }
+
+/* Layout fix: fixed width, capped height, no horizontal scroll */
+html { width: 360px; overflow: hidden; }
+:root body {
+  width: 360px;
+  max-width: 360px;
+  max-height: 600px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+}
+:root body *, :root body *::before, :root body *::after { box-sizing: border-box; }
+:root body img, :root body svg { max-width: 100%; }
