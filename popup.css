@@ -356,3 +356,12 @@ html { width: 360px; overflow: hidden; }
   box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
 }
 :root body #settings-panel[hidden] { display: none !important; }
+
+/* Settings overlay: cover the top section fully, dim the rest */
+:root body #settings-panel {
+  top: 52px;
+  min-height: 122px;
+  padding: 8px 16px;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .55);
+}
+:root body .settings-btn { position: relative; z-index: 60; }
