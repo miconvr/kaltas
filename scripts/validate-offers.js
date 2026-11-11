@@ -1,4 +1,4 @@
-// Fails the build if offers.json is malformed. Run: node scripts/validate-offers.js
+﻿// Fails the build if offers.json is malformed. Run: node scripts/validate-offers.js
 const fs = require("fs");
 const data = JSON.parse(fs.readFileSync("offers.json", "utf8"));
 const offers = Array.isArray(data) ? data : data.offers;
@@ -8,7 +8,6 @@ if (!Array.isArray(offers) || !offers.length) {
 }
 
 const required = ["name", "domains", "category", "perk"];
-const VALID_REGIONS = ["PH", "other", "global"];
 let errors = 0;
 const names = new Set();
 
@@ -25,8 +24,8 @@ offers.forEach((o, i) => {
   }
   const domains = Array.isArray(o.domains) ? o.domains : [];
   if (o.type === "info") {
-    if (domains.length || o.url || !Array.isArray(o.regions) || !o.regions.length) {
-      console.error(`${label}: info entries must have empty domains, no url, and a region`);
+    if (domains.length || o.url) {
+      console.error(`${label}: info entries must have empty domains and no url`);
       errors++;
     }
   } else if (!o.url) {
@@ -34,19 +33,6 @@ offers.forEach((o, i) => {
   }
   if (o.url && !/^https:\/\//.test(o.url)) { console.error(`${label}: url must be https`); errors++; }
   if (o.verified && !/^\d{4}-\d{2}$/.test(o.verified)) { console.error(`${label}: verified must be YYYY-MM`); errors++; }
-
-  // A typo here would silently hide the offer in the popup, so fail the build instead.
-  if (o.regions !== undefined) {
-    if (!Array.isArray(o.regions)) {
-      console.error(`${label}: regions must be a list`); errors++;
-    } else {
-      o.regions.forEach((r) => {
-        if (!VALID_REGIONS.includes(r)) {
-          console.error(`${label}: unknown region "${r}" (use ${VALID_REGIONS.join(", ")})`); errors++;
-        }
-      });
-    }
-  }
 
   if (o.expires !== undefined) {
     if (typeof o.expires !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(o.expires) || isNaN(new Date(o.expires + "T00:00:00"))) {
@@ -66,30 +52,20 @@ offers.forEach((o, i) => {
   }
 });
 
-// Same rule as popup.js inRegion(): no regions, or "global", or the user's region.
-function visibleIn(o, region) {
-  const r = o.regions;
-  if (!Array.isArray(r) || r.length === 0) return true;
-  return r.includes("global") || r.includes(region);
-}
-
-// Two cards for one site in the same region is a data mistake. A PH entry and an "other"
-// entry can share a domain because they never show together.
-["PH", "other"].forEach((region) => {
-  const byDomain = new Map();
-  offers.forEach((o) => {
-    if (o.type === "info" || !visibleIn(o, region)) return;
-    (Array.isArray(o.domains) ? o.domains : []).forEach((d) => {
-      if (!byDomain.has(d)) byDomain.set(d, []);
-      byDomain.get(d).push(o.name);
-    });
+// Two cards for one site is a data mistake.
+const byDomain = new Map();
+offers.forEach((o) => {
+  if (o.type === "info") return;
+  (Array.isArray(o.domains) ? o.domains : []).forEach((d) => {
+    if (!byDomain.has(d)) byDomain.set(d, []);
+    byDomain.get(d).push(o.name);
   });
-  byDomain.forEach((list, d) => {
-    if (list.length > 1) {
-      console.error(`${d}: ${list.length} offers would show together for region ${region}: ${list.join(", ")}`);
-      errors++;
-    }
-  });
+});
+byDomain.forEach((list, d) => {
+  if (list.length > 1) {
+    console.error(`${d}: ${list.length} offers would show together: ${list.join(", ")}`);
+    errors++;
+  }
 });
 
 if (errors) { console.error(`${errors} problem(s) found`); process.exit(1); }
