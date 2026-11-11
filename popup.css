@@ -266,13 +266,8 @@ footer { font-size: 10.5px; }
 .footer-links a.gh-link svg { display: block; }
 
 /* Rate star icon */
-.footer-links a.rate-link { display: inline-flex; align-items: center; }
-.footer-links a.rate-link svg { display: block; }
-.footer-links a.rate-link:hover { color: var(--accent); text-decoration: none; }
 
-.paypal-icon { display: inline-flex; vertical-align: middle; margin-left: 2px; }
 
-.paypal-icon { color: #D97757; }
 
 /* Keep the settings gear on the right edge of the header */
 .brand-row { justify-content: space-between; }
@@ -281,3 +276,8 @@ footer { font-size: 10.5px; }
 
 /* Gear on the right (beats the margin reset in fonts/inter.css) */
 :root body .brand-row .settings-btn { margin-left: auto; }
+
+/* Rate star next to the author name */
+.credit-star { display: inline-flex; vertical-align: middle; margin-left: 2px; color: var(--accent); }
+.credit-star svg { display: block; }
+.footer-credit a.credit-star:hover { text-decoration: none; opacity: .8; }
