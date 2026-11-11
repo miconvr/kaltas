@@ -295,7 +295,7 @@ async function init() {
   select.value = region;
   label.dataset.region = region;
   label.append(select);
-  $("settings-btn").before(label);
+  
 
   let lastMatchesKey = "";
   function render() {
