@@ -317,3 +317,8 @@ footer { font-size: 10.5px; }
 .paypal-icon { display: inline-flex; vertical-align: middle; margin-left: 2px; }
 
 .paypal-icon { color: #D97757; }
+
+/* Keep the settings gear on the right edge of the header */
+.brand-row { justify-content: space-between; }
+.brand-row > div:not(.brand-mark) { flex: 1 1 auto; }
+.brand-row .settings-btn { margin-left: auto; flex: 0 0 auto; }
