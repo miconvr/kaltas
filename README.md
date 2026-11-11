@@ -28,13 +28,13 @@
 ## Screenshots
 
 <p align="center">
-  <img src="store-assets/screenshots/01-spot-student-perks.png" alt="Spot student perks" width="640">
+  <img src="store-assets/screenshots/screenshot-1-1280x800.png" alt="Find the student deal for any site" width="640">
 </p>
 <p align="center">
-  <img src="store-assets/screenshots/02-browse-every-deal.png" alt="Browse every deal" width="640">
+  <img src="store-assets/screenshots/screenshot-3-1280x800.png" alt="Browse every deal" width="640">
 </p>
 <p align="center">
-  <img src="store-assets/screenshots/03-private-by-design.png" alt="Private by design" width="640">
+  <img src="store-assets/screenshots/screenshot-4-1280x800.png" alt="Search by store or category" width="640">
 </p>
 
 ## Tech stack
