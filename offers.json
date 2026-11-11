@@ -594,5 +594,21 @@
         "details": "A student discount on an annual paid Evernote plan for taking and organizing notes across your devices.",
         "requirements": "Verified student status. The offer is for students who don't currently have a paid Evernote subscription.",
         "caveats": "Discount amount and eligible plans can change. Some schools' email domains may not qualify, so confirm on the official page before you pay."
+    },
+    {
+        "name": "Unreal Engine for Students and Schools",
+        "domains": [
+            "unrealengine.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Epic's education program for students and schools, with free institutional licensing and classroom resources.",
+        "url": "https://www.unrealengine.com/students-and-schools",
+        "verified": "2026-11",
+        "details": "Epic Games' education page for Unreal Engine, covering licensing for schools and learning resources for classrooms.",
+        "requirements": "Check the official page for who qualifies. Access is arranged through an educational institution.",
+        "caveats": "The offline installer request on this page is for school administrators, not students. Ask your school first, and confirm the current terms on the official page."
     }
 ]
