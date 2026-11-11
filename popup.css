@@ -349,3 +349,6 @@ html { width: 360px; overflow: hidden; }
 :root body { padding-bottom: 8px; }
 :root body .site-line { margin-top: 8px; }
 :root body .empty-state { margin-bottom: 8px; }
+
+/* Remove bottom space under the footer links */
+:root body { padding-bottom: 4px; }
