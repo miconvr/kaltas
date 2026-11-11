@@ -28,7 +28,7 @@ function hostOf(u) {
   try { return new URL(u).hostname.replace(/^www\./, "").toLowerCase(); } catch { return ""; }
 }
 
-// Site-level name: example.com, or example.com.ph for country-style endings.
+// Site-level name: example.com, or example.co.uk for country-style endings.
 function siteOf(host) {
   const p = host.split(".");
   if (p.length > 2 && p[p.length - 1].length === 2 && SECOND_LEVEL.has(p[p.length - 2])) return p.slice(-3).join(".");
