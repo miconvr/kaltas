@@ -341,35 +341,8 @@ html { width: 360px; overflow: hidden; }
   scrollbar-color: #555 transparent;
 }
 
-/* Settings: floating overlay instead of pushing content down */
-:root body #settings-panel {
-  position: fixed;
-  top: 56px;
-  left: 16px;
-  right: 16px;
-  z-index: 50;
-  margin: 0;
-  padding: 6px 14px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
-}
-:root body #settings-panel[hidden] { display: none !important; }
-
-/* Settings overlay: cover the top section fully, dim the rest */
-:root body #settings-panel {
-  top: 52px;
-  min-height: 122px;
-  padding: 8px 16px;
-  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .55);
-}
-:root body .settings-btn { position: relative; z-index: 60; }
-
-/* Settings overlay: clean floating card, no dimming */
-:root body #settings-panel {
-  top: 52px;
-  min-height: 0;
-  padding: 4px 16px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, .45);
-}
+/* Icons in settings and footer links */
+.settings-item .theme-label { display: inline-flex; align-items: center; gap: 8px; }
+.label-icon, .link-icon { display: inline-flex; align-items: center; flex: none; }
+.label-icon svg, .link-icon svg { display: block; }
+.footer-links a.has-icon { display: inline-flex; align-items: center; gap: 5px; }
