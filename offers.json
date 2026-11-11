@@ -173,7 +173,7 @@
         "perk": "Word, Excel, PowerPoint and Teams for students through eligible schools.",
         "details": "Sign up with a school email address. Device discounts and Microsoft 365 Personal student pricing vary by country.",
         "requirements": "A school email address from an eligible institution",
-        "caveats": "Philippines-specific terms were not confirmed. Availability depends on your school.",
+        "caveats": "Availability and terms can depend on your school and country.",
         "url": "https://www.microsoft.com/en-us/education/products/microsoft-365",
         "verified": "2026-11"
     },
@@ -250,12 +250,12 @@
             "global"
         ],
         "category": "Shopping",
-        "perk": "Discounted Prime for students where Prime Student is offered (such as the US and UK). Not confirmed for the Philippines.",
+        "perk": "Discounted Prime for students where Prime Student is offered (such as the US and UK). Not available in every country.",
         "url": "https://www.amazon.com/amazonprime?primeCampaignId=studentlanding",
         "verified": "2026-11",
         "details": "Half-price Prime after a 6-month free trial. Availability and pricing vary by country, so check Amazon's Prime Student page for yours. US sources list $7.49 per month or $69 per year.",
         "requirements": "College student, or age 18 to 24 with ID verification. The trial is for new members only.",
-        "caveats": "Ends after 4 years, at age 25 or at graduation, then converts to regular Prime. Availability and pricing outside the US vary, so check it is offered in the Philippines."
+        "caveats": "Ends after 4 years, at age 25 or at graduation, then converts to regular Prime. Availability and pricing outside the US vary, so check it is offered in your country."
     },
     {
         "name": "Grammarly",
