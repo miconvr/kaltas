@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Kaltas - Find Student Deals",
   "version": "1.1.7",
-  "description": "See if the website you are visiting has a student deal.",
+  "description": "Kaltas shows you the student deal for the website you're on.",
   "permissions": ["activeTab", "declarativeContent"],
   "background": { "service_worker": "background.js" },
   "action": {
