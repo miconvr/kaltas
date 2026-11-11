@@ -285,3 +285,8 @@ footer { font-size: 10.5px; }
 /* Accent star on the left of the author name */
 .credit-star { display: inline-flex; vertical-align: middle; margin-right: 3px; color: var(--accent); }
 .credit-star svg { display: block; }
+
+/* Center the footer: balance the links row and the credit line */
+:root body footer .footer-links { justify-content: center; }
+:root body footer .footer-links a:last-child { padding-right: 0; }
+:root body footer .footer-credit { justify-content: center; text-align: center; width: 100%; }
