@@ -304,3 +304,11 @@ html { width: 360px; overflow: hidden; }
 }
 :root body *, :root body *::before, :root body *::after { box-sizing: border-box; }
 :root body img, :root body svg { max-width: 100%; }
+
+/* Hide outer scrollbar; the offers list scrolls on its own */
+:root body { overflow-y: hidden; }
+
+/* Align the star in the credit line */
+:root body footer .footer-credit { display: flex; align-items: center; justify-content: center; gap: 5px; }
+:root body footer .footer-credit svg,
+:root body footer .footer-credit img { display: block; flex: none; margin: 0; vertical-align: middle; }
