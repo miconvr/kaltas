@@ -340,3 +340,19 @@ html { width: 360px; overflow: hidden; }
   scrollbar-width: thin;
   scrollbar-color: #555 transparent;
 }
+
+/* Settings: floating overlay instead of pushing content down */
+:root body #settings-panel {
+  position: fixed;
+  top: 56px;
+  left: 16px;
+  right: 16px;
+  z-index: 50;
+  margin: 0;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+}
+:root body #settings-panel[hidden] { display: none !important; }
