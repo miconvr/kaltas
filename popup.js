@@ -67,18 +67,6 @@ function isInfo(offer) {
   return offer.type === "info";
 }
 
-function verificationLabel(offer) {
-  if (!/^\d{4}-\d{2}$/.test(offer.verified || "")) return "Needs review";
-  const [year, month] = offer.verified.split("-").map(Number);
-  const checked = new Date(year, month - 1, 1);
-  const ageMonths = (new Date().getFullYear() - checked.getFullYear()) * 12
-    + new Date().getMonth() - checked.getMonth();
-  return ageMonths > 12 ? "Review overdue" : "Checked " + checked.toLocaleDateString(undefined, {
-    month: "short",
-    year: "numeric",
-  });
-}
-
 function makeDetails(offer) {
   const rows = [
     ["Details", offer.details],
@@ -112,10 +100,6 @@ function makeCard(offer) {
   const h2 = document.createElement("h2");
   h2.textContent = offer.name;
 
-  const status = document.createElement("span");
-  status.className = offer.verified ? "verification" : "verification verification-warning";
-  status.textContent = verificationLabel(offer);
-
   const p = document.createElement("p");
   p.textContent = offer.perk;
 
@@ -124,9 +108,9 @@ function makeCard(offer) {
     const f = document.createElement("div");
     f.className = "perk-figure";
     f.textContent = fig[0].charAt(0).toUpperCase() + fig[0].slice(1);
-    card.append(tag, h2, f, status, p);
+    card.append(tag, h2, f, p);
   } else {
-    card.append(tag, h2, status, p);
+    card.append(tag, h2, p);
   }
 
   const more = makeDetails(offer);
