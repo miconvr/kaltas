@@ -327,3 +327,6 @@ html { width: 360px; overflow: hidden; }
   transform: none;
 }
 :root body footer .footer-credit .credit-star svg { display: block; }
+
+/* Nudge credit star up to match the text's optical center */
+:root body footer .footer-credit .credit-star { transform: translateY(-1px); }
