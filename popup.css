@@ -349,3 +349,6 @@ html { width: 360px; overflow: hidden; }
 
 /* Keep card width constant whether or not the outer scrollbar shows */
 :root body { scrollbar-gutter: stable both-edges; scrollbar-width: thin; }
+
+/* Browse list: category label under the item name */
+:root body #all li small { display: block; float: none; margin: 2px 0 0; text-align: left; }
