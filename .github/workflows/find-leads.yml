@@ -1,4 +1,4 @@
-name: Deal leads
+name: Deal Leads
 on:
   schedule:
     - cron: "30 2 * * 6"
