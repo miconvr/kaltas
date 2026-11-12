@@ -28,11 +28,11 @@
 ## Screenshots
 
 <p align="center">
-  <img src="store-assets/screenshots/screenshot-1-1280x800.png" alt="Kaltas popup on a site with no student deal, browse list open" width="640">
+  <img src="store-assets/promo-marquee-1400x560.png" alt="Kaltas: find the student deal for any site" width="640">
 </p>
 
 <p align="center">
-  <img src="store-assets/promo-marquee-1400x560.png" alt="Kaltas: find the student deal for any site" width="640">
+  <img src="store-assets/screenshots/screenshot-1-1280x800.png" alt="Kaltas popup on a site with no student deal, browse list open" width="640">
 </p>
 
 <p align="center">
