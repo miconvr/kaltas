@@ -8,7 +8,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 
 - Store name (manifest `name`): Kaltas - Find Student Deals
 - Toolbar hover text (`default_title`): Kaltas
-- Current version: 1.1.7
+- Current version: 1.1.8
 
 ## Files
 
@@ -23,10 +23,11 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - `scripts/find-leads.js`, `scripts/discovery-sources.json`: helper for finding new offers
 - `.github/workflows/`: validation, link check and lead finding
 - `store-assets/`: Chrome Web Store images. Not part of the zip.
-  - `screenshots/screenshot-1-1280x800.png` to `screenshot-5-1280x800.png`
+  - `screenshots/screenshot-1-1280x800.png` (one screenshot for now; more can be added as `screenshot-N-1280x800.png`, up to 5)
   - `promo-small-440x280.png`, `promo-marquee-1400x560.png`
+  - `store-icon-128.png`: the Web Store icon, built from `icons/logo.png`
 - `PRIVACY.md`: privacy policy
-- `README.md`: project overview
+- `README.md`: project overview. Its Screenshots section shows the store images by relative path (small promo, marquee, screenshot-1), so update it if those files are renamed or replaced.
 
 ## Rules
 
@@ -37,6 +38,8 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - Every change to `offers.json` must pass `node scripts/validate-offers.js`.
 - Do not put the number of available deals in store images, the README, or the store listing. It changes often.
 - In store images, GitHub Student Developer Pack is the featured deal.
+- In store images, the dark popup is the main one and the light popup is secondary.
+- `icons/logo.png` is the original master. Build `icon16/32/48/128.png` and `store-assets/store-icon-128.png` from it, and use it in the popup header. Do not re-render it from `logo.svg`.
 
 ## Popup design
 
@@ -49,7 +52,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 
 1. Bump `version` in `manifest.json`.
 2. Run `node scripts/validate-offers.js` and `node --check popup.js`.
-3. Commit, push, and tag the commit `vX.Y.Z`.
+3. Commit, push, and tag the commit `vX.Y.Z`. If only `store-assets/` or `README.md` change after tagging, the tag can stay, since neither is in the zip.
 4. Build the zip with only the extension files:
    `tar -a -c -f kaltas-X.Y.Z.zip manifest.json background.js offers-loader.js popup.html popup.js popup.css offers.json icons fonts`
 5. List the zip with `tar -tf` and confirm it has no `.git`, scripts, docs, `store-assets`, or `AGENTS.md`.
