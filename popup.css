@@ -509,3 +509,7 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 :root body footer .footer-credit a.credit-author:focus-visible,
 :root body footer .footer-links a:hover,
 :root body footer .footer-links a:focus-visible { color: var(--accent); text-decoration: none; }
+/* 1.1.8: smooth close for "Who qualifies & details" */
+.card details::details-content { display: flow-root; opacity: 0; transition: block-size var(--dur-slow) var(--ease-out), opacity var(--dur-fast) var(--ease-out), content-visibility var(--dur-slow) allow-discrete; }
+.card details[open]::details-content { opacity: 1; transition: block-size var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out), content-visibility var(--dur-slow) allow-discrete; }
+.card details[open] p { animation: none; }
