@@ -565,3 +565,8 @@ a:focus:not(:focus-visible) { outline: none; }
 :root body footer .footer-links a { height: 16px; line-height: 16px; }
 :root body footer .footer-links a.rate-link svg { stroke-width: 1.5; }
 .credit-star svg { width: 16px; height: 16px; display: block; }
+
+/* 1.1.8: theme + category icons: 24-grid shown at 16px, stroke scales to 1px */
+.label-icon svg,
+:root body .settings-panel .label-icon svg { width: 16px; height: 16px; stroke-width: 1.5; shape-rendering: geometricPrecision; display: block; }
+li svg[viewBox="0 0 24 24"] { width: 16px; height: 16px; stroke-width: 1.5; }
