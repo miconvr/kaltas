@@ -27,11 +27,17 @@
 
 ## Screenshots
 
-![Kaltas finds the student deal for any site](store-assets/screenshots/screenshot-1-1280x800.png)
+<p align="center">
+  <img src="store-assets/screenshots/screenshot-1-1280x800.png" alt="Kaltas finds the student deal for any site" width="640">
+</p>
 
-![Browse and search every student deal](store-assets/screenshots/screenshot-2-1280x800.png)
+<p align="center">
+  <img src="store-assets/screenshots/screenshot-2-1280x800.png" alt="Browse and search every student deal" width="640">
+</p>
 
-![A student deal shown right when you need it](store-assets/screenshots/screenshot-3-1280x800.png)
+<p align="center">
+  <img src="store-assets/screenshots/screenshot-3-1280x800.png" alt="A student deal shown right when you need it" width="640">
+</p>
 
 ## Tech stack
 
