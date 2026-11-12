@@ -337,21 +337,14 @@ function safeUrl(u) {
   }
 }
 
-/* 1.1.8: deal found -> browse starts closed; opening it scrolls the list into view */
+/* 1.1.8: deal found -> browse starts closed */
 (function () {
   const browse = document.getElementById("browse");
   const matches = document.getElementById("matches");
-  const hasDeal = () => !!matches.querySelector(".card");
-  function reveal() {
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      const top = browse.getBoundingClientRect().top + document.body.scrollTop - 8;
-      document.body.scrollTo({ top: top, behavior: "smooth" });
-    }));
+  let done = false;
+  function closeOnce() {
+    if (!done && matches.querySelector(".card")) { done = true; browse.open = false; }
   }
-  browse.addEventListener("toggle", () => { if (browse.open && hasDeal()) reveal(); });
-  let first = true;
-  new MutationObserver(() => {
-    if (first && hasDeal()) { first = false; browse.open = false; }
-  }).observe(matches, { childList: true });
-  if (hasDeal() && first) { first = false; browse.open = false; }
+  new MutationObserver(closeOnce).observe(matches, { childList: true });
+  closeOnce();
 })();
