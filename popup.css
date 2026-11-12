@@ -517,3 +517,11 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 :root body:has(#matches .card):has(#browse[open]) #matches { height: auto; opacity: 1; visibility: visible; pointer-events: auto; transition: none; }
 #matches .card { overflow: hidden; transition: height var(--dur-slow) var(--ease-out), margin var(--dur-slow) var(--ease-out), padding var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out), visibility 0s; }
 :root body:has(#matches .card):has(#browse[open]) #matches .card { height: 0; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; opacity: 0; visibility: hidden; pointer-events: none; transition: height var(--dur-slow) var(--ease-out), margin var(--dur-slow) var(--ease-out), padding var(--dur-slow) var(--ease-out), opacity var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-slow); }
+/* 1.1.8: tighten the leftover gap above the divider while browsing under a deal */
+.match-label, #browse { transition: margin var(--dur-slow) var(--ease-out), padding var(--dur-slow) var(--ease-out); }
+:root body:has(#matches .card):has(#browse[open]) .match-label { margin-bottom: 0; }
+:root body:has(#matches .card):has(#browse[open]) #browse { margin-top: 12px; padding-top: 12px; }
+
+/* 1.1.8: smaller "You are here" pill so the name stays on one line */
+:root body .here-badge { right: 8px; padding: 2px 7px; font-size: 10px; }
+:root body #all li.is-current a { padding-right: 86px; }
