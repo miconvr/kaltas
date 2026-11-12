@@ -27,17 +27,11 @@
 
 ## Screenshots
 
-<p align="center">
-  <img src="store-assets/promo-small-440x280.png" alt="Kaltas small promo: student deal found" width="440">
-</p>
+![Kaltas finds the student deal for any site](store-assets/screenshots/screenshot-1-1280x800.png)
 
-<p align="center">
-  <img src="store-assets/promo-marquee-1400x560.png" alt="Kaltas: find the student deal for any site" width="640">
-</p>
+![Browse and search every student deal](store-assets/screenshots/screenshot-2-1280x800.png)
 
-<p align="center">
-  <img src="store-assets/screenshots/screenshot-1-1280x800.png" alt="Kaltas popup on a site with no student deal, browse list open" width="640">
-</p>
+![A student deal shown right when you need it](store-assets/screenshots/screenshot-3-1280x800.png)
 
 ## Tech stack
 
