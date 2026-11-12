@@ -554,3 +554,6 @@ a:focus:not(:focus-visible) { outline: none; }
 :root:not([data-theme="dark"]) body .settings-panel .theme-switch span { background: #5f5b50; }
 :root:not([data-theme="dark"]) body .settings-panel .theme-toggle[aria-pressed="true"] .theme-switch { background: var(--accent); border-color: var(--accent); }
 :root:not([data-theme="dark"]) body .settings-panel .theme-toggle[aria-pressed="true"] .theme-switch span { background: #ffffff; }
+
+/* 1.1.8: light mode text uses the same near-black as the dark mode background */
+:root:not([data-theme="dark"]) { --fg: #262624; }
