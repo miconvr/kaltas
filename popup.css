@@ -525,3 +525,6 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 /* 1.1.8: smaller "You are here" pill so the name stays on one line */
 :root body .here-badge { right: 8px; padding: 2px 7px; font-size: 10px; }
 :root body #all li.is-current a { padding-right: 86px; }
+/* 1.1.8: non-web pages (nothing in #matches) - even spacing around the Browse row */
+:root body:has(#matches:not(:has(*))) #browse { margin-top: 0; }
+:root body:has(#matches:not(:has(*))) footer { margin-top: 14px; }
