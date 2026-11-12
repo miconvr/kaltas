@@ -528,3 +528,7 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 /* 1.1.8: non-web pages (nothing in #matches) - even spacing around the Browse row */
 :root body:has(#matches:not(:has(*))) #browse { margin-top: 0; }
 :root body:has(#matches:not(:has(*))) footer { margin-top: 14px; }
+/* 1.1.8: non-web pages, list closed - pull the footer up and fold away its divider */
+.footer-divider { transition: height var(--dur-slow) var(--ease-out), margin var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out); }
+:root body:has(#matches:not(:has(*))):has(#browse:not([open])) footer:not([hidden]) { margin-top: 6px; }
+:root body:has(#matches:not(:has(*))):has(#browse:not([open])) footer .footer-divider { height: 0; margin: 0 0 4px; opacity: 0; }
