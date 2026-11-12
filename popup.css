@@ -377,3 +377,6 @@ html { width: 360px; overflow: hidden; }
 :root body:has(.empty-state) { overflow-y: hidden; }
 /* 1.1.8: keep browse rows whole and the footer visible in the deal-found state */
 :root body #all { overflow-y: auto; }
+
+/* 1.1.8: browse list = exactly 4 whole rows (61px each) */
+:root body #all { max-height: 244px; }
