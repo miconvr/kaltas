@@ -532,3 +532,6 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 .footer-divider { transition: height var(--dur-slow) var(--ease-out), margin var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out); }
 :root body:has(#matches:not(:has(*))):has(#browse:not([open])) footer:not([hidden]) { margin-top: 6px; }
 :root body:has(#matches:not(:has(*))):has(#browse:not([open])) footer .footer-divider { height: 0; margin: 0 0 4px; opacity: 0; }
+/* 1.1.8: non-web pages - tighten the gap between the site pill and the Browse divider */
+:root body:not(:has(#matches .card)):not(:has(#matches .empty-state)) #browse { margin-top: 0 !important; }
+:root body:not(:has(#matches .card)):not(:has(#matches .empty-state)) header { margin-bottom: 12px; }
