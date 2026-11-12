@@ -383,3 +383,6 @@ function safeUrl(u) {
   new MutationObserver(apply).observe(matches, { childList: true });
   apply();
 })();
+/* 1.1.8: tooltips for the icon-only settings toggles */
+document.getElementById("theme-toggle").title = "Dark mode";
+document.getElementById("footer-toggle").title = "Hide footer";
