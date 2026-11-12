@@ -1,4 +1,4 @@
-// Kaltas - popup logic.
+﻿// Kaltas - popup logic.
 // Everything runs locally: we read the active tab's hostname (allowed by activeTab
 // once the user clicks the icon) and compare it with the offers list.
 
@@ -336,3 +336,24 @@ function safeUrl(u) {
     return "#";
   }
 }
+/* 1.1.8: fit the browse list to the space left under the deal card */
+(function () {
+  const list = document.getElementById("all");
+  const browse = document.getElementById("browse");
+  const MAX = 600, MIN_ROWS = 2;
+  function fit() {
+    list.style.maxHeight = "";
+    if (!browse.open || document.querySelector(".empty-state")) return;
+    const li = list.querySelector("li");
+    if (!li) return;
+    const row = li.offsetHeight;
+    const over = document.body.scrollHeight - MAX;
+    if (over <= 0) return;
+    const rows = Math.max(MIN_ROWS, Math.floor((list.clientHeight - over) / row));
+    list.style.maxHeight = rows * row + "px";
+  }
+  browse.addEventListener("toggle", fit);
+  new MutationObserver(fit).observe(document.getElementById("matches"), { childList: true });
+  new MutationObserver(fit).observe(list, { childList: true });
+  fit();
+})();
