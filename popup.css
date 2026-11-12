@@ -377,8 +377,3 @@ html { width: 360px; overflow: hidden; }
 :root body:has(.empty-state) { overflow-y: hidden; }
 /* 1.1.8: keep browse rows whole and the footer visible in the deal-found state */
 :root body #all { overflow-y: auto; }
-/* 1.1.8: deal found + browse open -> compact card and shorter list so it all fits in 600px */
-:root body:has(#matches .card):has(#browse[open]) .match-label,
-:root body:has(#matches .card):has(#browse[open]) #matches .card:not(.info-card) p,
-:root body:has(#matches .card):has(#browse[open]) #matches .card:not(.info-card) details { display: none; }
-:root body:has(#matches .card):has(#browse[open]) #all { max-height: 150px; }
