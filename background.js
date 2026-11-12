@@ -14,7 +14,7 @@ const ICON_SIZES = [16, 32, 48];
 
 // The normal icon with a plain green dot in the top-right corner.
 async function makeBadgedIcon() {
-  const res = await fetch(chrome.runtime.getURL("icons/icon128.png"));
+  const res = await fetch(chrome.runtime.getURL("icons/icon-toolbar.png"));
   const bitmap = await createImageBitmap(await res.blob());
   const imageData = {};
   for (const size of ICON_SIZES) {
