@@ -423,3 +423,17 @@ html { width: 360px; overflow: hidden; }
 :root body footer .footer-links a svg { width: 14px; height: 14px; }
 :root body footer .footer-links a.rate-link svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
 :root body footer .footer-links a.rate-link:hover svg { fill: currentColor; }
+/* 1.1.8: settings = compact pill in the header row, between title and gear */
+header { position: relative; }
+:root body .settings-panel:not([hidden]) { position: absolute; top: 18px; right: 54px; left: auto; width: max-content; height: 34px; margin: 0; padding: 0 12px; flex-direction: row; align-items: center; justify-content: center; gap: 14px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); box-shadow: none; transform-origin: right center; animation: settings-slide 160ms var(--ease-out); }
+:root body .settings-panel:not([hidden]) .settings-item { width: auto; padding: 0; gap: 7px; border: 0; justify-content: flex-start; }
+:root body .settings-panel:not([hidden]) .settings-item + .settings-item { border-top: 0; }
+:root body .settings-panel .theme-label { font-size: 0; }
+:root body .settings-panel .label-icon { color: var(--muted); }
+:root body .settings-panel .settings-item:hover .label-icon { color: var(--fg); }
+@keyframes settings-slide { from { opacity: 0; transform: translateX(8px) scale(.96); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { :root body .settings-panel:not([hidden]) { animation: none; } }
+
+/* 1.1.8: "You are here" pill centered on the row's right edge */
+:root body .here-badge { top: 50%; bottom: auto; right: 16px; transform: translateY(-50%); }
+:root body #all li.is-current a { padding-right: 104px; }
