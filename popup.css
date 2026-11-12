@@ -548,3 +548,9 @@ a:focus:not(:focus-visible) { outline: none; }
 :root body .settings-panel .theme-switch { width: 24px; height: 14px; }
 :root body .settings-panel .theme-switch span { width: 8px; height: 8px; top: 2px; left: 2px; }
 :root body .settings-panel .theme-toggle[aria-pressed="true"] .theme-switch span { transform: translateX(10px); }
+
+/* 1.1.8: clearer switches in light mode */
+:root:not([data-theme="dark"]) body .settings-panel .theme-switch { background: #d6d1c2; border-color: #aaa595; }
+:root:not([data-theme="dark"]) body .settings-panel .theme-switch span { background: #5f5b50; }
+:root:not([data-theme="dark"]) body .settings-panel .theme-toggle[aria-pressed="true"] .theme-switch { background: var(--accent); border-color: var(--accent); }
+:root:not([data-theme="dark"]) body .settings-panel .theme-toggle[aria-pressed="true"] .theme-switch span { background: #ffffff; }
