@@ -14,13 +14,13 @@ const ICON_SIZES = [16, 32, 48];
 
 // The normal icon with a plain green dot in the top-right corner.
 async function makeBadgedIcon() {
-  const res = await fetch(chrome.runtime.getURL("icons/icon-toolbar.png"));
-  const bitmap = await createImageBitmap(await res.blob());
   const imageData = {};
   for (const size of ICON_SIZES) {
+    const res = await fetch(chrome.runtime.getURL("icons/icon" + size + ".png"));
+    const bitmap = await createImageBitmap(await res.blob());
     const canvas = new OffscreenCanvas(size, size);
     const ctx = canvas.getContext("2d");
-    ctx.drawImage(bitmap, 0, 0, size, size);
+    ctx.drawImage(bitmap, 0, 0);
     const radius = size * 0.2;
     const cx = size - radius;
     const cy = radius;
@@ -32,7 +32,6 @@ async function makeBadgedIcon() {
   }
   return imageData;
 }
-
 // Matches the domain itself and any subdomain, the same way popup.js does.
 function conditionsFor(domain) {
   const schemes = ["https", "http"];
