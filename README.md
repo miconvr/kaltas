@@ -35,6 +35,10 @@
   <img src="store-assets/promo-marquee-1400x560.png" alt="Kaltas: find the student deal for any site" width="640">
 </p>
 
+<p align="center">
+  <img src="store-assets/promo-small-440x280.png" alt="Kaltas small promo: student deal found" width="440">
+</p>
+
 ## Tech stack
 
 - **Extension:** Chrome Manifest V3, HTML, CSS and vanilla JavaScript
