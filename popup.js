@@ -349,22 +349,34 @@ function safeUrl(u) {
   closeOnce();
 })();
 
-/* 1.1.8: hide the deal(s) already shown in the card from the browse list */
+/* 1.1.8: mark the row for the deal shown on this site with a "You are here" badge */
 (function () {
   const list = document.getElementById("all");
   const matches = document.getElementById("matches");
   const norm = (s) => (s || "").replace(/\s+/g, " ").trim().toLowerCase();
-  function rowName(li) {
-    const a = li.querySelector("a");
-    if (!a) return "";
+  function rowName(a) {
     const c = a.cloneNode(true);
-    c.querySelectorAll("small").forEach((n) => n.remove());
+    c.querySelectorAll("small, .here-badge").forEach((n) => n.remove());
     return norm(c.textContent);
   }
   function apply() {
     const shown = new Set([...matches.querySelectorAll(".card h2")].map((h) => norm(h.textContent)));
     list.querySelectorAll("li").forEach((li) => {
-      li.style.display = shown.has(rowName(li)) ? "none" : "";
+      const a = li.querySelector("a");
+      if (!a) return;
+      const here = shown.has(rowName(a));
+      const badge = a.querySelector(".here-badge");
+      li.classList.toggle("is-current", here);
+      if (here && !badge) {
+        const b = document.createElement("span");
+        b.className = "here-badge";
+        b.textContent = "You are here";
+        a.append(b);
+        a.setAttribute("aria-current", "true");
+      } else if (!here && badge) {
+        badge.remove();
+        a.removeAttribute("aria-current");
+      }
     });
   }
   new MutationObserver(apply).observe(list, { childList: true });

@@ -410,3 +410,16 @@ html { width: 360px; overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   #matches, :root body:has(#matches .card):has(#browse[open]) #matches { transition: none; }
 }
+/* 1.1.8: "You are here" badge */
+:root body #all li a { position: relative; }
+.here-badge { position: absolute; right: 12px; bottom: 11px; padding: 2px 8px; border-radius: 999px; background: var(--chip-bg); color: var(--chip-fg); font-size: 10.5px; font-weight: 600; line-height: 1.4; letter-spacing: .01em; pointer-events: none; }
+
+/* 1.1.8: settings = small card just left of the gear */
+:root body .settings-panel:not([hidden]) { top: 14px; left: auto; right: 64px; width: max-content; height: auto; padding: 6px 12px; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,.28); }
+:root body .settings-panel:not([hidden]) .settings-item { width: 100%; justify-content: space-between; gap: 18px; padding: 8px 0; }
+:root body .settings-panel:not([hidden]) .settings-item + .settings-item { border-top: 1px solid var(--border); }
+
+/* 1.1.8: consistent footer icons */
+:root body footer .footer-links a svg { width: 14px; height: 14px; }
+:root body footer .footer-links a.rate-link svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+:root body footer .footer-links a.rate-link:hover svg { fill: currentColor; }
