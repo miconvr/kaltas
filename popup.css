@@ -476,3 +476,20 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 
 /* reduced motion: every duration becomes 0 */
 @media (prefers-reduced-motion: reduce) { :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; } }
+/* 1.1.8: footer collapses like the deal card (same slow duration + easing) */
+:root body footer { overflow: hidden; height: auto; transition: height var(--dur-slow) var(--ease-out), margin-top var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out), visibility 0s; }
+:root body footer[hidden] { display: block !important; height: 0; margin-top: 0; opacity: 0; visibility: hidden; pointer-events: none; transition: height var(--dur-slow) var(--ease-out), margin-top var(--dur-slow) var(--ease-out), opacity var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-slow); }
+
+/* 1.1.8: crisp icons - 16px sits on the pixel grid (GitHub is drawn on a 16px grid) */
+:root body footer .footer-links a svg { width: 16px; height: 16px; }
+:root body .label-icon svg { width: 16px; height: 16px; }
+
+/* 1.1.8: footer link row - one height, one baseline, even dividers */
+:root body footer .footer-links { align-items: center; row-gap: 6px; }
+:root body footer .footer-links a { display: inline-flex; align-items: center; height: 16px; padding: 0 12px; line-height: 16px; }
+:root body footer .footer-links a:first-child { padding-left: 0; border-left: 0; }
+:root body footer .footer-links a:last-child { padding-right: 0; }
+
+/* 1.1.8: even gaps: divider -> credit -> links */
+:root body footer .footer-divider { margin: 0 0 12px; }
+:root body footer .footer-credit { margin: 0 0 10px; }
