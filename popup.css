@@ -557,3 +557,11 @@ a:focus:not(:focus-visible) { outline: none; }
 
 /* 1.1.8: light mode text uses the same near-black as the dark mode background */
 :root:not([data-theme="dark"]) { --fg: #262624; }
+
+/* 1.1.8: footer icons on a 16px grid so edges land on whole pixels */
+:root body footer .footer-links a svg,
+:root body footer .footer-links a.gh-link svg,
+:root body footer .footer-links a.rate-link svg { width: 16px; height: 16px; shape-rendering: geometricPrecision; }
+:root body footer .footer-links a { height: 16px; line-height: 16px; }
+:root body footer .footer-links a.rate-link svg { stroke-width: 1.5; }
+.credit-star svg { width: 16px; height: 16px; display: block; }
