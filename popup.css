@@ -502,3 +502,10 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 :root body footer .footer-links a:last-child { padding-right: 0; }
 :root body footer .footer-links a svg { width: 14px; height: 14px; }
 :root body footer .footer-links a.rate-link svg { stroke-width: 1.7; }
+/* 1.1.8: footer hover = fade to accent (name, GitHub, Rate, Privacy, Report) */
+:root body footer .footer-credit a.credit-author,
+:root body footer .footer-links a { transition: color var(--dur-fast) var(--ease-out); }
+:root body footer .footer-credit a.credit-author:hover,
+:root body footer .footer-credit a.credit-author:focus-visible,
+:root body footer .footer-links a:hover,
+:root body footer .footer-links a:focus-visible { color: var(--accent); text-decoration: none; }
