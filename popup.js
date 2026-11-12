@@ -348,3 +348,26 @@ function safeUrl(u) {
   new MutationObserver(closeOnce).observe(matches, { childList: true });
   closeOnce();
 })();
+
+/* 1.1.8: hide the deal(s) already shown in the card from the browse list */
+(function () {
+  const list = document.getElementById("all");
+  const matches = document.getElementById("matches");
+  const norm = (s) => (s || "").replace(/\s+/g, " ").trim().toLowerCase();
+  function rowName(li) {
+    const a = li.querySelector("a");
+    if (!a) return "";
+    const c = a.cloneNode(true);
+    c.querySelectorAll("small").forEach((n) => n.remove());
+    return norm(c.textContent);
+  }
+  function apply() {
+    const shown = new Set([...matches.querySelectorAll(".card h2")].map((h) => norm(h.textContent)));
+    list.querySelectorAll("li").forEach((li) => {
+      li.style.display = shown.has(rowName(li)) ? "none" : "";
+    });
+  }
+  new MutationObserver(apply).observe(list, { childList: true });
+  new MutationObserver(apply).observe(matches, { childList: true });
+  apply();
+})();

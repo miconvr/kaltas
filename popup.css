@@ -390,3 +390,14 @@ html { width: 360px; overflow: hidden; }
   #matches, :root body:has(#matches .card):has(#browse[open]) #matches { transition: none; }
   #browse[open] #search, #browse[open] #all { animation: none; }
 }
+/* 1.1.8: smooth open/close for the browse list and a rotating chevron */
+:root { interpolate-size: allow-keywords; }
+#browse::details-content { block-size: 0; overflow: clip; transition: block-size 260ms var(--ease-out), content-visibility 260ms allow-discrete; }
+#browse[open]::details-content { block-size: auto; }
+#browse > summary::after,
+#browse[open] > summary::after { content: ""; width: 7px; height: 7px; margin-right: 4px; border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted); font-size: 0; transform: translateY(-2px) rotate(45deg); transition: transform 260ms var(--ease-out), border-color 140ms ease-out; }
+#browse[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
+#browse > summary:hover::after { border-color: var(--fg); }
+@media (prefers-reduced-motion: reduce) {
+  #browse::details-content, #browse > summary::after { transition: none; }
+}
