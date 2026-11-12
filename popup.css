@@ -401,3 +401,12 @@ html { width: 360px; overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   #browse::details-content, #browse > summary::after { transition: none; }
 }
+/* 1.1.8 fix: no-deal screen keeps the original 232px list so the footer fits */
+:root body:has(.empty-state) #all { max-height: 232px; }
+
+/* 1.1.8 fix: animate the deal card's real height (no 320px cap) so expanded details can scroll */
+#matches { max-height: none; height: auto; transition: height 260ms var(--ease-out), opacity 180ms ease-out; }
+:root body:has(#matches .card):has(#browse[open]) #matches { max-height: none; height: 0; opacity: 0; visibility: hidden; pointer-events: none; transition: height 260ms var(--ease-out), opacity 140ms ease-out, visibility 0s linear 260ms; }
+@media (prefers-reduced-motion: reduce) {
+  #matches, :root body:has(#matches .card):has(#browse[open]) #matches { transition: none; }
+}
