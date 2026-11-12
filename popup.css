@@ -513,3 +513,7 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 .card details::details-content { display: flow-root; opacity: 0; transition: block-size var(--dur-slow) var(--ease-out), opacity var(--dur-fast) var(--ease-out), content-visibility var(--dur-slow) allow-discrete; }
 .card details[open]::details-content { opacity: 1; transition: block-size var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out), content-visibility var(--dur-slow) allow-discrete; }
 .card details[open] p { animation: none; }
+/* 1.1.8: keep the green "deal found" label; only the card(s) collapse while browsing */
+:root body:has(#matches .card):has(#browse[open]) #matches { height: auto; opacity: 1; visibility: visible; pointer-events: auto; transition: none; }
+#matches .card { overflow: hidden; transition: height var(--dur-slow) var(--ease-out), margin var(--dur-slow) var(--ease-out), padding var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out), visibility 0s; }
+:root body:has(#matches .card):has(#browse[open]) #matches .card { height: 0; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; opacity: 0; visibility: hidden; pointer-events: none; transition: height var(--dur-slow) var(--ease-out), margin var(--dur-slow) var(--ease-out), padding var(--dur-slow) var(--ease-out), opacity var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-slow); }
