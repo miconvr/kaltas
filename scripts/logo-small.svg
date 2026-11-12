@@ -1,6 +1,7 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+﻿<svg shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
   <path d="M4 9 V11 Q8 14 12 11 V9 L8 11 Z" fill="#B5532F"/>
   <path d="M8 3 L16 7 L8 11 L0 7 Z" fill="#D97757"/>
   <path d="M14.5 8 V11.5" stroke="#B5532F" stroke-width="1" fill="none"/>
   <circle cx="14.5" cy="12.5" r="1.25" fill="#B5532F"/>
 </svg>
+
