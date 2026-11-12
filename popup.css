@@ -380,5 +380,13 @@ html { width: 360px; overflow: hidden; }
 
 /* 1.1.8: browse list = exactly 4 whole rows (61px each) */
 :root body #all { max-height: 244px; }
-/* 1.1.8: while browsing, the deal card steps aside so the whole list and footer fit in 600px */
-:root body:has(#matches .card):has(#browse[open]) #matches { display: none; }
+
+/* 1.1.8: animated hand-off between the deal card and the browse list */
+#matches { overflow: hidden; max-height: 320px; transition: max-height 260ms var(--ease-out), opacity 180ms ease-out; }
+#matches > :last-child { margin-bottom: 0; }
+:root body:has(#matches .card):has(#browse[open]) #matches { max-height: 0; opacity: 0; visibility: hidden; pointer-events: none; transition: max-height 260ms var(--ease-out), opacity 140ms ease-out, visibility 0s linear 260ms; }
+#browse[open] #search, #browse[open] #all { animation: fade-in 200ms ease-out 60ms backwards; }
+@media (prefers-reduced-motion: reduce) {
+  #matches, :root body:has(#matches .card):has(#browse[open]) #matches { transition: none; }
+  #browse[open] #search, #browse[open] #all { animation: none; }
+}
