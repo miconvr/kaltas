@@ -372,3 +372,6 @@ html { width: 360px; overflow: hidden; }
 :root body .settings-panel:not([hidden]) .settings-item + .settings-item { border-top: 0; }
 @keyframes settings-pop { from { opacity: 0; transform: translateY(-6px) scale(.96); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { :root body .settings-panel:not([hidden]) { animation: none; } }
+
+/* 1.1.8: no outer scroll in the "no deal" state (browse list scrolls on its own) */
+:root body:has(.empty-state) { overflow-y: hidden; }
