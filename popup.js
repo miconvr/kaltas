@@ -348,11 +348,3 @@ function safeUrl(u) {
   new MutationObserver(closeOnce).observe(matches, { childList: true });
   closeOnce();
 })();
-/* 1.1.8: opening browse under a deal card jumps to the bottom so list + footer are in view */
-(function () {
-  const browse = document.getElementById("browse");
-  browse.addEventListener("toggle", function () {
-    if (!browse.open || !document.querySelector("#matches .card")) return;
-    setTimeout(function () { document.body.scrollTop = document.body.scrollHeight; }, 30);
-  });
-})();
