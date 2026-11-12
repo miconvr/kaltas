@@ -437,3 +437,42 @@ header { position: relative; }
 /* 1.1.8: "You are here" pill centered on the row's right edge */
 :root body .here-badge { top: 50%; bottom: auto; right: 16px; transform: translateY(-50%); }
 :root body #all li.is-current a { padding-right: 104px; }
+/* 1.1.8: one motion system - 3 durations, 1 easing */
+:root { --dur-fast: 140ms; --dur-base: 200ms; --dur-slow: 260ms; }
+
+/* fast: hovers, colors, buttons */
+a.btn { transition: background-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+.settings-btn { transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out); }
+.theme-toggle, .label-icon { transition: color var(--dur-fast) var(--ease-out); }
+.card summary, .report-link { transition: color var(--dur-fast) var(--ease-out); }
+li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur-fast) var(--ease-out); }
+
+/* base: switches and fades */
+.theme-switch { transition: background-color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.theme-switch span { transition: transform var(--dur-base) var(--ease-out), background-color var(--dur-base) var(--ease-out); }
+#matches .card, #matches .empty-state, .match-label { animation: fade-in var(--dur-base) var(--ease-out) backwards; }
+.card details[open] p { animation: fade-in var(--dur-base) var(--ease-out) backwards; }
+#browse[open] #search, #browse[open] #all { animation: fade-in var(--dur-base) var(--ease-out) 60ms backwards; }
+
+/* slow: anything that changes height */
+#matches { transition: height var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out); }
+:root body:has(#matches .card):has(#browse[open]) #matches { transition: height var(--dur-slow) var(--ease-out), opacity var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-slow); }
+#browse::details-content { transition: block-size var(--dur-slow) var(--ease-out), content-visibility var(--dur-slow) allow-discrete; }
+#browse > summary::after, #browse[open] > summary::after { transition: transform var(--dur-slow) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }
+
+/* "Who qualifies & details": same slide + rotating chevron as the browse list */
+.card details::details-content { block-size: 0; overflow: clip; transition: block-size var(--dur-slow) var(--ease-out), content-visibility var(--dur-slow) allow-discrete; }
+.card details[open]::details-content { block-size: auto; }
+.card summary::after, .card details[open] summary::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; font-size: 0; transform: translateY(-2px) rotate(45deg); transition: transform var(--dur-slow) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+.card details[open] summary::after { transform: translateY(1px) rotate(-135deg); }
+
+/* settings pill: always rendered, so it can fade in (base) and out (fast) */
+:root body .settings-panel,
+:root body .settings-panel[hidden] { display: flex !important; position: absolute; top: 18px; right: 54px; left: auto; width: max-content; height: 34px; margin: 0; padding: 0 12px; flex-direction: row; align-items: center; justify-content: center; gap: 14px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); box-shadow: none; z-index: 20; transform-origin: right center; animation: none !important; }
+:root body .settings-panel .settings-item { width: auto; padding: 0; gap: 7px; border: 0; justify-content: flex-start; }
+:root body .settings-panel .settings-item + .settings-item { border-top: 0; }
+:root body .settings-panel:not([hidden]) { opacity: 1; visibility: visible; transform: none; transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s; }
+:root body .settings-panel[hidden] { opacity: 0; visibility: hidden; pointer-events: none; transform: translateX(8px) scale(.96); transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-fast); }
+
+/* reduced motion: every duration becomes 0 */
+@media (prefers-reduced-motion: reduce) { :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; } }
