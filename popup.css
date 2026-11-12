@@ -535,3 +535,16 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 /* 1.1.8: non-web pages - tighten the gap between the site pill and the Browse divider */
 :root body:not(:has(#matches .card)):not(:has(#matches .empty-state)) #browse { margin-top: 0 !important; }
 :root body:not(:has(#matches .card)):not(:has(#matches .empty-state)) header { margin-bottom: 12px; }
+/* 1.1.8: no default black focus ring on buttons; keyboard users get the orange ring */
+button:focus:not(:focus-visible),
+summary:focus:not(:focus-visible),
+a:focus:not(:focus-visible) { outline: none; }
+.theme-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 999px; }
+
+/* 1.1.8: smaller settings pill */
+:root body .settings-panel,
+:root body .settings-panel[hidden] { top: 21px; right: 52px; height: 28px; padding: 0 9px; gap: 8px; }
+:root body .settings-panel .settings-item { gap: 5px; }
+:root body .settings-panel .theme-switch { width: 24px; height: 14px; }
+:root body .settings-panel .theme-switch span { width: 8px; height: 8px; top: 2px; left: 2px; }
+:root body .settings-panel .theme-toggle[aria-pressed="true"] .theme-switch span { transform: translateX(10px); }
