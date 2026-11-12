@@ -337,8 +337,21 @@ function safeUrl(u) {
   }
 }
 
-/* 1.1.8: when browse opens under a deal card, scroll so the whole list is in view */
-document.getElementById("browse").addEventListener("toggle", function () {
-  if (!this.open || !document.querySelector("#matches .card")) return;
-  this.scrollIntoView({ behavior: "smooth", block: "start" });
-});
+/* 1.1.8: deal found -> browse starts closed; opening it scrolls the list into view */
+(function () {
+  const browse = document.getElementById("browse");
+  const matches = document.getElementById("matches");
+  const hasDeal = () => !!matches.querySelector(".card");
+  function reveal() {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const top = browse.getBoundingClientRect().top + document.body.scrollTop - 8;
+      document.body.scrollTo({ top: top, behavior: "smooth" });
+    }));
+  }
+  browse.addEventListener("toggle", () => { if (browse.open && hasDeal()) reveal(); });
+  let first = true;
+  new MutationObserver(() => {
+    if (first && hasDeal()) { first = false; browse.open = false; }
+  }).observe(matches, { childList: true });
+  if (hasDeal() && first) { first = false; browse.open = false; }
+})();
