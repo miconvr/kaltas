@@ -380,3 +380,5 @@ html { width: 360px; overflow: hidden; }
 
 /* 1.1.8: browse list = exactly 4 whole rows (61px each) */
 :root body #all { max-height: 244px; }
+/* 1.1.8: while browsing, the deal card steps aside so the whole list and footer fit in 600px */
+:root body:has(#matches .card):has(#browse[open]) #matches { display: none; }
