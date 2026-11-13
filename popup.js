@@ -89,6 +89,7 @@ function applyTheme(theme) {
   const dark = theme === "dark";
   button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
   button.setAttribute("aria-pressed", String(dark));
+  button.title = dark ? "Switch to light mode" : "Switch to dark mode";
   setThemeLabel(button, dark);
 }
 
@@ -265,6 +266,7 @@ async function init() {
   function applyFooter(hidden) {
     document.querySelector("footer").hidden = hidden;
     footerBtn.setAttribute("aria-pressed", String(hidden));
+    footerBtn.title = hidden ? "Show footer" : "Hide footer";
   }
   applyFooter(getFooterHidden());
   gear.addEventListener("click", () => {
@@ -399,6 +401,3 @@ function safeUrl(u) {
   new MutationObserver(apply).observe(matches, { childList: true });
   apply();
 })();
-/* 1.1.8: tooltips for the icon-only settings toggles */
-document.getElementById("theme-toggle").title = "Dark mode";
-document.getElementById("footer-toggle").title = "Hide footer";
