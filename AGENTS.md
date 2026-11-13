@@ -21,6 +21,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - `scripts/validate-offers.js`: checks `offers.json`. Run it before every release.
 - `scripts/check-links.js`: checks that offer links still work
 - `scripts/find-leads.js`, `scripts/discovery-sources.json`: helper for finding new offers
+- `scripts/logo-small.svg`: small logo file kept with the scripts
 - `.github/workflows/`: validation, link check and lead finding (they run on Node 22)
 - `store-assets/`: Chrome Web Store images. Not part of the zip.
   - `screenshots/screenshot-1-1280x800.png`, `screenshot-2-1280x800.png`, `screenshot-3-1280x800.png` (more can be added as `screenshot-N-1280x800.png`, up to 5)
@@ -48,16 +49,24 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 
 - The category label sits under each item name in the Browse list, not above it.
 - The settings button opens a small pill in the header row, just left of the button. The closed panel keeps the `hidden` attribute, and CSS fades it out and blocks clicks and keyboard focus so it can animate in and out. Do not rely on `display: none` for it.
-- Theme changes: `popup.js` adds the `theme-switching` class to `<html>` for two frames, and a rule at the end of `popup.css` pauses color transitions during that time so every color changes together. Keep both. Only `transform` stays animated, so the switch knob still slides.
+- Theme changes: `popup.js` adds the `theme-switching` class to `<html>` for two frames, and a rule in `popup.css` (search for `theme-switching`) pauses color transitions during that time so every color changes together. Keep both. Only `transform` stays animated, so the switch knob still slides.
 - The two settings toggles are icon-only, so their tooltips (`title`) describe the action and are updated in `popup.js` when the state changes.
-- Style tweaks are added at the end of `popup.css`, and later rules override earlier ones. Check the end of the file before changing a style.
+- Style tweaks are added at the end of `popup.css`. Many rules start with `:root body`, so a new rule must be at least as specific as the one it overrides, or it silently loses. Search the file for the selector before changing a style.
 - Store screenshots show the real popup, so retake them if the popup layout changes.
 
-## Releasing
+## Popup height
 
+Chrome caps the popup at 600px tall and cuts off anything past that. Check these states after any layout change:
+
+- No deal on the site, Browse open: the footer links must be fully visible. The list is capped at 250px (`:root body:has(.empty-state) #all`), and `#browse[open]` gets a smaller top margin in this state.
+- Deal found, Browse open: the list is capped at 272px (`:root body:has(#matches .card) #all`), because the "You are here" row wraps to two lines and the list needs that much to show 4 whole rows.
+- Browse closed, and non-web pages such as `chrome://extensions`.
+- To measure, run `document.querySelector('footer').getBoundingClientRect().bottom` in the popup console. It should print 600 or less.
+
+## Releasing
 1. Bump `version` in `manifest.json`.
 2. Run `node scripts/validate-offers.js` and `node --check popup.js`.
-3. Commit, push, and tag the commit `vX.Y.Z` (with the `v`, like `v1.1.7`). If only `store-assets/` or `README.md` change after tagging, the tag can stay, since neither is in the zip.
+3. Commit, push, and tag the commit `vX.Y.Z` (always with the leading `v`). If only `store-assets/` or `README.md` change after tagging, the tag can stay, since neither is in the zip.
 4. Build the zip with only the extension files:
    `tar -a -c -f kaltas-X.Y.Z.zip manifest.json background.js offers-loader.js popup.html popup.js popup.css offers.json icons fonts`
 5. List the zip with `tar -tf` and confirm it has no `.git`, scripts, docs, `store-assets`, or `AGENTS.md`.
@@ -71,4 +80,6 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - Check the toolbar badge and the popup text.
 - Open settings and confirm both toggles work and nothing is cut off. Hover each toggle: the tooltip names the action ("Switch to light mode", "Hide footer", and so on).
 - Switch between dark and light a few times with a deal showing: every color should change at the same moment, with nothing fading in behind the rest.
+- With Browse open, on a site with no deal and on a site with a deal: the footer links are fully visible and the list shows 4 whole rows.
+- Run `document.querySelector('footer').getBoundingClientRect().bottom` in the popup console in each state. It should print 600 or less.
 - Confirm there are no console errors in the popup or service worker.
