@@ -9,3 +9,5 @@ leads-issue.md
 seen.txt
 
 *.zip
+
+dist/

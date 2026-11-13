@@ -24,9 +24,9 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - `scripts/logo-small.svg`: small logo file kept with the scripts
 - `.github/workflows/`: validation, link check and lead finding (they run on Node 22)
 - `store-assets/`: Chrome Web Store images. Not part of the zip.
-  - `screenshots/screenshot-1-1280x800.png`, `screenshot-2-1280x800.png`, `screenshot-3-1280x800.png` (more can be added as `screenshot-N-1280x800.png`, up to 5)
-  - `promo-small-440x280.png`, `promo-marquee-1400x560.png`
-  - `store-icon-128.png`: the Web Store icon, built from `icons/logo.png`
+  - `screenshots/screenshot-1.png`, `screenshot-2.png`, `screenshot-3.png` (1280x800; more can be added as `screenshot-N.png`, up to 5)
+  - `promo/promo-small-440x280.png`, `promo/promo-marquee-1400x560.png`
+  - `icons/`: Web Store icons. `store-icon-128.png` and `store-icon-512.png` are transparent, `store-icon-tile-128.png` and `store-icon-tile-512.png` sit on the dark tile. All are built from `icons/logo.png`
 - `PRIVACY.md`: privacy policy
 - `README.md`: project overview. Its Screenshots section shows the three store screenshots (`screenshot-1`, `-2`, `-3`, each 640px wide) by relative path, so update it if those files are renamed, replaced or added to. The promo images are not shown in the README.
 
@@ -68,8 +68,8 @@ Chrome caps the popup at 600px tall and cuts off anything past that. Check these
 1. Bump `version` in `manifest.json`.
 2. Run `node scripts/validate-offers.js` and `node --check popup.js`.
 3. Commit, push, and tag the commit `vX.Y.Z` (always with the leading `v`). If only `store-assets/` or `README.md` change after tagging, the tag can stay, since neither is in the zip.
-4. Build the zip with only the extension files:
-   `tar -a -c -f kaltas-X.Y.Z.zip manifest.json background.js offers-loader.js popup.html popup.js popup.css offers.json icons fonts`
+4. Build the zip with only the extension files, into the git-ignored `dist/` folder (run `mkdir dist` first):
+   `tar -a -c -f dist/kaltas-X.Y.Z.zip manifest.json background.js offers-loader.js popup.html popup.js popup.css offers.json icons fonts`
 5. List the zip with `tar -tf` and confirm it has no `.git`, scripts, docs, `store-assets`, or `AGENTS.md`.
 6. Upload the zip in the Chrome Web Store dashboard and submit for review.
 7. Update the store description and images if the name or UI changed. Screenshots are 1280x800, the small tile is 440x280 and the marquee is 1400x560, all 24-bit PNG with no alpha.
