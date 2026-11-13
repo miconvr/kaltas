@@ -64,6 +64,7 @@ Chrome caps the popup at 600px tall and cuts off anything past that. Check these
 - To measure, run `document.querySelector('footer').getBoundingClientRect().bottom` in the popup console. It should print 600 or less.
 
 ## Releasing
+
 1. Bump `version` in `manifest.json`.
 2. Run `node scripts/validate-offers.js` and `node --check popup.js`.
 3. Commit, push, and tag the commit `vX.Y.Z` (always with the leading `v`). If only `store-assets/` or `README.md` change after tagging, the tag can stay, since neither is in the zip.
