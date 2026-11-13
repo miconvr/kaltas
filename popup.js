@@ -66,8 +66,24 @@ function decorateIcons() {
   }
 }
 
+// A theme change recolors every element at once, but only some elements fade their colors,
+// so those lag behind the rest. Pause color fades for two frames so everything changes
+// together. The switch knob keeps sliding (see .theme-switching at the end of popup.css).
+let themeFreezeToken = 0;
+function freezeThemeTransitions() {
+  const root = document.documentElement;
+  const token = ++themeFreezeToken;
+  root.classList.add("theme-switching");
+  requestAnimationFrame(() =>
+    requestAnimationFrame(() => {
+      if (token === themeFreezeToken) root.classList.remove("theme-switching");
+    })
+  );
+}
+
 function applyTheme(theme) {
   decorateIcons();
+  freezeThemeTransitions();
   document.documentElement.dataset.theme = theme;
   const button = $("theme-toggle");
   const dark = theme === "dark";
