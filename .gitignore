@@ -3,4 +3,7 @@ node_modules/
 *.zip
 .env
 
-*.zip
+# written by the scripts when they are run locally
+link-report.md
+leads-issue.md
+seen.txt
