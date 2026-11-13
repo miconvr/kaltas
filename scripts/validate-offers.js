@@ -28,6 +28,12 @@ offers.forEach((o, i) => {
       console.error(`${label}: info entries must have empty domains and no url`);
       errors++;
     }
+    // The popup ignores regions now, but installed versions up to 1.1.6 read this live file and
+    // reject the whole list when an info entry has no regions, so keep it: "regions": ["global"].
+    if (!Array.isArray(o.regions) || !o.regions.length) {
+      console.error(`${label}: info entries need "regions": ["global"] (older installed versions require it)`);
+      errors++;
+    }
   } else if (!o.url) {
     console.error(`${label}: non-info entries need a url`); errors++;
   }
