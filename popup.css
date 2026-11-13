@@ -570,3 +570,10 @@ a:focus:not(:focus-visible) { outline: none; }
 .label-icon svg,
 :root body .settings-panel .label-icon svg { width: 16px; height: 16px; stroke-width: 1.5; shape-rendering: geometricPrecision; display: block; }
 li svg[viewBox="0 0 24 24"] { width: 16px; height: 16px; stroke-width: 1.5; }
+
+/* Theme switch: popup.js adds .theme-switching for two frames so every color changes together
+   instead of some elements fading behind the rest. Only transform stays animated, so the
+   switch knob still slides. */
+:root.theme-switching *,
+:root.theme-switching *::before,
+:root.theme-switching *::after { transition-property: transform !important; }
