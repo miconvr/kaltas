@@ -106,8 +106,7 @@ footer p { margin: 0 0 7px; }
 .footer-credit a { text-decoration: none; }
 .footer-credit a:hover { text-decoration: underline; text-underline-offset: 2px; }
 .credit-author { color: var(--fg); font-weight: 600; }
-/* Footer: tip button */
-/* Claude polish */
+/* Polish */
 body { line-height: 1.55; -webkit-font-smoothing: antialiased; }
 header { padding-top: 18px; }
 h1 { font: 600 22px/1.1 var(--serif); letter-spacing: -.01em; }
