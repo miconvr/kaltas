@@ -8,7 +8,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 
 - Store name (manifest `name`): Kaltas - Find Student Deals
 - Toolbar hover text (`default_title`): Kaltas
-- Current version: 1.1.8
+- Current version: 1.1.9
 
 ## Files
 
