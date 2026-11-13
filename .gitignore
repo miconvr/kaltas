@@ -7,3 +7,5 @@ node_modules/
 link-report.md
 leads-issue.md
 seen.txt
+
+*.zip
