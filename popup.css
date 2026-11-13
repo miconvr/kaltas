@@ -576,3 +576,8 @@ li svg[viewBox="0 0 24 24"] { width: 16px; height: 16px; stroke-width: 1.5; }
 :root.theme-switching *,
 :root.theme-switching *::before,
 :root.theme-switching *::after { transition-property: transform !important; }
+
+
+/* Browse list: tall enough for 4 full rows */
+:root body #all,
+:root body:has(.empty-state) #all { max-height: 250px; }
