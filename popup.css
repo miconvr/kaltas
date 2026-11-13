@@ -581,3 +581,12 @@ li svg[viewBox="0 0 24 24"] { width: 16px; height: 16px; stroke-width: 1.5; }
 /* Browse list: tall enough for 4 full rows */
 :root body #all,
 :root body:has(.empty-state) #all { max-height: 250px; }
+
+/* Popup height: tighter footer spacing so the no-deal popup fits under 600px */
+footer { margin-top: 12px; }
+body { padding-bottom: 12px; }
+
+/* Deal found: the "You are here" row wraps to 2 lines, so give the list ~22px more to show 4 whole rows */
+:root body:has(#matches .card) #all { max-height: 272px; }
+/* No deal + Browse open: tighten the gap above the Browse divider so the footer fits under 600px */
+:root body:has(.empty-state) #browse[open] { margin-top: 8px; padding-top: 12px; }
