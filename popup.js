@@ -217,7 +217,8 @@ function categoryRank(category) {
   return i === -1 ? CATEGORY_ORDER.length : i;
 }
 
-function renderList(offers, query = "") {
+// current: the offers that match the site the user is on. Their rows get the "You are here" dot.
+function renderList(offers, query = "", current = []) {
   const ul = $("all");
   ul.replaceChildren();
   const q = query.trim().toLowerCase();
@@ -226,19 +227,34 @@ function renderList(offers, query = "") {
     .sort((a, b) => categoryRank(a.category) - categoryRank(b.category))
     .forEach((o) => {
       const li = document.createElement("li");
+      const name = document.createElement("span");
+      name.className = "offer-name";
+      name.textContent = o.name;
       const small = document.createElement("small");
       small.replaceChildren(categoryIcon(o.category), " " + (o.category || ""));
+      const here = current.includes(o);
+      if (here) {
+        // Decorative and out of flow (see .here-dot in popup.css): it never affects the row's layout.
+        const dot = document.createElement("span");
+        dot.className = "here-dot";
+        dot.setAttribute("aria-hidden", "true");
+        small.append(dot);
+        li.classList.add("is-current");
+      }
       const href = o.url ? safeUrl(o.url) : "#";
       if (href === "#") {
         // No usable https link: show the name as plain text instead of a dead link.
-        li.append(o.name + " ", small);
+        const row = document.createElement("div");
+        row.className = "row-static";
+        row.append(name, small);
+        li.append(row);
       } else {
         const a = document.createElement("a");
         a.href = href;
         a.target = "_blank";
         a.rel = "noopener noreferrer";
-        a.textContent = o.name + " ";
-        a.append(small);
+        if (here) a.setAttribute("aria-current", "true");
+        a.append(name, small);
         li.append(a);
       }
       ul.append(li);
@@ -329,7 +345,7 @@ async function init() {
       if (!getBrowseClosed()) $("browse").open = true;
     }
 
-    renderList(sites, query);
+    renderList(sites, query, hits);
   }
 
   $("browse").querySelector("summary").addEventListener("click", function () {
@@ -365,39 +381,4 @@ function safeUrl(u) {
   }
   new MutationObserver(closeOnce).observe(matches, { childList: true });
   closeOnce();
-})();
-
-/* 1.1.8: mark the row for the deal shown on this site with a "You are here" badge */
-(function () {
-  const list = document.getElementById("all");
-  const matches = document.getElementById("matches");
-  const norm = (s) => (s || "").replace(/\s+/g, " ").trim().toLowerCase();
-  function rowName(a) {
-    const c = a.cloneNode(true);
-    c.querySelectorAll("small, .here-badge").forEach((n) => n.remove());
-    return norm(c.textContent);
-  }
-  function apply() {
-    const shown = new Set([...matches.querySelectorAll(".card h2")].map((h) => norm(h.textContent)));
-    list.querySelectorAll("li").forEach((li) => {
-      const a = li.querySelector("a");
-      if (!a) return;
-      const here = shown.has(rowName(a));
-      const badge = a.querySelector(".here-badge");
-      li.classList.toggle("is-current", here);
-      if (here && !badge) {
-        const b = document.createElement("span");
-        b.className = "here-badge";
-        b.textContent = "You are here";
-        a.append(b);
-        a.setAttribute("aria-current", "true");
-      } else if (!here && badge) {
-        badge.remove();
-        a.removeAttribute("aria-current");
-      }
-    });
-  }
-  new MutationObserver(apply).observe(list, { childList: true });
-  new MutationObserver(apply).observe(matches, { childList: true });
-  apply();
 })();
