@@ -330,9 +330,6 @@ html { width: 360px; overflow: hidden; }
 /* Nudge credit star up to match the text's optical center */
 :root body footer .footer-credit .credit-star { transform: translateY(-1px); }
 
-/* Snap the offers list to exactly 5 rows (42px each) so no gap shows above the footer */
-:root body #all { max-height: 210px; }
-
 /* Restore scrolling when content is taller than 600px (deal found state) */
 :root body {
   overflow-y: auto;
@@ -356,9 +353,7 @@ html { width: 360px; overflow: hidden; }
 
 
 :root body #all li a { border-bottom: 0; }
-:root body #all { max-height: 246px; }
 :root body .empty-state { padding-top: 10px; padding-bottom: 10px; margin-bottom: 10px; }
-:root body #all { max-height: 232px; }
 
 :root body input[type=search], :root body input[type=search]:hover, :root body input[type=search]:focus, :root body input[type=search]:focus-visible { outline: none; box-shadow: none; border-color: var(--border); }
 
@@ -376,9 +371,6 @@ html { width: 360px; overflow: hidden; }
 :root body:has(.empty-state) { overflow-y: hidden; }
 /* 1.1.8: keep browse rows whole and the footer visible in the deal-found state */
 :root body #all { overflow-y: auto; }
-
-/* 1.1.8: browse list = exactly 4 whole rows (61px each) */
-:root body #all { max-height: 244px; }
 
 /* 1.1.8: animated hand-off between the deal card and the browse list */
 #matches { overflow: hidden; max-height: 320px; transition: max-height 260ms var(--ease-out), opacity 180ms ease-out; }
@@ -400,19 +392,12 @@ html { width: 360px; overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   #browse::details-content, #browse > summary::after { transition: none; }
 }
-/* 1.1.8 fix: no-deal screen keeps the original 232px list so the footer fits */
-:root body:has(.empty-state) #all { max-height: 232px; }
-
 /* 1.1.8 fix: animate the deal card's real height (no 320px cap) so expanded details can scroll */
 #matches { max-height: none; height: auto; transition: height 260ms var(--ease-out), opacity 180ms ease-out; }
 :root body:has(#matches .card):has(#browse[open]) #matches { max-height: none; height: 0; opacity: 0; visibility: hidden; pointer-events: none; transition: height 260ms var(--ease-out), opacity 140ms ease-out, visibility 0s linear 260ms; }
 @media (prefers-reduced-motion: reduce) {
   #matches, :root body:has(#matches .card):has(#browse[open]) #matches { transition: none; }
 }
-/* 1.1.8: "You are here" badge */
-:root body #all li a { position: relative; }
-.here-badge { position: absolute; right: 12px; bottom: 11px; padding: 2px 8px; border-radius: 999px; background: var(--chip-bg); color: var(--chip-fg); font-size: 10.5px; font-weight: 600; line-height: 1.4; letter-spacing: .01em; pointer-events: none; }
-
 /* 1.1.8: settings = small card just left of the gear */
 :root body .settings-panel:not([hidden]) { top: 14px; left: auto; right: 64px; width: max-content; height: auto; padding: 6px 12px; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,.28); }
 :root body .settings-panel:not([hidden]) .settings-item { width: 100%; justify-content: space-between; gap: 18px; padding: 8px 0; }
@@ -433,9 +418,6 @@ header { position: relative; }
 @keyframes settings-slide { from { opacity: 0; transform: translateX(8px) scale(.96); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { :root body .settings-panel:not([hidden]) { animation: none; } }
 
-/* 1.1.8: "You are here" pill centered on the row's right edge */
-:root body .here-badge { top: 50%; bottom: auto; right: 16px; transform: translateY(-50%); }
-:root body #all li.is-current a { padding-right: 104px; }
 /* 1.1.8: one motion system - 3 durations, 1 easing */
 :root { --dur-fast: 140ms; --dur-base: 200ms; --dur-slow: 260ms; }
 
@@ -521,9 +503,6 @@ li a { transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur
 :root body:has(#matches .card):has(#browse[open]) .match-label { margin-bottom: 0; }
 :root body:has(#matches .card):has(#browse[open]) #browse { margin-top: 12px; padding-top: 12px; }
 
-/* 1.1.8: smaller "You are here" pill so the name stays on one line */
-:root body .here-badge { right: 8px; padding: 2px 7px; font-size: 10px; }
-:root body #all li.is-current a { padding-right: 86px; }
 /* 1.1.8: non-web pages (nothing in #matches) - even spacing around the Browse row */
 :root body:has(#matches:not(:has(*))) #browse { margin-top: 0; }
 :root body:has(#matches:not(:has(*))) footer { margin-top: 14px; }
@@ -578,15 +557,33 @@ li svg[viewBox="0 0 24 24"] { width: 16px; height: 16px; stroke-width: 1.5; }
 :root.theme-switching *::after { transition-property: transform !important; }
 
 
-/* Browse list: tall enough for 4 full rows */
-:root body #all,
-:root body:has(.empty-state) #all { max-height: 250px; }
-
 /* Popup height: tighter footer spacing so the no-deal popup fits under 600px */
 footer { margin-top: 12px; }
 body { padding-bottom: 12px; }
 
-/* Deal found: the "You are here" row wraps to 2 lines, so give the list ~22px more to show 4 whole rows */
-:root body:has(#matches .card) #all { max-height: 272px; }
 /* No deal + Browse open: tighten the gap above the Browse divider so the footer fits under 600px */
 :root body:has(.empty-state) #browse[open] { margin-top: 8px; padding-top: 12px; }
+/* Browse list: every row has one fixed height and the list is sized from it, so the list shows
+   exactly --browse-rows whole rows whatever the offer or category names are. Row content can no
+   longer change a row's height (names are one line and truncate; the label is one line), so no
+   per-state max-height is needed. Rows snap on scroll so a partial row never rests at the edge. */
+:root { --row-h: 61px; --browse-rows: 4; }
+:root body #all { max-height: calc(var(--row-h) * var(--browse-rows)); overflow-y: auto; scroll-snap-type: y mandatory; }
+:root body #all li { height: var(--row-h); scroll-snap-align: start; }
+:root body #all li > a,
+:root body #all li > .row-static { display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 0 4px; }
+:root body #all .offer-name { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+:root body #all li small { width: fit-content; max-width: 100%; white-space: nowrap; }
+
+/* "You are here" indicator: a small accent dot to the right of the category label. It is taken
+   out of flow (absolute, zero-size box), so it cannot change wrapping, spacing or tile size.
+   It pulses via transform/opacity only (compositor, no layout) on the row for the current site. */
+:root body #all li small { position: relative; }
+:root body #all .here-dot { position: absolute; top: 50%; left: 100%; width: 6px; height: 6px; margin: -3px 0 0 8px; border-radius: 50%; background: var(--accent); pointer-events: none; }
+:root body #all .here-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--accent); opacity: .45; animation: here-pulse 2.4s var(--ease-out) infinite; }
+@keyframes here-pulse { 0% { transform: scale(1); opacity: .45; } 70%, 100% { transform: scale(2.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { :root body #all .here-dot::after { animation: none; opacity: 0; } }
+
+/* Report an outdated offer: orange accent on hover and keyboard focus */
+:root body .card .report-link:hover,
+:root body .card .report-link:focus-visible { color: var(--accent); text-decoration: none; opacity: 1; }

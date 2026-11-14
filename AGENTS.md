@@ -58,8 +58,9 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 
 Chrome caps the popup at 600px tall and cuts off anything past that. Check these states after any layout change:
 
-- No deal on the site, Browse open: the footer links must be fully visible. The list is capped at 250px (`:root body:has(.empty-state) #all`), and `#browse[open]` gets a smaller top margin in this state.
-- Deal found, Browse open: the list is capped at 272px (`:root body:has(#matches .card) #all`), because the "You are here" row wraps to two lines and the list needs that much to show 4 whole rows.
+- Browse list: every row is a fixed `--row-h` (61px) and the list is `--row-h * --browse-rows` (4 rows) tall in every state, so it always shows 4 whole rows. Names are one line and truncate, so nothing in a row can change its height. Do not add per-state `max-height` values for `#all`; change `--row-h` or `--browse-rows` instead.
+- No deal on the site, Browse open: the footer links must be fully visible. `#browse[open]` gets a smaller top margin in this state.
+- Deal found, Browse open: same list height. The row for the current site has a small pulsing accent dot after its category label (`.here-dot`). It is out of flow, so it never changes wrapping or row size. Do not turn it back into text or padding.
 - Browse closed, and non-web pages such as `chrome://extensions`.
 - To measure, run `document.querySelector('footer').getBoundingClientRect().bottom` in the popup console. It should print 600 or less.
 
