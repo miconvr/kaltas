@@ -225,8 +225,9 @@ function renderList(offers, query = "", current = []) {
   offers
     .filter((o) => !q || ((o.name || "") + " " + (o.category || "") + " " + (o.perk || "")).toLowerCase().includes(q))
     .sort((a, b) => categoryRank(a.category) - categoryRank(b.category))
-    .forEach((o) => {
+    .forEach((o, i) => {
       const li = document.createElement("li");
+      li.style.setProperty("--i", Math.min(i, 7)); // row entrance order (see popup.css)
       const name = document.createElement("span");
       name.className = "offer-name";
       name.textContent = o.name;
@@ -351,10 +352,13 @@ async function init() {
   $("browse").querySelector("summary").addEventListener("click", function () {
     saveBrowseClosed($("browse").open);
   });
+  // While searching, rows appear without the open animation; opening or closing Browse resets it.
   $("search").addEventListener("input", (e) => {
     query = e.target.value;
+    $("all").classList.add("is-filtering");
     render();
   });
+  $("browse").addEventListener("toggle", () => $("all").classList.remove("is-filtering"));
 
   render();
 }

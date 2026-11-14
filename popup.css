@@ -571,7 +571,8 @@ body { padding-bottom: 12px; }
 :root body #all { max-height: calc(var(--row-h) * var(--browse-rows)); overflow-y: auto; scroll-snap-type: y mandatory; }
 :root body #all li { height: var(--row-h); scroll-snap-align: start; }
 :root body #all li > a,
-:root body #all li > .row-static { display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 0 4px; }
+:root body #all li > .row-static { display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 0 2px; }
+:root body #all li > a:hover { padding-left: 4px; }
 :root body #all .offer-name { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 :root body #all li small { width: fit-content; max-width: 100%; white-space: nowrap; }
 
@@ -587,3 +588,38 @@ body { padding-bottom: 12px; }
 /* Report an outdated offer: orange accent on hover and keyboard focus */
 :root body .card .report-link:hover,
 :root body .card .report-link:focus-visible { color: var(--accent); text-decoration: none; opacity: 1; }
+
+/* Motion pass. Animation only: nothing here changes how the popup looks or is laid out at rest.
+   Same system as above (--dur-fast/base/slow, --ease-out); transform and opacity only, so no
+   layout work; every rule has a reduced-motion fallback at the end of this block. */
+@keyframes enter-up { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes icon-swap { from { opacity: 0; transform: rotate(-60deg) scale(.6); } to { opacity: 1; transform: none; } }
+
+/* Popup open: header, site pill, Browse row and footer settle in one after another */
+.brand-row { animation: enter-up var(--dur-slow) var(--ease-out) backwards; }
+.site-line:empty { opacity: 0; }
+.site-line:not(:empty) { animation: enter-up var(--dur-slow) var(--ease-out) 40ms backwards; }
+#browse { animation: enter-up var(--dur-slow) var(--ease-out) 80ms backwards; }
+:root body footer { animation: enter-up var(--dur-slow) var(--ease-out) 120ms backwards; }
+
+/* Browse list: rows fade in one after another when the list opens (--i is set in popup.js).
+   Not while typing in search, so results don't re-play on every keystroke. Opacity only, so a
+   row can never push the list's scroll area. */
+:root body #browse[open] #all:not(.is-filtering) li { animation: fade-in var(--dur-base) var(--ease-out) calc(var(--i, 0) * 28ms + 80ms) backwards; }
+
+/* Theme icon: the new sun/moon turns in when the mode changes */
+#theme-toggle .label-icon svg { animation: icon-swap var(--dur-base) var(--ease-out) backwards; }
+
+/* Press feedback */
+.settings-btn { transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+.settings-btn:active { transform: scale(.92); }
+:root body .settings-panel .theme-toggle { transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+:root body .settings-panel .theme-toggle:active { transform: scale(.94); }
+#browse > summary { transition: transform var(--dur-fast) var(--ease-out); transform-origin: left center; }
+#browse > summary:active { transform: scale(.985); }
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-row, .site-line:not(:empty), #browse, :root body footer,
+  :root body #browse[open] #all:not(.is-filtering) li, #theme-toggle .label-icon svg { animation: none; }
+  .settings-btn:active, :root body .settings-panel .theme-toggle:active, #browse > summary:active { transform: none; }
+}
