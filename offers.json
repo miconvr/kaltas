@@ -436,22 +436,6 @@
         "caveats": "Free for the first year only. It renews at the standard price afterwards."
     },
     {
-        "name": "Frontend Masters Student Offer",
-        "domains": [
-            "frontendmasters.com"
-        ],
-        "regions": [
-            "global"
-        ],
-        "category": "Learning",
-        "perk": "Free access to Frontend Masters courses through the GitHub Student Developer Pack.",
-        "url": "https://frontendmasters.com/faq/students/",
-        "verified": "2026-11",
-        "details": "Frontend Masters partners with the GitHub Student Developer Pack to give students six months of free access to its platform.",
-        "requirements": "A verified GitHub Student Developer Pack.",
-        "caveats": "The free period is time-limited, so claim it when you are ready to use it."
-    },
-    {
         "name": "Codedex Club Student Offer",
         "domains": [
             "codedex.io"
