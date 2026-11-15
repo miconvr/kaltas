@@ -674,5 +674,135 @@
         "details": "A student discount on Linearity's design tools, Curve and Move, on the yearly Pro plan.",
         "requirements": "Verification as a student or educator through Linearity's education page.",
         "caveats": "Pricing and availability by country can change. Confirm the current terms on the official page."
+    },
+    {
+        "name": "Heroku for Students",
+        "domains": [
+            "heroku.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Cloud",
+        "perk": "Platform credits for students through the GitHub Student Developer Pack.",
+        "url": "https://www.heroku.com/students/",
+        "verified": "2026-11",
+        "details": "$13 per month in Heroku credits for 24 months ($312 total), usable on dynos, Heroku Postgres and Heroku Key-Value Store.",
+        "requirements": "A verified GitHub Student Developer Pack.",
+        "caveats": "Credits, not a free plan. Credits are only available through the GitHub Student Developer Pack."
+    },
+    {
+        "name": "IconScout for Students",
+        "domains": [
+            "iconscout.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "Free premium icons and design assets for students through the GitHub Student Developer Pack.",
+        "url": "https://iconscout.com/github-students",
+        "verified": "2026-11",
+        "details": "Premium icons and Unicons Pro, plus free illustrations, 3D icons and Lottie animations.",
+        "requirements": "A verified GitHub Student Developer Pack. Sign in to IconScout with GitHub.",
+        "caveats": "The offer page does not state how long access lasts."
+    },
+    {
+        "name": "Interview Cake",
+        "domains": [
+            "interviewcake.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Learning",
+        "perk": "1 week of free access to the full coding interview course for students.",
+        "url": "https://www.interviewcake.com/github-students",
+        "verified": "2026-11",
+        "details": "Full course with 50+ hours of practice questions and readings on core data structures and problem types, free for 1 week.",
+        "requirements": "A verified GitHub Student Developer Pack. Sign in to Interview Cake with GitHub.",
+        "caveats": "Trial only. Access after the first week is a paid upgrade."
+    },
+    {
+        "name": "Lucidchart Education",
+        "domains": [
+            "lucidchart.com",
+            "lucid.co"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "Free Education account for students.",
+        "url": "https://lucid.co/lucidchart/use-cases/education",
+        "verified": "2026-11",
+        "details": "A free Lucidchart Education account for diagrams and flowcharts, with real-time collaboration.",
+        "requirements": "Sign up with a valid school email address.",
+        "caveats": "The page describes the automatic upgrade for K-12 students and educators. Higher-education students should follow the steps on the page."
+    },
+    {
+        "name": "MATLAB and Simulink for Students",
+        "domains": [
+            "mathworks.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Dev Tools",
+        "perk": "Student pricing on MATLAB and Simulink, or free through your university.",
+        "url": "https://www.mathworks.com/products/matlab/student.html",
+        "verified": "2026-11",
+        "details": "The Student Suite includes MATLAB, Simulink, online training and widely used add-ons. Many universities have campus-wide access that works right away with a student email.",
+        "requirements": "Student status. Campus access needs a MathWorks account created with your school email.",
+        "caveats": "The Student Suite is a paid purchase. Check the page for the current price in your country."
+    },
+    {
+        "name": "MongoDB for Students",
+        "domains": [
+            "mongodb.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Cloud",
+        "perk": "$50 Atlas credit and a free certification through the GitHub Student Developer Pack.",
+        "url": "https://www.mongodb.com/students",
+        "verified": "2026-11",
+        "details": "$50 in MongoDB Atlas credit, plus a free MongoDB certification exam voucher (a $150 value) after you complete a certification learning path.",
+        "requirements": "A verified GitHub Student Developer Pack. Verify your GitHub details on the MongoDB students page.",
+        "caveats": "Atlas promo codes expire if not applied within 90 days. Redeeming the credit needs a credit card or PayPal on your Atlas account."
+    },
+    {
+        "name": "name.com for Students",
+        "domains": [
+            "name.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Cloud",
+        "perk": "A free domain for the first year through the GitHub Student Developer Pack.",
+        "url": "https://www.name.com/partner/github-students",
+        "verified": "2026-11",
+        "details": "One domain from a list of eligible extensions, free for the first year.",
+        "requirements": "A verified GitHub Student Developer Pack. Claim it from the GitHub offers page while logged out of name.com, then log in at checkout.",
+        "caveats": "Free for the first year only, then it renews at the normal price. Valid contact details are required to register a domain."
+    },
+    {
+        "name": "Logitech",
+        "domains": [
+            "logitech.com",
+            "logitechg.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Hardware",
+        "perk": "25% off Logitech products for verified students.",
+        "url": "https://logitech.com/en-us/programs/sheer-id",
+        "verified": "2026-11",
+        "details": "Verify your student status on Logitech's site to get a promo code for your order.",
+        "requirements": "Verified student status.",
+        "caveats": "Terms can differ by country and may limit use per customer. Check the official page before ordering."
     }
 ]
