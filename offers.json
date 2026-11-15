@@ -804,5 +804,21 @@
         "details": "Verify your student status on Logitech's site to get a promo code for your order.",
         "requirements": "Verified student status.",
         "caveats": "Terms can differ by country and may limit use per customer. Check the official page before ordering."
+    },
+    {
+        "name": "Icons8 for Students",
+        "domains": [
+            "icons8.com"
+        ],
+        "regions": [
+            "global"
+        ],
+        "category": "Design",
+        "perk": "3 months of free All Access for students through the GitHub Student Developer Pack.",
+        "url": "https://icons8.com/github-students",
+        "verified": "2026-11",
+        "details": "A 3-month All Access subscription with icons, photos, illustrations and music.",
+        "requirements": "A verified GitHub Student Developer Pack. Sign in to Icons8 with the GitHub email on your pack.",
+        "caveats": "Access lasts 3 months, then it is a paid plan. Check the offer page for the current terms."
     }
 ]
