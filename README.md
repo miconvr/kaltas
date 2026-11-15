@@ -5,7 +5,7 @@
   <p>
     <a href="https://ggl.link/kaltas">Add to Chrome</a> ·
     <a href="https://github.com/miconvr/kaltas/issues">Report Problem</a> ·
-    <a href="PRIVACY.md">Privacy Policy</a>
+    <a href="https://miconavarro.vercel.app/kaltas/privacy-policy">Privacy Policy</a>
   </p>
   <p>
     <a href="https://github.com/miconvr/kaltas/actions/workflows/validate.yml"><img src="https://github.com/miconvr/kaltas/actions/workflows/validate.yml/badge.svg?branch=main" alt="Validate Offers status"></a>
@@ -76,7 +76,7 @@ Only add or update an offer after checking an official source, and keep the text
 
 ## Privacy
 
-Kaltas compares the current tab hostname with local data after you open the popup. Theme and footer choices stay on your device. To keep offers current, the popup and toolbar badge fetch the public offers file from GitHub, so GitHub can see your IP address like any website; no browsing data is sent. Read the full [privacy policy](PRIVACY.md).
+Kaltas compares the current tab hostname with local data after you open the popup. Theme and footer choices stay on your device. To keep offers current, the popup and toolbar badge fetch the public offers file from GitHub, so GitHub can see your IP address like any website; no browsing data is sent. Read the full [privacy policy](https://miconavarro.vercel.app/kaltas/privacy-policy).
 
 ## Disclaimer
 

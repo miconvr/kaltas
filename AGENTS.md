@@ -27,7 +27,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
   - `screenshots/screenshot-1.png`, `screenshot-2.png`, `screenshot-3.png` (1280x800; more can be added as `screenshot-N.png`, up to 5)
   - `promo/promo-small-440x280.png`, `promo/promo-marquee-1400x560.png`
   - `icons/`: Web Store icons. `store-icon-128.png` and `store-icon-512.png` are transparent, `store-icon-tile-128.png` and `store-icon-tile-512.png` sit on the dark tile. All are built from `icons/logo.png`
-- `PRIVACY.md`: privacy policy
+- Privacy policy: lives on the portfolio site at `https://miconavarro.vercel.app/kaltas/privacy-policy`, not in this repo. Keep it in sync with the extension's permissions and data handling.
 - `README.md`: project overview. Its Screenshots section shows the three store screenshots (`screenshot-1`, `-2`, `-3`, each 640px wide) by relative path, so update it if those files are renamed, replaced or added to. The promo images are not shown in the README.
 
 ## Rules
@@ -38,7 +38,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - Saved settings and the offers copy use `iskolar-` keys in localStorage (the extension's earlier name). Leave the names alone: renaming them would reset every user's saved theme, footer and browse choices.
 - Commit messages are short and plain (`fix:`, `docs:`, `chore:`). Do not add co-author or tool attribution lines.
 - Do not add tracking, analytics, or remote code.
-- Any change to the name, description, permissions, or data handling must also be reflected in `PRIVACY.md`, `README.md`, and the store listing.
+- Any change to the name, description, permissions, or data handling must also be reflected in the privacy policy page on the portfolio site (`/kaltas/privacy-policy`), `README.md`, and the store listing.
 - Every change to `offers.json` must pass `node scripts/validate-offers.js`.
 - Do not put the number of available deals in store images, the README, or the store listing. It changes often.
 - In store images, GitHub Student Developer Pack is the featured deal.
