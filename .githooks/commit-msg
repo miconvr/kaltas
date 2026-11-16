@@ -1,0 +1,20 @@
+#!/bin/sh
+msg=$(head -n1 "$1")
+case "$msg" in
+  Merge\ *|Revert\ *|fixup!\ *|squash!\ *) exit 0 ;;
+esac
+if ! printf '%s' "$msg" | grep -Eq '^(feat|fix|style|docs|refactor|perf|chore|copy|content|test|build|ci)(\([a-z0-9._/-]+\))?!?: .{4,}$'; then
+  echo "Commit message must look like 'type: short summary' (optional scope: 'type(scope): summary')."
+  echo "Types: feat fix style docs refactor perf chore copy content test build ci"
+  exit 1
+fi
+lower=$(printf '%s' "$msg" | tr '[:upper:]' '[:lower:]')
+if [ "$msg" != "$lower" ]; then
+  echo "Commit subject must be all lowercase (brand names and acronyms too)."
+  echo "Try: $lower"
+  exit 1
+fi
+if [ "${#msg}" -ge 80 ]; then
+  echo "Subject is ${#msg} characters. Keep it under 80."
+  exit 1
+fi
