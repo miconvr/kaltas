@@ -8,7 +8,7 @@
     <a href="https://miconavarro.vercel.app/kaltas/privacy-policy">Privacy Policy</a>
   </p>
   <p>
-    <a href="https://github.com/miconvr/kaltas/actions/workflows/validate.yml"><img src="https://github.com/miconvr/kaltas/actions/workflows/validate.yml/badge.svg?branch=main" alt="Validate Offers status"></a>
+    <a href="https://github.com/miconvr/kaltas/actions/workflows/validate-offers.yml"><img src="https://github.com/miconvr/kaltas/actions/workflows/validate-offers.yml/badge.svg?branch=main" alt="Validate Offers status"></a>
   </p>
 </div>
 
