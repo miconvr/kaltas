@@ -1,4 +1,4 @@
-name: validate offers
+name: Validate Offers
 on: [push, pull_request]
 permissions:
   contents: read

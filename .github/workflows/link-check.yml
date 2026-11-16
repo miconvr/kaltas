@@ -1,4 +1,4 @@
-name: link check
+name: Link Check
 on:
   schedule:
     - cron: "30 1 * * 6"
@@ -16,7 +16,7 @@ jobs:
           node-version: 22
       - id: check
         run: node scripts/check-links.js
-      - name: open, update or close the issue
+      - name: Open, update or close the issue
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
@@ -28,8 +28,8 @@ jobs:
             if [ -n "$existing" ]; then
               gh issue edit "$existing" --body-file link-report.md
             else
-              gh issue create --title "offer links need review" --label link-check --body-file link-report.md
+              gh issue create --title "Offer Links Need Review" --label link-check --body-file link-report.md
             fi
           elif [ -n "$existing" ]; then
-            gh issue close "$existing" --comment "latest weekly check found no broken or moved links."
+            gh issue close "$existing" --comment "Latest weekly check found no broken or moved links."
           fi
