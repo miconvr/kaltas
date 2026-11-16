@@ -36,7 +36,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - Offers are global. There are no regions, region filters, or location pickers. Do not add them.
 - Every offer in `offers.json` still carries `"regions": ["global"]`. The popup ignores it, but installed versions up to 1.1.6 read the live file from GitHub and reject the whole list when an `info` entry has no `regions`. `validate-offers.js` checks `info` entries for it. Do not remove the field.
 - Saved settings and the offers copy use `iskolar-` keys in localStorage (the extension's earlier name). Leave the names alone: renaming them would reset every user's saved theme, footer and browse choices.
-- Commit messages are short and plain (`fix:`, `docs:`, `chore:`). Do not add co-author or tool attribution lines.
+- Commit subjects follow the format in the Commit messages section below.
 - Do not add tracking, analytics, or remote code.
 - Any change to the name, description, permissions, or data handling must also be reflected in the privacy policy page on the portfolio site (`/kaltas/privacy-policy`), `README.md`, and the store listing.
 - Every change to `offers.json` must pass `node scripts/validate-offers.js`.
@@ -86,3 +86,9 @@ Chrome caps the popup at 600px tall and cuts off anything past that. Check these
 - With Browse open, on a site with no deal and on a site with a deal: the footer links are fully visible and the list shows 4 whole rows.
 - Run `document.querySelector('footer').getBoundingClientRect().bottom` in the popup console in each state. It should print 600 or less.
 - Confirm there are no console errors in the popup or service worker.
+
+## Commit messages
+
+Every commit subject is `type: short summary`, all lowercase (brand names and acronyms too), under 80 characters, in the imperative ("add", "fix", not "added"). Types: feat new behavior, fix bug fix, style visual or css change, docs agents.md or readme, refactor no behavior change, perf speed, chore tooling or cleanup, copy wording, content data or text on the site, test, build, ci. One change per commit. Do not use `git add -A`; add specific files. Do not bypass the `.githooks/commit-msg` hook with `--no-verify`. Do not add co-author or tool attribution lines. The hook skips `Merge`, `Revert`, `fixup!` and `squash!` subjects. Pull requests are squash-merged only, so the PR title must follow the same format. History was normalized to this format once, so commit hashes from before that rewrite no longer exist.
+
+After a fresh clone, run `git config core.hooksPath .githooks` so the hook is active.
