@@ -67,9 +67,9 @@ Chrome caps the popup at 600px tall and cuts off anything past that. Check these
 
 ## Releasing
 
-1. Bump `version` in `manifest.json`.
+1. Bump `version` in `manifest.json` and the Current version line at the top of this file.
 2. Run `node scripts/validate-offers.js` and `node --check popup.js`.
-3. Commit, push, and tag the commit `vX.Y.Z` (always with the leading `v`). If only `store-assets/` or `README.md` change after tagging, the tag can stay, since neither is in the zip.
+3. Commit with the subject `chore: bump version to X.Y.Z`, push, tag the commit `vX.Y.Z` (always with the leading `v`), and push the tag with `git push origin vX.Y.Z`. If only `store-assets/` or `README.md` change after tagging, the tag can stay, since neither is in the zip.
 4. Build the zip with only the extension files, into the git-ignored `dist/` folder (run `mkdir dist` first):
    `tar -a -c -f dist/kaltas-X.Y.Z.zip manifest.json background.js offers-loader.js popup.html popup.js popup.css offers.json icons fonts`
 5. List the zip with `tar -tf` and confirm it has no `.git`, scripts, docs, `store-assets`, or `AGENTS.md`.
