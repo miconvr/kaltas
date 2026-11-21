@@ -53,8 +53,8 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - The two settings toggles are icon-only, so their tooltips (`title`) describe the action and are updated in `popup.js` when the state changes.
 - Style tweaks are added at the end of `popup.css`. Many rules start with `:root body`, so a new rule must be at least as specific as the one it overrides, or it silently loses. Search the file for the selector before changing a style.
 - Pinned deals: the star on a Browse row and on the deal card saves the offer's name in `localStorage` under `iskolar-pins` (a JSON array of names). It stays on the device and is never sent anywhere. Pinned rows sort to the top of the Browse list, ahead of the category order, with a thin line under the last one. There is no header row for them, because every row must stay `--row-h` tall. Names that are no longer in `offers.json` are ignored, and renaming an offer drops its pin. The privacy policy lists what is stored on the device, so keep it in sync.
-- While a deal card's "Who qualifies & details" is open, the footer (links and credit) is hidden so long cards fit the 600px popup. It returns when the details close and whenever Browse is open, because the card collapses then but its details stay open. Do not hide it in any other state.
-- The deal card's category label is plain bold text (no icon). In dark mode it is `--accent` orange, and the "Who qualifies & details" toggle keeps its original peach-orange.
+- While a deal card's "Details" is open, the footer (links and credit) is hidden so long cards fit the 600px popup. It returns when the details close and whenever Browse is open, because the card collapses then but its details stay open. Do not hide it in any other state.
+- The deal card's category label is plain bold text (no icon). In dark mode the label and the "Details" toggle are `--accent` orange, and the toggle turns white on hover.
 - Store screenshots show the real popup, so retake them if the popup layout changes.
 
 ## Popup height
@@ -88,7 +88,7 @@ Chrome caps the popup at 600px tall and cuts off anything past that. Check these
 - With Browse open, on a site with no deal and on a site with a deal: the footer links are fully visible and the list shows 4 whole rows.
 - Run `document.querySelector('footer').getBoundingClientRect().bottom` in the popup console in each state. It should print 600 or less.
 - Pin a deal from the card and from a Browse row: the star fills on both, the row moves to the top of the list, the list still shows 4 whole rows, and the footer bottom is 600 or less. Unpin it and confirm it returns to its category.
-- Deal found, Browse closed: open "Who qualifies & details" on a long offer (Replit, JetBrains, Linearity). The footer should disappear and nothing should be cut off. If the popup still scrolls, the card alone is over 600px. Close the details and the footer comes back. (The footer measurement prints 0 while it is hidden, which is expected.)
+- Deal found, Browse closed: open "Details" on a long offer (Replit, JetBrains, Linearity). The footer should disappear and nothing should be cut off. If the popup still scrolls, the card alone is over 600px. Close the details and the footer comes back. (The footer measurement prints 0 while it is hidden, which is expected.)
 - Confirm there are no console errors in the popup or service worker.
 
 ## Commit messages

@@ -661,3 +661,10 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 
 /* Deal card category label: bold (700) instead of semibold. Inter 700 is already used by the card titles. */
 :root body .card .tag { font-weight: 700; }
+
+/* Deal card details toggle in dark mode: the deeper accent orange (same as the category label), white on
+   hover. The chevron has its own color, so it is set too. Light mode keeps the dark orange it already has. */
+:root[data-theme="dark"] body .card summary,
+:root[data-theme="dark"] body .card summary::after { color: var(--accent); }
+:root[data-theme="dark"] body .card summary:hover,
+:root[data-theme="dark"] body .card summary:hover::after { color: var(--fg); }

@@ -168,7 +168,7 @@ function makeDetails(offer) {
 
   const box = document.createElement("details");
   const sum = document.createElement("summary");
-  sum.textContent = "Who qualifies & details";
+  sum.textContent = "Details";
   box.append(sum);
   rows.forEach(([label, text]) => {
     const p = document.createElement("p");
