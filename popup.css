@@ -655,10 +655,10 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
    It comes back when the details close or when Browse opens (the card collapses then, though its details stay open). */
 :root body:has(#matches .card details[open]):not(:has(#browse[open])) footer { display: none; }
 
-/* Deal card text in dark mode: the category label and the details toggle use the deeper accent orange
-   instead of the pale peach. Light mode keeps the dark orange it already has. */
-:root[data-theme="dark"] body .card .tag,
-:root[data-theme="dark"] body .card summary,
-:root[data-theme="dark"] body .card summary::after { color: var(--accent); }
-:root[data-theme="dark"] body .card summary:hover,
-:root[data-theme="dark"] body .card summary:hover::after { color: var(--fg); }
+/* Deal card label in dark mode: the category label uses the deeper accent orange. The details toggle
+   keeps its original peach-orange. Light mode keeps the dark orange it already has. */
+:root[data-theme="dark"] body .card .tag { color: var(--accent); }
+
+/* Category icon at the left of the card's category label (same icon as the Browse list) */
+:root body .card .tag { display: inline-flex; align-items: center; gap: 6px; }
+:root body .card .tag svg { flex: none; width: 14px; height: 14px; }
