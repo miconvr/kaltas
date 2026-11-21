@@ -710,3 +710,12 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 @media (prefers-reduced-motion: reduce) {
   :root body .match-label-found::before { animation: none; }
 }
+
+/* Long deal details scroll inside their own box with a thin scrollbar (the box is capped by fitDetails in
+   popup.js). The window scrollbar is hidden while the details are open, so this is the only one. */
+:root body .card .detail-scroll { overflow-y: auto; overscroll-behavior: contain; padding-right: 8px; }
+:root body .card .detail-scroll::-webkit-scrollbar { width: 4px; }
+:root body .card .detail-scroll::-webkit-scrollbar-track { background: transparent; }
+:root body .card .detail-scroll::-webkit-scrollbar-thumb { border-radius: 4px; background: color-mix(in srgb, var(--muted) 55%, transparent); }
+:root body .card .detail-scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+:root.card-details-open body:not(:has(#browse[open])) { overflow-y: hidden; }
