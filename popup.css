@@ -653,8 +653,16 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 
 /* Deal card details open: hide the footer (links and credit) and the Browse row so a long card fits the 600px popup.
    It comes back when the details close or when Browse opens (the card collapses then, though its details stay open). */
-:root.card-details-open body:not(:has(#browse[open])) footer,
-:root.card-details-open body:not(:has(#browse[open])) #browse { position: absolute !important; top: 0; left: 0; right: 0; visibility: hidden !important; pointer-events: none; }
+/* Same hide animation as the settings "Hide footer" toggle (footer[hidden] above): height, margin and opacity
+   collapse, then visibility flips. Nothing is display: none, so nothing replays its entrance animation. */
+:root.card-details-open body:not(:has(#browse[open])) footer { height: 0; margin-top: 0; opacity: 0; visibility: hidden; pointer-events: none; transition: height var(--dur-slow) var(--ease-out), margin-top var(--dur-slow) var(--ease-out), opacity var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-slow); }
+:root body #browse { transition: height var(--dur-slow) var(--ease-out), margin var(--dur-slow) var(--ease-out), padding var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out), visibility 0s; }
+:root.card-details-open body:not(:has(#browse[open])) #browse { height: 0; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; border-width: 0; overflow: hidden; opacity: 0; visibility: hidden; pointer-events: none; transition: height var(--dur-slow) var(--ease-out), margin var(--dur-slow) var(--ease-out), padding var(--dur-slow) var(--ease-out), opacity var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-slow); }
+@media (prefers-reduced-motion: reduce) {
+  :root body #browse,
+  :root.card-details-open body:not(:has(#browse[open])) footer,
+  :root.card-details-open body:not(:has(#browse[open])) #browse { transition: none; }
+}
 
 /* Deal card label in dark mode: the category label uses the deeper accent orange. The details toggle
    keeps its original peach-orange. Light mode keeps the dark orange it already has. */
