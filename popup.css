@@ -261,8 +261,6 @@ footer[hidden] { display: none !important; }
 /* Compact footer */
 footer { font-size: 10.5px; }
 .footer-credit { font-size: 11px; }
-.footer-links a.gh-link { display: inline-flex; align-items: center; }
-.footer-links a.gh-link svg { display: block; }
 
 /* Rate star icon */
 
@@ -538,7 +536,6 @@ a:focus:not(:focus-visible) { outline: none; }
 
 /* 1.1.8: footer icons on a 16px grid so edges land on whole pixels */
 :root body footer .footer-links a svg,
-:root body footer .footer-links a.gh-link svg,
 :root body footer .footer-links a.rate-link svg { width: 16px; height: 16px; shape-rendering: geometricPrecision; }
 :root body footer .footer-links a { height: 16px; line-height: 16px; }
 :root body footer .footer-links a.rate-link svg { stroke-width: 1.5; }
