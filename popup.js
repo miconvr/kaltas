@@ -209,15 +209,7 @@ function makeDetails(offer) {
 }
 
 // Card header: the category icon and label (no logo or letter tile, and no favicon, which would need a
-// permission or a remote request), then the name. --h, set on the card, is a hue picked from the
-// category. It tints the icon, the soft glow and the one-time ring.
-const CATEGORY_HUES = [14, 205, 330, 265, 150, 45, 175, 225, 245, 195, 285, 95, 120, 20];
-
-function catHue(category) {
-  const h = CATEGORY_HUES[categoryRank(category)];
-  return h === undefined ? 14 : h;
-}
-
+// permission or a remote request), then the name.
 function hostOf(url) {
   const u = safeUrl(url);
   if (u === "#") return "";
@@ -241,7 +233,6 @@ function makeCardHead(offer, tag, h2) {
 function makeCard(offer) {
   const card = document.createElement("div");
   card.className = isInfo(offer) ? "card info-card" : "card";
-  card.style.setProperty("--h", String(catHue(offer.category)));
 
   const tag = document.createElement("span");
   tag.className = "tag";
@@ -262,9 +253,6 @@ function makeCard(offer) {
   } else {
     card.append(makeCardHead(offer, tag, h2), p);
   }
-
-  const more = makeDetails(offer);
-  if (more) card.append(more);
 
   if (offer.url) {
     const a = document.createElement("a");
@@ -295,6 +283,8 @@ function makeCard(offer) {
     report.textContent = "Report an outdated offer";
     card.append(report);
   }
+  const more = makeDetails(offer);
+  if (more) card.append(more);
   if (!isInfo(offer)) card.prepend(makePinButton(offer.name));
   return card;
 }

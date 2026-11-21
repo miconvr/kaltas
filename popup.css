@@ -651,18 +651,14 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body .card .pin-btn { position: absolute; top: 8px; right: 8px; }
 :root body #matches .card h2 { padding-right: 30px; }
 
-/* Deal card (see AGENTS.md "Deal card"). --h is a hue that popup.js sets on the card from its category. */
+/* Deal card (see AGENTS.md "Deal card"). */
 
 /* Header: category icon and label above the name; the pin star sits in the top right corner */
 :root body .card-head { margin: 0 0 10px; }
 :root body .card-head .tag { display: flex; align-items: center; gap: 5px; margin: 0 0 4px; }
-:root body .card-head .tag svg { flex: none; width: 15px; height: 15px; color: hsl(var(--h, 14) 62% 46%); }
-:root[data-theme="dark"] body .card-head .tag svg { color: hsl(var(--h, 14) 80% 72%); }
 :root body .card-head h2 { margin: 0; text-wrap: balance; }
 :root body .card > p { text-wrap: pretty; }
 
-/* A soft glow in the category color from the top left corner */
-:root body #matches .card:not(.info-card) { background-image: radial-gradient(130% 100% at 0% 0%, hsl(var(--h, 14) 75% 55% / .17), transparent 62%); }
 
 /* Button: the site it opens sits under the label */
 :root body a.btn { flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px; padding: 7px 16px 8px; }
@@ -676,10 +672,7 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body .card .detail-row:first-child { margin-top: 10px; }
 :root body .card .detail-label { display: block; margin: 0 0 3px; color: var(--chip-fg); font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 
-/* Found moment: a ring fades in and out once around the card, and the sparkle pulses once.
-   Opacity and transform only. The ring is ::before because ::after is the float clearfix. */
-:root body #matches .card:not(.info-card)::before { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1.5px hsl(var(--h, 14) 75% 62% / .75); opacity: 0; pointer-events: none; animation: found-ring 1100ms var(--ease-out) 120ms 1 both; }
-@keyframes found-ring { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
+/* Found moment: the sparkle pulses once. Opacity and transform only. */
 :root body .match-label-found::before { display: inline-block; animation: spark-pulse 800ms var(--ease-out) 150ms 1 both; }
 @keyframes spark-pulse { 0% { transform: scale(1); opacity: .4; } 45% { transform: scale(1.6) rotate(45deg); opacity: 1; } 100% { transform: none; opacity: 1; } }
 
@@ -690,8 +683,19 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 @keyframes chip-flash { 0% { opacity: 0; } 15%, 70% { opacity: 1; } 100% { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
-  :root body #matches .card:not(.info-card)::before,
   :root body .match-label-found::before,
   :root body .card .pin-btn.pop svg,
   :root body .card .saved-chip { animation: none; }
 }
+
+/* Calmer deal card: flat surface, orange only on the button and the filled star.
+   Order is perk, button (report link on its row), then the details below a divider. */
+:root body #matches .card:not(.info-card) { border: 1px solid var(--border); background-image: none; }
+:root body .card-head .tag { color: var(--muted); }
+:root body .card-head .tag svg { flex: none; width: 15px; height: 15px; color: currentColor; }
+:root body .card .detail-label { color: var(--muted); }
+:root body .card summary { color: var(--muted); }
+:root body .card summary:hover { color: var(--fg); }
+:root body .match-label-found::before { color: currentColor; }
+:root body .card .report-link { margin-top: 12px; }
+:root body .card details { clear: both; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--border); }
