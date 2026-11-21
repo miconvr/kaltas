@@ -162,7 +162,7 @@ function makeDetails(offer) {
   const rows = [
     ["Details", offer.details],
     ["Who qualifies", offer.requirements],
-    ["Heads up", offer.caveats],
+    ["Good to know", offer.caveats],
   ].filter(([, text]) => typeof text === "string" && text);
   if (!rows.length) return null;
 
@@ -172,48 +172,12 @@ function makeDetails(offer) {
   box.append(sum);
   rows.forEach(([label, text]) => {
     const p = document.createElement("p");
-    p.className = "detail-row";
-    const b = document.createElement("span");
-    b.className = "detail-label";
-    b.textContent = label;
+    const b = document.createElement("strong");
+    b.textContent = label + ": ";
     p.append(b, text);
     box.append(p);
   });
   return box;
-}
-
-// Card header: a small tile with the offer's first letter (tinted by category; no favicon, because
-// that would need a permission or a remote request), the category label, and an "Ends <date>" pill
-// when the offer's optional "expires" date is within ENDS_SOON_DAYS.
-const ENDS_SOON_DAYS = 45;
-
-function endsSoonLabel(offer) {
-  if (typeof offer.expires !== "string") return "";
-  const end = new Date(offer.expires + "T23:59:59");
-  const days = (end - new Date()) / 86400000;
-  if (!(days > 0 && days <= ENDS_SOON_DAYS)) return "";
-  return "Ends " + end.toLocaleDateString(undefined, { month: "short", day: "numeric" });
-}
-
-function makeCardHead(offer, tag) {
-  const head = document.createElement("div");
-  head.className = "card-head";
-
-  const mono = document.createElement("span");
-  mono.className = "mono";
-  mono.setAttribute("aria-hidden", "true");
-  mono.style.setProperty("--h", String((categoryRank(offer.category) * 53) % 360));
-  mono.textContent = (String(offer.name || "").match(/[A-Za-z0-9]/) || ["\u2022"])[0].toUpperCase();
-  head.append(mono, tag);
-
-  const ends = endsSoonLabel(offer);
-  if (ends) {
-    const pill = document.createElement("span");
-    pill.className = "ends-pill";
-    pill.textContent = ends;
-    head.append(pill);
-  }
-  return head;
 }
 
 function makeCard(offer) {
@@ -223,8 +187,6 @@ function makeCard(offer) {
   const tag = document.createElement("span");
   tag.className = "tag";
   tag.textContent = offer.category || "Info";
-
-  const head = makeCardHead(offer, tag);
 
   const h2 = document.createElement("h2");
   h2.textContent = offer.name;
@@ -237,9 +199,9 @@ function makeCard(offer) {
     const f = document.createElement("div");
     f.className = "perk-figure";
     f.textContent = fig[0].charAt(0).toUpperCase() + fig[0].slice(1);
-    card.append(head, h2, f, p);
+    card.append(tag, h2, f, p);
   } else {
-    card.append(head, h2, p);
+    card.append(tag, h2, p);
   }
 
   const more = makeDetails(offer);
