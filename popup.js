@@ -95,6 +95,24 @@ function syncPinButtons() {
   document.querySelectorAll(".pin-btn").forEach(syncPinButton);
 }
 
+// Pin reaction on the deal card only (never in the Browse list): the star pops and a "Saved" chip
+// fades in and out. Skipped when the person prefers reduced motion.
+function celebratePin(b) {
+  const card = b.closest(".card");
+  if (!card || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  b.classList.remove("pop");
+  void b.offsetWidth;
+  b.classList.add("pop");
+  b.addEventListener("animationend", () => b.classList.remove("pop"), { once: true });
+  const old = card.querySelector(".saved-chip");
+  if (old) old.remove();
+  const chip = document.createElement("span");
+  chip.className = "saved-chip";
+  chip.textContent = "Saved";
+  chip.addEventListener("animationend", () => chip.remove());
+  card.append(chip);
+}
+
 function makePinButton(name) {
   const b = document.createElement("button");
   b.type = "button";
@@ -102,7 +120,11 @@ function makePinButton(name) {
   b.dataset.name = name;
   b.innerHTML = ICON_STAR;
   syncPinButton(b);
-  b.addEventListener("click", () => setPinned(name, !isPinned(name), !!b.closest("#all")));
+  b.addEventListener("click", () => {
+    const on = !isPinned(name);
+    setPinned(name, on, !!b.closest("#all"));
+    if (on) celebratePin(b);
+  });
   return b;
 }
 const SVG_OPEN = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
@@ -162,7 +184,7 @@ function makeDetails(offer) {
   const rows = [
     ["Details", offer.details],
     ["Who qualifies", offer.requirements],
-    ["Good to know", offer.caveats],
+    ["Heads up", offer.caveats],
   ].filter(([, text]) => typeof text === "string" && text);
   if (!rows.length) return null;
 
@@ -170,19 +192,67 @@ function makeDetails(offer) {
   const sum = document.createElement("summary");
   sum.textContent = "Who qualifies & details";
   box.append(sum);
+  const wrap = document.createElement("div");
+  wrap.className = "detail-scroll";
   rows.forEach(([label, text]) => {
     const p = document.createElement("p");
-    const b = document.createElement("strong");
-    b.textContent = label + ": ";
+    p.className = "detail-row";
+    const b = document.createElement("span");
+    b.className = "detail-label";
+    b.textContent = label;
     p.append(b, text);
-    box.append(p);
+    wrap.append(p);
   });
+  box.append(wrap);
+
+  // The panel is capped (--detail-h in popup.css) and scrolls. Fade its bottom edge while there is more.
+  const updateFade = () => wrap.classList.toggle("fade", wrap.scrollHeight - wrap.scrollTop - wrap.clientHeight > 2);
+  wrap.addEventListener("scroll", updateFade, { passive: true });
+  box.addEventListener("toggle", () => requestAnimationFrame(updateFade));
   return box;
+}
+
+// Card header: a tile with the offer's first letter, then the category label and the name. The tile is
+// a letter, not a favicon, on purpose (a favicon needs a permission or a remote request). --h, set on
+// the card, is a hue picked from the category. It tints the tile, the soft glow and the one-time ring.
+const CATEGORY_HUES = [14, 205, 330, 265, 150, 45, 175, 225, 245, 195, 285, 95, 120, 20];
+
+function catHue(category) {
+  const h = CATEGORY_HUES[categoryRank(category)];
+  return h === undefined ? 14 : h;
+}
+
+function hostOf(url) {
+  const u = safeUrl(url);
+  if (u === "#") return "";
+  try {
+    return new URL(u).hostname.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+}
+
+function makeCardHead(offer, tag, h2) {
+  const head = document.createElement("div");
+  head.className = "card-head";
+
+  const mono = document.createElement("span");
+  mono.className = "mono";
+  mono.setAttribute("aria-hidden", "true");
+  mono.textContent = (String(offer.name || "").match(/[A-Za-z0-9]/) || ["\u2022"])[0].toUpperCase();
+
+  const titles = document.createElement("div");
+  titles.className = "card-titles";
+  titles.append(tag, h2);
+
+  head.append(mono, titles);
+  return head;
 }
 
 function makeCard(offer) {
   const card = document.createElement("div");
   card.className = isInfo(offer) ? "card info-card" : "card";
+  card.style.setProperty("--h", String(catHue(offer.category)));
 
   const tag = document.createElement("span");
   tag.className = "tag";
@@ -199,9 +269,9 @@ function makeCard(offer) {
     const f = document.createElement("div");
     f.className = "perk-figure";
     f.textContent = fig[0].charAt(0).toUpperCase() + fig[0].slice(1);
-    card.append(tag, h2, f, p);
+    card.append(makeCardHead(offer, tag, h2), f, p);
   } else {
-    card.append(tag, h2, p);
+    card.append(makeCardHead(offer, tag, h2), p);
   }
 
   const more = makeDetails(offer);
@@ -213,7 +283,17 @@ function makeCard(offer) {
     a.href = safeUrl(offer.url);
     a.target = "_blank";
     a.rel = "noopener noreferrer";
-    a.textContent = "View offer";
+    const label = document.createElement("span");
+    label.className = "btn-label";
+    label.textContent = "View offer";
+    a.append(label);
+    const host = hostOf(offer.url);
+    if (host) {
+      const dest = document.createElement("span");
+      dest.className = "btn-host";
+      dest.textContent = host;
+      a.append(dest);
+    }
     card.append(a);
   }
 
