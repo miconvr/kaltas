@@ -4,9 +4,6 @@
         "domains": [
             "github.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Dev Tools",
         "perk": "Free bundle of developer tools and services for verified students.",
         "url": "https://education.github.com/pack",
@@ -18,9 +15,6 @@
         "name": "JetBrains Student License",
         "domains": [
             "jetbrains.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Dev Tools",
         "perk": "Free educational licenses for JetBrains IDEs for students.",
@@ -34,9 +28,6 @@
         "domains": [
             "azure.microsoft.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Cloud",
         "perk": "Free Azure access with student credits and selected services.",
         "details": "Azure for Students includes a credit for eligible new customers and access to selected free services. Microsoft says the subscription can be renewed annually while you remain a student.",
@@ -48,9 +39,6 @@
         "name": "Autodesk Education",
         "domains": [
             "autodesk.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Design",
         "perk": "Free one-year access to Autodesk software for eligible students.",
@@ -64,9 +52,6 @@
         "domains": [
             "zed.dev"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Dev Tools",
         "perk": "Free Zed Pro for one year for verified university students.",
         "details": "The student plan includes Zed Pro features, real-time collaboration, unlimited edit predictions, and monthly AI token credits.",
@@ -79,9 +64,6 @@
         "domains": [
             "replit.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Dev Tools",
         "perk": "Discounted Replit Core for students with an eligible school email.",
         "details": "Replit's student page describes an education offer for students who verify with a school email address.",
@@ -93,9 +75,6 @@
         "name": "Codecademy Pro Student",
         "domains": [
             "codecademy.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Learning",
         "perk": "Reduced-price Codecademy Pro access for eligible students.",
@@ -110,9 +89,6 @@
             "notion.so",
             "notion.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Productivity",
         "perk": "Free upgraded plan for students and educators with a school email.",
         "url": "https://www.notion.com/product/notion-for-education",
@@ -125,9 +101,6 @@
         "domains": [
             "canva.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Design",
         "perk": "Free for K-12 students and teachers. College students get Canva Free, with Pro only if their school offers Canva for Campus.",
         "url": "https://www.canva.com/education/",
@@ -139,9 +112,6 @@
         "name": "Figma Education",
         "domains": [
             "figma.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Design",
         "perk": "Free Education plan for verified students and educators.",
@@ -156,9 +126,6 @@
             "microsoft.com",
             "office.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Productivity",
         "perk": "Word, Excel, PowerPoint and Teams for students through eligible schools.",
         "details": "Sign up with a school email address. Device discounts and Microsoft 365 Personal student pricing vary by country.",
@@ -170,9 +137,6 @@
         "name": "Adobe Creative Cloud for Students",
         "domains": [
             "adobe.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Design",
         "perk": "Discounted Creative Cloud plans for students.",
@@ -186,9 +150,6 @@
         "domains": [
             "spotify.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Entertainment",
         "perk": "Discounted Premium plan for verified students. Availability varies by country.",
         "details": "Student pricing is only offered in some countries, so check Spotify's student page for your country. Verification goes through SheerID.",
@@ -200,9 +161,6 @@
         "name": "YouTube Premium Student",
         "domains": [
             "youtube.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Entertainment",
         "perk": "Discounted membership for verified students. Availability varies by country.",
@@ -216,9 +174,6 @@
         "domains": [
             "apple.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Hardware",
         "perk": "Education pricing on Mac and iPad for students.",
         "details": "Apple runs a separate Education Store for each country. Open the Education page and choose your country's store before you buy.",
@@ -231,9 +186,6 @@
         "domains": [
             "amazon.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Shopping",
         "perk": "Discounted Prime for students where Prime Student is offered (such as the US and UK). Not available in every country.",
         "url": "https://www.amazon.com/amazonprime?primeCampaignId=studentlanding",
@@ -245,9 +197,6 @@
         "name": "Grammarly",
         "domains": [
             "grammarly.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Writing",
         "perk": "Grammarly lists a limited-time 50% student discount on Pro, verified through SheerID. Check that it is still running.",
@@ -262,9 +211,6 @@
             "gemini.google.com",
             "one.google.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "AI Tools",
         "perk": "Free year of Google AI Plus for eligible college and university students.",
         "details": "Includes 400 GB of storage and higher Gemini usage limits. Sign in with your personal Google account, open Google's student offer page, and verify your student status through SheerID.",
@@ -278,9 +224,6 @@
         "domains": [
             "perplexity.ai"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "AI Tools",
         "perk": "Discounted Perplexity Pro for verified students.",
         "details": "Education Pro includes everything in Perplexity Pro. Verify as a student through SheerID from the upgrade menu in the app, and the education discount is applied automatically.",
@@ -292,9 +235,6 @@
         "name": "Bootstrap Studio Student License",
         "domains": [
             "bootstrapstudio.io"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Dev Tools",
         "perk": "Free one-year license for Bootstrap Studio for students.",
@@ -308,9 +248,6 @@
         "domains": [
             "gitkraken.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Dev Tools",
         "perk": "6 months of GitKraken Pro features free for students, then a discounted student rate.",
         "url": "https://www.gitkraken.com/github-student-developer-pack",
@@ -322,9 +259,6 @@
         "name": "Tower Git Client for Students",
         "domains": [
             "git-tower.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Dev Tools",
         "perk": "Free 12 months of Tower Pro for enrolled students.",
@@ -338,9 +272,6 @@
         "domains": [
             "tableau.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Dev Tools",
         "perk": "Free one-year Tableau Desktop and Tableau Prep license for students.",
         "url": "https://www.tableau.com/academic/students",
@@ -352,9 +283,6 @@
         "name": "Axure RP for Students",
         "domains": [
             "axure.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Design",
         "perk": "Free Axure RP Team edition for students.",
@@ -368,9 +296,6 @@
         "domains": [
             "codecov.io"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Dev Tools",
         "perk": "Free Codecov code coverage for students through the GitHub Student Developer Pack.",
         "url": "https://about.codecov.io/for/education/",
@@ -382,9 +307,6 @@
         "name": "AlgoExpert Student Offer",
         "domains": [
             "algoexpert.io"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Learning",
         "perk": "Student discount on AlgoExpert coding interview prep through the GitHub Student Developer Pack.",
@@ -399,9 +321,6 @@
             "namecheap.com",
             "nc.me"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Dev Tools",
         "perk": "Free .me domain for one year for students.",
         "url": "https://nc.me",
@@ -413,9 +332,6 @@
         "name": "Codedex Club Student Offer",
         "domains": [
             "codedex.io"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Learning",
         "perk": "Free Codedex Club premium membership through the GitHub Student Developer Pack.",
@@ -429,9 +345,6 @@
         "domains": [
             "educative.io"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Learning",
         "perk": "Free Educative courses through the GitHub Student Developer Pack.",
         "url": "https://www.educative.io/github-students",
@@ -443,9 +356,6 @@
         "name": "DataCamp Student Offer",
         "domains": [
             "datacamp.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Learning",
         "perk": "Free months of DataCamp through the GitHub Student Developer Pack.",
@@ -459,9 +369,6 @@
         "domains": [
             "deepnote.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Dev Tools",
         "perk": "Free Education plan for data science notebooks for students and educators.",
         "url": "https://deepnote.com/education",
@@ -473,9 +380,6 @@
         "name": "Framer for Students",
         "domains": [
             "framer.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Design",
         "perk": "Free Framer access for student portfolios and class projects.",
@@ -489,9 +393,6 @@
         "domains": [
             "digitalocean.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Cloud",
         "perk": "Free hosting credit for verified students through the GitHub Student Developer Pack.",
         "url": "https://education.github.com/pack",
@@ -503,9 +404,6 @@
         "name": ".tech Student Domain",
         "domains": [
             "get.tech"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Dev Tools",
         "perk": "Heavily discounted .tech domain registration for verified students.",
@@ -519,9 +417,6 @@
         "domains": [
             "dashlane.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Productivity",
         "perk": "One free year of Dashlane Premium for students.",
         "url": "https://www.dashlane.com/students",
@@ -533,9 +428,6 @@
         "name": "Evernote Student Discount",
         "domains": [
             "evernote.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Productivity",
         "perk": "Discount on a paid Evernote plan for verified students.",
@@ -549,9 +441,6 @@
         "domains": [
             "unrealengine.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Dev Tools",
         "perk": "Epic's education program for students and schools, with free institutional licensing and classroom resources.",
         "url": "https://www.unrealengine.com/students-and-schools",
@@ -563,9 +452,6 @@
         "name": "Unity Student Plan",
         "domains": [
             "unity.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Dev Tools",
         "perk": "Free Unity Pro Editor and student perks for verified students.",
@@ -579,9 +465,6 @@
         "domains": [
             "miro.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Productivity",
         "perk": "Free Miro Education plan for students and staff at educational institutions.",
         "url": "https://help.miro.com/hc/articles/360017730473",
@@ -593,9 +476,6 @@
         "name": "Linear Education Program",
         "domains": [
             "linear.app"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Dev Tools",
         "perk": "Free paid-plan access for a year for full-time students.",
@@ -609,9 +489,6 @@
         "domains": [
             "linearity.io"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Design",
         "perk": "Discounted yearly Pro plan for verified students.",
         "url": "https://linearity.io/resources/education/",
@@ -623,9 +500,6 @@
         "name": "Heroku for Students",
         "domains": [
             "heroku.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Cloud",
         "perk": "Platform credits for students through the GitHub Student Developer Pack.",
@@ -639,9 +513,6 @@
         "domains": [
             "iconscout.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Design",
         "perk": "Free premium icons and design assets for students through the GitHub Student Developer Pack.",
         "url": "https://iconscout.com/github-students",
@@ -653,9 +524,6 @@
         "name": "Interview Cake",
         "domains": [
             "interviewcake.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Learning",
         "perk": "1 week of free access to the full coding interview course for students.",
@@ -670,9 +538,6 @@
             "lucidchart.com",
             "lucid.co"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Design",
         "perk": "Free Education account for students.",
         "url": "https://lucid.co/lucidchart/use-cases/education",
@@ -684,9 +549,6 @@
         "name": "MATLAB and Simulink for Students",
         "domains": [
             "mathworks.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Dev Tools",
         "perk": "Student pricing on MATLAB and Simulink, or free through your university.",
@@ -700,9 +562,6 @@
         "domains": [
             "mongodb.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Cloud",
         "perk": "$50 Atlas credit and a free certification through the GitHub Student Developer Pack.",
         "url": "https://www.mongodb.com/students",
@@ -714,9 +573,6 @@
         "name": "name.com for Students",
         "domains": [
             "name.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Cloud",
         "perk": "A free domain for the first year through the GitHub Student Developer Pack.",
@@ -731,9 +587,6 @@
             "logitech.com",
             "logitechg.com"
         ],
-        "regions": [
-            "global"
-        ],
         "category": "Hardware",
         "perk": "25% off Logitech products for verified students.",
         "url": "https://logitech.com/en-us/programs/sheer-id",
@@ -745,9 +598,6 @@
         "name": "Icons8 for Students",
         "domains": [
             "icons8.com"
-        ],
-        "regions": [
-            "global"
         ],
         "category": "Design",
         "perk": "3 months of free All Access for students through the GitHub Student Developer Pack.",

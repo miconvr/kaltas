@@ -34,7 +34,6 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 
 - Keep the brand name as "Kaltas". Use "student deals" wording to match the store name.
 - Offers are global. There are no regions, region filters, or location pickers. Do not add them.
-- Every offer in `offers.json` still carries `"regions": ["global"]`. The popup ignores it, but installed versions up to 1.1.6 read the live file from GitHub and reject the whole list when an `info` entry has no `regions`. `validate-offers.js` checks `info` entries for it. Do not remove the field.
 - Saved settings and the offers copy use `iskolar-` keys in localStorage (the extension's earlier name). Leave the names alone: renaming them would reset every user's saved theme, footer and browse choices.
 - Commit subjects follow the format in the Commit messages section below.
 - Do not add tracking, analytics, or remote code.
