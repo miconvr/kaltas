@@ -651,17 +651,14 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body .card .pin-btn { position: absolute; top: 8px; right: 8px; }
 :root body #matches .card h2 { padding-right: 30px; }
 
-/* Deal card (see AGENTS.md "Deal card"). --h is a hue that popup.js sets on the card from its category.
-   --detail-h caps the open details panel so the card fits the 600px popup; change it here if the
-   footer measurement with the panel open is over 600. */
-:root { --detail-h: 92px; }
+/* Deal card (see AGENTS.md "Deal card"). --h is a hue that popup.js sets on the card from its category. */
 
-/* Header: tile, category label and name; the pin star sits in the top right corner */
-:root body .card-head { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 10px; }
-:root body .card-titles { flex: 1 1 auto; min-width: 0; }
-:root body .card-titles .tag { display: block; margin: 2px 0 3px; }
-:root body .card-titles h2 { margin: 0; text-wrap: balance; }
-:root body .mono { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(150deg, hsl(var(--h, 14) 70% 60%), hsl(var(--h, 14) 62% 42%)); color: #fff; font: 700 20px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif; text-shadow: 0 1px 1px rgba(0, 0, 0, .25); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 3px rgba(0, 0, 0, .22); }
+/* Header: category icon and label above the name; the pin star sits in the top right corner */
+:root body .card-head { margin: 0 0 10px; }
+:root body .card-head .tag { display: flex; align-items: center; gap: 5px; margin: 0 0 4px; }
+:root body .card-head .tag svg { flex: none; width: 15px; height: 15px; color: hsl(var(--h, 14) 62% 46%); }
+:root[data-theme="dark"] body .card-head .tag svg { color: hsl(var(--h, 14) 80% 72%); }
+:root body .card-head h2 { margin: 0; text-wrap: balance; }
 :root body .card > p { text-wrap: pretty; }
 
 /* A soft glow in the category color from the top left corner */
@@ -673,12 +670,11 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body .btn-host { max-width: 190px; overflow: hidden; font-size: 10.5px; font-weight: 400; line-height: 1.25; opacity: .78; text-overflow: ellipsis; white-space: nowrap; }
 :root body .card .report-link { margin-top: 16px; }
 
-/* Details panel: labelled rows in a capped box that scrolls, with a fade while there is more below */
-:root body .card .detail-scroll { max-height: var(--detail-h, 92px); overflow-y: auto; padding-right: 4px; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
-:root body .card .detail-scroll.fade { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 26px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 26px), transparent); }
-:root body .card .detail-row { margin: 8px 0 0; line-height: 1.5; text-wrap: pretty; }
-:root body .card .detail-row:first-child { margin-top: 6px; }
-:root body .card .detail-label { display: block; margin: 0 0 1px; color: var(--chip-fg); font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+/* Details panel: labelled rows with room between them. Not capped: with it open the popup scrolls, as before. */
+:root body .card details { margin-bottom: 14px; }
+:root body .card .detail-row { margin: 12px 0 0; line-height: 1.55; text-wrap: pretty; }
+:root body .card .detail-row:first-child { margin-top: 10px; }
+:root body .card .detail-label { display: block; margin: 0 0 3px; color: var(--chip-fg); font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 
 /* Found moment: a ring fades in and out once around the card, and the sparkle pulses once.
    Opacity and transform only. The ring is ::before because ::after is the float clearfix. */

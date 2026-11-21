@@ -205,16 +205,12 @@ function makeDetails(offer) {
   });
   box.append(wrap);
 
-  // The panel is capped (--detail-h in popup.css) and scrolls. Fade its bottom edge while there is more.
-  const updateFade = () => wrap.classList.toggle("fade", wrap.scrollHeight - wrap.scrollTop - wrap.clientHeight > 2);
-  wrap.addEventListener("scroll", updateFade, { passive: true });
-  box.addEventListener("toggle", () => requestAnimationFrame(updateFade));
   return box;
 }
 
-// Card header: a tile with the offer's first letter, then the category label and the name. The tile is
-// a letter, not a favicon, on purpose (a favicon needs a permission or a remote request). --h, set on
-// the card, is a hue picked from the category. It tints the tile, the soft glow and the one-time ring.
+// Card header: the category icon and label (no logo or letter tile, and no favicon, which would need a
+// permission or a remote request), then the name. --h, set on the card, is a hue picked from the
+// category. It tints the icon, the soft glow and the one-time ring.
 const CATEGORY_HUES = [14, 205, 330, 265, 150, 45, 175, 225, 245, 195, 285, 95, 120, 20];
 
 function catHue(category) {
@@ -236,16 +232,9 @@ function makeCardHead(offer, tag, h2) {
   const head = document.createElement("div");
   head.className = "card-head";
 
-  const mono = document.createElement("span");
-  mono.className = "mono";
-  mono.setAttribute("aria-hidden", "true");
-  mono.textContent = (String(offer.name || "").match(/[A-Za-z0-9]/) || ["\u2022"])[0].toUpperCase();
-
-  const titles = document.createElement("div");
-  titles.className = "card-titles";
-  titles.append(tag, h2);
-
-  head.append(mono, titles);
+  // The category icon (the one the Browse list uses) goes in front of the category label.
+  tag.replaceChildren(categoryIcon(offer.category), document.createTextNode(offer.category || "Info"));
+  head.append(tag, h2);
   return head;
 }
 
