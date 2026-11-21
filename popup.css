@@ -719,3 +719,9 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body .card .detail-scroll::-webkit-scrollbar-thumb { border-radius: 4px; background: color-mix(in srgb, var(--muted) 55%, transparent); }
 :root body .card .detail-scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 :root.card-details-open body:not(:has(#browse[open])) { overflow-y: hidden; }
+
+/* no-window-scrollbar: the popup itself never shows a scrollbar (it appeared and disappeared as the footer
+   came back, which shifted the layout). It still scrolls with the wheel, touchpad and keys. Only body is
+   targeted, so the Browse list (#all) keeps its own scrollbar. */
+:root body { scrollbar-width: none; }
+:root body::-webkit-scrollbar { display: none; width: 0; height: 0; }
