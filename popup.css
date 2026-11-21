@@ -652,5 +652,5 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body #matches .card h2 { padding-right: 30px; }
 
 /* Deal card details open: hide the footer (links and credit) so a long card fits the 600px popup.
-   It comes back when the details close. Only the card's own details count, not the Browse list. */
-:root body:has(#matches .card details[open]) footer { display: none; }
+   It comes back when the details close or when Browse opens (the card collapses then, though its details stay open). */
+:root body:has(#matches .card details[open]):not(:has(#browse[open])) footer { display: none; }
