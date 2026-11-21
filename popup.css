@@ -703,3 +703,10 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 
 /* Details toggle: the original small toggle, in bold so it is easier to see. No box, so no extra gaps. */
 :root body .card summary { font-size: 13px; font-weight: 700; }
+
+/* Deal found: the sparkle twinkles slowly and keeps looping. Opacity and transform only, off for reduced motion. */
+@keyframes found-twinkle { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.12); } }
+:root body .match-label-found::before { display: inline-block; animation: found-twinkle 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  :root body .match-label-found::before { animation: none; }
+}
