@@ -650,3 +650,7 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 /* Deal card: star in the top right corner, the title leaves room for it */
 :root body .card .pin-btn { position: absolute; top: 8px; right: 8px; }
 :root body #matches .card h2 { padding-right: 30px; }
+
+/* Deal card details open: hide the footer (links and credit) so a long card fits the 600px popup.
+   It comes back when the details close. Only the card's own details count, not the Browse list. */
+:root body:has(#matches .card details[open]) footer { display: none; }
