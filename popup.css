@@ -699,3 +699,27 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body .match-label-found::before { color: currentColor; }
 :root body .card .report-link { margin-top: 12px; }
 :root body .card details { clear: both; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--border); }
+
+/* Deal card polish: category pill, and the details as one inset list with hairlines between rows.
+   The wrapper scrolls only when popup.js has capped it to fit 600px (see makeDetails). */
+:root body .card-head .tag { display: flex; width: fit-content; margin: 0 0 9px; padding: 3px 10px 3px 8px; border: 1px solid var(--border); border-radius: 999px; font-size: 10.5px; }
+:root body .card .detail-scroll { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--border) transparent; padding-right: 6px; }
+:root body .card .detail-scroll.fade { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 24px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 24px), transparent); }
+:root body .card .detail-row { margin: 0; padding: 9px 0; border-top: 1px solid var(--border); line-height: 1.5; }
+:root body .card .detail-row:first-child { margin-top: 0; padding-top: 4px; border-top: 0; }
+:root body .card .detail-label { margin: 0 0 2px; }
+
+/* Deal card details as a segmented switcher (see makeTabs in popup.js). Panels stack in one grid cell,
+   so the card height is fixed by the longest one. Opacity only. */
+:root body .card .tabs { clear: both; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--border); }
+:root body .card .tab-list { display: flex; gap: 2px; padding: 2px; border-radius: 10px; background: color-mix(in srgb, var(--fg) 7%, transparent); }
+:root body .card .tab { flex: 1 1 0; min-width: 0; padding: 6px 4px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); font: inherit; font-size: 11.5px; font-weight: 500; line-height: 1.2; cursor: pointer; transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out); }
+:root body .card .tab:hover { color: var(--fg); }
+:root body .card .tab[aria-selected="true"] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 2px rgba(0, 0, 0, .18); }
+:root body .card .tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+:root body .card .tab-panels { display: grid; margin-top: 10px; }
+:root body .card .tab-panel { grid-area: 1 / 1; margin: 0; color: var(--fg); font-size: 12.5px; line-height: 1.55; text-wrap: pretty; opacity: 0; visibility: hidden; transition: opacity var(--dur-fast) var(--ease-out), visibility 0s linear var(--dur-fast); }
+:root body .card .tab-panel.is-active { opacity: 1; visibility: visible; transition: opacity var(--dur-base) var(--ease-out), visibility 0s; }
+@media (prefers-reduced-motion: reduce) {
+  :root body .card .tab, :root body .card .tab-panel, :root body .card .tab-panel.is-active { transition: none; }
+}

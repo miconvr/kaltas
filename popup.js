@@ -205,6 +205,27 @@ function makeDetails(offer) {
   });
   box.append(wrap);
 
+  // The popup is capped at 600px. When the open panel would push the footer past that, it takes only
+  // the room that is left and scrolls inside, with a fade while there is more below. It is measured
+  // after the slide-open finishes, and short panels are left at full height.
+  const updateFade = () => wrap.classList.toggle("fade", wrap.scrollHeight - wrap.scrollTop - wrap.clientHeight > 2);
+  const fit = () => {
+    wrap.style.maxHeight = "";
+    if (box.open) {
+      const footer = document.querySelector("footer");
+      if (footer) {
+        const over = footer.getBoundingClientRect().bottom + window.scrollY - 600;
+        if (over > 0) wrap.style.maxHeight = Math.max(120, wrap.offsetHeight - over - 4) + "px";
+      }
+    }
+    updateFade();
+  };
+  wrap.addEventListener("scroll", updateFade, { passive: true });
+  box.addEventListener("toggle", () => {
+    wrap.style.maxHeight = "";
+    if (box.open) setTimeout(fit, 450);
+    else updateFade();
+  });
   return box;
 }
 
@@ -228,6 +249,79 @@ function makeCardHead(offer, tag, h2) {
   tag.replaceChildren(categoryIcon(offer.category), document.createTextNode(offer.category || "Info"));
   head.append(tag, h2);
   return head;
+}
+
+// Details as a segmented switcher (Details, Who qualifies, Heads up). It reads the rows makeDetails builds.
+// All panels share one grid cell, so the card is as tall as the longest one and never changes height
+// when switching. Only opacity animates.
+let tabSeq = 0;
+
+function makeTabs(box) {
+  if (!box) return null;
+  const rows = [...box.querySelectorAll(".detail-row")]
+    .map((p) => {
+      const label = p.querySelector(".detail-label");
+      const clone = p.cloneNode(true);
+      const l = clone.querySelector(".detail-label");
+      if (l) l.remove();
+      return [label ? label.textContent.trim() : "", clone.textContent.trim()];
+    })
+    .filter(([name, text]) => name && text);
+  if (!rows.length) return null;
+
+  const id = "tabs" + ++tabSeq;
+  const wrap = document.createElement("div");
+  wrap.className = "tabs";
+  const list = document.createElement("div");
+  list.className = "tab-list";
+  list.setAttribute("role", "tablist");
+  const panels = document.createElement("div");
+  panels.className = "tab-panels";
+  const buttons = [];
+  const bodies = [];
+
+  const select = (i) => {
+    buttons.forEach((b, j) => {
+      b.setAttribute("aria-selected", String(i === j));
+      b.tabIndex = i === j ? 0 : -1;
+      bodies[j].classList.toggle("is-active", i === j);
+    });
+  };
+
+  rows.forEach(([name, text], i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "tab";
+    b.id = id + "-t" + i;
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-controls", id + "-p" + i);
+    b.textContent = name;
+    b.addEventListener("click", () => select(i));
+    b.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      const next = (i + (e.key === "ArrowRight" ? 1 : rows.length - 1)) % rows.length;
+      select(next);
+      buttons[next].focus();
+    });
+    buttons.push(b);
+    list.append(b);
+
+    const p = document.createElement("p");
+    p.className = "tab-panel";
+    p.id = id + "-p" + i;
+    p.setAttribute("role", "tabpanel");
+    p.setAttribute("aria-labelledby", b.id);
+    p.textContent = text;
+    bodies.push(p);
+    panels.append(p);
+  });
+
+  if (rows.length > 1) wrap.append(list);
+  wrap.append(panels);
+  const first = rows.findIndex(([name]) => /qualif/i.test(name));
+  select(first === -1 ? 0 : first);
+  return wrap;
 }
 
 function makeCard(offer) {
@@ -283,7 +377,7 @@ function makeCard(offer) {
     report.textContent = "Report an outdated offer";
     card.append(report);
   }
-  const more = makeDetails(offer);
+  const more = makeTabs(makeDetails(offer));
   if (more) card.append(more);
   if (!isInfo(offer)) card.prepend(makePinButton(offer.name));
   return card;
