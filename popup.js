@@ -160,7 +160,7 @@ function isInfo(offer) {
 
 function makeDetails(offer) {
   const rows = [
-    ["Details", offer.details],
+    ["About", offer.details],
     ["Who qualifies", offer.requirements],
     ["Good to know", offer.caveats],
   ].filter(([, text]) => typeof text === "string" && text);

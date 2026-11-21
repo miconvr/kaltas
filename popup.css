@@ -662,9 +662,14 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 /* Deal card category label: bold (700) instead of semibold. Inter 700 is already used by the card titles. */
 :root body .card .tag { font-weight: 700; }
 
-/* Deal card details toggle in dark mode: the deeper accent orange (same as the category label), white on
-   hover. The chevron has its own color, so it is set too. Light mode keeps the dark orange it already has. */
-:root[data-theme="dark"] body .card summary,
-:root[data-theme="dark"] body .card summary::after { color: var(--accent); }
-:root[data-theme="dark"] body .card summary:hover,
-:root[data-theme="dark"] body .card summary:hover::after { color: var(--fg); }
+/* Calmer deal card: the details toggle is muted gray (white on hover), the row labels are muted with
+   more room between rows, and a faint inner edge separates the card from the popup background.
+   The box-shadow also covers :hover, because the hover rules reset it. */
+:root body .card summary,
+:root body .card summary::after { color: var(--muted); }
+:root body .card summary:hover,
+:root body .card summary:hover::after { color: var(--fg); }
+:root body .card details strong { color: var(--muted); font-weight: 600; }
+:root body .card details p { margin: 12px 0 0; line-height: 1.55; }
+:root body #matches .card,
+:root body #matches .card:hover { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 14%, transparent); }
