@@ -54,7 +54,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - Style tweaks are added at the end of `popup.css`. Many rules start with `:root body`, so a new rule must be at least as specific as the one it overrides, or it silently loses. Search the file for the selector before changing a style.
 - Pinned deals: the star on a Browse row and on the deal card saves the offer's name in `localStorage` under `iskolar-pins` (a JSON array of names). It stays on the device and is never sent anywhere. Pinned rows sort to the top of the Browse list, ahead of the category order, with a thin line under the last one. There is no header row for them, because every row must stay `--row-h` tall. Names that are no longer in `offers.json` are ignored, and renaming an offer drops its pin. The privacy policy lists what is stored on the device, so keep it in sync.
 - While a deal card's "Who qualifies & details" is open, the footer (links and credit) is hidden so long cards fit the 600px popup. It returns when the details close and whenever Browse is open, because the card collapses then but its details stay open. Do not hide it in any other state.
-- The deal card's category label has the category icon at its left (the same `categoryIcon` the Browse list uses). In dark mode the label is `--accent` orange, and the "Who qualifies & details" toggle keeps its original peach-orange.
+- The deal card's category label is plain bold text (no icon). In dark mode it is `--accent` orange, and the "Who qualifies & details" toggle keeps its original peach-orange.
 - Store screenshots show the real popup, so retake them if the popup layout changes.
 
 ## Popup height

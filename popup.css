@@ -659,6 +659,5 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
    keeps its original peach-orange. Light mode keeps the dark orange it already has. */
 :root[data-theme="dark"] body .card .tag { color: var(--accent); }
 
-/* Category icon at the left of the card's category label (same icon as the Browse list) */
-:root body .card .tag { display: inline-flex; align-items: center; gap: 6px; }
-:root body .card .tag svg { flex: none; width: 14px; height: 14px; }
+/* Deal card category label: bold (700) instead of semibold. Inter 700 is already used by the card titles. */
+:root body .card .tag { font-weight: 700; }

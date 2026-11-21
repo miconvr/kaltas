@@ -186,7 +186,7 @@ function makeCard(offer) {
 
   const tag = document.createElement("span");
   tag.className = "tag";
-  tag.replaceChildren(categoryIcon(offer.category), document.createTextNode(offer.category || "Info"));
+  tag.textContent = offer.category || "Info";
 
   const h2 = document.createElement("h2");
   h2.textContent = offer.name;
