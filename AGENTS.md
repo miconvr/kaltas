@@ -41,7 +41,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - Every change to `offers.json` must pass `node scripts/validate-offers.js`.
 - Do not put the number of available deals in store images, the README, or the store listing. It changes often.
 - In store images, GitHub Student Developer Pack is the featured deal.
-- In store images, the dark popup is the main one and the light popup is secondary.
+- In store images, the light popup is the main one and the dark popup is secondary.
 - `icons/logo.png` is the original master. Build `icon16/32/48/128.png` and `store-assets/store-icon-128.png` from it, and use it in the popup header. Do not re-render it from `logo.svg`.
 
 ## Popup design
@@ -55,6 +55,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - Pinned deals: the star on a Browse row and on the deal card saves the offer's name in `localStorage` under `iskolar-pins` (a JSON array of names). It stays on the device and is never sent anywhere. Pinned rows sort to the top of the Browse list, ahead of the category order, with a thin line under the last one. There is no header row for them, because every row must stay `--row-h` tall. Names that are no longer in `offers.json` are ignored, and renaming an offer drops its pin. The privacy policy lists what is stored on the device, so keep it in sync.
 - While a deal card's "Details" is open, the footer (links and credit) is hidden so long cards fit the 600px popup. It returns when the details close and whenever Browse is open, because the card collapses then but its details stay open. Do not hide it in any other state.
 - The deal card's category label is plain bold text (no icon) and is `--accent` orange in dark mode. The details toggle and the row labels are muted gray (the toggle turns white on hover), the first row is labelled "About", and a faint inset edge separates the card from the popup background. The details text uses the normal text color, and only the row labels are muted. Keep orange for the category label, the button and the star.
+- Light is the default theme: `getTheme()` in `popup.js` falls back to `"light"` when nothing is saved, and `popup.html` starts on `data-theme="light"`. Keep the two in sync, or new users see a flash of the wrong theme. People who already chose a theme keep it (`iskolar-theme`).
 - Store screenshots show the real popup, so retake them if the popup layout changes.
 
 ## Popup height

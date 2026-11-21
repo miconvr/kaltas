@@ -20,7 +20,7 @@
 - Green toolbar dot when the site has a student offer
 - Shows eligibility, requirements, and caveats
 - Browse and search every student deal from the popup
-- Dark theme by default, with a Light option and a Hide footer setting
+- Light theme by default, with a Dark option and a Hide footer setting
 - Offers refresh from GitHub when you open the popup, with a bundled list as the offline fallback
 - Opens HTTPS offer links only
 - Report an outdated offer through GitHub
