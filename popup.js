@@ -95,24 +95,6 @@ function syncPinButtons() {
   document.querySelectorAll(".pin-btn").forEach(syncPinButton);
 }
 
-// Pin reaction on the deal card only (never in the Browse list): the star pops and a "Saved" chip
-// fades in and out. Skipped when the person prefers reduced motion.
-function celebratePin(b) {
-  const card = b.closest(".card");
-  if (!card || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  b.classList.remove("pop");
-  void b.offsetWidth;
-  b.classList.add("pop");
-  b.addEventListener("animationend", () => b.classList.remove("pop"), { once: true });
-  const old = card.querySelector(".saved-chip");
-  if (old) old.remove();
-  const chip = document.createElement("span");
-  chip.className = "saved-chip";
-  chip.textContent = "Saved";
-  chip.addEventListener("animationend", () => chip.remove());
-  card.append(chip);
-}
-
 function makePinButton(name) {
   const b = document.createElement("button");
   b.type = "button";
@@ -120,11 +102,7 @@ function makePinButton(name) {
   b.dataset.name = name;
   b.innerHTML = ICON_STAR;
   syncPinButton(b);
-  b.addEventListener("click", () => {
-    const on = !isPinned(name);
-    setPinned(name, on, !!b.closest("#all"));
-    if (on) celebratePin(b);
-  });
+  b.addEventListener("click", () => setPinned(name, !isPinned(name), !!b.closest("#all")));
   return b;
 }
 const SVG_OPEN = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
@@ -184,7 +162,7 @@ function makeDetails(offer) {
   const rows = [
     ["Details", offer.details],
     ["Who qualifies", offer.requirements],
-    ["Heads up", offer.caveats],
+    ["Good to know", offer.caveats],
   ].filter(([, text]) => typeof text === "string" && text);
   if (!rows.length) return null;
 
@@ -192,142 +170,14 @@ function makeDetails(offer) {
   const sum = document.createElement("summary");
   sum.textContent = "Who qualifies & details";
   box.append(sum);
-  const wrap = document.createElement("div");
-  wrap.className = "detail-scroll";
   rows.forEach(([label, text]) => {
     const p = document.createElement("p");
-    p.className = "detail-row";
-    const b = document.createElement("span");
-    b.className = "detail-label";
-    b.textContent = label;
+    const b = document.createElement("strong");
+    b.textContent = label + ": ";
     p.append(b, text);
-    wrap.append(p);
-  });
-  box.append(wrap);
-
-  // The popup is capped at 600px. When the open panel would push the footer past that, it takes only
-  // the room that is left and scrolls inside, with a fade while there is more below. It is measured
-  // after the slide-open finishes, and short panels are left at full height.
-  const updateFade = () => wrap.classList.toggle("fade", wrap.scrollHeight - wrap.scrollTop - wrap.clientHeight > 2);
-  const fit = () => {
-    wrap.style.maxHeight = "";
-    if (box.open) {
-      const footer = document.querySelector("footer");
-      if (footer) {
-        const over = footer.getBoundingClientRect().bottom + window.scrollY - 600;
-        if (over > 0) wrap.style.maxHeight = Math.max(120, wrap.offsetHeight - over - 4) + "px";
-      }
-    }
-    updateFade();
-  };
-  wrap.addEventListener("scroll", updateFade, { passive: true });
-  box.addEventListener("toggle", () => {
-    wrap.style.maxHeight = "";
-    if (box.open) setTimeout(fit, 450);
-    else updateFade();
+    box.append(p);
   });
   return box;
-}
-
-// Card header: the category icon and label (no logo or letter tile, and no favicon, which would need a
-// permission or a remote request), then the name.
-function hostOf(url) {
-  const u = safeUrl(url);
-  if (u === "#") return "";
-  try {
-    return new URL(u).hostname.replace(/^www\./, "");
-  } catch {
-    return "";
-  }
-}
-
-function makeCardHead(offer, tag, h2) {
-  const head = document.createElement("div");
-  head.className = "card-head";
-
-  // Icon tile on the left, the name with the category under it (same order as the Browse list).
-  const tile = document.createElement("span");
-  tile.className = "head-icon";
-  tile.setAttribute("aria-hidden", "true");
-  tile.append(categoryIcon(offer.category));
-  tag.textContent = offer.category || "Info";
-  const titles = document.createElement("div");
-  titles.className = "head-text";
-  titles.append(h2, tag);
-  head.append(tile, titles);
-  return head;
-}
-
-// Details as a segmented switcher (Details, Who qualifies, Heads up). It reads the rows makeDetails builds.
-// All panels share one grid cell, so the card is as tall as the longest one and never changes height
-// when switching. Only opacity animates.
-let tabSeq = 0;
-
-function makeTabs(box) {
-  if (!box) return null;
-  const rows = [...box.querySelectorAll(".detail-row")]
-    .map((p) => {
-      const label = p.querySelector(".detail-label");
-      const clone = p.cloneNode(true);
-      const l = clone.querySelector(".detail-label");
-      if (l) l.remove();
-      return [label ? label.textContent.trim() : "", clone.textContent.trim()];
-    })
-    .filter(([name, text]) => name && text);
-  if (!rows.length) return null;
-
-  const id = "tabs" + ++tabSeq;
-  const wrap = document.createElement("div");
-  wrap.className = "tabs";
-  const list = document.createElement("div");
-  list.className = "tab-list";
-  list.setAttribute("role", "tablist");
-  const panels = document.createElement("div");
-  panels.className = "tab-panels";
-  const buttons = [];
-  const bodies = [];
-
-  const select = (i) => {
-    buttons.forEach((b, j) => {
-      b.setAttribute("aria-selected", String(i === j));
-      b.tabIndex = i === j ? 0 : -1;
-      bodies[j].classList.toggle("is-active", i === j);
-    });
-  };
-
-  rows.forEach(([name, text], i) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "tab";
-    b.id = id + "-t" + i;
-    b.setAttribute("role", "tab");
-    b.setAttribute("aria-controls", id + "-p" + i);
-    b.textContent = name;
-    b.addEventListener("click", () => select(i));
-    b.addEventListener("keydown", (e) => {
-      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-      e.preventDefault();
-      const next = (i + (e.key === "ArrowRight" ? 1 : rows.length - 1)) % rows.length;
-      select(next);
-      buttons[next].focus();
-    });
-    buttons.push(b);
-    list.append(b);
-
-    const p = document.createElement("p");
-    p.className = "tab-panel";
-    p.id = id + "-p" + i;
-    p.setAttribute("role", "tabpanel");
-    p.setAttribute("aria-labelledby", b.id);
-    p.textContent = text;
-    bodies.push(p);
-    panels.append(p);
-  });
-
-  if (rows.length > 1) wrap.append(list);
-  wrap.append(panels);
-  select(0);
-  return wrap;
 }
 
 function makeCard(offer) {
@@ -349,10 +199,13 @@ function makeCard(offer) {
     const f = document.createElement("div");
     f.className = "perk-figure";
     f.textContent = fig[0].charAt(0).toUpperCase() + fig[0].slice(1);
-    card.append(makeCardHead(offer, tag, h2), f, p);
+    card.append(tag, h2, f, p);
   } else {
-    card.append(makeCardHead(offer, tag, h2), p);
+    card.append(tag, h2, p);
   }
+
+  const more = makeDetails(offer);
+  if (more) card.append(more);
 
   if (offer.url) {
     const a = document.createElement("a");
@@ -360,22 +213,10 @@ function makeCard(offer) {
     a.href = safeUrl(offer.url);
     a.target = "_blank";
     a.rel = "noopener noreferrer";
-    const label = document.createElement("span");
-    label.className = "btn-label";
-    label.textContent = "View offer";
-    a.append(label);
-    const host = hostOf(offer.url);
-    if (host) {
-      const dest = document.createElement("span");
-      dest.className = "btn-host";
-      dest.textContent = host;
-      a.append(dest);
-    }
+    a.textContent = "View offer";
     card.append(a);
   }
 
-  const more = makeTabs(makeDetails(offer));
-  if (more) card.append(more);
   if (!isInfo(offer)) {
     const report = document.createElement("a");
     report.className = "report-link";
