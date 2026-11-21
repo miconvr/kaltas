@@ -723,3 +723,27 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 @media (prefers-reduced-motion: reduce) {
   :root body .card .tab, :root body .card .tab-panel, :root body .card .tab-panel.is-active { transition: none; }
 }
+
+/* Deal card layout: icon tile, then the name with the category under it (same order as the Browse list),
+   a full-width button, underline tabs, and the report link last. Orange stays on the button and the star. */
+:root body .card-head { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; }
+:root body .card-head .head-icon { display: grid; place-items: center; flex: none; width: 36px; height: 36px; border-radius: 10px; background: color-mix(in srgb, var(--fg) 9%, transparent); color: var(--fg); }
+:root body .card-head .head-icon svg { display: block; width: 18px; height: 18px; }
+:root body .card-head .head-text { flex: 1 1 auto; min-width: 0; }
+:root body #matches .card .card-head h2 { margin: 0; font-size: 17px; line-height: 1.25; letter-spacing: -.01em; text-wrap: balance; }
+:root body .card-head .tag { display: block; width: auto; margin: 2px 0 0; padding: 0; border: 0; border-radius: 0; color: var(--muted); font-size: 12px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+:root body .card .pin-btn { top: 20px; right: 12px; }
+:root body .card .saved-chip { top: 25px; right: 44px; }
+:root body .card > p { margin: 0 0 14px; font-size: 14px; font-weight: 400; line-height: 1.5; }
+:root body .card a.btn { float: none; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; width: 100%; box-sizing: border-box; min-height: 0; padding: 11px 14px; border-radius: 10px; }
+:root body .card .btn-label { font-size: 13px; font-weight: 600; }
+:root body .card .btn-host { max-width: 62%; font-size: 11px; }
+:root body .card .tabs { margin: 16px 0 0; padding: 0; border-top: 0; }
+:root body .card .tab-list { gap: 18px; padding: 0; border-radius: 0; background: none; border-bottom: 1px solid var(--border); }
+:root body .card .tab { flex: none; margin-bottom: -1px; padding: 8px 0 9px; border-radius: 0; border-bottom: 2px solid transparent; box-shadow: none; font-size: 12px; transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }
+:root body .card .tab[aria-selected="true"] { background: transparent; box-shadow: none; color: var(--fg); border-bottom-color: var(--fg); }
+:root body .card .tab-panels { margin-top: 12px; }
+:root body .card a.report-link { float: none; display: block; margin: 14px 0 0; text-align: left; }
+@media (prefers-reduced-motion: reduce) {
+  :root body .card .tab { transition: none; }
+}

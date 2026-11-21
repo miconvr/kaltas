@@ -245,9 +245,16 @@ function makeCardHead(offer, tag, h2) {
   const head = document.createElement("div");
   head.className = "card-head";
 
-  // The category icon (the one the Browse list uses) goes in front of the category label.
-  tag.replaceChildren(categoryIcon(offer.category), document.createTextNode(offer.category || "Info"));
-  head.append(tag, h2);
+  // Icon tile on the left, the name with the category under it (same order as the Browse list).
+  const tile = document.createElement("span");
+  tile.className = "head-icon";
+  tile.setAttribute("aria-hidden", "true");
+  tile.append(categoryIcon(offer.category));
+  tag.textContent = offer.category || "Info";
+  const titles = document.createElement("div");
+  titles.className = "head-text";
+  titles.append(h2, tag);
+  head.append(tile, titles);
   return head;
 }
 
@@ -319,8 +326,7 @@ function makeTabs(box) {
 
   if (rows.length > 1) wrap.append(list);
   wrap.append(panels);
-  const first = rows.findIndex(([name]) => /qualif/i.test(name));
-  select(first === -1 ? 0 : first);
+  select(0);
   return wrap;
 }
 
@@ -368,6 +374,8 @@ function makeCard(offer) {
     card.append(a);
   }
 
+  const more = makeTabs(makeDetails(offer));
+  if (more) card.append(more);
   if (!isInfo(offer)) {
     const report = document.createElement("a");
     report.className = "report-link";
@@ -377,8 +385,6 @@ function makeCard(offer) {
     report.textContent = "Report an outdated offer";
     card.append(report);
   }
-  const more = makeTabs(makeDetails(offer));
-  if (more) card.append(more);
   if (!isInfo(offer)) card.prepend(makePinButton(offer.name));
   return card;
 }
