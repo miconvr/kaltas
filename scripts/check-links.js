@@ -104,7 +104,7 @@ async function main() {
   sections.forEach(([title, list]) => {
     if (list.length) md += "## " + title + "\n\n" + list.map(line).join("\n") + "\n\n";
   });
-  md += "Nothing was changed automatically. Open each link, confirm against the official page, then edit `offers.json` (set `verified` to the current month) or remove the offer, and open a pull request.\n";
+  md += "Nothing was changed automatically. Open each link, confirm against the official page, then edit `offers.json` or remove the offer, and open a pull request.\n";
   fs.writeFileSync("link-report.md", md);
 
   console.log("Checked " + results.length + ": ok " + by("ok").length + ", broken " + by("broken").length +

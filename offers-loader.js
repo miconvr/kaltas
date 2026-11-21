@@ -37,7 +37,6 @@ function isValidOffer(o) {
     if (!o.domains.length) return false;
     if (typeof o.url !== "string" || !o.url.startsWith("https://")) return false;
   }
-  if (o.verified !== undefined && !/^\d{4}-\d{2}$/.test(o.verified)) return false;
   if (o.expires !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(o.expires)) return false;
   for (const k of ["details", "requirements", "caveats"]) {
     if (o[k] !== undefined && typeof o[k] !== "string") return false;

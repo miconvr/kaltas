@@ -38,7 +38,6 @@ offers.forEach((o, i) => {
     console.error(`${label}: non-info entries need a url`); errors++;
   }
   if (o.url && !/^https:\/\//.test(o.url)) { console.error(`${label}: url must be https`); errors++; }
-  if (o.verified && !/^\d{4}-\d{2}$/.test(o.verified)) { console.error(`${label}: verified must be YYYY-MM`); errors++; }
 
   if (o.expires !== undefined) {
     if (typeof o.expires !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(o.expires) || isNaN(new Date(o.expires + "T00:00:00"))) {
