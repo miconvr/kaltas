@@ -49,6 +49,62 @@ function saveFooterHidden(hidden) {
     else localStorage.removeItem("iskolar-footer-hidden");
   } catch {}
 }
+
+// Pinned deals: the star on a Browse row or on the deal card saves the offer's name on this device
+// only (localStorage key iskolar-pins, a JSON array of names). Names that are no longer in
+// offers.json are ignored.
+const ICON_STAR = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg>';
+
+function getPins() {
+  try {
+    const raw = JSON.parse(localStorage.getItem("iskolar-pins") || "[]");
+    if (Array.isArray(raw)) return new Set(raw.filter((n) => typeof n === "string"));
+  } catch {}
+  return new Set();
+}
+
+function savePins(set) {
+  try {
+    if (set.size) localStorage.setItem("iskolar-pins", JSON.stringify([...set]));
+    else localStorage.removeItem("iskolar-pins");
+  } catch {}
+}
+
+const pins = getPins();
+
+function isPinned(name) {
+  return pins.has(name);
+}
+
+function setPinned(name, on, fromList) {
+  if (on) pins.add(name);
+  else pins.delete(name);
+  savePins(pins);
+  document.dispatchEvent(new CustomEvent("kaltas-pins", { detail: { name, fromList } }));
+}
+
+function syncPinButton(b) {
+  const on = isPinned(b.dataset.name);
+  const label = on ? "Remove from saved" : "Save this deal";
+  b.setAttribute("aria-pressed", String(on));
+  b.setAttribute("aria-label", label + ": " + b.dataset.name);
+  b.title = label;
+}
+
+function syncPinButtons() {
+  document.querySelectorAll(".pin-btn").forEach(syncPinButton);
+}
+
+function makePinButton(name) {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "pin-btn";
+  b.dataset.name = name;
+  b.innerHTML = ICON_STAR;
+  syncPinButton(b);
+  b.addEventListener("click", () => setPinned(name, !isPinned(name), !!b.closest("#all")));
+  return b;
+}
 const SVG_OPEN = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
 const ICON_MOON = SVG_OPEN + '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
 const ICON_SUN = SVG_OPEN + '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
@@ -170,6 +226,7 @@ function makeCard(offer) {
     report.textContent = "Report an outdated offer";
     card.append(report);
   }
+  if (!isInfo(offer)) card.prepend(makePinButton(offer.name));
   return card;
 }
 
@@ -224,7 +281,7 @@ function renderList(offers, query = "", current = []) {
   const q = query.trim().toLowerCase();
   offers
     .filter((o) => !q || ((o.name || "") + " " + (o.category || "") + " " + (o.perk || "")).toLowerCase().includes(q))
-    .sort((a, b) => categoryRank(a.category) - categoryRank(b.category))
+    .sort((a, b) => (isPinned(b.name) - isPinned(a.name)) || categoryRank(a.category) - categoryRank(b.category))
     .forEach((o, i) => {
       const li = document.createElement("li");
       li.style.setProperty("--i", Math.min(i, 7)); // row entrance order (see popup.css)
@@ -258,6 +315,8 @@ function renderList(offers, query = "", current = []) {
         a.append(name, small);
         li.append(a);
       }
+      if (isPinned(o.name)) li.classList.add("is-pinned");
+      li.append(makePinButton(o.name));
       ul.append(li);
     });
 }
@@ -359,6 +418,19 @@ async function init() {
     render();
   });
   $("browse").addEventListener("toggle", () => $("all").classList.remove("is-filtering"));
+
+  // Pinning or unpinning from anywhere: sync every star, then re-sort the list.
+  // is-filtering keeps the row fade from replaying (same as while searching).
+  document.addEventListener("kaltas-pins", (e) => {
+    syncPinButtons();
+    $("all").classList.add("is-filtering");
+    render();
+    if (e.detail && e.detail.fromList) {
+      // The row was rebuilt, so put keyboard focus back on the star of the same offer.
+      const next = [...document.querySelectorAll("#all .pin-btn")].find((b) => b.dataset.name === e.detail.name);
+      if (next) next.focus();
+    }
+  });
 
   render();
 }

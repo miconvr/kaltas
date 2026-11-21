@@ -53,6 +53,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - Motion: use `--dur-fast` / `--dur-base` / `--dur-slow` and `--ease-out`, and animate `transform` and `opacity` only. Anything inside the Browse list must be opacity-only, so it cannot create scrollbars or change the list's scroll area. Every animation needs a `prefers-reduced-motion` fallback. The "Motion pass" block at the end of `popup.css` holds the popup-open, list-row, theme-icon and press animations; `popup.js` sets `--i` on each row and toggles `.is-filtering` on `#all` so rows don't replay while searching.
 - The two settings toggles are icon-only, so their tooltips (`title`) describe the action and are updated in `popup.js` when the state changes.
 - Style tweaks are added at the end of `popup.css`. Many rules start with `:root body`, so a new rule must be at least as specific as the one it overrides, or it silently loses. Search the file for the selector before changing a style.
+- Pinned deals: the star on a Browse row and on the deal card saves the offer's name in `localStorage` under `iskolar-pins` (a JSON array of names). It stays on the device and is never sent anywhere. Pinned rows sort to the top of the Browse list, ahead of the category order, with a thin line under the last one. There is no header row for them, because every row must stay `--row-h` tall. Names that are no longer in `offers.json` are ignored, and renaming an offer drops its pin. The privacy policy lists what is stored on the device, so keep it in sync.
 - Store screenshots show the real popup, so retake them if the popup layout changes.
 
 ## Popup height
@@ -85,6 +86,7 @@ Chrome caps the popup at 600px tall and cuts off anything past that. Check these
 - Switch between dark and light a few times with a deal showing: every color should change at the same moment, with nothing fading in behind the rest.
 - With Browse open, on a site with no deal and on a site with a deal: the footer links are fully visible and the list shows 4 whole rows.
 - Run `document.querySelector('footer').getBoundingClientRect().bottom` in the popup console in each state. It should print 600 or less.
+- Pin a deal from the card and from a Browse row: the star fills on both, the row moves to the top of the list, the list still shows 4 whole rows, and the footer bottom is 600 or less. Unpin it and confirm it returns to its category.
 - Confirm there are no console errors in the popup or service worker.
 
 ## Commit messages

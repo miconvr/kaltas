@@ -627,3 +627,26 @@ body { padding-bottom: 12px; }
 /* Remove the native clear (x) button in the search box */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appearance: none; display: none; }
+
+/* Pinned deals: a star saves an offer on this device only (localStorage key iskolar-pins, see popup.js).
+   Inside the Browse list nothing animates with transform (color and opacity only) and every row keeps
+   its fixed --row-h, so the 4-row list height and the 600px cap do not change. */
+:root body .pin-btn { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--muted); cursor: pointer; transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out); }
+:root body .pin-btn svg { display: block; width: 16px; height: 16px; stroke-width: 1.6; stroke-linejoin: round; }
+:root body .pin-btn:hover { background: color-mix(in srgb, var(--fg) 8%, transparent); color: var(--fg); }
+:root body .pin-btn[aria-pressed="true"] { color: var(--accent); }
+:root body .pin-btn[aria-pressed="true"] svg { fill: currentColor; }
+:root body .pin-btn:active { opacity: .6; }
+:root body .pin-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* Browse rows: star on the right, the text leaves room for it */
+:root body #all li { position: relative; }
+:root body #all li > .pin-btn { position: absolute; top: calc((var(--row-h) - 28px) / 2); right: 2px; }
+:root body #all li > a,
+:root body #all li > .row-static { padding-right: 34px; }
+/* Saved rows sort first. A thin line marks where they end (inset shadow, so no size change). */
+:root body #all li.is-pinned:has(+ li:not(.is-pinned)) { box-shadow: inset 0 -1px 0 var(--border); }
+
+/* Deal card: star in the top right corner, the title leaves room for it */
+:root body .card .pin-btn { position: absolute; top: 8px; right: 8px; }
+:root body #matches .card h2 { padding-right: 30px; }
