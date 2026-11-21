@@ -650,3 +650,21 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 /* Deal card: star in the top right corner, the title leaves room for it */
 :root body .card .pin-btn { position: absolute; top: 8px; right: 8px; }
 :root body #matches .card h2 { padding-right: 30px; }
+
+/* Offer card: header row (monogram tile, category label, optional "Ends <date>" pill), labelled
+   detail rows and a balanced title. Nothing here animates, so there is no reduced-motion fallback. */
+:root body .card-head { display: flex; align-items: center; gap: 8px; min-height: 20px; margin: 0 0 6px; padding-right: 30px; }
+:root body .card-head .tag { min-width: 0; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+:root body .mono { display: grid; place-items: center; flex: none; width: 20px; height: 20px; border-radius: 6px; background: hsl(var(--h, 20) 60% 50% / .16); color: hsl(var(--h, 20) 55% 34%); font: 700 11px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif; }
+:root[data-theme="dark"] body .mono { background: hsl(var(--h, 20) 60% 60% / .2); color: hsl(var(--h, 20) 70% 78%); }
+:root body .ends-pill { flex: none; margin-left: auto; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, #e0a030 22%, transparent); color: #7a4e00; font-size: 10.5px; font-weight: 600; line-height: 1.4; white-space: nowrap; }
+:root[data-theme="dark"] body .ends-pill { background: color-mix(in srgb, #e0a030 24%, transparent); color: #f0c777; }
+
+/* The star lines up with the header row, so the title can use the full width */
+:root body .card .pin-btn { top: 12px; }
+:root body #matches .card h2 { padding-right: 0; text-wrap: balance; }
+:root body .card > p { text-wrap: pretty; }
+
+/* Details panel: a small label above each row */
+:root body .card .detail-row { margin: 10px 0 0; line-height: 1.5; text-wrap: pretty; }
+:root body .card .detail-label { display: block; margin: 0 0 1px; color: var(--chip-fg); font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
