@@ -677,3 +677,17 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 
 /* Deal card details text: the normal text color. The row labels (strong) stay muted. */
 :root body #matches .card details p { color: var(--fg); }
+
+/* Deal card toggle and row labels in orange: the dark orange (--chip-fg) in light mode, the deeper accent
+   (--accent) in dark mode, same as the category label. The toggle keeps its hover color, and the details
+   text stays the normal text color. */
+:root body .card summary,
+:root body .card summary::after,
+:root body .card details strong { color: var(--chip-fg); }
+:root[data-theme="dark"] body .card summary,
+:root[data-theme="dark"] body .card summary::after,
+:root[data-theme="dark"] body .card details strong { color: var(--accent); }
+:root body .card summary:hover,
+:root body .card summary:hover::after,
+:root[data-theme="dark"] body .card summary:hover,
+:root[data-theme="dark"] body .card summary:hover::after { color: var(--fg); }
