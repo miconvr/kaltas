@@ -651,9 +651,10 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body .card .pin-btn { position: absolute; top: 8px; right: 8px; }
 :root body #matches .card h2 { padding-right: 30px; }
 
-/* Deal card details open: hide the footer (links and credit) so a long card fits the 600px popup.
+/* Deal card details open: hide the footer (links and credit) and the Browse row so a long card fits the 600px popup.
    It comes back when the details close or when Browse opens (the card collapses then, though its details stay open). */
-:root body:has(#matches .card details[open]):not(:has(#browse[open])) footer { display: none; }
+:root body:has(#matches .card details[open]):not(:has(#browse[open])) footer,
+:root body:has(#matches .card details[open]):not(:has(#browse[open])) #browse { display: none; }
 
 /* Deal card label in dark mode: the category label uses the deeper accent orange. The details toggle
    keeps its original peach-orange. Light mode keeps the dark orange it already has. */
