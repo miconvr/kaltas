@@ -98,3 +98,4 @@ Every commit subject is `type: short summary`, all lowercase (brand names and ac
 
 After a fresh clone, run `git config core.hooksPath .githooks` so the hook is active.
 - Window scrollbar: the popup body has no visible scrollbar (`no-window-scrollbar` in `popup.css`), because it appeared and disappeared when the footer came back and shifted the layout. The page still scrolls. Do not hide scrollbars on `#all`, the Browse list.
+- Footer icons: `snapFooterIcons` at the end of `popup.js` nudges the footer link icons onto whole pixels with a static `translate`, because the centered links land on fractional positions that blur the 16px icons. It runs after fonts load and when the body resizes. Keep it, and do not add other transforms to those icons.

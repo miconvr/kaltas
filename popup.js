@@ -503,3 +503,27 @@ function safeUrl(u) {
   new MutationObserver(closeOnce).observe(matches, { childList: true });
   closeOnce();
 })();
+
+// Footer icons: the links are centered, so their position is usually a fraction of a pixel (for example
+// x 98.31), which blurs the 16px icons. This nudges each one onto a whole pixel. It only sets a static
+// transform, so it adds no animation and no layout change, and it re-runs when the popup changes size.
+function snapFooterIcons() {
+  const icons = document.querySelectorAll("footer .footer-links a svg");
+  icons.forEach((el) => { el.style.transform = ""; });
+  icons.forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (!r.width) return;
+    const dx = Math.round(r.x) - r.x;
+    const dy = Math.round(r.y) - r.y;
+    if (dx || dy) el.style.transform = "translate(" + dx + "px, " + dy + "px)";
+  });
+}
+let snapFrame = 0;
+const scheduleSnap = () => {
+  cancelAnimationFrame(snapFrame);
+  snapFrame = requestAnimationFrame(snapFooterIcons);
+};
+scheduleSnap();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(scheduleSnap);
+if (typeof ResizeObserver === "function") new ResizeObserver(scheduleSnap).observe(document.body);
+window.addEventListener("resize", scheduleSnap);
