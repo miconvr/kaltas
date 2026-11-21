@@ -332,6 +332,24 @@ async function getHost() {
   }
 }
 
+// While a deal card's details are open, popup.css hides the Browse row and the footer (html.card-details-open).
+// On close they stay hidden until the card has finished collapsing, so the popup never grows past 600px
+// mid-animation (that made the scrollbar flash).
+let detailsCloseTimer = 0;
+document.addEventListener("toggle", (e) => {
+  const d = e.target;
+  if (!(d instanceof HTMLDetailsElement) || !d.closest("#matches .card")) return;
+  clearTimeout(detailsCloseTimer);
+  const root = document.documentElement;
+  if (d.open) {
+    root.classList.add("card-details-open");
+    return;
+  }
+  const raw = getComputedStyle(root).getPropertyValue("--dur-slow").trim();
+  const ms = raw.endsWith("ms") ? parseFloat(raw) : raw.endsWith("s") ? parseFloat(raw) * 1000 : 300;
+  detailsCloseTimer = setTimeout(() => root.classList.remove("card-details-open"), (ms || 300) + 80);
+}, true);
+
 async function init() {
   let theme = getTheme();
   applyTheme(theme);

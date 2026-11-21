@@ -653,8 +653,8 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 
 /* Deal card details open: hide the footer (links and credit) and the Browse row so a long card fits the 600px popup.
    It comes back when the details close or when Browse opens (the card collapses then, though its details stay open). */
-:root body:has(#matches .card details[open]):not(:has(#browse[open])) footer,
-:root body:has(#matches .card details[open]):not(:has(#browse[open])) #browse { display: none; }
+:root.card-details-open body:not(:has(#browse[open])) footer,
+:root.card-details-open body:not(:has(#browse[open])) #browse { display: none !important; }
 
 /* Deal card label in dark mode: the category label uses the deeper accent orange. The details toggle
    keeps its original peach-orange. Light mode keeps the dark orange it already has. */
@@ -691,3 +691,11 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body .card summary:hover::after,
 :root[data-theme="dark"] body .card summary:hover,
 :root[data-theme="dark"] body .card summary:hover::after { color: var(--fg); }
+
+/* Details toggle as a bold pill: easier to see and to hit. The border and the hover tint follow the text
+   color (orange, white or near-black on hover), so both themes work. */
+:root body .card summary { display: flex; width: fit-content; padding: 6px 12px; border: 1px solid color-mix(in srgb, currentColor 45%, transparent); border-radius: 999px; font-size: 13px; font-weight: 700; line-height: 1.3; transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }
+:root body .card summary:hover { background: color-mix(in srgb, currentColor 12%, transparent); }
+@media (prefers-reduced-motion: reduce) {
+  :root body .card summary { transition: none; }
+}
