@@ -340,32 +340,38 @@ async function getHost() {
 // On close they stay hidden until the card has finished collapsing, so the popup never grows past 600px
 // mid-animation (that made the scrollbar flash).
 let detailsCloseTimer = 0;
-let detailsFitTimer = 0;
 
-// Cap the details scroll box so the popup stays within 600px. Measured only after the open animation has
-// finished, because the footer and Browse row are still collapsing before that.
+// Cap the details scroll box the moment the details open, from the layout they are about to have: the footer
+// and the Browse row collapse (card-details-open), so their height is taken out of the page, and the box is
+// counted at its full natural height. That way the cap is in place from the first frame, with no late squeeze.
+function blockHeight(el) {
+  if (!el) return 0;
+  const cs = getComputedStyle(el);
+  return el.offsetHeight + (parseFloat(cs.marginTop) || 0) + (parseFloat(cs.marginBottom) || 0);
+}
+
 function fitDetails(d) {
   const wrap = d.querySelector(".detail-scroll");
-  if (!wrap || !d.open) return;
+  if (!wrap) return;
   wrap.style.maxHeight = "";
+  if (document.querySelector("#browse[open]")) return;
+  const natural = wrap.scrollHeight;
   const total = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-  const over = total - 600;
-  if (over > 0) wrap.style.maxHeight = Math.max(60, wrap.offsetHeight - over - 1) + "px";
+  const final = total - blockHeight(document.querySelector("footer")) - blockHeight($("browse")) - wrap.offsetHeight + natural;
+  const over = final - 600;
+  if (over > 0) wrap.style.maxHeight = Math.max(60, natural - over - 2) + "px";
 }
 
 document.addEventListener("toggle", (e) => {
   const d = e.target;
   if (!(d instanceof HTMLDetailsElement) || !d.closest("#matches .card")) return;
   clearTimeout(detailsCloseTimer);
-  clearTimeout(detailsFitTimer);
   const root = document.documentElement;
   const raw = getComputedStyle(root).getPropertyValue("--dur-slow").trim();
   const ms = raw.endsWith("ms") ? parseFloat(raw) : raw.endsWith("s") ? parseFloat(raw) * 1000 : 300;
   if (d.open) {
     root.classList.add("card-details-open");
-    const wrap = d.querySelector(".detail-scroll");
-    if (wrap) wrap.style.maxHeight = "";
-    detailsFitTimer = setTimeout(() => fitDetails(d), (ms || 300) + 100);
+    fitDetails(d);
     return;
   }
   detailsCloseTimer = setTimeout(() => root.classList.remove("card-details-open"), (ms || 300) + 80);
