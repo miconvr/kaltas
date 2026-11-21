@@ -692,6 +692,9 @@ input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appe
 :root body .card summary,
 :root body .card summary::after,
 :root body .card details strong { color: var(--chip-fg); }
+:root[data-theme="dark"] body .card summary,
+:root[data-theme="dark"] body .card summary::after,
+:root[data-theme="dark"] body .card details strong { color: var(--accent); }
 :root body .card summary:hover,
 :root body .card summary:hover::after,
 :root[data-theme="dark"] body .card summary:hover,
