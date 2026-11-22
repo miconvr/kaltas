@@ -605,5 +605,89 @@
         "details": "A 3-month All Access subscription with icons, photos, illustrations and music.",
         "requirements": "A verified GitHub Student Developer Pack. Sign in to Icons8 with the GitHub email on your pack.",
         "caveats": "Access lasts 3 months, then it is a paid plan. Check the offer page for the current terms."
+    },
+    {
+        "name": "Sketch for Students",
+        "domains": [
+            "sketch.com"
+        ],
+        "category": "Design",
+        "perk": "Free Sketch Workspace for a year for students and educators.",
+        "url": "https://www.sketch.com/education/",
+        "details": "A free Workspace with 1 Editor seat and 50 GB of storage for one year. No credit card needed.",
+        "requirements": "Age 16 or older and enrolled at a school, college, university or an online course of at least 2 months. Apply on the education page with proof of enrollment.",
+        "caveats": "Approval takes about 2-3 business days, with 30 days of free use while you wait. Self-study and home learning don't qualify. The Mac app needs macOS 15 or newer. Renew by re-applying each year."
+    },
+    {
+        "name": "Sentry for Students",
+        "domains": [
+            "sentry.io"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free education account for a year with generous error, log and replay quotas.",
+        "url": "https://sentry.io/for/education/",
+        "details": "Open-source error tracking with unlimited team members, 50K errors, 5 GB of logs and monthly Seer credits, free for one year.",
+        "requirements": "Student, teacher or university researcher. Get it by verifying the GitHub Student Developer Pack.",
+        "caveats": "Free for one year. Quotas are capped. Check the education page for the current limits."
+    },
+    {
+        "name": "Termius for Students",
+        "domains": [
+            "termius.com"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free Termius Pro and Team features for students through the GitHub Student Developer Pack.",
+        "url": "https://termius.com/education",
+        "details": "An SSH client for desktop and mobile that syncs your hosts across devices, with the Pro and Team features unlocked.",
+        "requirements": "An active GitHub Student Developer Pack. Link your GitHub account on the education page.",
+        "caveats": "The page doesn't say how long access lasts. It depends on your pack staying active."
+    },
+    {
+        "name": "SQLGate for Students",
+        "domains": [
+            "sqlgate.com"
+        ],
+        "category": "Dev Tools",
+        "perk": "A year of SQLGate Standard features free through the GitHub Student Developer Pack.",
+        "url": "https://www.sqlgate.com/student-pack",
+        "details": "An IDE for multiple SQL databases, with most Standard Subscription features free for one year.",
+        "requirements": "An active GitHub Student Developer Pack. Sign in with GitHub on the student pack page.",
+        "caveats": "Most, not all, Standard features are included. Access lasts one year."
+    },
+    {
+        "name": "Themeisle Neve Agency",
+        "domains": [
+            "themeisle.com"
+        ],
+        "category": "Dev Tools",
+        "perk": "A free year of Neve Agency for GitHub-verified students.",
+        "url": "https://themeisle.com/github-students/",
+        "details": "One year of the Neve Agency WordPress theme plan with updates and support, usable on unlimited sites.",
+        "requirements": "A student verified through the GitHub Student Developer Pack. Log in with GitHub on the offer page.",
+        "caveats": "Free for one year. Support doesn't cover rewriting your code."
+    },
+    {
+        "name": "Shodan Academic Upgrade",
+        "domains": [
+            "shodan.io"
+        ],
+        "category": "Dev Tools",
+        "perk": "Free Shodan Membership upgrade with monthly query and scan credits for academic emails.",
+        "url": "https://help.shodan.io/the-basics/academic-upgrade",
+        "details": "Normally a paid membership. Monitor up to 16 IPs, get 100 query and 100 scan credits a month, and use Shodan Maps, Images and the vuln filter on the website.",
+        "requirements": "An account created with an academic email address. If your school has no academic domain, email academic@shodan.io to be verified by hand.",
+        "caveats": "No data downloads through the website (use the CLI or API). You can't change your account email afterwards."
+    },
+    {
+        "name": "SAS OnDemand for Academics",
+        "domains": [
+            "sas.com"
+        ],
+        "category": "Learning",
+        "perk": "Free cloud SAS Studio for students and independent learners.",
+        "url": "https://www.sas.com/en_us/software/on-demand-for-academics.html",
+        "details": "A free cloud learning environment with SAS tutorials, two e-learning courses (Programming 1 and Statistics 1) and 5 GB of storage.",
+        "requirements": "A free SAS profile. Students in a class get a code from their professor. Independent learners can use SAS Studio without a school.",
+        "caveats": "Enterprise Guide needs a registered course. Without one you get SAS Studio only. Uploads are capped at 5 GB."
     }
 ]
