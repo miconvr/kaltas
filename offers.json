@@ -386,19 +386,7 @@
         "url": "https://www.framer.com/students",
         "details": "Framer's student program covers hosting a portfolio or personal site and full access to the design canvas and CMS.",
         "requirements": "Enrolled in a certified in-person or online program, such as a high school, college or university. Apply on Framer's student page.",
-        "caveats": "For personal sites, portfolios and class projects only. Commercial projects need a paid plan."
-    },
-    {
-        "name": "DigitalOcean Student Credit",
-        "domains": [
-            "digitalocean.com"
-        ],
-        "category": "Cloud",
-        "perk": "Free hosting credit for verified students through the GitHub Student Developer Pack.",
-        "url": "https://education.github.com/pack",
-        "details": "Cloud hosting credit that you claim through your GitHub Student Developer Pack, usable on DigitalOcean servers and services.",
-        "requirements": "An approved GitHub Student Developer Pack, and a DigitalOcean account that meets the offer's terms.",
-        "caveats": "Credit amount and how long it lasts are set by DigitalOcean and can change. Confirm the current terms in the GitHub Pack offers list."
+        "caveats": "For personal sites, portfolios and class projects only. Commercial projects need a paid plan. Applications are paused while Framer changes the program, so check the page before applying."
     },
     {
         "name": ".tech Student Domain",
