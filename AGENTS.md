@@ -19,10 +19,11 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - `popup.html`, `popup.css`, `popup.js`: the popup (layout, styles, behavior)
 - `icons/`, `fonts/`: extension icons and the Inter font files
 - `scripts/validate-offers.js`: checks `offers.json`. Run it before every release.
-- `scripts/check-links.js`: checks that offer links still work
+- `scripts/check-links.js`: checks that offer links still work (also exports `check()` for the prune script)
+- `scripts/prune-offers.js`, `scripts/link-state.json`: weekly cleanup. Removes an offer once its `expires` date has passed, or when its link has been dead (404, 410, domain gone, bad certificate, or redirect to the home page) 3 weeks in a row. The weekly dead counts live in `link-state.json` (written by the workflow; don't edit by hand). Moved or unverifiable links are never removed automatically. It removes nothing when more than 25% of links fail at once, or when more than 3 offers would go in one run.
 - `scripts/find-leads.js`, `scripts/discovery-sources.json`: helper for finding new offers
 - `scripts/logo-small.svg`: small logo file kept with the scripts
-- `.github/workflows/`: validation, link check and lead finding (they run on Node 22)
+- `.github/workflows/`: validation, link check, lead finding and `prune-offers.yml` (the weekly cleanup commits straight to the default branch as github-actions[bot]; they all run on Node 22)
 - `store-assets/`: Chrome Web Store images. Not part of the zip.
   - `screenshots/screenshot-1.png`, `screenshot-2.png`, `screenshot-3.png` (1280x800; more can be added as `screenshot-N.png`, up to 5)
   - `promo/promo-small-440x280.png`, `promo/promo-marquee-1400x560.png`

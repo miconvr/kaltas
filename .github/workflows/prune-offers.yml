@@ -1,0 +1,39 @@
+name: Prune Offers
+on:
+  schedule:
+    - cron: "45 1 * * 6"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: prune-offers
+  cancel-in-progress: false
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Remove expired and long-dead offers
+        id: prune
+        run: node scripts/prune-offers.js
+      - name: Validate before committing
+        if: steps.prune.outputs.changed == 'true'
+        run: node scripts/validate-offers.js
+      - name: Commit and push
+        if: steps.prune.outputs.changed == 'true'
+        env:
+          REMOVED: ${{ steps.prune.outputs.removed }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add offers.json scripts/link-state.json
+          if [ "$REMOVED" = "true" ]; then
+            git commit -m "content: remove expired or dead offers" -m "$(cat prune-report.md)"
+          else
+            git commit -m "chore: update dead link counts"
+          fi
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

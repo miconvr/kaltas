@@ -1,6 +1,7 @@
 // Weekly link check for offers.json. Run: node scripts/check-links.js [offers.json]
 // Writes link-report.md and, inside GitHub Actions, sets has_problems=true when something
-// needs a look. It never edits offers.json: a person reviews every change.
+// needs a look. It never edits offers.json (scripts/prune-offers.js does the removals and
+// reuses check() from here).
 const fs = require("fs");
 
 const file = process.argv[2] || "offers.json";
@@ -9,14 +10,16 @@ const RETRY_DELAY_MS = Number(process.env.LINK_RETRY_MS) || 2000;
 const CONCURRENCY = 4;
 const UA = "Mozilla/5.0 (compatible; KaltasLinkCheck/1.0; +https://github.com/miconvr/kaltas)";
 
-let data;
-try {
-  data = JSON.parse(fs.readFileSync(file, "utf8"));
-} catch (e) {
-  console.error("Could not read " + file + ": " + e.message);
-  process.exit(1);
+function readOffers() {
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(file, "utf8"));
+  } catch (e) {
+    console.error("Could not read " + file + ": " + e.message);
+    process.exit(1);
+  }
+  return (Array.isArray(data) ? data : data.offers || []).filter((o) => o && o.type !== "info" && o.url);
 }
-const offers = (Array.isArray(data) ? data : data.offers || []).filter((o) => o && o.type !== "info" && o.url);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const bareHost = (u) => new URL(u).hostname.replace(/^www\./, "").toLowerCase();
@@ -80,6 +83,7 @@ async function check(url) {
 }
 
 async function main() {
+  const offers = readOffers();
   const results = new Array(offers.length);
   let next = 0;
   async function worker() {
@@ -104,7 +108,7 @@ async function main() {
   sections.forEach(([title, list]) => {
     if (list.length) md += "## " + title + "\n\n" + list.map(line).join("\n") + "\n\n";
   });
-  md += "Nothing was changed automatically. Open each link, confirm against the official page, then edit `offers.json` or remove the offer, and open a pull request.\n";
+  md += "This report changes nothing by itself. The weekly cleanup (`scripts/prune-offers.js`) removes offers whose link stays dead for 3 weeks in a row or whose `expires` date has passed. For anything else, open each link, confirm against the official page, then edit `offers.json` and open a pull request.\n";
   fs.writeFileSync("link-report.md", md);
 
   console.log("Checked " + results.length + ": ok " + by("ok").length + ", broken " + by("broken").length +
@@ -116,4 +120,8 @@ async function main() {
   }
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+if (require.main === module) {
+  main().catch((e) => { console.error(e); process.exit(1); });
+}
+
+module.exports = { check };
