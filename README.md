@@ -45,6 +45,7 @@
 
 - **Extension:** Chrome Manifest V3, HTML, CSS and vanilla JavaScript
 - **Data:** `offers.json` in this repository, fetched from GitHub with a bundled copy as the fallback
+- **Automation:** weekly GitHub Actions remove dead offers and add new ones. The Google Gemini free tier drafts new entries, and code checks verify them before they are published.
 - **Permissions:** `activeTab` and `declarativeContent` only
 
 ## Run locally
@@ -73,7 +74,9 @@ node scripts/validate-offers.js
 
 ## Contributing
 
-Only add or update an offer after checking an official source, and keep the text generic so prices and promo codes don't go stale. Run `node scripts/validate-offers.js` before opening a pull request. Every offer change is reviewed before it is merged, and merging to `main` publishes it to users.
+Only add or update an offer after checking an official source, and keep the text generic so prices and promo codes don't go stale. Run `node scripts/validate-offers.js` before opening a pull request. Pull requests are reviewed before they are merged, and merging to `main` publishes the change to users.
+
+Offers are also maintained automatically every Saturday by GitHub Actions. Offers that have expired, or whose link has been dead for 3 weeks in a row, are removed. New offers from public community lists are added if they pass automated checks: an AI model drafts the text, and plain code verifies it against the official page. These commits go straight to `main`, so if you see a wrong or outdated offer, please open an issue.
 
 ## Privacy
 
@@ -85,4 +88,4 @@ Kaltas is an independent, open-source student project. It is not affiliated with
 
 ## License
 
-Open source under the [MIT License](LICENSE). Contributions are welcome, but offer data still needs an official source and human review before it is merged.
+Open source under the [MIT License](LICENSE). Contributions are welcome. Offer data needs an official source, and pull requests are reviewed by hand.

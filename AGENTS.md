@@ -24,7 +24,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - `scripts/find-leads.js`, `scripts/discovery-sources.json`: helper for finding new offers. It writes `leads-issue.md` and a machine-readable `leads.json`, and skips sites listed in `scripts/rejected-leads.json`.
 - `scripts/add-offers.js`, `scripts/rejected-leads.json`: weekly auto-add, used by the Deal Leads workflow when the repo secret `GEMINI_API_KEY` exists (a free Google AI Studio key; models can be overridden with the repo variable `GEMINI_MODELS`, comma separated). For each lead it reads the page, asks Gemini for the offer fields as JSON, and adds the offer only if code checks pass: the quoted evidence sentence appears on the page, it mentions students, the page is https on the lead's own site, no links or markup in the text, a known category, and no duplicate name or domain. At most 5 are added per run. Turned-down leads are recorded in `rejected-leads.json` with a reason and are not tried again; delete an entry there to retry a site, and add one to block a site you removed on purpose. Without the secret, the workflow opens the old leads issue instead. The page text is untrusted, so the model never decides what gets published.
 - `scripts/logo-small.svg`: small logo file kept with the scripts
-- `.github/workflows/`: validation, link check, lead finding and `prune-offers.yml` (the weekly cleanup commits straight to the default branch as github-actions[bot]; they all run on Node 22)
+- `.github/workflows/`: validation, link check, `find-deals.yml` (Deal Leads) and `prune-offers.yml`. Both of those commit straight to the default branch as github-actions[bot] every Saturday. They all run on Node 22.
 - `store-assets/`: Chrome Web Store images. Not part of the zip.
   - `screenshots/screenshot-1.png`, `screenshot-2.png`, `screenshot-3.png` (1280x800; more can be added as `screenshot-N.png`, up to 5)
   - `promo/promo-small-440x280.png`, `promo/promo-marquee-1400x560.png`
@@ -41,6 +41,9 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - Do not add tracking, analytics, or remote code.
 - Any change to the name, description, permissions, or data handling must also be reflected in the privacy policy page on the portfolio site (`/kaltas/privacy-policy`), `README.md`, and the store listing.
 - Every change to `offers.json` must pass `node scripts/validate-offers.js`.
+- `offers.json`, `scripts/link-state.json` and `scripts/rejected-leads.json` are also edited by github-actions[bot] on Saturdays. Run `git pull` before changing them, and never hand-edit `link-state.json`. Bot commits use `content:` and `chore:` subjects. The commit-msg hook runs locally only.
+- Do not loosen the checks in `scripts/add-offers.js` or the safety limits in `scripts/prune-offers.js` without the owner's approval. The model only fills in fields; code decides what gets published.
+- If branch protection is ever turned on for `main`, the bot's pushes will fail. Either let github-actions[bot] bypass it or change the workflows to open pull requests.
 - Do not put the number of available deals in store images, the README, or the store listing. It changes often.
 - In store images, GitHub Student Developer Pack is the featured deal.
 - In store images, the light popup is the main one and the dark popup is secondary.
@@ -59,6 +62,7 @@ Kaltas is a Chrome extension (Manifest V3) that shows student deals (discounts a
 - The deal card's category label is plain bold text (no icon). The category label, the "Details" toggle and the row labels (About, Who qualifies, Good to know) are orange: `--chip-fg` in both themes (the lighter orange in dark mode). The toggle turns to the normal text color on hover, and the details text itself uses the normal text color. The first row is labelled "About", and a faint inset edge separates the card from the popup background. Orange is kept for these labels, the button and the star.
 - Light is the default theme: `getTheme()` in `popup.js` falls back to `"light"` when nothing is saved, and `popup.html` starts on `data-theme="light"`. Keep the two in sync, or new users see a flash of the wrong theme. People who already chose a theme keep it (`iskolar-theme`).
 - Store screenshots show the real popup, so retake them if the popup layout changes.
+- Window scrollbar: the popup body has no visible scrollbar (`no-window-scrollbar` in `popup.css`), because it appeared and disappeared when the footer came back and shifted the layout. The page still scrolls. Do not hide scrollbars on `#all`, the Browse list.
 
 ## Popup height
 
@@ -81,6 +85,8 @@ Chrome caps the popup at 600px tall and cuts off anything past that. Check these
 6. Upload the zip in the Chrome Web Store dashboard and submit for review.
 7. Update the store description and images if the name or UI changed. Screenshots are 1280x800, the small tile is 440x280 and the marquee is 1400x560, all 24-bit PNG with no alpha.
 
+Offer-only changes (including bot commits) need no release, because the extension loads `offers.json` from GitHub. Only code, manifest or asset changes need a new zip.
+
 ## Testing checklist
 
 - Load the folder unpacked in `chrome://extensions`.
@@ -99,4 +105,3 @@ Chrome caps the popup at 600px tall and cuts off anything past that. Check these
 Every commit subject is `type: short summary`, all lowercase (brand names and acronyms too), under 80 characters, in the imperative ("add", "fix", not "added"). Types: feat new behavior, fix bug fix, style visual or css change, docs agents.md or readme, refactor no behavior change, perf speed, chore tooling or cleanup, copy wording, content data or text on the site, test, build, ci. One change per commit. Do not use `git add -A`; add specific files. Do not bypass the `.githooks/commit-msg` hook with `--no-verify`. Do not add co-author or tool attribution lines. The hook skips `Merge`, `Revert`, `fixup!` and `squash!` subjects. Pull requests are squash-merged only, so the PR title must follow the same format. History was normalized to this format once, so commit hashes from before that rewrite no longer exist.
 
 After a fresh clone, run `git config core.hooksPath .githooks` so the hook is active.
-- Window scrollbar: the popup body has no visible scrollbar (`no-window-scrollbar` in `popup.css`), because it appeared and disappeared when the footer came back and shifted the layout. The page still scrolls. Do not hide scrollbars on `#all`, the Browse list.
