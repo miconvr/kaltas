@@ -4,7 +4,7 @@ on:
     - cron: "30 2 * * 6"
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   issues: write
 jobs:
   leads:
@@ -17,10 +17,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Pick the mode
+        id: mode
+        env:
+          KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -n "$KEY" ]; then echo "auto=true" >> "$GITHUB_OUTPUT"; echo "GEMINI_API_KEY found: new offers are added automatically."
+          else echo "auto=false" >> "$GITHUB_OUTPUT"; echo "No GEMINI_API_KEY: leads are reported in an issue for review."; fi
       - name: Check for an unfinished leads issue
         id: open
         run: |
           n=$(gh issue list --label deal-leads --state open --json number --jq 'length')
+          if [ "${{ steps.mode.outputs.auto }}" = "true" ]; then n=0; fi
           echo "count=$n" >> "$GITHUB_OUTPUT"
           if [ "$n" != "0" ]; then echo "An earlier leads issue is still open, skipping this week."; fi
       - name: Collect sites already reported
@@ -35,9 +43,38 @@ jobs:
         id: find
         env:
           SEEN_FILE: seen.txt
+          REJECTED_FILE: scripts/rejected-leads.json
         run: node scripts/find-leads.js
+      - name: Add new offers automatically
+        if: steps.open.outputs.count == '0' && steps.mode.outputs.auto == 'true' && steps.find.outputs.has_leads == 'true'
+        id: add
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODELS: ${{ vars.GEMINI_MODELS }}
+        run: node scripts/add-offers.js
+      - name: Validate before committing
+        if: steps.add.outputs.changed == 'true'
+        run: node scripts/validate-offers.js
+      - name: Commit and push
+        if: steps.add.outputs.changed == 'true'
+        env:
+          ADDED: ${{ steps.add.outputs.added }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add offers.json scripts/rejected-leads.json
+          if [ "$ADDED" != "0" ]; then
+            git commit -m "content: add new student offers" -m "$(cat add-report.md)"
+          else
+            git commit -m "chore: update rejected leads"
+          fi
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Show the report
+        if: always() && steps.add.outcome != 'skipped'
+        run: cat add-report.md >> "$GITHUB_STEP_SUMMARY" || true
       - name: Open the issue
-        if: steps.open.outputs.count == '0' && steps.find.outputs.has_leads == 'true'
+        if: steps.open.outputs.count == '0' && steps.mode.outputs.auto != 'true' && steps.find.outputs.has_leads == 'true'
         run: |
           gh label create deal-leads --description "Weekly student-deal leads" --color 0e8a16 2>/dev/null || true
           gh issue create --title "Student Deal Leads" --label deal-leads --body-file leads-issue.md

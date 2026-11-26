@@ -7,6 +7,7 @@ const fs = require("fs");
 const configFile = process.argv[2] || "scripts/discovery-sources.json";
 const offersFile = process.env.OFFERS_FILE || "offers.json";
 const seenFile = process.env.SEEN_FILE || "";
+const rejectedFile = process.env.REJECTED_FILE || "";
 const TIMEOUT_MS = Number(process.env.LEADS_TIMEOUT_MS) || 20000;
 const MAX_CHARS = 2000000;
 
@@ -87,6 +88,11 @@ async function main() {
     fs.readFileSync(seenFile, "utf8").split(/\r?\n/).map((s) => s.trim().toLowerCase()).filter(Boolean).forEach((s) => seen.add(s));
   }
 
+  // Sites the auto-add script already looked at and turned down (see scripts/add-offers.js).
+  if (rejectedFile && fs.existsSync(rejectedFile)) {
+    try { Object.keys(JSON.parse(fs.readFileSync(rejectedFile, "utf8"))).forEach((s) => seen.add(s.toLowerCase())); } catch {}
+  }
+
   const found = new Map();
   const failed = [];
   let okCount = 0;
@@ -120,6 +126,11 @@ async function main() {
     fs.appendFileSync(process.env.GITHUB_OUTPUT, "has_leads=" + (picked.length > 0) + "\n");
   }
   if (!picked.length) return;
+
+  // Same leads in machine-readable form, for scripts/add-offers.js.
+  fs.writeFileSync("leads.json", JSON.stringify(picked.map((v) => ({
+    site: v.site, name: v.name, url: v.url, line: v.line, lists: v.sources.size,
+  })), null, 2) + "\n");
 
   let md = "Weekly student-deal leads, " + new Date().toISOString().slice(0, 10) + ".\n\n";
   md += "These links come from public community lists. They are **leads, not verified offers**. For each one, open the official page, check that it is a real student offer, and only then add it to `offers.json`. Check each address before signing in anywhere.\n\n";
