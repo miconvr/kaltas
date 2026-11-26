@@ -90,7 +90,12 @@ async function main() {
 
   // Sites the auto-add script already looked at and turned down (see scripts/add-offers.js).
   if (rejectedFile && fs.existsSync(rejectedFile)) {
-    try { Object.keys(JSON.parse(fs.readFileSync(rejectedFile, "utf8"))).forEach((s) => seen.add(s.toLowerCase())); } catch {}
+    try {
+      // An entry with "tries" below 3 failed only because the page could not be read: try it again.
+      Object.entries(JSON.parse(fs.readFileSync(rejectedFile, "utf8"))).forEach(([s, v]) => {
+        if (!(v && v.tries && v.tries < 3)) seen.add(s.toLowerCase());
+      });
+    } catch {}
   }
 
   const found = new Map();

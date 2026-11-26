@@ -47,9 +47,13 @@ async function fetchPage(url) {
     signal: AbortSignal.timeout(TIMEOUT_MS),
     headers: { "user-agent": "Mozilla/5.0 (compatible; KaltasAddOffers/1.0; +https://github.com/miconvr/kaltas)", accept: "text/html,*/*" },
   });
-  if (!res.ok) throw new Error("page returned HTTP " + res.status);
+  if (!res.ok) {
+    const err = new Error("page returned HTTP " + res.status);
+    err.permanent = res.status === 404 || res.status === 410; // 403, 429, 5xx are often just bot blocking: retry later
+    throw err;
+  }
   const type = res.headers.get("content-type") || "";
-  if (!/text\/html|text\/plain|application\/xhtml/i.test(type)) throw new Error("page is not HTML (" + type + ")");
+  if (!/text\/html|text\/plain|application\/xhtml/i.test(type)) { const err = new Error("page is not HTML (" + type + ")"); err.permanent = true; throw err; }
   const html = await res.text();
   if (html.length > MAX_PAGE_BYTES) throw new Error("page too large");
   return { finalUrl: res.url, text: pageText(html) };
@@ -83,7 +87,7 @@ class QuotaError extends Error {}
 
 // Tries each model in order. 429 means the free quota is used up: stop for this run.
 async function askGemini(prompt) {
-  let lastErr = "no model tried";
+  const errs = [];
   for (const model of MODELS) {
     for (let attempt = 0; attempt < 2; attempt++) {
       let res;
@@ -98,23 +102,28 @@ async function askGemini(prompt) {
           }),
         });
       } catch (e) {
-        lastErr = model + ": " + (e && e.message ? e.message : "network error");
+        errs.push(model + ": " + (e && e.message ? e.message : "network error"));
         await sleep(PAUSE_MS);
         continue;
       }
       if (res.status === 429) throw new QuotaError("Gemini free quota reached (model " + model + ")");
-      if (res.status >= 500) { lastErr = model + ": HTTP " + res.status; await sleep(PAUSE_MS); continue; }
-      if (!res.ok) { lastErr = model + ": HTTP " + res.status; break; } // unknown model or bad request: try the next one
+      if (!res.ok) {
+        let msg = "";
+        try { const j = await res.json(); msg = (j && j.error && j.error.message) || ""; } catch {}
+        errs.push(model + ": HTTP " + res.status + (msg ? " (" + msg.replace(/\s+/g, " ").slice(0, 160) + ")" : ""));
+        if (res.status >= 500) { await sleep(PAUSE_MS); continue; }
+        break; // unknown model or bad request: try the next one
+      }
       const body = await res.json();
       const cand = body && body.candidates && body.candidates[0];
       const text = cand && cand.content && cand.content.parts ? cand.content.parts.map((p) => p.text || "").join("") : "";
-      if (!text) { lastErr = model + ": empty answer (" + ((cand && cand.finishReason) || "no candidate") + ")"; break; }
+      if (!text) { errs.push(model + ": empty answer (" + ((cand && cand.finishReason) || "no candidate") + ")"); break; }
       console.log("  model used: " + model);
       MODELS.splice(0, MODELS.length, model, ...MODELS.filter((m) => m !== model)); // try this one first next time
       return text;
     }
   }
-  throw new Error("Gemini unavailable: " + lastErr);
+  throw new Error("Gemini unavailable: " + errs.join(" | "));
 }
 
 const BAD_TEXT = /https?:|www\.|<|>|\]\(|[`*_#]{2,}|\[[^\]]*\]/i;
@@ -192,7 +201,15 @@ async function main() {
     };
     let page;
     try { page = await fetchPage(lead.url); }
-    catch (e) { reject("could not read page: " + (e && e.message ? e.message : "error")); continue; }
+    catch (e) {
+      const why = "could not read page: " + (e && e.message ? e.message : "error");
+      if (e && e.permanent) { reject(why); continue; }
+      const tries = ((rejected[lead.site] && rejected[lead.site].tries) || 0) + 1;
+      console.log("  skipped (try " + tries + " of 3): " + why);
+      rejected[lead.site] = { date: today, name: lead.name || lead.site, reason: why, tries };
+      reportSkip.push((lead.name || lead.site) + " (" + lead.site + "): " + why + (tries < 3 ? ", will retry" : ", giving up"));
+      continue;
+    }
     if (!STUDENT_RE.test(page.text)) { reject("page has no student or education wording"); continue; }
 
     let answer;
@@ -205,6 +222,7 @@ async function main() {
     if (v.reason) reject(v.reason);
     else {
       offers.push(v.offer);
+      delete rejected[lead.site];
       console.log("  added: " + v.offer.name);
       reportAdd.push(v.offer.name + " (" + v.offer.domains[0] + ")");
     }

@@ -4,19 +4,9 @@
     "name": "DigitalOcean",
     "reason": "removed by hand, do not add again"
   },
-  "typeform.com": {
-    "date": "2026-11-26",
-    "name": "Typeform",
-    "reason": "could not read page: page returned HTTP 403"
-  },
   "vertabelo.com": {
     "date": "2026-11-26",
     "name": "Vertabelo",
     "reason": "page has no student or education wording"
-  },
-  "webflow.com": {
-    "date": "2026-11-26",
-    "name": "Webflow",
-    "reason": "could not read page: page returned HTTP 403"
   }
 }
