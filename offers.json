@@ -677,5 +677,17 @@
         "details": "A free cloud learning environment with SAS tutorials, two e-learning courses (Programming 1 and Statistics 1) and 5 GB of storage.",
         "requirements": "A free SAS profile. Students in a class get a code from their professor. Independent learners can use SAS Studio without a school.",
         "caveats": "Enterprise Guide needs a registered course. Without one you get SAS Studio only. Uploads are capped at 5 GB."
+    },
+    {
+        "name": "Working Copy for Students",
+        "domains": [
+            "workingcopy.app"
+        ],
+        "category": "Dev Tools",
+        "perk": "Students get free access to Pro features as part of the GitHub Student Developer Pack.",
+        "url": "https://workingcopy.app/education/",
+        "details": "Working Copy is an iOS client for iPhone and iPad for managing Git repositories. Pro features normally require a $29.99 USD purchase.",
+        "requirements": "Students must verify their student status through the GitHub Student Developer Pack and log into their student GitHub account in the app.",
+        "caveats": "Pro features are available for free while logged into a student GitHub account."
     }
 ]
