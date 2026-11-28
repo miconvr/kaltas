@@ -8,5 +8,17 @@
     "date": "2026-11-26",
     "name": "Vertabelo",
     "reason": "page has no student or education wording"
+  },
+  "typeform.com": {
+    "date": "2026-11-28",
+    "name": "Typeform",
+    "reason": "could not read page: page returned HTTP 403",
+    "tries": 1
+  },
+  "webflow.com": {
+    "date": "2026-11-28",
+    "name": "Webflow",
+    "reason": "could not read page: page returned HTTP 403",
+    "tries": 1
   }
 }
